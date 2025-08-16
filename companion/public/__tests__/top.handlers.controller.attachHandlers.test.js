@@ -121,7 +121,7 @@ describe('top.handlers.controller.attachHandlers(deps)', () => {
 
     const searchEl = document.getElementById('searchTop');
     const helpModal = document.getElementById('helpModal');
-    const helpBtn = document.getElementById('helpTop');
+    const _helpBtn = document.getElementById('helpTop');
 
     // "/" focuses search
     document.dispatchEvent(new KeyboardEvent('keydown', { key: '/', ctrlKey: false, shiftKey: false, bubbles: true }));
