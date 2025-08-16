@@ -42,3 +42,14 @@ if (!globalThis.EventSource) {
     close() {}
   };
 }
+
+// URL.createObjectURL/revokeObjectURL polyfills for blob downloads in tests
+if (!globalThis.URL) {
+  globalThis.URL = {};
+}
+if (typeof globalThis.URL.createObjectURL !== 'function') {
+  globalThis.URL.createObjectURL = vi.fn(() => 'blob:mock');
+}
+if (typeof globalThis.URL.revokeObjectURL !== 'function') {
+  globalThis.URL.revokeObjectURL = vi.fn();
+}

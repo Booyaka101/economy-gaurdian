@@ -114,6 +114,20 @@ To prevent reintroduction of legacy fallbacks and duplicate bindings, the compan
   - Runs guardrail on every push and pull request.
   - See also: [CONTRIBUTING.md](./CONTRIBUTING.md) for contributor policies.
 
+## CI and Coverage
+
+- **Workflow**: `.github/workflows/guardrail.yml` runs guardrail, lint, and tests.
+- **Node matrix**: Tests run on Node 18 and 20 for coverage and compatibility.
+- **Coverage**: Vitest v8 provider outputs `text`, `html`, and `lcov` to `companion/coverage/` when `VITEST_COVERAGE=true` (also on CI).
+- **Codecov (optional)**:
+  - Add repository in Codecov and set a `CODECOV_TOKEN` secret in GitHub.
+  - CI uploads `companion/coverage/lcov.info` via `codecov/codecov-action@v4`.
+  - Badge snippet (replace OWNER/REPO):
+
+```md
+[![Coverage](https://codecov.io/gh/OWNER/REPO/branch/main/graph/badge.svg)](https://codecov.io/gh/OWNER/REPO)
+```
+
 ## Disclaimer
 
 This project is community-built and provided as-is. Respect Blizzard ToS and third-party API terms. No automation of disallowed actions.

@@ -3,7 +3,7 @@
 # Blocks commits if legacy fallback patterns are detected in companion/public
 
 echo "[guardrail] Checking for legacy patterns..."
-node companion/scripts/check-legacy.js
+(cd companion && node scripts/check-legacy.js)
 status=$?
 if [ $status -ne 0 ]; then
   echo "[guardrail] Commit blocked. Fix issues above."

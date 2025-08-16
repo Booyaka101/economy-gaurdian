@@ -807,6 +807,8 @@ try {
 export const nameCache = EGTopServices.nameCache;
 export const iconCache = EGTopServices.iconCache;
 export const qualityCache = EGTopServices.qualityCache;
+export const etagCache = EGTopServices.etagCache;
+export const jsonCache = EGTopServices.jsonCache;
 export const getJSON = EGTopServices.getJSON;
 export const postJSON = EGTopServices.postJSON;
 export const copyText = EGTopServices.copyText;

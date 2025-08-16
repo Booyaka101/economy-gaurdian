@@ -45,7 +45,16 @@ function main() {
   if (!fs.existsSync(PUBLIC_DIR)) {
     return;
   }
-  const files = walk(PUBLIC_DIR).filter((f) => f.endsWith('.js') || f.endsWith('.html'));
+  const files = walk(PUBLIC_DIR)
+    .filter((f) => f.endsWith('.js') || f.endsWith('.html'))
+    // Ignore tests and test directories
+    .filter((f) => {
+      const base = path.basename(f);
+      if (/\.(test|spec)\.js$/i.test(base)) {return false;}
+      const parts = f.split(path.sep);
+      if (parts.includes('__tests__')) {return false;}
+      return true;
+    });
   const violations = [];
   for (const f of files) {
     const txt = fs.readFileSync(f, 'utf8');
