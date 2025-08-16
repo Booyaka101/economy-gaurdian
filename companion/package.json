@@ -1,0 +1,32 @@
+{
+  "name": "economy-guardian-companion",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "check:legacy": "node scripts/check-legacy.js",
+    "lint": "eslint --config ..\\.eslintrc.json \"public/**/*.js\"",
+    "lint:fix": "eslint --config ..\\.eslintrc.json \"public/**/*.js\" --fix",
+    "lint:src": "eslint --config ..\\.eslintrc.json \"src/**/*.js\"",
+    "lint:src:fix": "eslint --config ..\\.eslintrc.json \"src/**/*.js\" --fix",
+    "lint:all": "npm run lint && npm run lint:src",
+    "lint:all:fix": "npm run lint:fix && npm run lint:src:fix",
+    "format": "prettier --config ..\\.prettierrc.json --ignore-unknown --write \"public/**/*.{js,css,html,json,md}\" ..\\README.md ..\\CONTRIBUTING.md",
+    "format:check": "prettier --config ..\\.prettierrc.json --ignore-unknown --check \"public/**/*.{js,css,html,json,md}\" ..\\README.md ..\\CONTRIBUTING.md"
+  },
+  "dependencies": {
+    "axios": "^1.7.2",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "googleapis": "^128.0.0",
+    "telegraf": "^4.16.3",
+    "@slack/webhook": "^7.0.3",
+    "discord.js": "^14.15.3"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "prettier": "^3.3.2"
+  }
+}

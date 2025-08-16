@@ -1,0 +1,24 @@
+# Normalize line endings across platforms
+* text=auto
+
+# Enforce LF for source/text files to avoid CRLF churn in diffs
+*.js text eol=lf
+*.json text eol=lf
+*.css text eol=lf
+*.html text eol=lf
+*.md text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.sh text eol=lf
+
+# Binary files - do not modify line endings
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.webp binary
+*.svg binary
+*.zip binary
+*.gz binary
+*.tar binary
