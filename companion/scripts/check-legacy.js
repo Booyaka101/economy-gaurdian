@@ -14,9 +14,6 @@ const __dirname = path.dirname(__filename);
 
 const ROOT = path.resolve(__dirname, '..');
 const PUBLIC_DIR = path.join(ROOT, 'public');
-// Exclude any explicitly legacy-suffixed files from guardrail scanning.
-// These files are retained only for historical reference and are not imported.
-const EXCLUDE = [/\.legacy\.js$/i];
 
 const FORBIDDEN = [
   /\bcopyVisibleIdsQuick\b/,
@@ -48,8 +45,7 @@ function main() {
   if (!fs.existsSync(PUBLIC_DIR)) {
     return;
   }
-  const files = walk(PUBLIC_DIR)
-    .filter((f) => (f.endsWith('.js') || f.endsWith('.html')) && !EXCLUDE.some((rx) => rx.test(f)));
+  const files = walk(PUBLIC_DIR).filter((f) => f.endsWith('.js') || f.endsWith('.html'));
   const violations = [];
   for (const f of files) {
     const txt = fs.readFileSync(f, 'utf8');
