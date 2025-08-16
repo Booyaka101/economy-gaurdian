@@ -83,9 +83,17 @@ function filterAndSortItems(items) {
       try {
         nm =
           (nameCache && nameCache.get && nameCache.get(id)) ||
-          String(it?.name || it?.itemName || '');
+          (it?.name ?? it?.itemName ?? '');
       } catch {}
-      const s = String(nm || '').toLowerCase();
+      let s = '';
+      try {
+        const nn = EGTopServices && EGTopServices.normalizeName
+          ? EGTopServices.normalizeName(nm)
+          : String(nm || '');
+        s = String(nn || '').toLowerCase().trim();
+      } catch {
+        s = String(nm || '').toLowerCase().trim();
+      }
       if (!s) {
         return false;
       }
@@ -212,6 +220,24 @@ async function refresh(_opts = {}) {
     const url = buildUrlWithHours(hours, limit);
     const data = await svcGetJSON(url);
     const rawItems = Array.isArray(data?.items) ? data.items : [];
+    // If a non-numeric name query or a quality filter is active,
+    // populate names/icons/qualities first for accurate client-side filtering
+    try {
+      const q = String(query || '').trim();
+      const isDigits = !!q && /^\d+$/.test(q);
+      if (
+        ((q && !isDigits) || quality != null) &&
+        EGTopServices &&
+        typeof EGTopServices.fetchNamesIcons === 'function'
+      ) {
+        const allIds = rawItems
+          .map((it) => Number(it?.itemId))
+          .filter((v) => Number.isFinite(v));
+        if (allIds.length) {
+          await EGTopServices.fetchNamesIcons(allIds);
+        }
+      }
+    } catch {}
     const filtersActive =
       (!!query && String(query).trim().length > 0) || Number(minSold || 0) > 0 || quality != null;
     // Apply client-side filtering and re-slice to the user limit
@@ -220,6 +246,15 @@ async function refresh(_opts = {}) {
     // Keep legacy export/copy helpers working by exposing last visible items
     try {
       window.lastVisible = items;
+    } catch {}
+    // Ensure names/icons/qualities are populated before rendering
+    try {
+      const ids = items
+        .map((it) => Number(it?.itemId))
+        .filter((v) => Number.isFinite(v));
+      if (ids.length && EGTopServices && typeof EGTopServices.fetchNamesIcons === 'function') {
+        await EGTopServices.fetchNamesIcons(ids);
+      }
     } catch {}
     // Delegate rendering to EGTopRenderer
     const R = window.EGTopRenderer;
@@ -364,9 +399,16 @@ function init(opts = {}) {
     const e = ControllerState.els;
     const hasRows = !!(e.rowsEl && e.rowsEl.children && e.rowsEl.children.length);
     if (!hasRows) {
-      setTimeout(() => {
+      setTimeout(async () => {
         try {
-          refresh({ userTriggered: false });
+          // Ensure static item metadata is loaded before first render
+          if (!window.__egTopMetaBoot__) {
+            window.__egTopMetaBoot__ = true;
+            try {
+              await EGTopServices.bootstrapItemMetaStatic();
+            } catch {}
+          }
+          await refresh({ userTriggered: false });
         } catch {}
       }, 0);
     }
