@@ -9,6 +9,7 @@ import EGTopServices, {
 } from './top.services.js';
 // Load renderer (side-effect export to window.EGTopRenderer)
 import './top.renderer.js';
+import Perf from './top.perf.js';
 
 // Phase 4: New modular controller API (optional, safe to ignore by legacy)
 // Provides: init, refresh, setFilters, setSort, fetchSalesSeries, attachHandlers
@@ -210,6 +211,7 @@ async function fetchSalesSeries(itemId, hours) {
 
 async function refresh(_opts = {}) {
   try {
+    Perf.start('top.refresh');
     const e = ControllerState.els;
     if (!e.rowsEl) {
       return;
@@ -219,11 +221,14 @@ async function refresh(_opts = {}) {
       e.statusEl.textContent = src === 'local' ? 'Loading local…' : 'Loading region…';
     }
     const url = buildUrlWithHours(hours, limit);
+    Perf.start('top.refresh.fetch');
     const data = await svcGetJSON(url);
+    Perf.end('top.refresh.fetch', { url });
     const rawItems = Array.isArray(data?.items) ? data.items : [];
     // If a non-numeric name query or a quality filter is active,
     // populate names/icons/qualities first for accurate client-side filtering
     try {
+      Perf.start('top.refresh.prefetchMeta');
       const q = String(query || '').trim();
       const isDigits = !!q && /^\d+$/.test(q);
       if (
@@ -238,11 +243,18 @@ async function refresh(_opts = {}) {
           await EGTopServices.fetchNamesIcons(allIds);
         }
       }
+      Perf.end('top.refresh.prefetchMeta');
     } catch {}
     const filtersActive =
       (!!query && String(query).trim().length > 0) || Number(minSold || 0) > 0 || quality != null;
     // Apply client-side filtering and re-slice to the user limit
+    Perf.start('top.refresh.clientFilter');
     const filteredAll = filtersActive ? filterAndSortItems(rawItems) : rawItems;
+    Perf.end('top.refresh.clientFilter', {
+      filtersActive,
+      total: rawItems.length,
+      kept: filteredAll.length,
+    });
     const items = filteredAll.slice(0, limit);
     // Keep legacy export/copy helpers working by exposing last visible items
     try {
@@ -250,12 +262,14 @@ async function refresh(_opts = {}) {
     } catch {}
     // Ensure names/icons/qualities are populated before rendering
     try {
+      Perf.start('top.refresh.ensureMetaVisible');
       const ids = items
         .map((it) => Number(it?.itemId))
         .filter((v) => Number.isFinite(v));
       if (ids.length && EGTopServices && typeof EGTopServices.fetchNamesIcons === 'function') {
         await EGTopServices.fetchNamesIcons(ids);
       }
+      Perf.end('top.refresh.ensureMetaVisible', { ids: ids.length });
     } catch {}
     // Delegate rendering to EGTopRenderer
     const R = window.EGTopRenderer;
@@ -276,15 +290,19 @@ async function refresh(_opts = {}) {
       }
     };
     if (R && typeof R.appendRowsChunked === 'function') {
+      Perf.start('top.refresh.renderSchedule');
       R.appendRowsChunked(e.rowsEl, items, { buildRow, loadSpark });
+      Perf.end('top.refresh.renderSchedule', { count: items.length });
     } else {
       // Fallback: simple sync render (rare)
+      Perf.start('top.refresh.renderSync');
       e.rowsEl.innerHTML = '';
       const frag = document.createDocumentFragment();
       for (const it of items) {
         frag.appendChild(buildRow(it));
       }
       e.rowsEl.appendChild(frag);
+      Perf.end('top.refresh.renderSync', { count: items.length });
     }
     // HUDs
     if (e.footerInfo) {
@@ -314,12 +332,16 @@ async function refresh(_opts = {}) {
     if (e.statusEl) {
       e.statusEl.textContent = '';
     }
+    Perf.end('top.refresh', { items: items.length });
   } catch (e) {
     try {
       const el = ControllerState.els.statusEl;
       if (el) {
         el.textContent = `Failed to load: ${e?.message || e}`;
       }
+    } catch {}
+    try {
+      Perf.end('top.refresh', { error: e?.message || String(e) });
     } catch {}
   }
 }

@@ -9,6 +9,7 @@ import {
   isBadName,
   idNum,
 } from './top.services.js';
+import Perf from './top.perf.js';
 function fmtSold(v) {
   const n = Number(v);
   if (!Number.isFinite(n)) {
@@ -18,6 +19,7 @@ function fmtSold(v) {
 }
 
 export function buildRow(it) {
+  Perf.start('renderer.buildRow');
   const id = idNum(it?.itemId);
   const tr = document.createElement('tr');
   const rawName = (id != null ? nameCache.get(id) : it && it.itemName) || (it && it.itemName) || '';
@@ -56,6 +58,7 @@ export function buildRow(it) {
         <button class="tool-btn" data-act="copy" data-id="${id}" title="Copy item ID" aria-label="Copy item ID ${id}">Copy</button>
       </span>
     </td>`;
+  Perf.end('renderer.buildRow');
   return tr;
 }
 
@@ -67,6 +70,7 @@ const sparkHoverTs = new Map(); // id -> last hover timestamp
 
 export function renderSparkline(points) {
   try {
+    Perf.start('renderer.sparkline');
     // points: [[t,v]...], small inline SVG 60x18 with padding
     const w = 60,
       h = 18,
@@ -94,6 +98,9 @@ export function renderSparkline(points) {
     </svg>`;
   } catch {
     return '';
+  }
+  finally {
+    try { Perf.end('renderer.sparkline'); } catch {}
   }
 }
 
@@ -145,12 +152,14 @@ export function appendRowsChunked(rowsEl, items, { buildRow: makeRow, loadSpark 
     if (!rowsEl || !Array.isArray(items)) {
       return;
     }
+    Perf.start('renderer.appendRows.total');
     const builder = typeof makeRow === 'function' ? makeRow : (it) => buildRow(it);
     const warm = typeof loadSpark === 'function' ? loadSpark : () => {};
     rowsEl.innerHTML = '';
     let i = 0;
     let curChunk = 40;
     const processChunk = (deadline) => {
+      Perf.start('renderer.appendRows.chunk');
       const start =
         typeof performance !== 'undefined' && performance.now ? performance.now() : Date.now();
       const hasTR = !!(deadline && typeof deadline.timeRemaining === 'function');
@@ -195,6 +204,7 @@ export function appendRowsChunked(rowsEl, items, { buildRow: makeRow, loadSpark 
         } else if (took < 6) {
           curChunk = Math.min(200, Math.ceil(curChunk * 1.15));
         }
+        try { Perf.end('renderer.appendRows.chunk', { added: n, took }); } catch {}
       } catch {}
       if (i < items.length) {
         if ('requestIdleCallback' in window) {
@@ -214,6 +224,7 @@ export function appendRowsChunked(rowsEl, items, { buildRow: makeRow, loadSpark 
           let j = 0;
           const step = () => {
             if (j >= sparks.length) {
+              try { Perf.end('renderer.appendRows.total', { count: items.length }); } catch {}
               return;
             }
             const el = sparks[j++];
