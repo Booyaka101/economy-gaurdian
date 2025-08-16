@@ -31,15 +31,18 @@
     "telegraf": "^4.16.3"
   },
   "devDependencies": {
+    "@vitest/coverage-v8": "^1.6.1",
     "eslint": "^8.57.0",
-    "prettier": "^3.3.2",
     "jsdom": "^24.0.0",
+    "prettier": "^3.3.2",
     "vitest": "^1.6.0"
   },
   "vitest": {
     "test": {
       "environment": "jsdom",
-      "setupFiles": ["./vitest.setup.js"]
+      "setupFiles": [
+        "./vitest.setup.js"
+      ]
     }
   }
 }

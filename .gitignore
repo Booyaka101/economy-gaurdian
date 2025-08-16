@@ -20,6 +20,10 @@ companion/src/.cache/
 /dist/
 /build/
 
+# Test coverage
+coverage/
+companion/coverage/
+
 # OS/editor noise
 .DS_Store
 Thumbs.db
