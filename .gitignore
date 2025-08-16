@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+companion/node_modules/
+
+# Environment
+*.env
+companion/.env
+companion/.env.local
+
+# Logs
+logs/
+companion/logs/
+*.log
+
+# Caches and generated data
+companion/.cache/
+
+# Build outputs
+/dist/
+/build/
+
+# OS/editor noise
+.DS_Store
+Thumbs.db

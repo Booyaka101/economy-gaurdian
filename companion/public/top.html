@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Economy Guardian - Top Sold (48h)</title>
+    <link rel="preconnect" href="/" />
+    <link rel="stylesheet" href="/styles.css" />
+    <!-- Removed external Google Fonts to avoid third-party requests -->
+    <!-- Wowhead tooltips centralized -->
+    <script src="/wowhead.controller.js"></script>
+  </head>
+  <body>
+    <header class="app-header">
+      <h1 class="app-title">Economy Guardian</h1>
+      <nav class="app-nav">
+        <a href="/top.html"><strong>Top Sold</strong></a>
+        <a href="/ai.html">AI</a>
+        <a href="/player.html">Player</a>
+      </nav>
+      <div class="hdr-right">
+        <span id="realmTop" class="pill" title="Realm"></span>
+        <span id="connDot" class="conn-dot offline" title="Connection status"></span>
+        <button id="settingsBtn" class="btn-ghost" title="Settings" type="button">Settings</button>
+      </div>
+    </header>
+    <!-- Modals -->
+    <div id="helpModal" class="modal" hidden>
+      <div class="content">
+        <header>
+          <strong>Help</strong>
+          <button id="helpModalClose" class="close-btn" aria-label="Close" type="button">
+            Close
+          </button>
+        </header>
+        <div class="body" id="helpModalBody"></div>
+      </div>
+    </div>
+    <div id="settingsModal" class="modal" hidden>
+      <div class="content">
+        <header>
+          <strong>Settings</strong>
+          <button id="settingsClose" class="close-btn" aria-label="Close" type="button">
+            Close
+          </button>
+        </header>
+        <div class="body">
+          <label style="display: flex; align-items: center; gap: 8px">
+            <input type="checkbox" id="tooltipToggle" /> Enable Wowhead tooltips
+          </label>
+          <label style="display: flex; align-items: center; gap: 8px; margin-top: 6px">
+            <input type="checkbox" id="hcToggle" /> High Contrast mode
+          </label>
+          <div class="status" id="settingsStatus" aria-live="polite" style="margin: 8px 0"></div>
+          <div style="display: flex; gap: 8px; margin: 8px 0">
+            <button id="diagBtn" type="button">Show Diagnostics</button>
+            <button id="clearCachesBtn" type="button">Clear Caches</button>
+          </div>
+          <pre id="diagOut"></pre>
+        </div>
+      </div>
+    </div>
+    <main>
+      <section class="card" style="overflow: auto">
+        <h2>Top Sold Items</h2>
+        <div class="body">
+          <div class="controls">
+            <label
+              >Source
+              <select id="sourceTop">
+                <option value="local" selected>Local</option>
+                <option value="region">Region (TSM)</option>
+              </select>
+            </label>
+            <span id="hoursTopWrap">
+              <label
+                >Hours <input id="hoursTop" type="number" min="1" max="168" step="1" value="48"
+              /></label>
+            </span>
+            <label
+              >Limit <input id="limitTop" type="number" min="1" max="5000" step="1" value="400"
+            /></label>
+            <label
+              >Min sold/day
+              <input id="minSoldTop" type="number" min="0" max="1000000" step="1" value="0"
+            /></label>
+            <label
+              >Quality
+              <select id="qualityTop">
+                <option value="">Any</option>
+                <option value="0">Poor</option>
+                <option value="1">Common</option>
+                <option value="2">Uncommon</option>
+                <option value="3">Rare</option>
+                <option value="4">Epic</option>
+                <option value="5">Legendary</option>
+              </select>
+            </label>
+            <label><input id="allCatalog" type="checkbox" /> All items (catalog)</label>
+            <label><input id="includeZero" type="checkbox" /> Include zero</label>
+            <!-- Old in-table search (restored) -->
+            <input
+              id="searchTop"
+              type="text"
+              placeholder="Filter list… (name or ID)"
+              style="flex: 1; min-width: 220px"
+            />
+            <button id="clearSearchTop" title="Clear filter" type="button">Clear</button>
+            <button id="refreshTop" type="button">Refresh</button>
+            <button id="exportTop" title="Export visible to CSV" type="button">Export CSV</button>
+            <button id="exportJsonTop" title="Export visible to JSON" type="button">
+              Export JSON
+            </button>
+            <button id="copyIdsTop" title="Copy visible item IDs" type="button">Copy IDs</button>
+            <button id="copyTsmTop" title="Copy visible items as TSM group list" type="button">
+              Copy TSM Group
+            </button>
+            <button id="helpTop" title="Keyboard shortcuts and tips" type="button">Help</button>
+          </div>
+          <!-- Pagination controls removed per request -->
+          <div id="statusTop" class="status"></div>
+          <div id="pollingStatus" class="status"></div>
+          <table class="top-table">
+            <thead>
+              <tr>
+                <th data-sort="itemId">Item</th>
+                <th data-sort="soldPerDay">Sold/Day</th>
+              </tr>
+            </thead>
+            <tbody id="rowsTop"></tbody>
+          </table>
+          <div id="footerInfo" class="footer-info"></div>
+          <!-- Surge Alerts Panel -->
+          <section class="card" id="aiAlerts" style="margin-top: 12px">
+            <h2 style="display: flex; align-items: center; justify-content: space-between">
+              <span>Surge Alerts</span>
+              <span style="display: inline-flex; gap: 8px">
+                <button
+                  id="refreshAlerts"
+                  class="tool-btn"
+                  title="Refresh surge alerts"
+                  type="button"
+                >
+                  Refresh
+                </button>
+              </span>
+            </h2>
+            <div class="body">
+              <div id="alertsStatus" class="status"></div>
+              <div id="alertsList"></div>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+    <div id="toast" role="status" aria-live="polite"></div>
+    <!-- Lightweight modal for AI results -->
+    <div id="aiModal" class="modal" hidden>
+      <div class="content">
+        <header>
+          <strong id="aiModalTitle">AI Result</strong>
+          <button id="aiModalClose" class="close-btn" aria-label="Close" type="button">
+            Close
+          </button>
+        </header>
+        <div class="body" id="aiModalBody"></div>
+      </div>
+    </div>
+    <script src="/sw.controller.js"></script>
+    <script>
+      // Settings modal wiring (Top Sold page)
+      (function () {
+        function $(s) {
+          return document.querySelector(s);
+        }
+        function on(el, ev, fn) {
+          if (el) el.addEventListener(ev, fn);
+        }
+        const openBtn = $('#settingsBtn');
+        const modal = $('#settingsModal');
+        const closeBtn = $('#settingsClose');
+        const chk = $('#tooltipToggle');
+        const hcChk = $('#hcToggle');
+        const diagBtn = $('#diagBtn');
+        const clearBtn = $('#clearCachesBtn');
+        const out = $('#diagOut');
+        const status = $('#settingsStatus');
+
+        function syncCheckbox() {
+          try {
+            const pref = localStorage.getItem('eg_tooltips');
+            const enabled = pref == null ? true : pref === '1';
+            if (chk) chk.checked = !!enabled;
+          } catch {}
+        }
+        function syncHC() {
+          try {
+            const on =
+              window.EGTheme && window.EGTheme.getHighContrast && window.EGTheme.getHighContrast();
+            if (hcChk) hcChk.checked = !!on;
+          } catch {}
+        }
+        function open() {
+          try {
+            syncCheckbox();
+            syncHC();
+            modal.removeAttribute('hidden');
+          } catch {}
+        }
+        function close() {
+          try {
+            modal.setAttribute('hidden', '');
+          } catch {}
+        }
+        on(openBtn, 'click', open);
+        on(closeBtn, 'click', close);
+        on(modal, 'click', (e) => {
+          if (e.target === modal) close();
+        });
+        on(chk, 'change', () => {
+          try {
+            const on = !!chk.checked;
+            if (
+              window.EGTooltips &&
+              typeof window.EGTooltips[on ? 'enable' : 'disable'] === 'function'
+            )
+              window.EGTooltips[on ? 'enable' : 'disable']('user-toggle');
+            localStorage.setItem('eg_tooltips', on ? '1' : '0');
+            if (status) status.textContent = `Tooltips ${on ? 'enabled' : 'disabled'}`;
+          } catch {}
+        });
+        on(hcChk, 'change', () => {
+          try {
+            const on = !!hcChk.checked;
+            window.EGTheme && window.EGTheme.setHighContrast && window.EGTheme.setHighContrast(on);
+            window.EGTheme &&
+              window.EGTheme.applyHighContrast &&
+              window.EGTheme.applyHighContrast(on);
+            if (status) status.textContent = `High Contrast ${on ? 'enabled' : 'disabled'}`;
+          } catch {}
+        });
+        async function showDiag() {
+          const lines = [];
+          try {
+            const sw = navigator.serviceWorker;
+            const reg = await sw?.getRegistration?.();
+            const ctrl = sw?.controller;
+            lines.push(`SW controller: ${!!ctrl}`);
+            lines.push(`SW reg scope: ${reg?.scope || '-'}`);
+            const keys = await caches.keys();
+            lines.push(`Caches: ${keys.join(', ') || '(none)'}`);
+          } catch (e) {
+            lines.push(`SW error: ${(e && e.message) || e}`);
+          }
+          try {
+            const st = window.EGTooltips && window.EGTooltips.state;
+            lines.push(`Tooltips: ${st && st.enabled ? 'on' : 'off'}`);
+            lines.push(`Source: ${(st && st.source) || '-'}`);
+            lines.push(`Last: ${(st && st.lastAction) || '-'}`);
+          } catch {}
+          try {
+            const hc =
+              window.EGTheme && window.EGTheme.getHighContrast && window.EGTheme.getHighContrast();
+            const owl =
+              window.EGTheme && window.EGTheme.getNightOwl && window.EGTheme.getNightOwl();
+            lines.push(`High Contrast: ${hc ? 'on' : 'off'}`);
+            lines.push(`Night Owl: ${owl ? 'on' : 'off'}`);
+          } catch {}
+          try {
+            const u = new URL(location.href);
+            lines.push(`?whsrc=${u.searchParams.get('whsrc') || '(none)'}`);
+          } catch {}
+          if (out) out.textContent = lines.join('\n');
+        }
+        on(diagBtn, 'click', showDiag);
+        on(clearBtn, 'click', async () => {
+          try {
+            const ks = await caches.keys();
+            await Promise.all(ks.map((k) => caches.delete(k)));
+          } catch {}
+          location.reload();
+        });
+      })();
+    </script>
+    <script type="module" src="./top.entry.js"></script>
+  </body>
+</html>

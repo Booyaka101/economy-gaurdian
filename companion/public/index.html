@@ -1,0 +1,685 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Economy Guardian - Top Sold</title>
+    <meta http-equiv="refresh" content="0; url=/top.html" />
+    <!-- Removed external Google Fonts to avoid third-party requests -->
+    <style>
+      :root {
+        --bg: #0b0e14;
+        --panel: #121826;
+        --muted: #8b93a7;
+        --text: #e6ebff;
+        --accent: #5eead4;
+        --danger: #f87171;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family:
+          system-ui,
+          -apple-system,
+          Segoe UI,
+          Roboto,
+          Helvetica,
+          Arial,
+          sans-serif;
+        background: var(--bg);
+        color: var(--text);
+      }
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 20px;
+        background: linear-gradient(90deg, #101626, #0f172a);
+        border-bottom: 1px solid #1f2a44;
+      }
+      header h1 {
+        margin: 0;
+        font-size: 18px;
+      }
+      header .meta {
+        font-size: 12px;
+        color: var(--muted);
+      }
+      header .tabs a {
+        color: #9fb0d2;
+        text-decoration: none;
+        margin-left: 12px;
+        cursor: pointer;
+      }
+      header .tabs a.active {
+        color: #fff;
+        font-weight: 600;
+      }
+      main {
+        display: grid;
+        grid-template-columns: 320px 1fr;
+        gap: 16px;
+        padding: 16px;
+      }
+      .hidden {
+        display: none;
+      }
+      .card {
+        background: var(--panel);
+        border: 1px solid #1f2a44;
+        border-radius: 10px;
+      }
+      .card h2 {
+        margin: 0;
+        padding: 12px 14px;
+        font-size: 14px;
+        border-bottom: 1px solid #1f2a44;
+      }
+      .card .body {
+        padding: 12px 14px;
+      }
+      label {
+        display: block;
+        font-size: 12px;
+        color: var(--muted);
+        margin-top: 8px;
+      }
+      input,
+      select {
+        width: 100%;
+        padding: 8px 10px;
+        margin-top: 6px;
+        background: #0f1422;
+        color: var(--text);
+        border: 1px solid #1f2a44;
+        border-radius: 8px;
+      }
+      .row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+      .actions {
+        display: flex;
+        gap: 8px;
+        margin-top: 12px;
+      }
+      button {
+        background: #1b243b;
+        border: 1px solid #263250;
+        color: var(--text);
+        padding: 8px 12px;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+      button.primary {
+        background: #123;
+        border-color: #234;
+        color: var(--accent);
+        font-weight: 600;
+      }
+      button:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 12px;
+      }
+      th,
+      td {
+        padding: 10px 10px;
+        border-bottom: 1px solid #1f2a44;
+      }
+      th {
+        text-align: left;
+        color: #9fb0d2;
+        position: sticky;
+        top: 0;
+        background: var(--panel);
+        z-index: 1;
+      }
+      .mono {
+        font-family:
+          ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
+          monospace;
+      }
+      .pill {
+        display: inline-block;
+        padding: 2px 6px;
+        border-radius: 999px;
+        font-size: 11px;
+        border: 1px solid #284;
+        background: #0d2;
+        color: #021;
+      }
+      .muted {
+        color: var(--muted);
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+      }
+      .status {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .metrics {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        font-size: 12px;
+        color: #93b4ff;
+        margin: 8px 0;
+      }
+      th.sort-asc::after {
+        content: ' \25B2';
+        color: #6aa1ff;
+      }
+      th.sort-desc::after {
+        content: ' \25BC';
+        color: #6aa1ff;
+      }
+      .small {
+        font-size: 12px;
+      }
+      /* Top Sold visuals */
+      .top-table tbody tr:nth-child(even) {
+        background: #0f1524;
+      }
+      .top-table tbody tr:hover {
+        background: #111b31;
+      }
+      .top-table th:first-child,
+      .top-table td:first-child {
+        position: sticky;
+        left: 0;
+        background: var(--panel);
+        z-index: 2;
+      }
+      .sold-badge {
+        display: inline-block;
+        padding: 2px 8px;
+        border-radius: 999px;
+        font-size: 11px;
+        font-weight: 600;
+      }
+      .sold-badge.good {
+        background: #063;
+        color: #b7ffcf;
+        border: 1px solid #0a5;
+      }
+      .sold-badge.ok {
+        background: #4a3f00;
+        color: #ffe08a;
+        border: 1px solid #a38700;
+      }
+      .sold-badge.neutral {
+        background: #223;
+        color: #b9c4e6;
+        border: 1px solid #334;
+      }
+      .icon {
+        vertical-align: -4px;
+        margin-right: 8px;
+        border-radius: 4px;
+        box-shadow: 0 0 0 1px #0004;
+      }
+      /* Deals table visuals */
+      tbody tr:nth-child(even) {
+        background: #0f1524;
+      }
+      tbody tr:hover {
+        background: #111b31;
+      }
+      .deal-badge {
+        display: inline-block;
+        padding: 2px 8px;
+        border-radius: 999px;
+        font-size: 11px;
+        font-weight: 600;
+      }
+      .deal-badge.good {
+        background: #063;
+        color: #b7ffcf;
+        border: 1px solid #0a5;
+      }
+      .deal-badge.ok {
+        background: #4a3f00;
+        color: #ffe08a;
+        border: 1px solid #a38700;
+      }
+      .deal-badge.bad {
+        background: #3a0d0d;
+        color: #ffb3b3;
+        border: 1px solid #a33;
+      }
+      .icon {
+        vertical-align: -4px;
+        margin-right: 8px;
+        border-radius: 4px;
+        box-shadow: 0 0 0 1px #0004;
+      }
+      /* Quality coloring */
+      .q0 {
+        color: #9d9d9d;
+      }
+      .q1 {
+        color: #ffffff;
+      }
+      .q2 {
+        color: #1eff00;
+      }
+      .q3 {
+        color: #0070dd;
+      }
+      .q4 {
+        color: #a335ee;
+      }
+      .q5 {
+        color: #ff8000;
+      }
+      /* Icon ring by quality */
+      .icon.q0 {
+        box-shadow:
+          0 0 0 1px #0004,
+          0 0 0 2px #5552 inset;
+      }
+      .icon.q1 {
+        box-shadow:
+          0 0 0 1px #0004,
+          0 0 0 2px #fff2 inset;
+      }
+      .icon.q2 {
+        box-shadow:
+          0 0 0 1px #0004,
+          0 0 0 2px #1eff0066 inset;
+      }
+      .icon.q3 {
+        box-shadow:
+          0 0 0 1px #0004,
+          0 0 0 2px #0070dd66 inset;
+      }
+      .icon.q4 {
+        box-shadow:
+          0 0 0 1px #0004,
+          0 0 0 2px #a335ee66 inset;
+      }
+      .icon.q5 {
+        box-shadow:
+          0 0 0 1px #0004,
+          0 0 0 2px #ff800066 inset;
+      }
+      /* Skeleton loading */
+      @keyframes shimmer {
+        0% {
+          background-position: -200% 0;
+        }
+        100% {
+          background-position: 200% 0;
+        }
+      }
+      .skeleton-row td {
+        padding: 10px 10px;
+      }
+      .skeleton {
+        display: inline-block;
+        height: 12px;
+        width: 100px;
+        border-radius: 6px;
+        background: linear-gradient(90deg, #1a2338 0%, #243150 50%, #1a2338 100%);
+        background-size: 200% 100%;
+        animation: shimmer 1.2s infinite;
+      }
+      .skeleton.icon {
+        height: 18px;
+        width: 18px;
+        border-radius: 4px;
+        margin-right: 6px;
+      }
+      /* Density toggle */
+      .density-compact table tr td,
+      .density-compact table tr th {
+        padding: 6px 8px;
+      }
+      .density-compact .icon {
+        width: 16px;
+        height: 16px;
+      }
+      /* Sticky footer info */
+      .footer-info {
+        position: sticky;
+        bottom: 0;
+        background: linear-gradient(0deg, rgba(10, 14, 24, 0.95), rgba(10, 14, 24, 0.85));
+        border-top: 1px solid #1f2a44;
+        padding: 8px 10px;
+        font-size: 12px;
+        color: #9fb0d2;
+      }
+      /* Trend indicators */
+      .trend {
+        margin-left: 8px;
+        font-size: 11px;
+        font-weight: 600;
+      }
+      .trend.up {
+        color: #3be38f;
+      }
+      .trend.down {
+        color: #ff9494;
+      }
+      /* Sparkline */
+      .spark {
+        display: inline-block;
+        margin-left: 8px;
+        vertical-align: -3px;
+      }
+      /* Quality pill */
+      .quality-pill {
+        display: inline-block;
+        margin-left: 6px;
+        padding: 1px 6px;
+        border-radius: 999px;
+        font-size: 10px;
+        border: 1px solid #2a3555;
+        color: #9fb0d2;
+        background: #0e1526;
+      }
+      /* Row tools (hover actions) */
+      .row-tools {
+        opacity: 0;
+        transition: opacity 0.15s ease;
+        margin-left: 8px;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+      tr:hover .row-tools {
+        opacity: 1;
+      }
+      .tool-btn {
+        background: #16203a;
+        border: 1px solid #233357;
+        color: #bcd;
+        padding: 2px 6px;
+        border-radius: 6px;
+        font-size: 11px;
+        cursor: pointer;
+      }
+      .tool-btn:hover {
+        background: #1a2748;
+      }
+      /* Toast */
+      #toast {
+        position: fixed;
+        right: 16px;
+        bottom: 16px;
+        background: #121a2f;
+        color: #dfe7ff;
+        border: 1px solid #263250;
+        padding: 8px 12px;
+        border-radius: 8px;
+        font-size: 12px;
+        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+        opacity: 0;
+        transform: translateY(8px);
+        transition:
+          opacity 0.2s,
+          transform 0.2s;
+        z-index: 9999;
+      }
+      #toast.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+    <!-- Wowhead tooltips centralized -->
+    <script src="/wowhead.controller.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>Economy Guardian</h1>
+      <div class="meta">
+        <span id="realm"></span>
+        · <span id="lastFetched" class="muted"></span> ·
+        <span id="netStatus" class="muted" title="Network status">Online</span>
+      </div>
+      <div class="tabs">
+        <a id="tabLinkDeals" data-tab="deals">Deals</a>
+        <a id="tabLinkTop" class="active" data-tab="top">Top Sold</a>
+        <a id="openSettings" style="margin-left: 16px">Settings</a>
+      </div>
+    </header>
+    <main>
+      <div id="tab-deals" class="hidden">
+        <section class="card">
+          <h2>Filters</h2>
+          <div class="body">
+            <div class="row">
+              <div>
+                <label>Percent of fair value</label>
+                <input id="percent" type="number" min="0.01" max="1" step="0.01" value="0.40" />
+              </div>
+              <div>
+                <label>Max buyout (gold)</label>
+                <input id="maxBuyout" type="number" min="0" step="1" value="100000" />
+              </div>
+            </div>
+            <div class="row">
+              <div>
+                <label>Include commodities</label>
+                <select id="includeCommodities">
+                  <option value="1" selected>Yes</option>
+                  <option value="0">No</option>
+                </select>
+              </div>
+              <div>
+                <label>Limit</label>
+                <input id="limit" type="number" min="1" max="500" value="100" />
+              </div>
+            </div>
+            <div class="row">
+              <div>
+                <label>Min listings</label>
+                <input id="minListings" type="number" min="0" step="1" value="3" />
+              </div>
+              <div>
+                <label>Min quantity</label>
+                <input id="minQuantity" type="number" min="1" step="1" value="5" />
+              </div>
+            </div>
+            <div class="row">
+              <div>
+                <label>Metric</label>
+                <select id="metric">
+                  <option value="percentile" selected>Percentile</option>
+                  <option value="median">Median</option>
+                </select>
+              </div>
+              <div>
+                <label>p (0..1)</label>
+                <input id="p" type="number" min="0" max="1" step="0.05" value="0.30" />
+              </div>
+            </div>
+            <div class="row">
+              <div>
+                <label>Include item IDs (CSV)</label>
+                <input id="includeItemIds" type="text" placeholder="e.g. 19019,17203" />
+              </div>
+              <div>
+                <label>Exclude item IDs (CSV)</label>
+                <input id="excludeItemIds" type="text" placeholder="e.g. 19019,17203" />
+              </div>
+            </div>
+            <div>
+              <label>Min time left</label>
+              <select id="minTimeLeft">
+                <option value="">Any</option>
+                <option>SHORT</option>
+                <option>MEDIUM</option>
+                <option>LONG</option>
+                <option>VERY_LONG</option>
+              </select>
+            </div>
+            <div class="actions">
+              <button id="refresh" class="primary" type="button">Find Deals</button>
+              <button id="export" type="button">Export Lua</button>
+              <button id="refreshAuctions" type="button">Refresh Auctions</button>
+              <button id="presetCommodities" title="Conservative commodity scan" type="button">
+                Preset: Commodities
+              </button>
+              <button id="presetItems" title="Item scan" type="button">Preset: Items</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="card" style="overflow: auto">
+          <h2>Deals</h2>
+          <div class="body">
+            <div class="status" id="status"></div>
+            <div class="actions" style="gap: 12px; align-items: end; margin: 8px 0">
+              <label style="min-width: 220px"
+                >Search <input id="searchDeals" type="text" placeholder="Item name or ID..."
+              /></label>
+              <span class="status small" id="dealsInfo"></span>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th data-sort="itemId">Item</th>
+                  <th class="mono" data-sort="unitPrice">Unit Price</th>
+                  <th class="mono" data-sort="fair">Fair</th>
+                  <th class="mono" data-sort="pct">% of Fair</th>
+                  <th data-sort="listings">Listings</th>
+                  <th data-sort="quantity">Quantity</th>
+                </tr>
+              </thead>
+              <tbody id="rows"></tbody>
+            </table>
+            <div id="metrics" class="metrics"></div>
+          </div>
+        </section>
+      </div>
+
+      <div id="tab-top" style="grid-column: 1 / -1">
+        <section class="card" style="overflow: auto">
+          <h2>Top Sold Items</h2>
+          <div class="body">
+            <div class="actions" style="margin-bottom: 8px; gap: 12px; align-items: end">
+              <label
+                >Source
+                <select id="sourceTop">
+                  <option value="region">Region (TSM/Nexus)</option>
+                  <option value="local" selected>Local (Realm)</option>
+                </select>
+              </label>
+              <label id="hoursTopWrap" class="small" style="display: none"
+                >Hours (Local)
+                <input id="hoursTop" type="number" min="1" max="336" step="1" value="48" />
+              </label>
+              <label
+                >Limit <input id="limitTop" type="number" min="1" max="5000" step="1" value="400"
+              /></label>
+              <button id="densityToggle" title="Toggle density" type="button">Compact</button>
+              <label style="min-width: 220px"
+                >Search <input id="searchTop" type="text" placeholder="Item name or ID..."
+              /></label>
+              <button id="clearSearchTop" title="Clear search" type="button">Clear</button>
+              <button id="refreshTop" type="button">Refresh</button>
+            </div>
+            <div class="actions" style="gap: 12px; margin: -4px 0 8px">
+              <label class="small" style="display: none"
+                ><input id="allCatalog" type="checkbox" checked /> All items (catalog)</label
+              >
+              <label class="small" style="display: none"
+                ><input id="includeZero" type="checkbox" checked /> Include zero</label
+              >
+              <span class="status mono" id="pageInfo"></span>
+            </div>
+            <div id="statusTop" class="status"></div>
+            <table class="top-table" style="font-size: 13px">
+              <thead>
+                <tr>
+                  <th data-sort="itemId">Item</th>
+                  <th data-sort="soldPerDay">Sold/Day</th>
+                </tr>
+              </thead>
+              <tbody id="rowsTop"></tbody>
+            </table>
+            <div id="footerInfo" class="footer-info"></div>
+            <div id="toast" role="status" aria-live="polite"></div>
+          </div>
+        </section>
+      </div>
+    </main>
+    <!-- Settings Modal -->
+    <div
+      id="settingsModal"
+      class="modal"
+      style="
+        position: fixed;
+        inset: 0;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        background: #0008;
+      "
+    >
+      <div class="card" style="width: min(92vw, 520px); max-height: 80vh; overflow: auto">
+        <h2 style="display: flex; align-items: center; justify-content: space-between">
+          <span>Settings</span>
+          <button id="closeSettings" class="tool-btn" aria-label="Close" type="button">
+            Close
+          </button>
+        </h2>
+        <div class="body">
+          <label class="small" style="display: flex; align-items: center; gap: 8px">
+            <input id="toggleRenderDebug" type="checkbox" /> Render debug mode
+          </label>
+          <div class="muted small" style="margin-top: 6px">
+            Toggles on-screen render HUD and chunk timing logs on the Top Sold page. Stored in
+            localStorage.
+          </div>
+          <hr style="margin: 12px 0; border: none; border-top: 1px solid #1f2a44" />
+          <label class="small" style="display: flex; align-items: center; gap: 8px">
+            <input id="toggleTooltips" type="checkbox" /> Enable Wowhead tooltips
+          </label>
+          <div class="muted small" style="margin-top: 6px">
+            Uses centralized wowhead.controller.js. Uncheck to disable (persists locally).
+          </div>
+          <hr style="margin: 12px 0; border: none; border-top: 1px solid #1f2a44" />
+          <div class="actions" style="gap: 8px">
+            <button id="btnDiag" class="tool-btn" type="button">Show Diagnostics</button>
+            <button
+              id="btnClearCaches"
+              class="tool-btn"
+              title="Delete all Cache Storage entries and reload"
+              type="button"
+            >
+              Clear Caches
+            </button>
+          </div>
+          <pre
+            id="diagOut"
+            class="mono"
+            style="margin-top: 8px; white-space: pre-wrap; max-height: 200px; overflow: auto"
+          >
+—</pre
+          >
+        </div>
+      </div>
+    </div>
+    <script src="/sw.controller.js"></script>
+    <script src="./app.js"></script>
+    <script src="./app.controller.js"></script>
+    <script type="module" src="./top.entry.js"></script>
+    <script src="./index.controller.js"></script>
+  </body>
+</html>

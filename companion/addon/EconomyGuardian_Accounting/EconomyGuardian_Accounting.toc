@@ -1,0 +1,9 @@
+## Interface: 100207
+## Title: EconomyGuardian_Accounting
+## Notes: Logs postings, sales, and payouts for Economy Guardian companion app
+## Author: Economy Guardian
+## Version: 0.1.0
+## SavedVariables: EG_AccountingDB, EG_ConfigDB
+
+Core.lua
+Link.lua

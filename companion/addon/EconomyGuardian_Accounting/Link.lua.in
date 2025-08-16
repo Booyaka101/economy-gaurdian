@@ -1,0 +1,55 @@
+-- EconomyGuardian_Accounting - Link helper (templated from Link.lua.in)
+local addonName = ...
+local f = CreateFrame("Frame")
+f:RegisterEvent("PLAYER_LOGIN")
+
+-- Make URL links clickable: clicking will copy to chat edit box for easy copy-paste
+local _SetItemRef = SetItemRef
+SetItemRef = function(link, text, button, chatFrame)
+  if type(link) == "string" and link:sub(1, 3) == "url" then
+    local url = link:sub(5) -- strip 'url:'
+    local eb = ChatEdit_ChooseBoxForSend()
+    if eb then
+      ChatEdit_ActivateChat(eb)
+      eb:SetText(url)
+      eb:HighlightText()
+    end
+    return
+  end
+  if _SetItemRef then
+    return _SetItemRef(link, text, button, chatFrame)
+  end
+end
+
+local function urlEncode(s)
+  if not s then return "" end
+  s = tostring(s)
+  s = s:gsub(" ", "%%20")
+  s = s:gsub("[<>\"'%%]", function(c)
+    return string.format("%%%02X", string.byte(c))
+  end)
+  return s
+end
+
+local function printClickable(url)
+  -- WoW hyperlink format for URLs: |Hurl:<url>|h[<text>]|h
+  local link = string.format("|Hurl:%s|h|cff00ccff[%s]|r|h", url, url)
+  DEFAULT_CHAT_FRAME:AddMessage(string.format("|cff00ff88[EG]|r Player dashboard link: %s", link))
+end
+
+local function printLink()
+  local name, realm = UnitFullName("player")
+  if not name then return end
+  realm = realm or GetRealmName() or ""
+  local q = string.format("realm=%s&character=%s", urlEncode(realm), urlEncode(name))
+  local base = "http://localhost:__PORT__"
+  local path = "/player.html?" .. q
+  local full = base .. path
+  printClickable(full)
+end
+
+f:SetScript("OnEvent", function(_, event)
+  if event == "PLAYER_LOGIN" then
+    C_Timer.After(2, printLink)
+  end
+end)

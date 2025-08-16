@@ -1,0 +1,668 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Economy Guardian — Player Stats</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <style>
+      :root {
+        --bg: #0b1020;
+        --panel: #0f1730;
+        --muted: #1f2a44;
+        --muted-2: #26355c;
+        --text: #dfe7ff;
+        --subtle: #9bb1ff;
+        --accent: #5aa2ff;
+        --accent-2: #00d9ff;
+        --success: #16c172;
+        --warn: #e0b600;
+        --error: #ff6b6b;
+        --shadow: 0 6px 24px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.02);
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        font-family:
+          system-ui,
+          -apple-system,
+          Segoe UI,
+          Roboto,
+          Helvetica,
+          Arial,
+          sans-serif;
+        background: var(--bg);
+        color: var(--text);
+      }
+      a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      header.hero {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 14px 16px;
+        background: linear-gradient(180deg, rgba(19, 34, 74, 0.6), rgba(14, 20, 44, 0.4));
+        border: 1px solid var(--muted);
+        border-radius: 12px;
+        box-shadow: var(--shadow);
+        margin-bottom: 16px;
+      }
+      .hero-left {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+      }
+      .avatar {
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        border: 1px solid var(--muted);
+        background: #0b142c;
+      }
+      .hero-text {
+        display: flex;
+        flex-direction: column;
+      }
+      .hero-name {
+        font-size: 20px;
+        font-weight: 700;
+        letter-spacing: 0.3px;
+      }
+      .hero-sub {
+        color: var(--subtle);
+        font-size: 13px;
+      }
+      .hero-nav a {
+        padding: 8px 10px;
+        border: 1px solid var(--muted);
+        border-radius: 8px;
+        background: #0b142c;
+      }
+      .hero-nav a:hover {
+        border-color: var(--accent);
+      }
+      h1 {
+        font-size: 22px;
+        margin: 8px 0 12px;
+        letter-spacing: 0.3px;
+      }
+      h2 {
+        font-size: 16px;
+        margin: 8px 0 10px;
+        color: #caddff;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+      @media (max-width: 920px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .card {
+        background: var(--panel);
+        border: 1px solid var(--muted);
+        border-radius: 12px;
+        padding: 12px;
+        box-shadow: var(--shadow);
+      }
+      .card h2 {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .controls {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+      label {
+        color: var(--subtle);
+        font-size: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      input,
+      select,
+      button {
+        background: #0b142c;
+        color: #eaf0ff;
+        border: 1px solid var(--muted);
+        border-radius: 8px;
+        padding: 8px 10px;
+        outline: none;
+      }
+      input:focus,
+      select:focus {
+        border-color: var(--accent);
+        box-shadow: 0 0 0 2px rgba(90, 162, 255, 0.15);
+      }
+      button.tool-btn {
+        background: linear-gradient(180deg, #13224a, #0e1632);
+        cursor: pointer;
+        border-color: var(--muted-2);
+        transition: all 0.15s ease;
+      }
+      button.tool-btn:hover {
+        transform: translateY(-1px);
+        border-color: var(--accent);
+        box-shadow:
+          0 4px 14px rgba(0, 0, 0, 0.35),
+          inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      }
+      table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+      }
+      thead th {
+        position: sticky;
+        top: 0;
+        background: #0f1730;
+        z-index: 1;
+      }
+      th,
+      td {
+        border-bottom: 1px solid var(--muted);
+        padding: 8px 10px;
+        text-align: left;
+      }
+      tbody tr:nth-child(odd) td {
+        background: rgba(19, 34, 74, 0.18);
+      }
+      tbody tr:hover td {
+        background: rgba(19, 34, 74, 0.35);
+      }
+      .mono {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      }
+      .pill {
+        display: inline-block;
+        padding: 2px 8px;
+        border: 1px solid var(--muted);
+        border-radius: 999px;
+        font-size: 12px;
+        background: #0b142c;
+      }
+      .quality-pill {
+        border: 1px solid #304989;
+        color: #aecdff;
+        border-radius: 999px;
+        padding: 2px 8px;
+        font-size: 11px;
+        background: #0b142c;
+      }
+      .status {
+        color: #a7b9ff;
+        font-size: 12px;
+        min-height: 18px;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .status::before {
+        content: '';
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #6d86ff;
+        display: inline-block;
+      }
+      .section-scroll {
+        overflow: auto;
+        max-height: 60vh;
+        border: 1px solid var(--muted);
+        border-radius: 10px;
+      }
+      .divider {
+        height: 1px;
+        background: var(--muted);
+        margin: 10px 0;
+        opacity: 0.8;
+      }
+      .spacer {
+        flex: 1;
+      }
+      /* Skeleton loaders */
+      .skeleton-row td {
+        position: relative;
+        color: transparent;
+      }
+      .skeleton {
+        display: block;
+        width: 100%;
+        height: 12px;
+        border-radius: 6px;
+        background: linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0.06),
+          rgba(255, 255, 255, 0.12),
+          rgba(255, 255, 255, 0.06)
+        );
+        background-size: 200% 100%;
+        animation: shimmer 1.2s infinite;
+      }
+      @keyframes shimmer {
+        0% {
+          background-position: 200% 0;
+        }
+        100% {
+          background-position: -200% 0;
+        }
+      }
+      /* Modal */
+      .modal {
+        position: fixed;
+        inset: 0;
+        background: #0008;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .modal[hidden] {
+        display: none;
+      }
+      .modal .content {
+        background: var(--panel);
+        border: 1px solid var(--muted);
+        border-radius: 12px;
+        max-width: 640px;
+        width: min(92vw, 640px);
+        max-height: 80vh;
+        overflow: auto;
+      }
+      .modal .content header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 12px;
+        border-bottom: 1px solid var(--muted);
+      }
+      .modal .content .body {
+        padding: 12px;
+      }
+      .close-btn {
+        background: #2a3555;
+        border: 1px solid #3a4a77;
+        padding: 6px 10px;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+    </style>
+    <!-- Wowhead tooltips centralized -->
+    <script src="/wowhead.controller.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <header class="hero">
+        <div class="hero-left">
+          <img id="charAvatar" class="avatar" alt="Character avatar" src="" />
+          <div class="hero-text">
+            <div class="hero-name" id="heroName">Select a character</div>
+            <div class="hero-sub" id="heroSub">—</div>
+          </div>
+        </div>
+        <nav class="hero-nav">
+          <a href="/top.html" class="hero-link">Top Sold</a>
+          <button id="settingsBtn" class="close-btn" title="Settings" type="button">
+            Settings
+          </button>
+        </nav>
+      </header>
+      <!-- Settings modal for tooltip toggle and diagnostics -->
+      <div id="settingsModal" class="modal" hidden>
+        <div class="content">
+          <header>
+            <strong>Settings</strong>
+            <button id="settingsClose" class="close-btn" aria-label="Close" type="button">
+              Close
+            </button>
+          </header>
+          <div class="body">
+            <label style="display: flex; align-items: center; gap: 8px">
+              <input type="checkbox" id="tooltipToggle" /> Enable Wowhead tooltips
+            </label>
+            <label style="display: flex; align-items: center; gap: 8px; margin-top: 6px">
+              <input type="checkbox" id="hcToggle" /> High Contrast mode
+            </label>
+            <div class="status" id="settingsStatus" aria-live="polite" style="margin: 8px 0"></div>
+            <div style="display: flex; gap: 8px; margin: 8px 0">
+              <button id="diagBtn" type="button">Show Diagnostics</button>
+              <button id="clearCachesBtn" type="button">Clear Caches</button>
+            </div>
+            <pre
+              id="diagOut"
+              class="mono"
+              style="
+                white-space: pre-wrap;
+                background: #0b142c;
+                padding: 8px;
+                border-radius: 8px;
+                border: 1px solid var(--muted);
+                max-height: 40vh;
+                overflow: auto;
+              "
+            ></pre>
+          </div>
+        </div>
+      </div>
+      <section class="card" aria-labelledby="profileTitle">
+        <h2 id="profileTitle">Profile</h2>
+        <div class="controls">
+          <label
+            >Realm
+            <select id="selRealm" aria-label="Select realm">
+              <option value="">All</option>
+            </select></label
+          >
+          <label
+            >Character
+            <select id="selChar" aria-label="Select character">
+              <option value="">All</option>
+            </select></label
+          >
+          <span class="spacer"></span>
+          <span id="profStatus" class="status" aria-live="polite"></span>
+        </div>
+      </section>
+      <h1>Player Stats</h1>
+      <div class="controls">
+        <label>Realm <input id="realm" placeholder="all" /></label>
+        <label>Character <input id="character" placeholder="all" /></label>
+        <label
+          >Since (hours) <input id="sinceHours" type="number" min="1" max="8760" value="168"
+        /></label>
+        <button id="refresh" class="tool-btn" title="Reload totals" type="button">↻ Refresh</button>
+        <span id="status" class="status" aria-live="polite"></span>
+      </div>
+
+      <div class="grid">
+        <section class="card">
+          <h2>Awaiting Payouts</h2>
+          <div class="controls">
+            <label
+              >Window (minutes) <input id="windowMin" type="number" min="10" max="1440" value="60"
+            /></label>
+            <button id="refreshPending" class="tool-btn" title="Reload pending" type="button">
+              ↻ Reload
+            </button>
+            <span id="pendingStatus" class="status"></span>
+          </div>
+          <div class="section-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>Item</th>
+                  <th>Qty</th>
+                  <th class="mono">Unit</th>
+                  <th class="mono">Gross</th>
+                  <th>ETA</th>
+                </tr>
+              </thead>
+              <tbody id="pendingRows">
+                <tr class="skeleton-row">
+                  <td><span class="skeleton" style="width: 60%"></span></td>
+                  <td><span class="skeleton" style="width: 40%"></span></td>
+                  <td><span class="skeleton" style="width: 50%"></span></td>
+                  <td><span class="skeleton" style="width: 50%"></span></td>
+                  <td><span class="skeleton" style="width: 40%"></span></td>
+                </tr>
+                <tr class="skeleton-row">
+                  <td><span class="skeleton" style="width: 55%"></span></td>
+                  <td><span class="skeleton" style="width: 35%"></span></td>
+                  <td><span class="skeleton" style="width: 45%"></span></td>
+                  <td><span class="skeleton" style="width: 48%"></span></td>
+                  <td><span class="skeleton" style="width: 38%"></span></td>
+                </tr>
+                <tr class="skeleton-row">
+                  <td><span class="skeleton" style="width: 58%"></span></td>
+                  <td><span class="skeleton" style="width: 42%"></span></td>
+                  <td><span class="skeleton" style="width: 52%"></span></td>
+                  <td><span class="skeleton" style="width: 49%"></span></td>
+                  <td><span class="skeleton" style="width: 36%"></span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>Totals</h2>
+          <div id="totals" class="mono">
+            <div>🧾 Sales: <span id="salesCount">0</span></div>
+            <div>💰 Gross: <span id="gross">0</span>g</div>
+            <div>🪙 AH Cut (5%): <span id="ahCut">0</span>g</div>
+            <div>📈 Net Profit: <span id="net">0</span>g</div>
+          </div>
+          <hr />
+          <h3>Smart Pricing</h3>
+          <div class="controls">
+            <label>Item ID <input id="recItemId" type="number" placeholder="e.g. 19019" /></label>
+            <label
+              >Target ETA (h) <input id="recTarget" type="number" min="1" max="72" value="12"
+            /></label>
+            <label
+              >Max Stack <input id="recMaxStack" type="number" min="1" max="10000" value="200"
+            /></label>
+            <button id="recBtn" class="tool-btn" title="Get price recommendation" type="button">
+              ✨ Recommend
+            </button>
+          </div>
+          <div id="recOut" class="mono"></div>
+        </section>
+
+        <section class="card">
+          <h2>Insights</h2>
+          <div class="controls">
+            <label
+              >Window (days) <input id="insDays" type="number" min="1" max="90" value="7"
+            /></label>
+            <button id="insRefresh" class="tool-btn" title="Refresh insights" type="button">
+              📊 Refresh
+            </button>
+            <span id="insStatus" class="status"></span>
+          </div>
+          <div id="insOut" class="mono"></div>
+        </section>
+      </div>
+
+      <div class="grid" style="margin-top: 16px">
+        <section class="card">
+          <h2>Posting-Time Advisor</h2>
+          <div class="controls">
+            <label
+              >Target Window (hours) <input id="advTarget" type="number" min="1" max="8" value="2"
+            /></label>
+            <button id="advRefresh" class="tool-btn" title="Suggest posting window" type="button">
+              🕒 Suggest
+            </button>
+            <span id="advStatus" class="status"></span>
+          </div>
+          <div id="advOut" class="mono"></div>
+        </section>
+
+        <section class="card">
+          <h2>My Top Items</h2>
+          <div class="controls">
+            <label
+              >Window (days) <input id="topDays" type="number" min="1" max="365" value="7"
+            /></label>
+            <label>Limit <input id="topLimit" type="number" min="5" max="200" value="25" /></label>
+            <button id="topRefresh" class="tool-btn" title="Load top items" type="button">
+              🏆 Load
+            </button>
+            <span id="topStatus" class="status"></span>
+          </div>
+          <div class="section-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>Item</th>
+                  <th>Sales</th>
+                  <th>Qty</th>
+                  <th class="mono">Net</th>
+                </tr>
+              </thead>
+              <tbody id="topRows">
+                <tr class="skeleton-row">
+                  <td><span class="skeleton" style="width: 60%"></span></td>
+                  <td><span class="skeleton" style="width: 30%"></span></td>
+                  <td><span class="skeleton" style="width: 30%"></span></td>
+                  <td><span class="skeleton" style="width: 40%"></span></td>
+                </tr>
+                <tr class="skeleton-row">
+                  <td><span class="skeleton" style="width: 55%"></span></td>
+                  <td><span class="skeleton" style="width: 28%"></span></td>
+                  <td><span class="skeleton" style="width: 32%"></span></td>
+                  <td><span class="skeleton" style="width: 42%"></span></td>
+                </tr>
+                <tr class="skeleton-row">
+                  <td><span class="skeleton" style="width: 58%"></span></td>
+                  <td><span class="skeleton" style="width: 35%"></span></td>
+                  <td><span class="skeleton" style="width: 29%"></span></td>
+                  <td><span class="skeleton" style="width: 38%"></span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </div>
+    <script src="/sw.controller.js"></script>
+    <script>
+      // Settings modal wiring for tooltips and diagnostics (player page)
+      (function () {
+        function $(s) {
+          return document.querySelector(s);
+        }
+        function on(el, ev, fn) {
+          if (el) el.addEventListener(ev, fn);
+        }
+        const openBtn = $('#settingsBtn');
+        const modal = $('#settingsModal');
+        const closeBtn = $('#settingsClose');
+        const chk = $('#tooltipToggle');
+        const hcChk = $('#hcToggle');
+        const diagBtn = $('#diagBtn');
+        const clearBtn = $('#clearCachesBtn');
+        const out = $('#diagOut');
+        const status = $('#settingsStatus');
+
+        function syncCheckbox() {
+          try {
+            const pref = localStorage.getItem('eg_tooltips');
+            const enabled = pref == null ? true : pref === '1';
+            if (chk) chk.checked = !!enabled;
+          } catch {}
+        }
+        function syncHC() {
+          try {
+            const on =
+              window.EGTheme && window.EGTheme.getHighContrast && window.EGTheme.getHighContrast();
+            if (hcChk) hcChk.checked = !!on;
+          } catch {}
+        }
+        function open() {
+          try {
+            syncCheckbox();
+            syncHC();
+            modal.removeAttribute('hidden');
+          } catch {}
+        }
+        function close() {
+          try {
+            modal.setAttribute('hidden', '');
+          } catch {}
+        }
+        on(openBtn, 'click', open);
+        on(closeBtn, 'click', close);
+        on(modal, 'click', (e) => {
+          if (e.target === modal) close();
+        });
+        on(chk, 'change', () => {
+          try {
+            const on = !!chk.checked;
+            if (
+              window.EGTooltips &&
+              typeof window.EGTooltips[on ? 'enable' : 'disable'] === 'function'
+            )
+              window.EGTooltips[on ? 'enable' : 'disable']('user-toggle');
+            localStorage.setItem('eg_tooltips', on ? '1' : '0');
+            if (status) status.textContent = `Tooltips ${on ? 'enabled' : 'disabled'}`;
+          } catch {}
+        });
+        on(hcChk, 'change', () => {
+          try {
+            const on = !!hcChk.checked;
+            window.EGTheme && window.EGTheme.setHighContrast && window.EGTheme.setHighContrast(on);
+            window.EGTheme &&
+              window.EGTheme.applyHighContrast &&
+              window.EGTheme.applyHighContrast(on);
+            if (status) status.textContent = `High Contrast ${on ? 'enabled' : 'disabled'}`;
+          } catch {}
+        });
+        async function showDiag() {
+          const lines = [];
+          try {
+            const sw = navigator.serviceWorker;
+            const reg = await sw?.getRegistration?.();
+            const ctrl = sw?.controller;
+            lines.push(`SW controller: ${!!ctrl}`);
+            lines.push(`SW reg scope: ${reg?.scope || '-'}`);
+            const keys = await caches.keys();
+            lines.push(`Caches: ${keys.join(', ') || '(none)'}`);
+          } catch (e) {
+            lines.push(`SW error: ${(e && e.message) || e}`);
+          }
+          try {
+            const st = window.EGTooltips && window.EGTooltips.state;
+            lines.push(`Tooltips: ${st && st.enabled ? 'on' : 'off'}`);
+            lines.push(`Source: ${(st && st.source) || '-'}`);
+            lines.push(`Last: ${(st && st.lastAction) || '-'}`);
+          } catch {}
+          try {
+            const hc =
+              window.EGTheme && window.EGTheme.getHighContrast && window.EGTheme.getHighContrast();
+            const owl =
+              window.EGTheme && window.EGTheme.getNightOwl && window.EGTheme.getNightOwl();
+            lines.push(`High Contrast: ${hc ? 'on' : 'off'}`);
+            lines.push(`Night Owl: ${owl ? 'on' : 'off'}`);
+          } catch {}
+          try {
+            const u = new URL(location.href);
+            lines.push(`?whsrc=${u.searchParams.get('whsrc') || '(none)'}`);
+          } catch {}
+          if (out) out.textContent = lines.join('\n');
+        }
+        on(diagBtn, 'click', showDiag);
+        on(clearBtn, 'click', async () => {
+          try {
+            const ks = await caches.keys();
+            await Promise.all(ks.map((k) => caches.delete(k)));
+          } catch {}
+          location.reload();
+        });
+      })();
+    </script>
+    <script src="/player.js"></script>
+    <script src="/player.controller.js"></script>
+  </body>
+</html>

@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Economy Guardian – AI Dashboard</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <style>
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 16px;
+      }
+      .card {
+        background: #141829;
+        border: 1px solid #2a3357;
+        border-radius: 12px;
+        padding: 16px;
+      }
+      .card h2 {
+        margin: 0 0 8px 0;
+        font-size: 18px;
+        color: #e6ebff;
+      }
+      .controls {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-bottom: 8px;
+      }
+      .mono {
+        font-family:
+          ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
+          monospace;
+      }
+      textarea {
+        width: 100%;
+        min-height: 160px;
+        background: #0f1322;
+        color: #c7d2fe;
+        border: 1px solid #2a3357;
+        border-radius: 8px;
+        padding: 8px;
+      }
+      input,
+      select,
+      button {
+        background: #0f1322;
+        color: #c7d2fe;
+        border: 1px solid #2a3357;
+        border-radius: 8px;
+        padding: 8px;
+      }
+      button {
+        cursor: pointer;
+      }
+      /* Modal (reuse app styles) */
+      .modal {
+        position: fixed;
+        inset: 0;
+        background: #0008;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .modal[hidden] {
+        display: none;
+      }
+      .modal .content {
+        background: #141829;
+        border: 1px solid #2a3357;
+        border-radius: 12px;
+        max-width: 640px;
+        width: min(92vw, 640px);
+        max-height: 80vh;
+        overflow: auto;
+      }
+      .modal .content header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 12px;
+        border-bottom: 1px solid #2a3357;
+      }
+      .modal .content .body {
+        padding: 12px;
+      }
+      .close-btn {
+        background: #2a3555;
+        border: 1px solid #3a4a77;
+        padding: 6px 10px;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+    </style>
+    <!-- Wowhead tooltips centralized -->
+    <script src="/wowhead.controller.js"></script>
+  </head>
+  <body>
+    <header class="hero">
+      <div class="hero-left">
+        <img id="charAvatar" class="avatar" alt="Avatar" />
+        <div>
+          <div id="heroName" class="hero-name">AI Assistant</div>
+          <div id="heroSub" class="hero-sub">Market Intelligence</div>
+        </div>
+      </div>
+      <nav class="hero-nav">
+        <a class="hero-link" href="/player.html">Player</a>
+        <a class="hero-link" href="/top.html">Top Sold</a>
+        <button id="settingsBtn" class="close-btn" title="Settings" type="button">Settings</button>
+      </nav>
+    </header>
+    <!-- Settings modal for tooltip toggle and diagnostics -->
+    <div id="settingsModal" class="modal" hidden>
+      <div class="content">
+        <header>
+          <strong>Settings</strong>
+          <button id="settingsClose" class="close-btn" aria-label="Close" type="button">
+            Close
+          </button>
+        </header>
+        <div class="body">
+          <label style="display: flex; align-items: center; gap: 8px">
+            <input type="checkbox" id="tooltipToggle" /> Enable Wowhead tooltips
+          </label>
+          <label style="display: flex; align-items: center; gap: 8px; margin-top: 6px">
+            <input type="checkbox" id="hcToggle" /> High Contrast mode
+          </label>
+          <div class="status" id="settingsStatus" aria-live="polite" style="margin: 8px 0"></div>
+          <div style="display: flex; gap: 8px; margin: 8px 0">
+            <button id="diagBtn" type="button">Show Diagnostics</button>
+            <button id="clearCachesBtn" type="button">Clear Caches</button>
+          </div>
+          <pre
+            id="diagOut"
+            class="mono"
+            style="
+              white-space: pre-wrap;
+              background: #0f1322;
+              padding: 8px;
+              border-radius: 8px;
+              border: 1px solid #2a3357;
+              max-height: 40vh;
+              overflow: auto;
+            "
+          ></pre>
+        </div>
+      </div>
+    </div>
+
+    <main class="container" style="max-width: 1200px; margin: 16px auto">
+      <div class="grid">
+        <section class="card" id="surge">
+          <h2>Surge Alerts</h2>
+          <div class="controls">
+            <label
+              >Source
+              <select id="surgeSource">
+                <option value="commodities">Commodities</option>
+                <option value="items">Items</option>
+              </select>
+            </label>
+            <label
+              >Threshold
+              <input id="surgeTh" type="number" step="0.01" min="0.01" max="1" value="0.25"
+            /></label>
+            <label>Limit <input id="surgeLim" type="number" min="1" max="200" value="30" /></label>
+            <button id="surgeBtn" type="button">Scan</button>
+          </div>
+          <textarea id="surgeOut" class="mono" readonly>—</textarea>
+        </section>
+
+        <section class="card" id="opps">
+          <h2>Opportunity Radar</h2>
+          <div class="controls">
+            <label
+              >Window (h) <input id="oppWin" type="number" min="1" max="336" value="48"
+            /></label>
+            <label>Limit <input id="oppLim" type="number" min="1" max="100" value="20" /></label>
+            <button id="oppBtn" type="button">Scan</button>
+          </div>
+          <textarea id="oppOut" class="mono" readonly>—</textarea>
+        </section>
+
+        <section class="card" id="advice">
+          <h2>Smart Price Advisor</h2>
+          <div class="controls">
+            <label>Item ID <input id="advItem" type="number" min="1" /></label>
+            <label
+              >Window (h) <input id="advWin" type="number" min="1" max="336" value="48"
+            /></label>
+            <button id="advBtn" type="button">Advise</button>
+          </div>
+          <textarea id="advOut" class="mono" readonly>—</textarea>
+        </section>
+      </div>
+    </main>
+
+    <script>
+      // Settings modal wiring for tooltips and diagnostics (AI page)
+      (function () {
+        function $(s) {
+          return document.querySelector(s);
+        }
+        function on(el, ev, fn) {
+          if (el) el.addEventListener(ev, fn);
+        }
+        const openBtn = $('#settingsBtn');
+        const modal = $('#settingsModal');
+        const closeBtn = $('#settingsClose');
+        const chk = $('#tooltipToggle');
+        const hcChk = $('#hcToggle');
+        const diagBtn = $('#diagBtn');
+        const clearBtn = $('#clearCachesBtn');
+        const out = $('#diagOut');
+        const status = $('#settingsStatus');
+
+        function syncCheckbox() {
+          try {
+            const pref = localStorage.getItem('eg_tooltips');
+            const enabled = pref == null ? true : pref === '1';
+            if (chk) chk.checked = !!enabled;
+          } catch {}
+        }
+        function syncHC() {
+          try {
+            const on =
+              window.EGTheme && window.EGTheme.getHighContrast && window.EGTheme.getHighContrast();
+            if (hcChk) hcChk.checked = !!on;
+          } catch {}
+        }
+        function open() {
+          try {
+            syncCheckbox();
+            syncHC();
+            modal.removeAttribute('hidden');
+          } catch {}
+        }
+        function close() {
+          try {
+            modal.setAttribute('hidden', '');
+          } catch {}
+        }
+        on(openBtn, 'click', open);
+        on(closeBtn, 'click', close);
+        on(modal, 'click', (e) => {
+          if (e.target === modal) close();
+        });
+        on(chk, 'change', () => {
+          try {
+            const on = !!chk.checked;
+            if (
+              window.EGTooltips &&
+              typeof window.EGTooltips[on ? 'enable' : 'disable'] === 'function'
+            )
+              window.EGTooltips[on ? 'enable' : 'disable']('user-toggle');
+            localStorage.setItem('eg_tooltips', on ? '1' : '0');
+            if (status) status.textContent = `Tooltips ${on ? 'enabled' : 'disabled'}`;
+          } catch {}
+        });
+        on(hcChk, 'change', () => {
+          try {
+            const on = !!hcChk.checked;
+            window.EGTheme && window.EGTheme.setHighContrast && window.EGTheme.setHighContrast(on);
+            window.EGTheme &&
+              window.EGTheme.applyHighContrast &&
+              window.EGTheme.applyHighContrast(on);
+            if (status) status.textContent = `High Contrast ${on ? 'enabled' : 'disabled'}`;
+          } catch {}
+        });
+        async function showDiag() {
+          const lines = [];
+          try {
+            const sw = navigator.serviceWorker;
+            const reg = await sw?.getRegistration?.();
+            const ctrl = sw?.controller;
+            lines.push(`SW controller: ${!!ctrl}`);
+            lines.push(`SW reg scope: ${reg?.scope || '-'}`);
+            const keys = await caches.keys();
+            lines.push(`Caches: ${keys.join(', ') || '(none)'}`);
+          } catch (e) {
+            lines.push(`SW error: ${(e && e.message) || e}`);
+          }
+          try {
+            const st = window.EGTooltips && window.EGTooltips.state;
+            lines.push(`Tooltips: ${st && st.enabled ? 'on' : 'off'}`);
+            lines.push(`Source: ${(st && st.source) || '-'}`);
+            lines.push(`Last: ${(st && st.lastAction) || '-'}`);
+          } catch {}
+          try {
+            const hc =
+              window.EGTheme && window.EGTheme.getHighContrast && window.EGTheme.getHighContrast();
+            const owl =
+              window.EGTheme && window.EGTheme.getNightOwl && window.EGTheme.getNightOwl();
+            lines.push(`High Contrast: ${hc ? 'on' : 'off'}`);
+            lines.push(`Night Owl: ${owl ? 'on' : 'off'}`);
+          } catch {}
+          try {
+            const u = new URL(location.href);
+            lines.push(`?whsrc=${u.searchParams.get('whsrc') || '(none)'}`);
+          } catch {}
+          if (out) out.textContent = lines.join('\n');
+        }
+        on(diagBtn, 'click', showDiag);
+        on(clearBtn, 'click', async () => {
+          try {
+            const ks = await caches.keys();
+            await Promise.all(ks.map((k) => caches.delete(k)));
+          } catch {}
+          location.reload();
+        });
+      })();
+    </script>
+    <script src="/sw.controller.js"></script>
+    <script src="/ai.js"></script>
+    <script src="/ai.controller.js"></script>
+  </body>
+</html>

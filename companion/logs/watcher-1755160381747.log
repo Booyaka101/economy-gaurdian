@@ -1,0 +1,54 @@
+=== Watcher start ===
+BASE http://localhost:4317 SLUG twilights-hammer TIMEOUT 300 INTERVAL 15 ITEMS 221754,152512,190394,190312,190330,190331 ITERS 40
+=== Watch Iteration #1 ===
+ERR http://localhost:4317/blizzard/auctions/refresh-until-change?slug=twilights-hammer&timeout=300&interval=15 This operation was aborted
+[refresh-until-change] no response
+=== Watch Iteration #2 ===
+ERR http://localhost:4317/blizzard/auctions/refresh-until-change?slug=twilights-hammer&timeout=300&interval=15 This operation was aborted
+[refresh-until-change] no response
+=== Watch Iteration #3 ===
+ERR http://localhost:4317/blizzard/auctions/refresh-until-change?slug=twilights-hammer&timeout=300&interval=15 This operation was aborted
+[refresh-until-change] no response
+=== Watch Iteration #4 ===
+ERR http://localhost:4317/blizzard/auctions/refresh-until-change?slug=twilights-hammer&timeout=300&interval=15 This operation was aborted
+[refresh-until-change] no response
+=== Watch Iteration #5 ===
+ERR http://localhost:4317/blizzard/auctions/refresh-until-change?slug=twilights-hammer&timeout=300&interval=15 This operation was aborted
+[refresh-until-change] no response
+=== Watch Iteration #6 ===
+ERR http://localhost:4317/blizzard/auctions/refresh-until-change?slug=twilights-hammer&timeout=300&interval=15 This operation was aborted
+[refresh-until-change] no response
+=== Watch Iteration #7 ===
+ERR http://localhost:4317/blizzard/auctions/refresh-until-change?slug=twilights-hammer&timeout=300&interval=15 This operation was aborted
+[refresh-until-change] no response
+=== Watch Iteration #8 ===
+ERR http://localhost:4317/blizzard/auctions/refresh-until-change?slug=twilights-hammer&timeout=300&interval=15 This operation was aborted
+[refresh-until-change] no response
+=== Watch Iteration #9 ===
+ERR http://localhost:4317/blizzard/auctions/refresh-until-change?slug=twilights-hammer&timeout=300&interval=15 This operation was aborted
+[refresh-until-change] no response
+=== Watch Iteration #10 ===
+ERR http://localhost:4317/blizzard/auctions/refresh-until-change?slug=twilights-hammer&timeout=300&interval=15 This operation was aborted
+[refresh-until-change] no response
+=== Watch Iteration #11 ===
+ERR http://localhost:4317/blizzard/auctions/refresh-until-change?slug=twilights-hammer&timeout=300&interval=15 This operation was aborted
+[refresh-until-change] no response
+=== Watch Iteration #12 ===
+[refresh-until-change] {"changed":true,"before":1755163666,"after":1755163778}
+[fingerprint] {"lastFetched":1755163778,"items":16810,"commodities":324141,"total":340951,"qtyItems":16810,"qtyCommodities":71949913,"qtyTotal":71966723,"itemsHash":2376105984,"commoditiesHash":2045976064,"totalHash":4099120640}
+[delta/preview-raw] {"prevCount":340791,"nowCount":340951,"endedCount":33613,"priceBucketDrops":9851,"itemTotalDrops":2648}
+[preview-diff-raw itemId=221754] {"itemId":221754,"prevQty":128121,"nowQty":130286,"totalDelta":-2165,"priceBuckets":[{"key":"221754:5907400","prevQty":1045,"nowQty":987,"delta":58},{"key":"221754:205000","prevQty":7,"nowQty":4,"delta":3},{"key":"221754:123400","prevQty":25,"nowQty":24,"delta":1},{"key":"221754:128400","prevQty":148,"nowQty":147,"delta":1},{"key":"221754:121900","prevQty":67,"nowQty":65,"delta":2},{"key":"221754:115500","prevQty":2556,"nowQty":2553,"delta":3},{"key":"221754:115900","prevQty":32,"nowQty":30,"delta":2},{"key":"221754:142400","prevQty":20,"nowQty":11,"delta":9},{"key":"221754:824900","prevQty":1,"nowQty":0,"delta":1},{"key":"221754:112000","prevQty":741,"nowQty":0,"delta":741},{"key":"221754:90000","prevQty":203,"nowQty":201,"delta":2}]}
+[preview-diff normalized itemId=221754] {"itemId":221754,"partialCount":1,"priceBucketDrops":11,"totalDelta":0,"partial":[{"auctionId":1117963669,"prevQty":5,"nowQty":4,"delta":1}],"priceBuckets":[{"key":"221754:5907400","prevQty":1045,"nowQty":987,"delta":58},{"key":"221754:205000","prevQty":7,"nowQty":4,"delta":3},{"key":"221754:123400","prevQty":25,"nowQty":24,"delta":1},{"key":"221754:128400","prevQty":148,"nowQty":147,"delta":1},{"key":"221754:121900","prevQty":67,"nowQty":65,"delta":2},{"key":"221754:115500","prevQty":2556,"nowQty":2553,"delta":3},{"key":"221754:115900","prevQty":32,"nowQty":30,"delta":2},{"key":"221754:142400","prevQty":20,"nowQty":11,"delta":9},{"key":"221754:824900","prevQty":1,"nowQty":0,"delta":1},{"key":"221754:112000","prevQty":741,"nowQty":0,"delta":741},{"key":"221754:90000","prevQty":203,"nowQty":201,"delta":2}]}
+[preview-diff-raw itemId=152512] {"itemId":152512,"prevQty":310282,"nowQty":309784,"totalDelta":498,"priceBuckets":[{"key":"152512:52200","prevQty":772,"nowQty":681,"delta":91},{"key":"152512:72300","prevQty":1149,"nowQty":712,"delta":437},{"key":"152512:52400","prevQty":10,"nowQty":0,"delta":10},{"key":"152512:48500","prevQty":1641,"nowQty":1404,"delta":237}]}
+[preview-diff normalized itemId=152512] {"itemId":152512,"partialCount":1,"priceBucketDrops":4,"totalDelta":498,"partial":[{"auctionId":1117962184,"prevQty":1055,"nowQty":404,"delta":651}],"priceBuckets":[{"key":"152512:52200","prevQty":772,"nowQty":681,"delta":91},{"key":"152512:72300","prevQty":1149,"nowQty":712,"delta":437},{"key":"152512:52400","prevQty":10,"nowQty":0,"delta":10},{"key":"152512:48500","prevQty":1641,"nowQty":1404,"delta":237}]}
+[preview-diff-raw itemId=190394] {"itemId":190394,"prevQty":32143,"nowQty":25558,"totalDelta":6585,"priceBuckets":[{"key":"190394:39800","prevQty":810,"nowQty":0,"delta":810},{"key":"190394:42100","prevQty":16,"nowQty":0,"delta":16},{"key":"190394:40000","prevQty":202,"nowQty":0,"delta":202},{"key":"190394:41400","prevQty":81,"nowQty":0,"delta":81},{"key":"190394:41500","prevQty":354,"nowQty":0,"delta":354},{"key":"190394:42000","prevQty":129,"nowQty":0,"delta":129},{"key":"190394:39700","prevQty":286,"nowQty":0,"delta":286},{"key":"190394:39500","prevQty":824,"nowQty":0,"delta":824},{"key":"190394:34400","prevQty":15,"nowQty":0,"delta":15},{"key":"190394:34200","prevQty":7,"nowQty":0,"delta":7},{"key":"190394:34000","prevQty":158,"nowQty":0,"delta":158},{"key":"190394:33900","prevQty":41,"nowQty":0,"delta":41},{"key":"190394:33300","prevQty":917,"nowQty":0,"delta":917},{"key":"190394:33000","prevQty":37,"nowQty":0,"delta":37},{"key":"190394:32900","prevQty":230,"nowQty":0,"delta":230},{"key":"190394:32800","prevQty":1601,"nowQty":0,"delta":1601},{"key":"190394:32500","prevQty":1225,"nowQty":0,"delta":1225},{"key":"190394:32300","prevQty":2185,"nowQty":0,"delta":2185},{"key":"190394:38000","prevQty":1000,"nowQty":0,"delta":1000},{"key":"190394:42300","prevQty":87,"nowQty":0,"delta":87}]}
+[preview-diff normalized itemId=190394] {"itemId":190394,"partialCount":0,"priceBucketDrops":20,"totalDelta":6585,"partial":[],"priceBuckets":[{"key":"190394:39800","prevQty":810,"nowQty":0,"delta":810},{"key":"190394:42100","prevQty":16,"nowQty":0,"delta":16},{"key":"190394:40000","prevQty":202,"nowQty":0,"delta":202},{"key":"190394:41400","prevQty":81,"nowQty":0,"delta":81},{"key":"190394:41500","prevQty":354,"nowQty":0,"delta":354},{"key":"190394:42000","prevQty":129,"nowQty":0,"delta":129},{"key":"190394:39700","prevQty":286,"nowQty":0,"delta":286},{"key":"190394:39500","prevQty":824,"nowQty":0,"delta":824},{"key":"190394:34400","prevQty":15,"nowQty":0,"delta":15},{"key":"190394:34200","prevQty":7,"nowQty":0,"delta":7},{"key":"190394:34000","prevQty":158,"nowQty":0,"delta":158},{"key":"190394:33900","prevQty":41,"nowQty":0,"delta":41},{"key":"190394:33300","prevQty":917,"nowQty":0,"delta":917},{"key":"190394:33000","prevQty":37,"nowQty":0,"delta":37},{"key":"190394:32900","prevQty":230,"nowQty":0,"delta":230},{"key":"190394:32800","prevQty":1601,"nowQty":0,"delta":1601},{"key":"190394:32500","prevQty":1225,"nowQty":0,"delta":1225},{"key":"190394:32300","prevQty":2185,"nowQty":0,"delta":2185},{"key":"190394:38000","prevQty":1000,"nowQty":0,"delta":1000},{"key":"190394:42300","prevQty":87,"nowQty":0,"delta":87}]}
+[preview-diff-raw itemId=190312] {"itemId":190312,"prevQty":7588,"nowQty":5817,"totalDelta":1771,"priceBuckets":[{"key":"190312:42000","prevQty":43,"nowQty":26,"delta":17},{"key":"190312:58400","prevQty":3000,"nowQty":1169,"delta":1831},{"key":"190312:46600","prevQty":14,"nowQty":0,"delta":14}]}
+[preview-diff normalized itemId=190312] {"itemId":190312,"partialCount":0,"priceBucketDrops":3,"totalDelta":1771,"partial":[],"priceBuckets":[{"key":"190312:42000","prevQty":43,"nowQty":26,"delta":17},{"key":"190312:58400","prevQty":3000,"nowQty":1169,"delta":1831},{"key":"190312:46600","prevQty":14,"nowQty":0,"delta":14}]}
+[preview-diff-raw itemId=190330] {"itemId":190330,"prevQty":6923,"nowQty":6787,"totalDelta":136,"priceBuckets":[{"key":"190330:59900","prevQty":79,"nowQty":70,"delta":9},{"key":"190330:37000","prevQty":28,"nowQty":0,"delta":28},{"key":"190330:36900","prevQty":58,"nowQty":0,"delta":58},{"key":"190330:36500","prevQty":45,"nowQty":0,"delta":45}]}
+[preview-diff normalized itemId=190330] {"itemId":190330,"partialCount":0,"priceBucketDrops":4,"totalDelta":136,"partial":[],"priceBuckets":[{"key":"190330:59900","prevQty":79,"nowQty":70,"delta":9},{"key":"190330:37000","prevQty":28,"nowQty":0,"delta":28},{"key":"190330:36900","prevQty":58,"nowQty":0,"delta":58},{"key":"190330:36500","prevQty":45,"nowQty":0,"delta":45}]}
+[preview-diff-raw itemId=190331] {"itemId":190331,"prevQty":1294,"nowQty":1456,"totalDelta":-162,"priceBuckets":[{"key":"190331:548900","prevQty":65,"nowQty":15,"delta":50},{"key":"190331:548800","prevQty":10,"nowQty":6,"delta":4},{"key":"190331:543500","prevQty":3,"nowQty":0,"delta":3},{"key":"190331:538200","prevQty":85,"nowQty":74,"delta":11}]}
+[preview-diff normalized itemId=190331] {"itemId":190331,"partialCount":0,"priceBucketDrops":4,"totalDelta":0,"partial":[],"priceBuckets":[{"key":"190331:548900","prevQty":65,"nowQty":15,"delta":50},{"key":"190331:548800","prevQty":10,"nowQty":6,"delta":4},{"key":"190331:543500","prevQty":3,"nowQty":0,"delta":3},{"key":"190331:538200","prevQty":85,"nowQty":74,"delta":11}]}
+=== Delta detected. Stopping watcher ===
+=== Watcher complete ===
+Log file: D:\Plugins\WoW\economy-guardian\companion\logs\watcher-1755160381747.log

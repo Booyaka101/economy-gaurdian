@@ -1,0 +1,6016 @@
+{
+  "25": {
+    "name": "Worn Shortsword",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_sword_04.jpg"
+  },
+  "35": {
+    "name": "Bent Staff",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_staff_08.jpg"
+  },
+  "36": {
+    "name": "Worn Mace",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_mace_03.jpg"
+  },
+  "37": {
+    "name": "Worn Axe",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_11.jpg"
+  },
+  "38": {
+    "name": "Recruit's Shirt",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_shirt_05.jpg"
+  },
+  "39": {
+    "name": "Recruit's Pants",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_pants_02.jpg"
+  },
+  "40": {
+    "name": "Recruit's Boots",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_boots_06.jpg"
+  },
+  "43": {
+    "name": "Squire's Boots",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_boots_01.jpg"
+  },
+  "44": {
+    "name": "Squire's Pants",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_pants_02.jpg"
+  },
+  "45": {
+    "name": "Squire's Shirt",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_shirt_01.jpg"
+  },
+  "47": {
+    "name": "Footpad's Shoes",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_boots_05.jpg"
+  },
+  "48": {
+    "name": "Footpad's Pants",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_pants_02.jpg"
+  },
+  "49": {
+    "name": "Footpad's Shirt",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_shirt_05.jpg"
+  },
+  "51": {
+    "name": "Neophyte's Boots",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_boots_04.jpg"
+  },
+  "52": {
+    "name": "Neophyte's Pants",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_pants_02.jpg"
+  },
+  "53": {
+    "name": "Neophyte's Shirt",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_shirt_01.jpg"
+  },
+  "55": {
+    "name": "Apprentice's Boots",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_boots_09.jpg"
+  },
+  "56": {
+    "name": "Apprentice's Robe",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_chest_cloth_23.jpg"
+  },
+  "57": {
+    "name": "Acolyte's Robe",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_chest_cloth_24.jpg"
+  },
+  "59": {
+    "name": "Acolyte's Shoes",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_boots_01.jpg"
+  },
+  "60": {
+    "name": "Layered Tunic",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_chest_leather_09.jpg"
+  },
+  "61": {
+    "name": "Dwarven Leather Pants",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_pants_leather_38v2.jpg"
+  },
+  "79": {
+    "name": "Dwarven Cloth Britches",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_pants_cloth_41v4.jpg"
+  },
+  "80": {
+    "name": "Soft Fur-Lined Shoes",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_boots_09.jpg"
+  },
+  "85": {
+    "name": "Dirty Leather Vest",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_shirt_07.jpg"
+  },
+  "117": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Tough Jerky",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_food_16.jpg"
+  },
+  "118": {
+    "quality": 0,
+    "rarity": "poor",
+    "name": "Minor Healing Potion",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_potion_49.jpg"
+  },
+  "120": {
+    "name": "Thug Pants",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_pants_02.jpg"
+  },
+  "121": {
+    "name": "Thug Boots",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_boots_05.jpg"
+  },
+  "127": {
+    "name": "Trapper's Shirt",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_shirt_07.jpg"
+  },
+  "129": {
+    "name": "Rugged Trapper's Boots",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_boots_06.jpg"
+  },
+  "139": {
+    "name": "Brawler's Pants",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_pants_02.jpg"
+  },
+  "140": {
+    "name": "Brawler's Boots",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_boots_04.jpg"
+  },
+  "147": {
+    "name": "Rugged Trapper's Pants",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_pants_02.jpg"
+  },
+  "148": {
+    "name": "Rugged Trapper's Shirt",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_shirt_01.jpg"
+  },
+  "153": {
+    "name": "Primitive Kilt",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_pants_02.jpg"
+  },
+  "154": {
+    "name": "Primitive Mantle",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_cape_14.jpg"
+  },
+  "159": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Refreshing Spring Water",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_drink_07.jpg"
+  },
+  "182": {
+    "name": "Garrick's Head",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_head_human_01.jpg"
+  },
+  "193": {
+    "name": "Tattered Cloth Vest",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_shirt_black_01.jpg"
+  },
+  "194": {
+    "name": "Tattered Cloth Pants",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_pants_12.jpg"
+  },
+  "195": {
+    "name": "Tattered Cloth Boots",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_boots_05.jpg"
+  },
+  "200": {
+    "name": "Thick Cloth Vest",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_shirt_02.jpg"
+  },
+  "201": {
+    "name": "Thick Cloth Pants",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_pants_12.jpg"
+  },
+  "202": {
+    "name": "Thick Cloth Shoes",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_boots_05.jpg"
+  },
+  "203": {
+    "name": "Thick Cloth Gloves",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_gauntlets_21.jpg"
+  },
+  "209": {
+    "name": "Dirty Leather Pants",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_pants_wolf.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "210": {
+    "name": "Dirty Leather Boots",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_boots_06.jpg"
+  },
+  "236": {
+    "name": "Cured Leather Armor",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_chest_leather_10.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "237": {
+    "name": "Cured Leather Pants",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_pants_06.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "238": {
+    "name": "Cured Leather Boots",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_boots_03.jpg"
+  },
+  "239": {
+    "name": "Cured Leather Gloves",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_gauntlets_21.jpg"
+  },
+  "285": {
+    "name": "Scalemail Vest",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_chest_chain_09.jpg"
+  },
+  "286": {
+    "name": "Scalemail Pants",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_pants_03.jpg"
+  },
+  "287": {
+    "name": "Scalemail Boots",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_boots_01.jpg"
+  },
+  "414": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Dalaran Sharp",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_food_39.jpg"
+  },
+  "422": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Dwarven Mild",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_food_07.jpg"
+  },
+  "537": {
+    "name": "Dull Frenzy Scale",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_monsterscales_02.jpg"
+  },
+  "555": {
+    "name": "Rough Vulture Feathers",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/spell_magic_featherfall.jpg"
+  },
+  "556": {
+    "name": "Buzzard Beak",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_birdbeck_01.jpg"
+  },
+  "710": {
+    "name": "Bracers of the People's Militia",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_bracer_11.jpg"
+  },
+  "711": {
+    "name": "Tattered Cloth Gloves",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_gauntlets_27.jpg"
+  },
+  "714": {
+    "name": "Dirty Leather Gloves",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_gauntlets_18.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "718": {
+    "name": "Scalemail Gloves",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_gauntlets_04.jpg"
+  },
+  "719": {
+    "name": "Rabbit Handler Gloves",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_gauntlets_114v4.jpg"
+  },
+  "720": {
+    "name": "Brawler Gloves",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_gauntlets_05.jpg"
+  },
+  "723": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Goretusk Liver",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_organ_04.jpg"
+  },
+  "724": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Goretusk Liver Pie",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_food_10.jpg"
+  },
+  "725": {
+    "name": "Gnoll Paw",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_monsterclaw_04.jpg"
+  },
+  "727": {
+    "name": "Notched Shortsword",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_sword_04.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "729": {
+    "name": "Stringy Vulture Meat",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_food_16.jpg"
+  },
+  "730": {
+    "name": "Murloc Eye",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_eye_01.jpg"
+  },
+  "731": {
+    "name": "Goretusk Snout",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/spell_magic_polymorphpig.jpg"
+  },
+  "732": {
+    "name": "Ripe Okra",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_herb_09.jpg"
+  },
+  "735": {
+    "name": "Rolf and Malakai's Medallions",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_jewelry_amulet_03.jpg"
+  },
+  "737": {
+    "name": "Holy Spring Water",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_potion_01.jpg"
+  },
+  "742": {
+    "name": "A Sycamore Branch",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_branch_01.jpg"
+  },
+  "748": {
+    "name": "Stormwind Armor Marker",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_scroll_03.jpg"
+  },
+  "750": {
+    "name": "Tough Wolf Meat",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_food_16.jpg"
+  },
+  "753": {
+    "name": "Dragonmaw Shortsword",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_sword_36.jpg"
+  },
+  "754": {
+    "name": "Shortsword of Vengeance",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_sword_14.jpg"
+  },
+  "763": {
+    "name": "Ice-Covered Bracers",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_bracer_08.jpg"
+  },
+  "765": { "quality": 0, "rarity": "poor", "name": "Silverleaf", "icon": "" },
+  "766": {
+    "name": "Flanged Mace",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_mace_07.jpg"
+  },
+  "767": {
+    "name": "Long Bo Staff",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_staff_08.jpg"
+  },
+  "772": {
+    "name": "Large Candle",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_candle_01.jpg"
+  },
+  "773": {
+    "name": "Gold Dust",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_dust_01.jpg"
+  },
+  "774": {
+    "name": "Malachite",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_gem_emerald_03.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "779": {
+    "name": "Shiny Seashell",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_shell_01.jpg"
+  },
+  "781": {
+    "name": "Stone Gnoll Hammer",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_hammer_09.jpg"
+  },
+  "782": {
+    "name": "Painted Gnoll Armband",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_bandana_01.jpg"
+  },
+  "783": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Light Hide",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_pelt_wolf_ruin_02.jpg"
+  },
+  "785": { "quality": 0, "rarity": "poor", "name": "Mageroyal", "icon": "" },
+  "787": {
+    "quality": 0,
+    "rarity": "poor",
+    "name": "Slitherskin Mackerel",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_fish_24.jpg"
+  },
+  "791": {
+    "name": "Gnarled Ash Staff",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_staff_02.jpg"
+  },
+  "793": {
+    "name": "Knitted Gloves",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_gauntlets_18.jpg"
+  },
+  "796": {
+    "name": "Rough Leather Boots",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_boots_09.jpg"
+  },
+  "797": {
+    "name": "Rough Leather Gloves",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_gauntlets_18.jpg"
+  },
+  "798": {
+    "name": "Rough Leather Pants",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_pants_09.jpg"
+  },
+  "799": {
+    "name": "Rough Leather Vest",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_chest_wolf.jpg"
+  },
+  "804": {
+    "name": "Large Blue Sack",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_bag_10_blue.jpg"
+  },
+  "809": {
+    "name": "Bloodrazor",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_sword_28.jpg"
+  },
+  "810": {
+    "name": "Hammer of the Northern Wind",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_hammer_11.jpg"
+  },
+  "811": {
+    "name": "Axe of the Deep Woods",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_07.jpg"
+  },
+  "812": {
+    "name": "Glowing Brightwood Staff",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_staff_29.jpg"
+  },
+  "813": {
+    "name": "Broken Cog",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_gear_01.jpg"
+  },
+  "818": {
+    "quality": 2,
+    "rarity": "uncommon",
+    "name": "Tigerseye",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_gem_opal_03.jpg"
+  },
+  "820": {
+    "name": "Slicer Blade",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_weapon_shortblade_01.jpg"
+  },
+  "821": {
+    "name": "Riverpaw Leather Vest",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_shirt_07.jpg"
+  },
+  "827": {
+    "name": "Wicked Blackjack",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_mace_01.jpg"
+  },
+  "829": {
+    "name": "Red Leather Bandana",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_bandana_03.jpg"
+  },
+  "835": {
+    "name": "Large Rope Net",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_net_01.jpg"
+  },
+  "837": {
+    "name": "Heavy Weave Armor",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_shirt_06.jpg"
+  },
+  "838": {
+    "name": "Heavy Weave Pants",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_pants_14.jpg"
+  },
+  "839": {
+    "name": "Heavy Weave Gloves",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_gauntlets_18.jpg"
+  },
+  "840": {
+    "name": "Heavy Weave Shoes",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_boots_05.jpg"
+  },
+  "843": {
+    "name": "Tanned Leather Boots",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_boots_wolf.jpg"
+  },
+  "844": {
+    "name": "Tanned Leather Gloves",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_gauntlets_05.jpg"
+  },
+  "845": {
+    "name": "Tanned Leather Pants",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_pants_wolf.jpg"
+  },
+  "846": {
+    "name": "Tanned Leather Jerkin",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_chest_wolf.jpg"
+  },
+  "850": {
+    "name": "Chainmail Gloves",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_gauntlets_04.jpg"
+  },
+  "853": {
+    "name": "Hatchet",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_11.jpg"
+  },
+  "856": {
+    "name": "Blue Leather Bag",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_bag_05.jpg"
+  },
+  "857": {
+    "name": "Large Red Sack",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_bag_10_red.jpg"
+  },
+  "858": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Lesser Healing Potion",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_potion_50.jpg"
+  },
+  "863": {
+    "name": "Gloom Reaper",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_08.jpg"
+  },
+  "872": {
+    "name": "Rockslicer",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_throwingaxe_01.jpg"
+  },
+  "890": {
+    "name": "Twisted Chanter's Staff",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_staff_04.jpg"
+  },
+  "897": {
+    "name": "Madwolf Bracers",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_bracer_05.jpg"
+  },
+  "911": {
+    "name": "Ironwood Treebranch",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_mace_01.jpg"
+  },
+  "920": {
+    "name": "Wicked Spiked Mace",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_mace_11.jpg"
+  },
+  "929": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Healing Potion",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_potion_51.jpg"
+  },
+  "957": {
+    "name": "William's Shipment",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_candle_02.jpg"
+  },
+  "961": {
+    "name": "Healing Herb",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_herb_01.jpg"
+  },
+  "1006": {
+    "name": "Brass Collar",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_jewelry_ring_03.jpg"
+  },
+  "1019": {
+    "name": "Linen Scrap",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_leatherscrap_17.jpg"
+  },
+  "1075": {
+    "name": "Shadowhide Pendant",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_jewelry_talisman_04.jpg"
+  },
+  "1083": {
+    "name": "Glyph of Azora",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_jewelry_amulet_02.jpg"
+  },
+  "1121": {
+    "name": "Feet of the Lynx",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_boots_wolf.jpg"
+  },
+  "1132": {
+    "name": "Horn of the Timber Wolf",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/ability_mount_blackdirewolf.jpg"
+  },
+  "1154": {
+    "name": "Belt of the People's Militia",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_belt_04.jpg"
+  },
+  "1155": {
+    "name": "Rod of the Sleepwalker",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_staff_06.jpg"
+  },
+  "1171": {
+    "name": "Well-Stitched Robe",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_chest_cloth_84.jpg"
+  },
+  "1172": {
+    "name": "Grayson's Torch",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_torch_lit.jpg"
+  },
+  "1173": {
+    "name": "Weather-Worn Boots",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_boots_leather_10.jpg"
+  },
+  "1179": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Ice Cold Milk",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_drink_milk_01.jpg"
+  },
+  "1182": {
+    "name": "Brass-Studded Bracers",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_bracer_61.jpg"
+  },
+  "1201": {
+    "name": "Dull Heater Shield",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_shield_04.jpg"
+  },
+  "1203": {
+    "name": "Aegis of Stormwind",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_shield_06.jpg"
+  },
+  "1204": {
+    "name": "The Green Tower",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_shield_06.jpg"
+  },
+  "1210": {
+    "quality": 2,
+    "rarity": "uncommon",
+    "name": "Shadowgem",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_gem_amethyst_01.jpg"
+  },
+  "1213": {
+    "name": "Gnoll Kindred Bracers",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_bracer_04.jpg"
+  },
+  "1214": {
+    "name": "Gnoll Punisher",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_hammer_09.jpg"
+  },
+  "1218": {
+    "name": "Heavy Gnoll War Club",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_mace_14.jpg"
+  },
+  "1219": {
+    "name": "Redridge Machete",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_sword_16.jpg"
+  },
+  "1221": {
+    "name": "Underbelly Whelp Scale",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_monsterscales_03.jpg"
+  },
+  "1251": {
+    "name": "Linen Bandage",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_bandage_15.jpg"
+  },
+  "1252": {
+    "name": "Gramma Stonefield's Note",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_scroll_01.jpg"
+  },
+  "1263": {
+    "name": "Brain Hacker",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_weapon_halberd_10.jpg"
+  },
+  "1284": {
+    "name": "Crate of Horseshoes",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_crate_01.jpg"
+  },
+  "1287": {
+    "name": "Giant Tarantula Fang",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_monsterfang_01.jpg"
+  },
+  "1294": {
+    "name": "The General's Response",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_letter_05.jpg"
+  },
+  "1302": {
+    "name": "Black Whelp Gloves",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_gauntlets_17.jpg"
+  },
+  "1309": {
+    "name": "Oslow's Toolbox",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_box_03.jpg"
+  },
+  "1319": {
+    "name": "Ring of Iron Will",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_belt_31.jpg"
+  },
+  "1327": {
+    "name": "Wiley's Note",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_letter_15.jpg"
+  },
+  "1349": {
+    "name": "Abercrombie's Crate",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_crate_06.jpg"
+  },
+  "1351": {
+    "name": "Fingerbone Bracers",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_bracer_16.jpg"
+  },
+  "1360": {
+    "name": "Stormwind Plate Gloves",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_gauntlets_105.jpg"
+  },
+  "1364": {
+    "name": "Ragged Leather Vest",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_shirt_05.jpg"
+  },
+  "1366": {
+    "name": "Ragged Leather Pants",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_pants_06.jpg"
+  },
+  "1367": {
+    "name": "Ragged Leather Boots",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_boots_06.jpg"
+  },
+  "1368": {
+    "name": "Ragged Leather Gloves",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_gauntlets_18.jpg"
+  },
+  "1369": {
+    "quality": 0,
+    "rarity": "poor",
+    "name": "Ragged Leather Belt",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_belt_24.jpg"
+  },
+  "1370": {
+    "quality": 0,
+    "rarity": "poor",
+    "name": "Ragged Leather Bracers",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_bracer_10.jpg"
+  },
+  "1372": {
+    "quality": 0,
+    "rarity": "poor",
+    "name": "Ragged Cloak",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_cape_10.jpg"
+  },
+  "1374": {
+    "quality": 0,
+    "rarity": "poor",
+    "name": "Frayed Shoes",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_boots_09.jpg"
+  },
+  "1376": {
+    "quality": 0,
+    "rarity": "poor",
+    "name": "Frayed Cloak",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_cape_10.jpg"
+  },
+  "1377": {
+    "quality": 0,
+    "rarity": "poor",
+    "name": "Frayed Gloves",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_gauntlets_18.jpg"
+  },
+  "1378": {
+    "quality": 0,
+    "rarity": "poor",
+    "name": "Frayed Pants",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_pants_09.jpg"
+  },
+  "1380": {
+    "quality": 0,
+    "rarity": "poor",
+    "name": "Frayed Robe",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_chest_cloth_21.jpg"
+  },
+  "1411": {
+    "name": "Withered Staff",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_staff_02.jpg"
+  },
+  "1414": {
+    "quality": 0,
+    "rarity": "poor",
+    "name": "Cracked Sledge",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_hammer_09.jpg"
+  },
+  "1420": {
+    "quality": 0,
+    "rarity": "poor",
+    "name": "Worn Leather Bracers",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_bracer_05.jpg"
+  },
+  "1434": {
+    "name": "Glowing Wax Stick",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_candle_03.jpg"
+  },
+  "1453": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Spectral Comb",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_comb_01.jpg"
+  },
+  "1457": {
+    "name": "Shadowhide Mace",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_mace_01.jpg"
+  },
+  "1458": {
+    "name": "Shadowhide Maul",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_hammer_16.jpg"
+  },
+  "1459": {
+    "name": "Shadowhide Scalper",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_throwingaxe_03.jpg"
+  },
+  "1460": {
+    "name": "Shadowhide Two-Handed Sword",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_sword_46.jpg"
+  },
+  "1461": {
+    "name": "Slayer's Battle Axe",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_throwingaxe_06.jpg"
+  },
+  "1468": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Murloc Fin",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_monsterscales_02.jpg"
+  },
+  "1484": {
+    "name": "Witching Stave",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_wand_04.jpg"
+  },
+  "1489": {
+    "name": "Gloomshroud Armor",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_chest_leather_08.jpg"
+  },
+  "1493": {
+    "quality": 3,
+    "rarity": "rare",
+    "name": "Heavy Marauder Scimitar",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_sword_24.jpg"
+  },
+  "1504": {
+    "quality": 0,
+    "rarity": "poor",
+    "name": "Warped Leather Bracers",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_bracer_07.jpg"
+  },
+  "1656": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Translated Letter",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_scroll_03.jpg"
+  },
+  "1677": {
+    "quality": 2,
+    "rarity": "uncommon",
+    "name": "Drake-Scale Vest",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_chest_chain_06.jpg"
+  },
+  "1686": {
+    "name": "Bristly Whisker",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_monstertail_03.jpg"
+  },
+  "1687": {
+    "quality": 0,
+    "rarity": "poor",
+    "name": "Retractable Claw",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_monsterclaw_03.jpg"
+  },
+  "1707": {
+    "name": "Stormwind Brie",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_food_38.jpg"
+  },
+  "1722": {
+    "name": "Thornstone Sledgehammer",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_hammer_04.jpg"
+  },
+  "1795": {
+    "name": "Rawhide Belt",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_belt_24.jpg"
+  },
+  "1796": {
+    "name": "Rawhide Boots",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_boots_06.jpg"
+  },
+  "1797": {
+    "name": "Rawhide Bracers",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_bracer_02.jpg"
+  },
+  "1798": {
+    "name": "Rawhide Cloak",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_cape_07.jpg"
+  },
+  "1799": {
+    "name": "Rawhide Gloves",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_gauntlets_18.jpg"
+  },
+  "1800": {
+    "name": "Rawhide Pants",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_pants_09.jpg"
+  },
+  "1801": {
+    "name": "Rawhide Shoulderpads",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_shoulder_08.jpg"
+  },
+  "1802": {
+    "name": "Rawhide Tunic",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_chest_leather_09.jpg"
+  },
+  "1956": {
+    "name": "Faded Shadowhide Pendant",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_jewelry_talisman_04.jpg"
+  },
+  "1962": {
+    "name": "Glowing Shadowhide Pendant",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_jewelry_talisman_05.jpg"
+  },
+  "1965": {
+    "name": "White Wolf Gloves",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_gauntlets_05.jpg"
+  },
+  "1976": {
+    "name": "Slaghammer",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_hammer_16.jpg"
+  },
+  "2004": {
+    "name": "Grelin Whitebeard's Journal",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_book_09.jpg"
+  },
+  "2011": {
+    "name": "Twisted Sabre",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_sword_24.jpg"
+  },
+  "2017": {
+    "name": "Glowing Leather Bracers",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_bracer_03.jpg"
+  },
+  "2082": {
+    "name": "Wizbang's Gunnysack",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_bag_10_blue.jpg"
+  },
+  "2100": {
+    "name": "Precisely Calibrated Boomstick",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_weapon_rifle_06.jpg"
+  },
+  "2137": {
+    "name": "Whittling Knife",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_weapon_shortblade_01.jpg"
+  },
+  "2175": {
+    "name": "Shadowhide Battle Axe",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_throwingaxe_06.jpg"
+  },
+  "2188": {
+    "name": "A Letter to Grelin Whitebeard",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_letter_15.jpg"
+  },
+  "2250": {
+    "name": "Dusky Crab Cakes",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_food_08.jpg"
+  },
+  "2283": {
+    "name": "Rat Cloth Belt",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_belt_05.jpg"
+  },
+  "2284": {
+    "name": "Rat Cloth Cloak",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_cape_10.jpg"
+  },
+  "2311": {
+    "name": "White Leather Jerkin",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_chest_wolf.jpg"
+  },
+  "2318": {
+    "name": "Light Leather",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_leatherscrap_03.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "2319": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Medium Leather",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_leatherscrap_05.jpg"
+  },
+  "2320": {
+    "name": "Coarse Thread",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_fabric_linen_03.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "2321": {
+    "name": "Fine Thread",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_fabric_wool_02.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "2324": {
+    "name": "Bleach",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_drink_12.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "2407": {
+    "name": "Pattern: White Leather Jerkin",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_scroll_03.jpg"
+  },
+  "2447": { "quality": 0, "rarity": "poor", "name": "Peacebloom", "icon": "" },
+  "2449": {
+    "name": "Earthroot",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_herb_07.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "2452": {
+    "name": "Swiftthistle",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_herb_04.jpg",
+    "quality": 1,
+    "rarity": "common"
+  },
+  "2453": {
+    "quality": 0,
+    "rarity": "poor",
+    "name": "Bruiseweed",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_herb_01.jpg"
+  },
+  "2589": {
+    "name": "Linen Cloth",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_fabric_linen_01.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "2592": {
+    "name": "Wool Cloth",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_fabric_wool_01.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "2604": {
+    "name": "Red Dye",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_potion_11.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "2605": {
+    "name": "Green Dye",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_potion_12.jpg",
+    "quality": 1,
+    "rarity": "common"
+  },
+  "2672": {
+    "quality": 0,
+    "rarity": "poor",
+    "name": "Stringy Wolf Meat",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_food_14.jpg"
+  },
+  "2678": {
+    "name": "Mild Spices",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_food_wheat_02.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "2770": {
+    "name": "Copper Ore",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_ore_copper_01.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "2771": {
+    "name": "Tin Ore",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_ore_tin_01.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "2776": {
+    "name": "Gold Ore",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_ore_gold_01.jpg",
+    "quality": 2,
+    "rarity": "uncommon"
+  },
+  "2784": {
+    "name": "Musquash Root",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_herb_07.jpg"
+  },
+  "2835": {
+    "name": "Rough Stone",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_stone_06.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "2836": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Coarse Stone",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_stone_09.jpg"
+  },
+  "2840": {
+    "name": "Copper Bar",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_ingot_02.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "2841": {
+    "name": "Bronze Bar",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_ingot_bronze.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "2880": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Weak Flux",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_ammo_gunpowder_02.jpg"
+  },
+  "2934": {
+    "name": "Ruined Leather Scraps",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_pelt_bear_ruin_05.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "2996": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Bolt of Linen Cloth",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_fabric_linen_02.jpg"
+  },
+  "3037": {
+    "name": "Whipwood Recurve Bow",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_weapon_bow_12.jpg"
+  },
+  "3199": {
+    "name": "Battle Slayer",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_throwingaxe_06.jpg"
+  },
+  "3300": {
+    "quality": 0,
+    "rarity": "poor",
+    "name": "Rabbit's Foot",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_gauntlets_02.jpg"
+  },
+  "3371": {
+    "name": "Crystal Vial",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_alchemy_leadedvial.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "3395": {
+    "name": "Recipe: Limited Invulnerability Potion",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_scroll_03.jpg"
+  },
+  "3470": {
+    "quality": 0,
+    "rarity": "poor",
+    "name": "Rough Grinding Stone",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_stone_grindingstone_01.jpg"
+  },
+  "3486": {
+    "name": "Heavy Grinding Stone",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_stone_grindingstone_03.jpg",
+    "quality": 1,
+    "rarity": "common"
+  },
+  "3575": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Iron Bar",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_ingot_iron.jpg"
+  },
+  "3576": {
+    "name": "Tin Bar",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_ingot_05.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "3577": {
+    "name": "Gold Bar",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_ingot_03.jpg",
+    "quality": 2,
+    "rarity": "uncommon"
+  },
+  "3685": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Raptor Egg",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_egg_03.jpg"
+  },
+  "3820": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Stranglekelp",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_herb_11.jpg"
+  },
+  "3852": {
+    "name": "Golden Iron Destroyer",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_hammer_04.jpg"
+  },
+  "3858": {
+    "name": "Mithril Ore",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_ore_mithril_02.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "3860": {
+    "name": "Mithril Bar",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_ingot_06.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "4134": {
+    "name": "Nimboya's Mystical Staff",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_staff_13.jpg"
+  },
+  "4234": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Heavy Leather",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_leatherscrap_07.jpg"
+  },
+  "4289": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Salt",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_dust_02.jpg"
+  },
+  "4291": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Silken Thread",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_fabric_silk_02.jpg"
+  },
+  "4304": {
+    "name": "Thick Leather",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_leatherscrap_08.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "4305": {
+    "name": "Bolt of Silk Cloth",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_fabric_silk_03.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "4306": {
+    "name": "Silk Cloth",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_fabric_silk_01.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "4338": {
+    "name": "Mageweave Cloth",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_fabric_mageweave_01.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "4339": {
+    "name": "Bolt of Mageweave",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_fabric_mageweave_03.jpg"
+  },
+  "4359": { "quality": 0, "rarity": "poor", "name": "Handful of Copper Bolts", "icon": "" },
+  "4375": {
+    "quality": 0,
+    "rarity": "poor",
+    "name": "Whirring Bronze Gizmo",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_gizmo_02.jpg"
+  },
+  "4470": {
+    "name": "Simple Wood",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_tradeskillitem_01.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "4625": {
+    "name": "Firebloom",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_herb_19.jpg",
+    "quality": 1,
+    "rarity": "common"
+  },
+  "4879": {
+    "name": "Squashed Rabbit Carcass",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_pelt_wolf_ruin_01.jpg"
+  },
+  "5209": {
+    "name": "Gloom Wand",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_staff_02.jpg"
+  },
+  "5465": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Small Spider Leg",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_monsterspidercarapace_01.jpg"
+  },
+  "5469": {
+    "name": "Strider Meat",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_food_16.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "5574": {
+    "name": "White Leather Bag",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_bag_06.jpg"
+  },
+  "6037": {
+    "name": "Truesilver Bar",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_ingot_08.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "6260": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Blue Dye",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_potion_15.jpg"
+  },
+  "6289": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Raw Longjaw Mud Snapper",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_fish_32.jpg"
+  },
+  "6291": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Raw Brilliant Smallfish",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_fish_08.jpg"
+  },
+  "6308": {
+    "name": "Raw Bristle Whisker Catfish",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_fish_30.jpg",
+    "quality": 1,
+    "rarity": "common"
+  },
+  "6371": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Fire Oil",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_potion_38.jpg"
+  },
+  "6456": {
+    "quality": 0,
+    "rarity": "poor",
+    "name": "Acidic Slime",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_slime_01.jpg"
+  },
+  "6461": {
+    "name": "Slime-Encrusted Pads",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_shoulder_05.jpg"
+  },
+  "6804": {
+    "name": "Windstorm Hammer",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_hammer_05.jpg"
+  },
+  "6889": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Small Egg",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_egg_01.jpg"
+  },
+  "6894": {
+    "name": "Whirlwind Heart",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_gem_sapphire_01.jpg"
+  },
+  "6975": {
+    "name": "Whirlwind Axe",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_12.jpg"
+  },
+  "6976": {
+    "name": "Whirlwind Warhammer",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_hammer_08.jpg"
+  },
+  "6977": {
+    "name": "Whirlwind Sword",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_sword_15.jpg"
+  },
+  "7075": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Core of Earth",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_stone_05.jpg"
+  },
+  "7078": {
+    "quality": 2,
+    "rarity": "uncommon",
+    "name": "Essence of Fire",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/spell_fire_volcano.jpg"
+  },
+  "7079": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Globe of Water",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_orb_01.jpg"
+  },
+  "7191": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Fused Wiring",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_gear_03.jpg"
+  },
+  "7910": {
+    "quality": 0,
+    "rarity": "poor",
+    "name": "Star Ruby",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_gem_ruby_02.jpg"
+  },
+  "7911": {
+    "name": "Truesilver Ore",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_ore_truesilver_01.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "7912": {
+    "name": "Solid Stone",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_stone_10.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "8170": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Rugged Leather",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_leatherscrap_02.jpg"
+  },
+  "8199": {
+    "name": "Battlefield Destroyer",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_sword_26.jpg"
+  },
+  "8497": {
+    "name": "Rabbit Crate (Snowshoe)",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_crate_02.jpg"
+  },
+  "8838": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Sungrass",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_herb_18.jpg"
+  },
+  "8846": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Gromsblood",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_herb_16.jpg"
+  },
+  "9457": {
+    "name": "Royal Diplomatic Scepter",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_mace_08.jpg"
+  },
+  "10560": {
+    "name": "Unstable Trigger",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_battery_01.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "10570": {
+    "name": "Manslayer",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_04.jpg"
+  },
+  "10620": {
+    "name": "Thorium Ore",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_ore_thorium_02.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "10623": {
+    "name": "Winter's Bite",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_07.jpg"
+  },
+  "10632": {
+    "name": "Slimescale Bracers",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_jewelry_ring_03.jpg"
+  },
+  "10938": {
+    "name": "Lesser Magic Essence",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_enchant_essencemagicsmall.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "10939": {
+    "name": "Greater Magic Essence",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_enchant_essencemagiclarge.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "10940": {
+    "name": "Strange Dust",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_enchant_duststrange.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "11291": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Star Wood",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_tradeskillitem_03.jpg"
+  },
+  "11370": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Dark Iron Ore",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_ore_mithril_01.jpg"
+  },
+  "11863": {
+    "name": "White Bone Shredder",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/ability_whirlwind.jpg"
+  },
+  "11864": {
+    "name": "White Bone Spear",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_spear_05.jpg"
+  },
+  "11907": {
+    "name": "Beastslayer",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_10.jpg"
+  },
+  "12037": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Mystery Meat",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_food_67.jpg"
+  },
+  "12359": {
+    "name": "Thorium Bar",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_ingot_07.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "12360": {
+    "name": "Arcanite Bar",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_stonetablet_05.jpg"
+  },
+  "12363": {
+    "name": "Arcane Crystal",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_gem_topaz_01.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "12365": {
+    "name": "Dense Stone",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_stonetablet_07.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "12799": {
+    "quality": 2,
+    "rarity": "uncommon",
+    "name": "Large Opal",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_gem_opal_01.jpg"
+  },
+  "12808": { "name": "Essence of Undeath", "icon": "", "quality": 0, "rarity": "poor" },
+  "12811": {
+    "quality": 2,
+    "rarity": "uncommon",
+    "name": "Righteous Orb",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_gem_pearl_03.jpg"
+  },
+  "12989": {
+    "name": "Gargoyle's Bite",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_spear_05.jpg"
+  },
+  "13015": {
+    "name": "Serathil",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_08.jpg"
+  },
+  "13017": {
+    "name": "Hellslayer Battle Axe",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_24.jpg"
+  },
+  "13022": {
+    "name": "Gryphonwing Long Bow",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_weapon_bow_11.jpg"
+  },
+  "13285": {
+    "name": "The Blackrock Slicer",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_weapon_halberd_11.jpg"
+  },
+  "13463": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Dreamfoil",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_herb_dreamfoil.jpg"
+  },
+  "13464": {
+    "quality": 0,
+    "rarity": "poor",
+    "name": "Golden Sansam",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_herb_sansamroot.jpg"
+  },
+  "13754": {
+    "name": "Raw Glossy Mightfish",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_monsterhead_03.jpg"
+  },
+  "13757": {
+    "name": "Lightning Eel",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_fish_12.jpg"
+  },
+  "13888": {
+    "name": "Darkclaw Lobster",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_fish_14.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "13889": {
+    "name": "Raw Whitescale Salmon",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_fish_20.jpg",
+    "quality": 1,
+    "rarity": "common"
+  },
+  "14047": {
+    "name": "Runecloth",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_fabric_purplefire_01.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "14048": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Bolt of Runecloth",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_fabric_purplefire_02.jpg"
+  },
+  "14344": { "quality": 0, "rarity": "poor", "name": "Large Brilliant Shard", "icon": "" },
+  "15229": {
+    "name": "Blesswind Hammer",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_hammer_02.jpg"
+  },
+  "15263": {
+    "name": "Royal Mallet",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_hammer_11.jpg"
+  },
+  "15268": {
+    "name": "Twin-Bladed Axe",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_09.jpg"
+  },
+  "15853": {
+    "name": "Windreaper",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_08.jpg"
+  },
+  "15994": {
+    "name": "Thorium Widget",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_gizmo_04.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "16203": {
+    "name": "Greater Eternal Essence",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_enchant_essenceeternallarge.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "17016": {
+    "name": "Dark Iron Destroyer",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_12.jpg"
+  },
+  "17056": {
+    "name": "Light Feather",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_feather_04.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "17194": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Holiday Spices",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_bag_11.jpg"
+  },
+  "17202": {
+    "name": "Snowball",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_ammo_snowball.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "17704": {
+    "name": "Edge of Winter",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_06.jpg"
+  },
+  "18324": {
+    "name": "Waveslicer",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_17.jpg"
+  },
+  "18737": {
+    "name": "Bone Slicing Hatchet",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_11.jpg"
+  },
+  "19019": {
+    "quality": 5,
+    "rarity": "legendary",
+    "name": "Thunderfury, Blessed Blade of the Windseeker",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_sword_39.jpg"
+  },
+  "19101": {
+    "name": "Whiteout Staff",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_staff_30.jpg"
+  },
+  "19852": {
+    "name": "Ancient Hakkari Manslayer",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_35.jpg"
+  },
+  "19853": {
+    "name": "Gurubashi Dwarf Destroyer",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_weapon_rifle_10.jpg"
+  },
+  "19854": {
+    "name": "Zin'rokh, Destroyer of Worlds",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_sword_55.jpg"
+  },
+  "20720": {
+    "name": "Dark Whisper Blade",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_weapon_shortblade_16.jpg"
+  },
+  "20823": {
+    "name": "Gloom Band",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_jewelry_ring_16.jpg"
+  },
+  "21071": {
+    "name": "Raw Sagefish",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_fish_20.jpg",
+    "quality": 1,
+    "rarity": "common"
+  },
+  "21213": {
+    "name": "Preserved Holly",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_plant_03.jpg",
+    "quality": 2,
+    "rarity": "uncommon"
+  },
+  "21490": {
+    "name": "Slime Kickers",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_boots_plate_04.jpg"
+  },
+  "21877": {
+    "name": "Netherweave Cloth",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_fabric_netherweave.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "21886": {
+    "quality": 2,
+    "rarity": "uncommon",
+    "name": "Primal Life",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_elemental_primal_life.jpg"
+  },
+  "22445": {
+    "name": "Arcane Dust",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_enchant_dustarcane.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "22446": {
+    "quality": 2,
+    "rarity": "uncommon",
+    "name": "Greater Planar Essence",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_enchant_essencearcanelarge.jpg"
+  },
+  "22449": { "quality": 0, "rarity": "poor", "name": "Large Prismatic Shard", "icon": "" },
+  "22456": {
+    "quality": 2,
+    "rarity": "uncommon",
+    "name": "Primal Shadow",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_elemental_primal_shadow.jpg"
+  },
+  "22573": {
+    "name": "Mote of Earth",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_elemental_mote_earth01.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "22575": {
+    "quality": 0,
+    "rarity": "poor",
+    "name": "Mote of Life",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_elemental_mote_life01.jpg"
+  },
+  "22576": {
+    "name": "Mote of Mana",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_elemental_mote_mana.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "22577": {
+    "name": "Mote of Shadow",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_elemental_mote_shadow01.jpg",
+    "quality": 1,
+    "rarity": "common"
+  },
+  "22578": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Mote of Water",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_elemental_mote_water01.jpg"
+  },
+  "22786": {
+    "name": "Dreaming Glory",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_herb_dreamingglory.jpg",
+    "quality": 1,
+    "rarity": "common"
+  },
+  "22789": {
+    "name": "Terocone",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_herb_terrocone.jpg",
+    "quality": 1,
+    "rarity": "common"
+  },
+  "23424": {
+    "name": "Fel Iron Ore",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_ore_feliron.jpg",
+    "quality": 1,
+    "rarity": "common"
+  },
+  "23425": {
+    "name": "Adamantite Ore",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_ore_adamantium.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "23427": {
+    "name": "Eternium Ore",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_ore_eternium.jpg"
+  },
+  "23445": {
+    "name": "Fel Iron Bar",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_ingot_feliron.jpg",
+    "quality": 1,
+    "rarity": "common"
+  },
+  "23446": {
+    "name": "Adamantite Bar",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_ingot_10.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "23457": {
+    "name": "High Warlord's Destroyer",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_mace_05.jpg"
+  },
+  "23465": {
+    "name": "High Warlord's Destroyer",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_mace_09.jpg"
+  },
+  "24477": {
+    "name": "Jaggal Clam Meat",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_food_51.jpg"
+  },
+  "25133": {
+    "name": "Stormwind Maul",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_mace_13.jpg"
+  },
+  "25156": {
+    "name": "Royal Crusader Sword",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_sword_27.jpg"
+  },
+  "25198": {
+    "name": "Karaborian Battle Axe",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_03.jpg"
+  },
+  "25222": {
+    "name": "Ceremonial Slayer's Axe",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_21.jpg"
+  },
+  "25223": {
+    "name": "Windcaller Hatchet",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_11.jpg"
+  },
+  "25224": {
+    "name": "Slavemaster Axe",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_44.jpg"
+  },
+  "25243": {
+    "name": "Windtalker Bow",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_weapon_bow_15.jpg"
+  },
+  "25250": {
+    "name": "Rocslayer Longbow",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_weapon_bow_15.jpg"
+  },
+  "25253": {
+    "name": "Windspear Longbow",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_weapon_bow_05.jpg"
+  },
+  "25537": {
+    "name": "Hewing Axe of the Marsh",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_02.jpg"
+  },
+  "25934": {
+    "name": "Spiked Destroyer",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_mace_01.jpg"
+  },
+  "27422": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Barbed Gill Trout",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_fish_37.jpg"
+  },
+  "27425": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Spotted Feltail",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_fish_39.jpg"
+  },
+  "27898": {
+    "name": "Wrathfire Hand-Cannon",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_weapon_rifle_20.jpg"
+  },
+  "27913": {
+    "name": "Whispering Blade of Slaying",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_weapon_shortblade_51.jpg"
+  },
+  "27986": {
+    "name": "Crow Wing Reaper",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_69.jpg"
+  },
+  "28210": {
+    "name": "Bloodskull Destroyer",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_mace_44.jpg"
+  },
+  "28433": {
+    "name": "Wicked Edge of the Planes",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_1h_blacksmithing_03.jpg"
+  },
+  "29202": {
+    "name": "Whirling Steel Axes",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_05.jpg"
+  },
+  "29351": {
+    "name": "Wrathtide Longbow",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_weapon_crossbow_16.jpg"
+  },
+  "29364": {
+    "name": "Brown Rabbit Crate",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_crate_02.jpg"
+  },
+  "30077": {
+    "name": "Windforged Rapier",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_sword_30.jpg"
+  },
+  "30817": {
+    "name": "Simple Flour",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_food_wheat_01.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "31010": {
+    "name": "Slayer's Axe",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_09.jpg"
+  },
+  "31541": {
+    "name": "Whistling Sword",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_sword_33.jpg"
+  },
+  "32500": {
+    "name": "Crystal Spire of Karabor",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_mace_56.jpg"
+  },
+  "32756": {
+    "name": "Gyro-Balanced Khorium Destroyer",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_weapon_rifle_13.jpg"
+  },
+  "32829": {
+    "name": "Windcharger's Lance",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_spear_05.jpg"
+  },
+  "32897": {
+    "name": "Mark of the Illidari",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/spell_shadow_metamorphosis.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "33154": {
+    "quality": 3,
+    "rarity": "rare",
+    "name": "Sinister Squashling",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_food_59.jpg"
+  },
+  "33470": {
+    "name": "Frostweave Cloth",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_fabric_soulcloth.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "33568": {
+    "name": "Borean Leather",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_leatherscrap_15.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "34054": {
+    "name": "Infinite Dust",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_dust_infinite.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "34055": {
+    "name": "Greater Cosmic Essence",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_enchant_essencecosmicgreater.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "34056": {
+    "quality": 0,
+    "rarity": "poor",
+    "name": "Lesser Cosmic Essence",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_enchant_essencecosmiclesser.jpg"
+  },
+  "35562": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Bear Flank",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_food_13.jpg"
+  },
+  "35624": {
+    "name": "Eternal Earth",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_elemental_eternal_earth.jpg"
+  },
+  "35627": {
+    "name": "Eternal Shadow",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_elemental_eternal_shadow.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "36500": {
+    "name": "Gargoyle's Mace",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_mace_62.jpg"
+  },
+  "36538": {
+    "name": "Trollish Destroyer",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_sword_96.jpg"
+  },
+  "36591": {
+    "name": "Winged Axe",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_87.jpg"
+  },
+  "36605": {
+    "name": "Wind Scythe",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_weapon_halberd_25.jpg"
+  },
+  "36613": {
+    "name": "Honorable Longbow",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_weapon_bow_37.jpg"
+  },
+  "36654": {
+    "name": "Harsh-Winter Rifle",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_weapon_rifle_06.jpg"
+  },
+  "36860": {
+    "name": "Eternal Fire",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_elemental_eternal_fire.jpg",
+    "quality": 2,
+    "rarity": "uncommon"
+  },
+  "36905": {
+    "name": "Lichbloom",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_herb_whispervine.jpg"
+  },
+  "36909": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Cobalt Ore",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_ore_cobalt.jpg"
+  },
+  "36912": {
+    "name": "Saronite Ore",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_ore_saronite_01.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "36916": {
+    "name": "Cobalt Bar",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_ingot_cobalt.jpg",
+    "quality": 1,
+    "rarity": "common"
+  },
+  "38170": {
+    "name": "Spiked Coldwind Club",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_mace_69.jpg"
+  },
+  "38558": {
+    "name": "Nerubian Chitin",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_nerubianchitin_01.jpg"
+  },
+  "38682": {
+    "name": "Enchanting Vellum",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_inscription_armorscroll01.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "39144": {
+    "name": "Twisted Hooligan Whacker",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_mace_62.jpg"
+  },
+  "39334": {
+    "name": "Dusky Pigment",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_inscription_pigment_silver.jpg"
+  },
+  "39341": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Silvery Pigment",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_inscription_pigment_silvery.jpg"
+  },
+  "39354": {
+    "name": "Light Parchment",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_inscription_papyrus.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "39487": {
+    "name": "Dragon Slayer's Shortbow",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_weapon_bow_36.jpg"
+  },
+  "40195": {
+    "name": "Pygmy Oil",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_potion_07.jpg"
+  },
+  "40385": {
+    "name": "Envoy of Mortality",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_weapon_rifle_24.jpg"
+  },
+  "41257": {
+    "name": "Titansteel Destroyer",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_mace_84.jpg"
+  },
+  "41510": {
+    "name": "Bolt of Frostweave",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_fabric_frostweave_bolt.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "42945": {
+    "name": "Venerable Dal'Rend's Sacred Charge",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_sword_43.jpg"
+  },
+  "43007": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Northern Spices",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_ammo_gunpowder_05.jpg"
+  },
+  "44053": {
+    "name": "Whale-Stick Harpoon",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_weapon_halberd_ahnqiraj.jpg"
+  },
+  "44793": {
+    "name": "Tome of Polymorph: Rabbit",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_book_07.jpg"
+  },
+  "44794": {
+    "name": "Spring Rabbit's Foot",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_gauntlets_02.jpg"
+  },
+  "45087": {
+    "name": "Runed Orb",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_runedorb_01.jpg",
+    "quality": 3,
+    "rarity": "rare"
+  },
+  "45296": {
+    "name": "Twirling Blades",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_throwingknife_08.jpg"
+  },
+  "46067": {
+    "name": "Hammer of Crushing Whispers",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_mace_93.jpg"
+  },
+  "46996": {
+    "name": "Lionhead Slasher",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_105.jpg"
+  },
+  "47001": {
+    "name": "Lionhead Slasher",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_105.jpg"
+  },
+  "47314": {
+    "name": "Hellscream Slicer",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_104.jpg"
+  },
+  "47475": {
+    "name": "Hellscream Slicer",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_104.jpg"
+  },
+  "48716": {
+    "name": "Venerable Mass of McGowan",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_hammer_17.jpg"
+  },
+  "50273": {
+    "name": "Engraved Gargoyle Femur",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_staff_81.jpg"
+  },
+  "50428": {
+    "name": "Royal Scepter of Terenas II",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_mace_115.jpg"
+  },
+  "50734": {
+    "name": "Royal Scepter of Terenas II",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_mace_115.jpg"
+  },
+  "51388": {
+    "name": "Wrathful Gladiator's Decapitator",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_115.jpg"
+  },
+  "51389": {
+    "name": "Wrathful Gladiator's Sunderer",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_115.jpg"
+  },
+  "51394": {
+    "name": "Wrathful Gladiator's Longbow",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_weapon_bow_56.jpg"
+  },
+  "51395": {
+    "name": "Wrathful Gladiator's Recurve",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_weapon_bow_56.jpg"
+  },
+  "51439": {
+    "name": "Wrathful Gladiator's Hacker",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_116.jpg"
+  },
+  "51440": {
+    "name": "Wrathful Gladiator's Dicer",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_116.jpg"
+  },
+  "51449": {
+    "name": "Wrathful Gladiator's Rifle",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_weapon_rifle_39.jpg"
+  },
+  "51450": {
+    "name": "Wrathful Gladiator's Shotgun",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_weapon_rifle_39.jpg"
+  },
+  "51515": {
+    "name": "Wrathful Gladiator's Cleaver",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_116.jpg"
+  },
+  "51516": {
+    "name": "Wrathful Gladiator's Handaxe",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_116.jpg"
+  },
+  "51525": {
+    "name": "Wrathful Gladiator's Chopper",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_116.jpg"
+  },
+  "51526": {
+    "name": "Wrathful Gladiator's Splitter",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_116.jpg"
+  },
+  "52183": {
+    "quality": 2,
+    "rarity": "uncommon",
+    "name": "Pyrite Ore",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_ore_arcanite_01.jpg"
+  },
+  "52185": {
+    "name": "Elementium Ore",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/item_pyriumore.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "52186": {
+    "name": "Elementium Bar",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_pyriumbar.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "52327": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Volatile Earth",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_volatileearth.jpg"
+  },
+  "52328": {
+    "name": "Volatile Air",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_volatileair.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "52719": { "quality": 2, "rarity": "uncommon", "name": "Greater Celestial Essence", "icon": "" },
+  "52722": {
+    "quality": 0,
+    "rarity": "poor",
+    "name": "Maelstrom Crystal",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_crystalepic.jpg"
+  },
+  "52901": {
+    "name": "Whirling Axe",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_10.jpg"
+  },
+  "52950": {
+    "name": "Whamo Kablamo",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_weapon_rifle_03.jpg"
+  },
+  "52976": {
+    "name": "Savage Leather",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/item_savageleather.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "52982": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Deepsea Scale",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_deepseascales.jpg"
+  },
+  "52984": {
+    "name": "Stormvine",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_herb_stormvine.jpg"
+  },
+  "52988": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Whiptail",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_herb_whiptail.jpg"
+  },
+  "53010": {
+    "name": "Embersilk Cloth",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_emberweaveclothbolt_01.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "53071": {
+    "name": "Algaefin Rockfish",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_fish_84.jpg",
+    "quality": 1,
+    "rarity": "common"
+  },
+  "53418": {
+    "name": "Honorary Gob Squad Shield",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_shield_77.jpg"
+  },
+  "53557": {
+    "name": "White Bone Pummeler",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_desecrated_mailglove.jpg"
+  },
+  "53559": {
+    "name": "White Bone Rod",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_staff_11.jpg"
+  },
+  "55203": {
+    "name": "Lightning Whelk Axe",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_1h_cataclysm_c_01.jpg"
+  },
+  "55252": {
+    "name": "Whitefin Axe",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_2h_cataclysm_c_01.jpg"
+  },
+  "55281": {
+    "name": "Razorwind Axe",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_1h_cataclysm_b_02.jpg"
+  },
+  "55290": {
+    "name": "Razorwind Broadaxe",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_2h_cataclysm_b_01.jpg"
+  },
+  "55299": {
+    "name": "Razorwind Bow",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_bow_1h_cataclysm_b_01.jpg"
+  },
+  "55353": {
+    "name": "Razorwind Gun",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_firearm_2h_rifle_cataclysm_b_01.jpg"
+  },
+  "55380": {
+    "name": "Razorwind Mace",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_mace_1h_cataclysm_b_02.jpg"
+  },
+  "55389": {
+    "name": "Razorwind Hammer",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_mace_2h_cataclysm_b_01.jpg"
+  },
+  "55407": {
+    "name": "Razorwind Spear",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_polearm_2h_cataclysm_b_01.jpg"
+  },
+  "55452": {
+    "name": "Razorwind Sword",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_sword_1h_cataclysm_b_01.jpg"
+  },
+  "56146": {
+    "name": "Toy Satchel",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_bag_09_red.jpg"
+  },
+  "56266": {
+    "name": "Lightning Whelk Axe",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_1h_cataclysm_c_01.jpg"
+  },
+  "56284": {
+    "name": "Whitefin Axe",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_2h_cataclysm_c_01.jpg"
+  },
+  "57433": {
+    "name": "Windshear Axe",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_03.jpg"
+  },
+  "57839": {
+    "name": "Whelp Slaying Axe",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_118.jpg"
+  },
+  "57928": {
+    "name": "Windslicer",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_1h_cataclysm_c_01.jpg"
+  },
+  "59010": {
+    "name": "Swiftwind Blade",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_sword_16.jpg"
+  },
+  "59541": {
+    "name": "Mankrik's Boar Slicer",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_64.jpg"
+  },
+  "60260": {
+    "name": "Sea Witch's Bag",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_bag_09_red.jpg"
+  },
+  "61576": {
+    "name": "Pirate's Musket",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_weapon_rifle_19.jpg"
+  },
+  "62457": {
+    "name": "Ravening Slicer",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_1h_cataclysm_c_01.jpg"
+  },
+  "62476": {
+    "name": "Ravening Slicer",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_1h_cataclysm_c_01.jpg"
+  },
+  "62782": {
+    "name": "Dragon Flank",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_food_meat_raw_04.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "62784": {
+    "name": "Crocolisk Tail",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_food_meat_raw_10.jpg",
+    "quality": 1,
+    "rarity": "common"
+  },
+  "62786": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Cocoa Beans",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_bag_10_black.jpg"
+  },
+  "63640": {
+    "name": "Windsong Rifle",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_weapon_rifle_07.jpg"
+  },
+  "63644": {
+    "name": "Windsong Rifle",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_weapon_rifle_07.jpg"
+  },
+  "64377": {
+    "name": "Zin'rokh, Destroyer of Worlds",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/trade_archaeology_zinrokhsword.jpg"
+  },
+  "64670": {
+    "name": "Vanishing Powder",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_dust_02.jpg"
+  },
+  "65168": {
+    "name": "Rockslicer",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_throwingaxe_01.jpg"
+  },
+  "65649": {
+    "name": "Technique: Origami Slime",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_scroll_06.jpg"
+  },
+  "67052": {
+    "name": "Loyal Blade",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_sword_1h_cataclysm_c_04.jpg"
+  },
+  "67124": {
+    "name": "Zulian Swirling Shield",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_shield_42.jpg"
+  },
+  "67531": {
+    "name": "Stormwind Satchel",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_bag_07_blue.jpg"
+  },
+  "67602": {
+    "name": "Elementium Gutslicer",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_1h_bwdraid_d_01.jpg"
+  },
+  "69637": {
+    "name": "Gurubashi Destroyer",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_firearm_2h_rifle_zulgurub_d_01.jpg"
+  },
+  "70136": {
+    "name": "Royal Scribe's Satchel",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_bag_36.jpg"
+  },
+  "71353": {
+    "name": "Arathar, the Eye of Flame",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_bow_1h_firelandsraid_d_01.jpg"
+  },
+  "71611": {
+    "name": "Arathar, the Eye of Flame",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_bow_1h_firelandsraid_d_01.jpg"
+  },
+  "72092": {
+    "name": "Ghost Iron Ore",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_ore_ghostiron.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "72093": {
+    "name": "Kyparite",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_ore_manticyte.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "72094": {
+    "quality": 2,
+    "rarity": "uncommon",
+    "name": "Black Trillium Ore",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_ore_trilliumblack.jpg"
+  },
+  "72096": {
+    "name": "Ghost Iron Bar",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_ingot_ghostiron.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "72103": {
+    "quality": 2,
+    "rarity": "uncommon",
+    "name": "White Trillium Ore",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_ore_trilliumwhite.jpg"
+  },
+  "72120": {
+    "quality": 0,
+    "rarity": "poor",
+    "name": "Mist-Touched Leather",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_tradeskill_skinning_shaleatherscraps.jpg"
+  },
+  "72162": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Sha-Touched Leather",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_leatherscrap_18.jpg"
+  },
+  "72234": {
+    "name": "Green Tea Leaf",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_herb_jadetealeaf.jpg",
+    "quality": 1,
+    "rarity": "common"
+  },
+  "72235": {
+    "name": "Silkweed",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_herb_silkweed.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "72237": {
+    "name": "Rain Poppy",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_herb_rainpoppy.jpg"
+  },
+  "72238": {
+    "quality": 2,
+    "rarity": "uncommon",
+    "name": "Golden Lotus",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_herb_goldenlotus.jpg"
+  },
+  "72810": {
+    "name": "Windrunner's Bow",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/bow_1h_430future_c_01.jpg"
+  },
+  "72844": {
+    "name": "Pit Lord's Destroyer",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_mace_2h_430nightelf_c_01.jpg"
+  },
+  "72988": {
+    "name": "Windwool Cloth",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_fabric_windwool.jpg",
+    "quality": 1,
+    "rarity": "common"
+  },
+  "74247": {
+    "quality": 0,
+    "rarity": "poor",
+    "name": "Ethereal Shard",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/trade_enchanting_largeetherealshard.jpg"
+  },
+  "74249": {
+    "name": "Spirit Dust",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_powder_copper.jpg",
+    "quality": 1,
+    "rarity": "common"
+  },
+  "74250": { "quality": 0, "rarity": "poor", "name": "Mysterious Essence", "icon": "" },
+  "74669": {
+    "name": "Recipe: Swirling Mist Soup",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_scroll_03.jpg"
+  },
+  "74841": {
+    "name": "Juicycrunch Carrot",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_food_vendor_carrot.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "74842": {
+    "name": "Mogu Pumpkin",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_food_vendor_mogupumpkin.jpg"
+  },
+  "74844": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Red Blossom Leek",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_food_vendor_redblossomleek.jpg"
+  },
+  "74846": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Witchberries",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_food_vendor_witchberries.jpg"
+  },
+  "74847": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Jade Squash",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_food_vendor_jadesquash.jpg"
+  },
+  "74848": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Striped Melon",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_food_vendor_stripedmelon.jpg"
+  },
+  "76061": {
+    "name": "Spirit of Harmony",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_elemental_spiritofharmony_2.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "77217": {
+    "name": "Experimental Specimen Slicer",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_2h_deathwingraid_d_01.jpg"
+  },
+  "77467": { "name": "Ghost Iron Bolts", "icon": "", "quality": 0, "rarity": "poor" },
+  "77571": {
+    "name": "Replica High Warlord's Destroyer",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_mace_05.jpg"
+  },
+  "77587": {
+    "name": "Replica High Warlord's Destroyer",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_mace_09.jpg"
+  },
+  "78403": {
+    "name": "Experimental Specimen Slicer",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_2h_deathwingraid_d_01.jpg"
+  },
+  "78409": {
+    "name": "Experimental Specimen Slicer",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_2h_deathwingraid_d_01.jpg"
+  },
+  "79011": {
+    "name": "Fool's Cap",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_herb_foolscap.jpg"
+  },
+  "79251": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Shadow Pigment",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_inscription_pigment_shadow.jpg"
+  },
+  "79254": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Ink of Dreams",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_inscription_ink_dreams.jpg"
+  },
+  "80008": {
+    "name": "Darkmoon Rabbit",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_jewelcrafting_crimsonhare.jpg"
+  },
+  "82446": {
+    "name": "Royal Satchel",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_bag_31.jpg"
+  },
+  "82591": {
+    "name": "Wind's Rest Spear",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_polearm_2h_pandariaquest_b_01.jpg"
+  },
+  "82593": {
+    "name": "Wind Blade",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_sword_1h_pandariaquest_b_01.jpg"
+  },
+  "82595": {
+    "name": "Wind's Edge",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_sword_1h_pandariaquest_b_01.jpg"
+  },
+  "82800": {
+    "quality": 3,
+    "rarity": "rare",
+    "name": "Pet Cage",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_box_petcarrier_01.jpg"
+  },
+  "82963": {
+    "name": "Forgewire Axe",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_1h_pandariatradeskill_c_01.jpg"
+  },
+  "82970": {
+    "name": "Masterwork Forgewire Axe",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_1h_pandariatradeskill_c_01.jpg"
+  },
+  "87474": {
+    "name": "Ennadee's Twirling Longbow",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_bow_1h_pandung_c_01.jpg"
+  },
+  "87670": {
+    "name": "Empty Jade Squash Container",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_basket_05.jpg"
+  },
+  "89112": {
+    "name": "Mote of Harmony",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_elemental_spiritofharmony_1.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "90011": {
+    "name": "Staff of the White Tigerlord",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_stave_2h_panprog_b_01.jpg"
+  },
+  "92746": {
+    "name": "Portable Refrigerator",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_bag_29.jpg"
+  },
+  "92747": {
+    "name": "Advanced Refrigeration Unit",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_bag_advanced_refridgeration_unit.jpg"
+  },
+  "92748": {
+    "name": "Portable Refrigerator",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_bag_cooking.jpg"
+  },
+  "94579": {
+    "name": "Wicked Edge of the Planes, Reborn",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_1h_blacksmithing_03.jpg"
+  },
+  "95392": {
+    "name": "Sonic Pulse Generator",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_firearm_2h_rifle_archaeology_d_01.jpg"
+  },
+  "103649": {
+    "name": "Xal'atoh, Desecrated Image of Gorehowl",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_2h_orgrimmarraid_d_01.jpg"
+  },
+  "104648": {
+    "name": "Xal'atoh, Desecrated Image of Gorehowl",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_2h_orgrimmarraid_d_01.jpg"
+  },
+  "104897": {
+    "name": "Xal'atoh, Desecrated Image of Gorehowl",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_2h_orgrimmarraid_d_01.jpg"
+  },
+  "105146": {
+    "name": "Xal'atoh, Desecrated Image of Gorehowl",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_2h_orgrimmarraid_d_01.jpg"
+  },
+  "105395": {
+    "name": "Xal'atoh, Desecrated Image of Gorehowl",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_2h_orgrimmarraid_d_01.jpg"
+  },
+  "105644": {
+    "name": "Xal'atoh, Desecrated Image of Gorehowl",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_2h_orgrimmarraid_d_01.jpg"
+  },
+  "108909": {
+    "name": "Karabor Footman's Pike",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_polearm_2h_draenorquest_b_01.jpg"
+  },
+  "108914": {
+    "name": "Karabor Footman Sword",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_sword_1h_draenorquest95_b_01.jpg"
+  },
+  "108919": {
+    "name": "Karabor Augury Mace",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_mace_1h_draenorquest_b_02.jpg"
+  },
+  "108996": {
+    "quality": 2,
+    "rarity": "uncommon",
+    "name": "Alchemical Catalyst",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_enchant_alchemycatalyst.jpg"
+  },
+  "109118": {
+    "name": "Blackrock Ore",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_ore_blackrock_ore.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "109119": {
+    "name": "True Iron Ore",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_ore_trueironore.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "109124": {
+    "name": "Frostweed",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_herb_frostweed.jpg"
+  },
+  "109126": {
+    "name": "Gorgrond Flytrap",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_herb_flytrap.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "109132": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Raw Talbuk Meat",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_food_draenor_rawboarflesh.jpg"
+  },
+  "109134": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Raw Elekk Meat",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_food_draenor_rawelekflesh.jpg"
+  },
+  "109136": {
+    "name": "Raw Boar Meat",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_food_draenor_rawtalkbukflesh.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "109137": {
+    "name": "Crescent Saberfish Flesh",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_fishing_innards_meat_saberfish.jpg",
+    "quality": 1,
+    "rarity": "common"
+  },
+  "109139": {
+    "name": "Fat Sleeper Flesh",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_fishing_innards_meat_sleeper.jpg"
+  },
+  "109140": {
+    "name": "Blind Lake Sturgeon Flesh",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_fishing_innards_meat_sturgeon.jpg",
+    "quality": 1,
+    "rarity": "common"
+  },
+  "109143": {
+    "name": "Abyssal Gulper Eel Flesh",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_fishing_innards_meat_gulper.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "109144": {
+    "name": "Blackwater Whiptail Flesh",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_fishing_innards_meat_whiptail.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "109693": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Draenic Dust",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_enchanting_wod_dust3.jpg"
+  },
+  "110609": {
+    "name": "Raw Beast Hide",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_nativebeastskin.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "111542": {
+    "name": "Frostwolf Wind-Talker Cudgel",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_mace_1h_draenorquest_b_02.jpg"
+  },
+  "111557": {
+    "name": "Sumptuous Fur",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_nativebeastfur.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "111595": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Crescent Saberfish",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_fishing_f_saberfish2.jpg"
+  },
+  "111666": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Fire Ammonite",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_fishing_f_ammonite2.jpg"
+  },
+  "112925": {
+    "name": "Xal'atoh, Desecrated Image of Gorehowl",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_2h_orgrimmarraid_d_01.jpg"
+  },
+  "113055": {
+    "name": "Serrated Sawblade Axe",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_1h_draenorquest_b_01.jpg"
+  },
+  "113171": {
+    "name": "Karabor Warmace",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_mace_2h_draenorquest_b_01.jpg"
+  },
+  "113173": {
+    "name": "Karabor Honor Guard Mace",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_mace_1h_draenorquest_b_01.jpg"
+  },
+  "113176": {
+    "name": "Karabor Anchorite Cudgel",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_mace_1h_draenorquest_b_02.jpg"
+  },
+  "113181": {
+    "name": "Karabor Honor Guard Axe",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_1h_draenorquest_b_01.jpg"
+  },
+  "113261": {
+    "name": "Sorcerous Fire",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_tradeskillitem_sorcerersfire_tong.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "113262": {
+    "name": "Sorcerous Water",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_tradeskillitem_sorcererswater_tong.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "113263": {
+    "quality": 2,
+    "rarity": "uncommon",
+    "name": "Sorcerous Earth",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_tradeskillitem_sorcerersearth_tong.jpg"
+  },
+  "113264": {
+    "name": "Sorcerous Air",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_tradeskillitem_sorcererswind_tong.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "113355": {
+    "name": "Card of Omens",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_ticket_tarot_wrath.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "113553": {
+    "name": "Windfang Sabre",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_sword_1h_draenorquest_b_01.jpg"
+  },
+  "113667": {
+    "name": "Phemos' Double Slasher",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_1h_draenorraid_d_02.jpg"
+  },
+  "114907": {
+    "name": "Talon Guard Wingclipper",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_1h_draenorquest95_b_01.jpg"
+  },
+  "114931": {
+    "name": "Cerulean Pigment",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_inscription_pigment_cerulean.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "116483": {
+    "name": "Moonwhisper Scepter",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_mace_1h_draenorquest95_b_01.jpg"
+  },
+  "117994": {
+    "name": "RENAME Karabor Honor Guard Axe",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_1h_draenorquest_b_01.jpg"
+  },
+  "118022": {
+    "name": "Ogron Slayer's Axe",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_1h_draenorquest_b_01.jpg"
+  },
+  "118023": {
+    "name": "Ogron Slayer's Greataxe",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_2h_draenorquest_b_01.jpg"
+  },
+  "118396": {
+    "name": "Bloodmaw Gargoyle",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_mace_1h_draenorchallenge_d_02.jpg"
+  },
+  "119178": {
+    "name": "Black Whirlwind",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/ability_druid_cyclone.jpg"
+  },
+  "122084": {
+    "name": "Inexorable Blade",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_weapon_shortblade_86.jpg"
+  },
+  "122385": {
+    "name": "Venerable Mass of McGowan",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_hammer_17.jpg"
+  },
+  "123918": {
+    "name": "Leystone Ore",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_leystone.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "123919": {
+    "name": "Felslate",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_felslate.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "124101": {
+    "name": "Aethril",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_herbalism_70_aethril.jpg",
+    "quality": 1,
+    "rarity": "common"
+  },
+  "124102": {
+    "name": "Dreamleaf",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_herbalism_70_dreamleaf.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "124103": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Foxflower",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_herbalism_70_foxflower.jpg"
+  },
+  "124106": {
+    "quality": 2,
+    "rarity": "uncommon",
+    "name": "Felwort",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_herbalism_70_felwort.jpg"
+  },
+  "124109": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Highmountain Salmon",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_fish_highmountainsalmonred.jpg"
+  },
+  "124110": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Stormray",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_fish_stormraygreen.jpg"
+  },
+  "124113": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Stonehide Leather",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_leatherstonehide.jpg"
+  },
+  "124115": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Stormscale",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_leatherstormscale.jpg"
+  },
+  "124116": {
+    "quality": 2,
+    "rarity": "uncommon",
+    "name": "Felhide",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_leatherfelhide.jpg"
+  },
+  "124118": {
+    "name": "Fatty Bearsteak",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_food_legion_fattybearsteak.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "124119": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Big Gamy Ribs",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_food_legion_biggameyribs.jpg"
+  },
+  "124120": {
+    "name": "Leyblood",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_food_legion_leyblood.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "124437": {
+    "name": "Shal'dorei Silk",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_tailoring_70_silkweave.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "124438": { "quality": 0, "rarity": "poor", "name": "Unbroken Claw", "icon": "" },
+  "124439": {
+    "name": "Unbroken Tooth",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_bone_08.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "124440": {
+    "name": "Arkhana",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_enchanting_70_arkhana.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "124441": {
+    "name": "Leylight Shard",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_enchanting_70_leylightcrystal.jpg",
+    "quality": 3,
+    "rarity": "rare"
+  },
+  "124442": {
+    "quality": 4,
+    "rarity": "epic",
+    "name": "Chaos Crystal",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_enchanting_70_chaosshard.jpg"
+  },
+  "124461": {
+    "name": "Demonsteel Bar",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_blacksmithing_70_demonsteelbar.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "124669": {
+    "name": "Darkmoon Daggermaw",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_fish_51.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "124675": {
+    "name": "Wild Gladiator's Cleaver",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_1h_pvpdraenors2_d_01.jpg"
+  },
+  "124837": {
+    "name": "Wild Gladiator's Hacker",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_1h_pvpdraenors2_d_01.jpg"
+  },
+  "124885": {
+    "name": "Wild Combatant's Cleaver",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_1h_draenorhonors2_c_01.jpg"
+  },
+  "125015": {
+    "name": "Wild Combatant's Hacker",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_1h_draenorhonors2_c_01.jpg"
+  },
+  "125154": {
+    "name": "Wild Gladiator's Cleaver",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_1h_pvpdraenors2_d_01.jpg"
+  },
+  "125316": {
+    "name": "Wild Gladiator's Hacker",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_1h_pvpdraenors2_d_01.jpg"
+  },
+  "125362": {
+    "name": "Wild Combatant's Cleaver",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_1h_draenorhonors2_c_01.jpg"
+  },
+  "125492": {
+    "name": "Wild Combatant's Hacker",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_1h_draenorhonors2_c_01.jpg"
+  },
+  "125634": {
+    "name": "Wild Gladiator's Cleaver",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_1h_pvpdraenors2_d_01.jpg"
+  },
+  "125766": {
+    "name": "Wild Gladiator's Hacker",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_1h_pvpdraenors2_d_01.jpg"
+  },
+  "127380": {
+    "name": "Wild Combatant's Chopper",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_1h_draenorhonors2_c_02.jpg"
+  },
+  "127381": {
+    "name": "Wild Combatant's Chopper",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_1h_draenorhonors2_c_02.jpg"
+  },
+  "127759": {
+    "quality": 0,
+    "rarity": "poor",
+    "name": "Felblight",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/spell_yorsahj_bloodboil_green.jpg"
+  },
+  "127991": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Felmouth Frenzy",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/ability_creature_poison_05.jpg"
+  },
+  "128304": {
+    "name": "Yseralline Seed",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_herbalism_70_yserallineseed.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "128826": {
+    "name": "Thas'dorah, Legacy of the Windrunners",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_bow_1h_artifactwindrunner_d_02.jpg"
+  },
+  "129032": {
+    "name": "Roseate Pigment",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/70_inscription_pigment_roseate.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "129034": {
+    "quality": 0,
+    "rarity": "poor",
+    "name": "Sallow Pigment",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/70_inscription_pigment_sallow.jpg"
+  },
+  "129934": {
+    "name": "Wild Gladiator's Runeaxe",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_1h_pvpdraenors2_d_02.jpg"
+  },
+  "129935": {
+    "name": "Wild Gladiator's Runeaxe",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_1h_pvpdraenors2_d_02.jpg"
+  },
+  "129936": {
+    "name": "Wild Gladiator's Runeaxe",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_1h_pvpdraenors2_d_02.jpg"
+  },
+  "133004": {
+    "name": "Swirling Demonic Whispers",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_ember_fel.jpg"
+  },
+  "133179": {
+    "name": "Lightning Whelk Axe",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_1h_cataclysm_c_01.jpg"
+  },
+  "133196": {
+    "name": "Whitefin Axe",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_2h_cataclysm_c_01.jpg"
+  },
+  "133397": {
+    "name": "Windrunner's Bow",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/bow_1h_430future_c_01.jpg"
+  },
+  "133607": {
+    "quality": 0,
+    "rarity": "poor",
+    "name": "Silver Mackerel",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_fish_48.jpg"
+  },
+  "136586": {
+    "name": "Stormwind Vanguard Splitter",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_1h_draenorcrafted_d_02_a_alliance.jpg"
+  },
+  "136630": {
+    "name": "\"Twirling Bottom\" Repeater",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_weapon_rifle_23.jpg"
+  },
+  "137225": {
+    "name": "Thunderfury, Blessed Blade of the Windseeker",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_sword_39.jpg"
+  },
+  "138764": {
+    "name": "Stormwind Vanguard Waraxe",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_1h_draenorcrafted_d_02_b_alliance.jpg"
+  },
+  "138769": {
+    "name": "Stormwind Vanguard Polearm",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_polearm_2h_draenorcrafted_d_01_b.jpg"
+  },
+  "138771": {
+    "name": "Stormwind Vanguard Longbow",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_bow_1h_draenorcrafted_d_01_b_alliance.jpg"
+  },
+  "138772": {
+    "name": "Stormwind Vanguard Bonegrinder",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_mace_2h_draenorcrafted_d_01_a_alliance.jpg"
+  },
+  "141258": {
+    "name": "Whirlpool Seed",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_elemental_mote_water01.jpg"
+  },
+  "142194": {
+    "name": "Gloomy Vortex",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/ability_priest_voidentropy.jpg"
+  },
+  "142335": {
+    "name": "Pristine Falcosaur Feather",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_feather_12.jpg"
+  },
+  "142336": {
+    "name": "Falcosaur Egg",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_falcosauregg_blue.jpg"
+  },
+  "147378": {
+    "name": "Wooden Toy Sword",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_sword_1h_alliancetoy_a_01.jpg"
+  },
+  "147379": {
+    "name": "Wooden Toy Axe",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_sword_1h_hordetoy_a_01.jpg"
+  },
+  "151564": {
+    "name": "Empyrium",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_starmetal.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "151565": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Astral Glory",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_herb_astralglory.jpg"
+  },
+  "151566": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Fiendish Leather",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_leatherworking_fiendishleather.jpg"
+  },
+  "151567": {
+    "name": "Lightweave Cloth",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_tailoring_lightweavecloth.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "152040": {
+    "name": "Frigid Gloomstone",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_gem_saphirerough_03.jpg"
+  },
+  "152507": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Akunda's Bite",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_herb_akundasbite.jpg"
+  },
+  "152508": {
+    "name": "Winter's Kiss",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_herb_winterskiss.jpg",
+    "quality": 1,
+    "rarity": "common"
+  },
+  "152509": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Siren's Pollen",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_herb_pollen.jpg"
+  },
+  "152512": {
+    "name": "Monelite Ore",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_ore_monalite.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "152513": {
+    "name": "Platinum Ore",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_ore_platinum.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "152541": {
+    "name": "Coarse Leather",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_skinning_80_coarseleather.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "152542": {
+    "name": "Hardened Tempest Hide",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_skinning_80_hardenedtempesthide.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "152543": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Sand Shifter",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_fishing_sandshifter.jpg"
+  },
+  "152544": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Slimy Mackerel",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_fishing_slimymackerel.jpg"
+  },
+  "152545": {
+    "quality": 0,
+    "rarity": "poor",
+    "name": "Frenzied Fangtooth",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_fishing_frenziedfangtooth.jpg"
+  },
+  "152547": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Great Sea Catfish",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_fishing_greatseacatfish.jpg"
+  },
+  "152576": {
+    "name": "Tidespray Linen",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_tailoring_80_tidespraylinen.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "152577": {
+    "name": "Deep Sea Satin",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_tailoring_80_deepseasatin.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "152579": {
+    "name": "Storm Silver Ore",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_ore_stormsilver.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "152631": {
+    "name": "Briny Flesh",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_cooking_80_brinyflesh.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "152815": {
+    "name": "Antoran Gloomhound",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_felhound3_shadow_mount.jpg"
+  },
+  "152875": {
+    "name": "Gloom Dust",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_enchanting_80_shadowdust.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "152877": {
+    "name": "Veiled Crystal",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_enchanting_80_veiledcrystal.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "153050": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Shimmerscale",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_skinning_80_shimmerscale.jpg"
+  },
+  "153051": {
+    "name": "Mistscale",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_skinning_80_mistscale.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "153506": {
+    "name": "Finely-Tuned Stormsteel Destroyer",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_firearm_2h_rifle_kultirasquest_b_01.jpg"
+  },
+  "153604": {
+    "name": "Ace of Squalls",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_inscription_80_deck_squallsa.jpg"
+  },
+  "153614": {
+    "name": "Two of Squalls",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_inscription_80_deck_squalls2.jpg"
+  },
+  "153615": {
+    "name": "Three of Squalls",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_inscription_80_deck_squalls3.jpg"
+  },
+  "153616": {
+    "name": "Four of Squalls",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_inscription_80_deck_squalls4.jpg"
+  },
+  "153617": {
+    "name": "Five of Squalls",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_inscription_80_deck_squalls5.jpg"
+  },
+  "153618": {
+    "name": "Six of Squalls",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_inscription_80_deck_squalls6.jpg"
+  },
+  "153619": {
+    "name": "Seven of Squalls",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_inscription_80_deck_squalls7.jpg"
+  },
+  "153620": {
+    "quality": 3,
+    "rarity": "rare",
+    "name": "Eight of Squalls",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_inscription_80_deck_squalls8.jpg"
+  },
+  "153635": {
+    "name": "Ultramarine Pigment",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_inscription_80_ultramarinepigment.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "153669": {
+    "name": "Viridescent Pigment",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_inscription_80_viridescentpigment.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "154164": {
+    "name": "Blood-Stained Bone",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_skinning_80_bloodsoakedbone.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "154165": {
+    "quality": 0,
+    "rarity": "poor",
+    "name": "Calcified Bone",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_skinning_80_calcifiedbone.jpg"
+  },
+  "154722": {
+    "quality": 0,
+    "rarity": "poor",
+    "name": "Tempest Hide",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_skinning_80_tempesthide.jpg"
+  },
+  "154898": {
+    "name": "Meaty Haunch",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_cooking_80_meatyhaunch.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "154899": {
+    "name": "Thick Paleo Steak",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_cooking_80_thickpaleosteak.jpg"
+  },
+  "155053": {
+    "name": "Scaleterror Slicer",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_1h_kultirasquest_b_01.jpg"
+  },
+  "156357": {
+    "name": "Hammer of Crushing Whispers",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_mace_93.jpg"
+  },
+  "156705": {
+    "name": "Lightforged Hoofguards",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_armor_boot_lightforgeddraenei_d_01.jpg"
+  },
+  "156953": {
+    "name": "'Liberated' Greataxe",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_throwingaxe_06.jpg"
+  },
+  "158108": {
+    "name": "Whisperfen Chopper",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_1h_zandalarquest_b_02.jpg"
+  },
+  "158111": {
+    "name": "Whisperfen Hewer",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_2h_zandalarquest_b_01.jpg"
+  },
+  "158128": {
+    "name": "Whisperfen Polearm",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_polearm_2h_zandalari_b_01.jpg"
+  },
+  "158186": {
+    "name": "Distilled Water",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_inscription_80_distilledwater.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "158187": {
+    "name": "Ultramarine Ink",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_inscription_80_ultramarineink.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "158188": {
+    "name": "Crimson Ink",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_inscription_80_crimsonink.jpg",
+    "quality": 1,
+    "rarity": "common"
+  },
+  "158205": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Acacia Powder",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_inscription_80_acaciapowder.jpg"
+  },
+  "158378": {
+    "name": "Embroidered Deep Sea Satin",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_tailoring_80_embroidereddeepseasatin.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "159642": {
+    "name": "Royal Purifier's Spade",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_polearm_2h_zandalariguard_b_01.jpg"
+  },
+  "159855": {
+    "name": "Honorable Combatant's Deckpounder",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_mace_2h_warfrontshorde_c_01.jpg"
+  },
+  "159858": {
+    "name": "Honorable Combatant's Polearm",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_polearm_2h_warfrontshorde_c_01red.jpg"
+  },
+  "159896": {
+    "name": "Honorable Combatant's Bow",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_bow_1h_warfrontshorde_c_01.jpg"
+  },
+  "159936": {
+    "name": "Honorable Combatant's Stormsteel Destroyer",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_firearm_2h_warfrontshorde_c_01.jpg"
+  },
+  "160059": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Amber Tanning Oil",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_skinning_80_ambertanningoil.jpg"
+  },
+  "160298": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Durable Flux",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_powder_purple.jpg"
+  },
+  "160400": {
+    "name": "Foosaka",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_cooking_80_foosaka.jpg"
+  },
+  "160709": {
+    "name": "Fresh Potato",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_cooking_80_brownpotato.jpg"
+  },
+  "161921": {
+    "name": "Honorable Combatant's Deckpounder",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_mace_2h_warfrontsalliance_c_01.jpg"
+  },
+  "161923": {
+    "name": "Honorable Combatant's Polearm",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_polearm_2h_warfrontsalliance_c_01.jpg"
+  },
+  "161930": {
+    "name": "Finely-Tuned Stormsteel Destroyer",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_firearm_2h_rifle_kultirasquest_b_01.jpg"
+  },
+  "161931": {
+    "name": "Honorable Combatant's Stormsteel Destroyer",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_firearm_2h_warfrontsalliance_c_01.jpg"
+  },
+  "161975": {
+    "name": "Honorable Combatant's Bow",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_bow_1h_warfrontsalliance_c_01.jpg"
+  },
+  "163493": {
+    "name": "Bloody Rabbit Fang",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/ability_druid_disembowel.jpg"
+  },
+  "163569": {
+    "name": "Insulated Wiring",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_jewelcrafting_delicatecopperwire.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "163586": {
+    "name": "Squawks",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_parrotmount_green.jpg"
+  },
+  "164347": {
+    "name": "Plundered Windblaster",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_firearm_2h_rifle_cataclysm_c_01.jpg"
+  },
+  "164354": {
+    "name": "Plundered Wingblade Axe",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_2h_grimbatolraid_d_01.jpg"
+  },
+  "164679": {
+    "name": "Sinister Combatant's Stormsteel Destroyer",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_firearm_2h_warfrontshorde_c_01.jpg"
+  },
+  "164696": {
+    "name": "Sinister Combatant's Stormsteel Destroyer",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_firearm_2h_warfrontsalliance_c_01.jpg"
+  },
+  "165599": {
+    "name": "Pterrorwing Longbow",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_bow_1h_zuldazarraid_d_01.jpg"
+  },
+  "166700": {
+    "name": "Durable Sailor's Duffel",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_coinbag08.jpg"
+  },
+  "167738": {
+    "name": "Gilded Seaweave",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_fabric_seaweave.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "167904": {
+    "name": "Smelly Pile of Gloop",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_food_legion_goocaramel_chunk.jpg"
+  },
+  "167996": {
+    "name": "Notorious Combatant's Stormsteel Destroyer",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_firearm_2h_warfrontshorde_c_01.jpg"
+  },
+  "167997": {
+    "name": "Notorious Combatant's Stormsteel Destroyer",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_firearm_2h_warfrontsalliance_c_01.jpg"
+  },
+  "168185": {
+    "name": "Osmenite Ore",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_ore_osmenite.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "168303": {
+    "name": "Rubbery Flank",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_cooking_82_rubberyflank.jpg",
+    "quality": 1,
+    "rarity": "common"
+  },
+  "168487": {
+    "name": "Zin'anthid",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_herb_zoanthid.jpg",
+    "quality": 1,
+    "rarity": "common"
+  },
+  "168583": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Widowbloom",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_herb_bloodcup.jpg"
+  },
+  "168586": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Rising Glory",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_herb_risingglory.jpg"
+  },
+  "168589": {
+    "name": "Marrowroot",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_herb_marrowroot.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "168645": {
+    "name": "Moist Fillet",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_cooking_82_moistfillet.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "168649": {
+    "name": "Dredged Leather",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_startannedleather.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "168650": {
+    "name": "Cragscale",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_skinning_80_shimmerscale.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "168662": {
+    "name": "Maroon Pigment",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_inscription_82_maroonpigment.jpg"
+  },
+  "168901": {
+    "name": "Royal Scaleguard's Battleaxe",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_1h_nazjatarraid_d_01.jpg"
+  },
+  "169701": {
+    "name": "Death Blossom",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_herb_deathblossom.jpg",
+    "quality": 1,
+    "rarity": "common"
+  },
+  "170314": {
+    "name": "Uncanny Combatant's Stormsteel Destroyer",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_firearm_2h_warfrontsalliance_c_01.jpg"
+  },
+  "170315": {
+    "name": "Uncanny Combatant's Stormsteel Destroyer",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_firearm_2h_warfrontshorde_c_01.jpg"
+  },
+  "170554": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Vigil's Torch",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_herb_ardenweald.jpg"
+  },
+  "171315": {
+    "name": "Nightshade",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_herb_nightshade.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "171526": {
+    "name": "Hellscream Slicer",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_104.jpg"
+  },
+  "171725": {
+    "name": "Arathar, the Eye of Flame",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_bow_1h_firelandsraid_d_01.jpg"
+  },
+  "171828": {
+    "name": "Laestrite Ore",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_ore_lastrite.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "171833": {
+    "name": "Elethium Ore",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_ore_elethium.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "171840": {
+    "name": "Porous Stone",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_ore_porousstone.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "171841": {
+    "quality": 2,
+    "rarity": "uncommon",
+    "name": "Shaded Stone",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_ore_shadestone.jpg"
+  },
+  "172052": {
+    "name": "Aethereal Meat",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_cooking_90_aetherealmeat.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "172053": {
+    "name": "Tenebrous Ribs",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_cooking_90_tenebrousribs.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "172054": {
+    "name": "Raw Seraphic Wing",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_food_46.jpg",
+    "quality": 1,
+    "rarity": "common"
+  },
+  "172089": {
+    "name": "Desolate Leather",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_leatherworking_90_leather.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "172092": {
+    "name": "Pallid Bone",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_leatherworking_90_bone.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "172094": {
+    "name": "Callous Hide",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_leatherworking_90_leatherhide.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "172096": {
+    "quality": 2,
+    "rarity": "uncommon",
+    "name": "Heavy Desolate Leather",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_leatherworking_90_heavyleather.jpg"
+  },
+  "172097": {
+    "quality": 0,
+    "rarity": "poor",
+    "name": "Heavy Callous Hide",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_leatherworking_90_heavyleatherhide.jpg"
+  },
+  "172193": {
+    "name": "Whispering Eldritch Bow",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_bow_1h_nzothraid_d_01.jpg"
+  },
+  "172230": {
+    "name": "Soul Dust",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_enchanting_dust.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "172231": {
+    "name": "Sacred Shard",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_enchanting_shard.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "172232": { "quality": 0, "rarity": "poor", "name": "Eternal Crystal", "icon": "" },
+  "172439": {
+    "name": "Enchanted Lightless Silk",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_enchanting_craftedreagent_cloth.jpg"
+  },
+  "172934": {
+    "name": "Handful of Laestrite Bolts",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_engineering_90_bolts.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "172935": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Porous Polishing Abrasive",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_engineering_90_gunpowder.jpg"
+  },
+  "173032": {
+    "quality": 0,
+    "rarity": "poor",
+    "name": "Lost Sole",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_fishing_lostsole.jpg"
+  },
+  "173033": {
+    "name": "Iridescent Amberjack",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_fishing_iridescentamberjack.jpg"
+  },
+  "173035": {
+    "name": "Pocked Bonefish",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_fishing_pockedbonefish.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "173037": {
+    "quality": 2,
+    "rarity": "uncommon",
+    "name": "Elysian Thade",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_fishing_elysianthade.jpg"
+  },
+  "173056": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Umbral Pigment",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_inscription_pigment_umbral01.jpg"
+  },
+  "173057": {
+    "name": "Luminous Pigment",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_inscription_pigment_luminous01.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "173058": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Umbral Ink",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_inscription_ink_umbral01.jpg"
+  },
+  "173059": {
+    "name": "Luminous Ink",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_inscription_ink_luminous01.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "173060": {
+    "name": "Aerated Water",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_inscription_80_distilledwater.jpg",
+    "quality": 1,
+    "rarity": "common"
+  },
+  "173202": {
+    "name": "Shrouded Cloth",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_tailoring_commoncloth.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "173204": {
+    "name": "Lightless Silk",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_tailoring_uncommoncloth.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "173891": {
+    "name": "Plagueborn Slime",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_maldraxxusslime_green.jpg"
+  },
+  "174302": {
+    "name": "Labrys of the Loyal Larion",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_1h_bastion_d_01.jpg"
+  },
+  "174353": {
+    "quality": 0,
+    "rarity": "poor",
+    "name": "Questionable Meat",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_food_draenor_rawbasiliskflesh.jpg"
+  },
+  "174456": {
+    "name": "Bottle of Gloop",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_food_162_fish_90blue.jpg"
+  },
+  "174461": {
+    "name": "Swirling Black Bottle",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_alchemy_elixir_empty.jpg"
+  },
+  "175788": {
+    "name": "Tranquil Pigment",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_inscription_pigment_tranquil01.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "175970": {
+    "name": "Tranquil Ink",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_inscription_ink_tranquil01.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "178162": {
+    "name": "Tunk's Whomper",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_mace_2h_dreanorogre_b_01.jpg"
+  },
+  "179315": {
+    "name": "Shadowy Shank",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_food_72.jpg",
+    "quality": 1,
+    "rarity": "common"
+  },
+  "180075": {
+    "name": "Winterborn Bow",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_bow_1h_ardenweald_d_01_temp.jpg"
+  },
+  "180634": {
+    "name": "Gloober, as G'huun",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_decomposersmallwhite.jpg"
+  },
+  "180728": {
+    "name": "Swift Gloomhoof",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_horse2ardenwealdmount_dark.jpg"
+  },
+  "180732": {
+    "name": "Rune Etched Vial",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_craftingreagent_vial01.jpg"
+  },
+  "182079": {
+    "name": "Slime-Covered Reins of the Hulking Deathroc",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_rocmaldraxxusmountpurple.jpg"
+  },
+  "184084": {
+    "name": "Rathan's Bonespike Launcher",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_firearm_2h_maldraxxus_d_01.jpg"
+  },
+  "186017": {
+    "name": "Korthite Crystal",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_jewelcrafting_90_gem_green.jpg",
+    "quality": 5,
+    "rarity": "legendary"
+  },
+  "186414": {
+    "name": "Rae'shalare, Death's Whisper",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_bow_1h_sylvanasshadowlands_d_01.jpg"
+  },
+  "186656": {
+    "name": "Sanctum Gloomcharger's Reins",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/ability_mount_mawhorsespikes_purple.jpg"
+  },
+  "186657": {
+    "name": "Soulbound Gloomcharger's Reins",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/ability_mount_mawhorsespikes_teal.jpg"
+  },
+  "187700": {
+    "quality": 3,
+    "rarity": "rare",
+    "name": "Progenium Ore",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_miningnode_prog_01.jpg"
+  },
+  "187701": {
+    "quality": 0,
+    "rarity": "poor",
+    "name": "Protogenic Pelt",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_leatherworking_progenitorhide.jpg"
+  },
+  "187703": {
+    "quality": 3,
+    "rarity": "rare",
+    "name": "Silken Protofiber",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_tailoring_progenitorsilk.jpg"
+  },
+  "187704": {
+    "name": "Protoflesh",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_cooking_progenitormeat.jpg",
+    "quality": 3,
+    "rarity": "rare"
+  },
+  "187886": {
+    "name": "Technique: Mark of the Gloomstalker Dredbat",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_scroll_03.jpg"
+  },
+  "188658": {
+    "name": "Draconium Ore",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_ore_draconium.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "190311": {
+    "name": "Draconium Ore",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_ore_draconium.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "190313": {
+    "quality": 3,
+    "rarity": "rare",
+    "name": "Khaz'gorite Ore",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_mining_traceore_color3.jpg"
+  },
+  "190315": {
+    "name": "Rousing Earth",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_elementalshardfoozles_earth.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "190320": {
+    "name": "Rousing Fire",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_elementalshardfoozles_fire.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "190322": {
+    "name": "Rousing Order",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_elementalshardfoozles_titan.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "190324": {
+    "name": "Awakened Order",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_elementalcombinedfoozles_titan.jpg",
+    "quality": 3,
+    "rarity": "rare"
+  },
+  "190326": {
+    "name": "Rousing Air",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_elementalshardfoozles_air.jpg"
+  },
+  "190328": {
+    "name": "Rousing Frost",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_elementalshardfoozles_frost.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "190330": {
+    "quality": 3,
+    "rarity": "rare",
+    "name": "Rousing Decay",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_elementalshardfoozles_decay.jpg"
+  },
+  "190394": {
+    "name": "Serevite Ore",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_ore_tyrivite.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "190395": {
+    "name": "Serevite Ore",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_ore_tyrivite.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "190396": {
+    "name": "Serevite Ore",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_ore_tyrivite.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "190451": {
+    "name": "Rousing Ire",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_elementalshardfoozles_blood.jpg",
+    "quality": 3,
+    "rarity": "rare"
+  },
+  "190518": {
+    "name": "Obsidian Seared Slicer",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_1h_dragonpvp_d_01.jpg"
+  },
+  "190824": {
+    "name": "Loyal Blademaster's Greatsword",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_sword_2h_katana_b_03.jpg"
+  },
+  "191460": {
+    "name": "Hochenblume",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_herb_dragonsbreath.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "191461": {
+    "name": "Hochenblume",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_herb_dragonsbreath.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "191462": {
+    "name": "Hochenblume",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_herb_dragonsbreath.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "191464": {
+    "quality": 2,
+    "rarity": "uncommon",
+    "name": "Saxifrage",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_herb_saxifrage.jpg"
+  },
+  "191465": {
+    "quality": 2,
+    "rarity": "uncommon",
+    "name": "Saxifrage",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_herb_saxifrage.jpg"
+  },
+  "191472": {
+    "name": "Writhebark",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_herb_writhebark.jpg"
+  },
+  "191474": {
+    "name": "Draconic Vial",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_alchemy_bottle_shape1_empty.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "191476": {
+    "name": "Draconic Vial",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_alchemy_bottle_shape1_empty.jpg"
+  },
+  "192019": {
+    "quality": 2,
+    "rarity": "uncommon",
+    "name": "Calibrated Hand Cannon",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_firearm_2h_dragondungeon_c_01.jpg"
+  },
+  "192097": {
+    "quality": 0,
+    "rarity": "poor",
+    "name": "Spool of Wilderthread",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_tailoring_tailoringconsumable_color2.jpg"
+  },
+  "192851": {
+    "quality": 2,
+    "rarity": "uncommon",
+    "name": "Eternity Amber",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_jewelcrafting_gem1leveling_uncut_bronze.jpg"
+  },
+  "192861": {
+    "quality": 3,
+    "rarity": "rare",
+    "name": "Ysemerald",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_jewelcrafting_gem2standard_uncut_green.jpg"
+  },
+  "192868": {
+    "quality": 0,
+    "rarity": "poor",
+    "name": "Nozdorite",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_jewelcrafting_gem2standard_uncut_bronze.jpg"
+  },
+  "192872": {
+    "name": "Fractured Glass",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_jewelcrafting2_glassshards_color1.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "192880": {
+    "name": "Crumbled Stone",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_jewelcrafting_stones_color1.jpg"
+  },
+  "192916": {
+    "quality": 2,
+    "rarity": "uncommon",
+    "name": "Solid Eternity Amber",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_jewelcrafting_gem1leveling_cut_bronze.jpg"
+  },
+  "193031": {
+    "quality": 2,
+    "rarity": "uncommon",
+    "name": "Projection Prism",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_jewelcrafting_prism_blue.jpg"
+  },
+  "193050": {
+    "name": "Tattered Wildercloth",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_tailoring_clothcommon_color2.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "193053": {
+    "name": "Contoured Fowlfeather",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_feather_10.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "193208": {
+    "name": "Resilient Leather",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_skinning_leather_basicleather_color1.jpg",
+    "quality": 1,
+    "rarity": "common"
+  },
+  "193211": { "quality": 0, "rarity": "poor", "name": "Resilient Leather", "icon": "" },
+  "193213": { "quality": 0, "rarity": "poor", "name": "Adamant Scales", "icon": "" },
+  "193214": {
+    "name": "Adamant Scales",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_skinning_scales_black.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "193215": {
+    "name": "Adamant Scales",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_skinning_scales_black.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "193223": {
+    "name": "Lustrous Scaled Hide",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_skinning_dragonscales_bronze.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "193252": {
+    "name": "Salamanther Scales",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_monsterscales_20.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "193254": {
+    "name": "Rockfang Leather",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_pelt_04.jpg",
+    "quality": 2,
+    "rarity": "uncommon"
+  },
+  "193255": {
+    "name": "Pristine Vorquin Horn",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_specialization_leatherworking_pristinevorquinhorn_color2.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "193256": {
+    "quality": 2,
+    "rarity": "uncommon",
+    "name": "Windsong Plumage",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_icon_feather01a.jpg"
+  },
+  "193261": {
+    "name": "Bite-Sized Morsel",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_food_meat_crabmeat.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "193368": {
+    "quality": 2,
+    "rarity": "uncommon",
+    "name": "Silken Gemdust",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_enchanting_wod_dust4.jpg"
+  },
+  "193369": {
+    "quality": 2,
+    "rarity": "uncommon",
+    "name": "Silken Gemdust",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_enchanting_wod_dust4.jpg"
+  },
+  "193370": {
+    "name": "Silken Gemdust",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_enchanting_wod_dust4.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "193922": {
+    "name": "Wildercloth",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_tailoring_clothrare_color3.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "193927": {
+    "name": "Wildercloth Bolt",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_tailoring_wovenbolt_basic.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "193928": {
+    "name": "Wildercloth Bolt",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_tailoring_wovenbolt_basic.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "194017": {
+    "quality": 2,
+    "rarity": "uncommon",
+    "name": "Wildercloth Bag",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_bag_35.jpg"
+  },
+  "194123": {
+    "name": "Chromatic Dust",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_enchanting_dust_color5.jpg",
+    "quality": 1,
+    "rarity": "common"
+  },
+  "194755": {
+    "name": "Cosmic Ink",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_inscription_ink_color3.jpg",
+    "quality": 3,
+    "rarity": "rare"
+  },
+  "194846": {
+    "name": "Blazing Ink",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_inscription_ink_color5.jpg",
+    "quality": 1,
+    "rarity": "common"
+  },
+  "194966": {
+    "name": "Thousandbite Piranha",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_fishing_fishdragon_bronze.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "194968": {
+    "name": "Cerulean Spinefish",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_fishpterois_blue.jpg"
+  },
+  "194969": {
+    "name": "Temporal Dragonhead",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_fishing_fishdragon_blue.jpg",
+    "quality": 1,
+    "rarity": "common"
+  },
+  "194970": {
+    "quality": 2,
+    "rarity": "uncommon",
+    "name": "Islefin Dorado",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_fishing_fishice_color2.jpg"
+  },
+  "195178": {
+    "name": "Swirling Sand Fists",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_hand_1h_dragonquest_b_01.jpg"
+  },
+  "195182": {
+    "name": "Inexorable Separation",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_2h_dragonquest_b_01.jpg"
+  },
+  "197741": {
+    "name": "Maybe Meat",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_food_132_meat.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "197742": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Ribbed Mollusk Meat",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_food_52.jpg"
+  },
+  "197744": {
+    "name": "Hornswog Hunk",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_food_134_meat.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "197746": {
+    "quality": 0,
+    "rarity": "poor",
+    "name": "Bruffalon Flank",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_food_98_talbuk.jpg"
+  },
+  "197754": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Salt Deposit",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_ore_platinum_01.jpg"
+  },
+  "198035": {
+    "name": "Archer's Decorated Bow",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_bow_1h_dragondungeon_c_01.jpg"
+  },
+  "198185": {
+    "name": "Handful of Serevite Bolts",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_engineering_manufacturedparts_gizmo_fireironbolts_blue.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "198188": {
+    "name": "Shock-Spring Coil",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_engineering_manufacturedparts_spring_uprez.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "198194": {
+    "name": "Greased-Up Gears",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_engineering_manufacturedparts_gear_uprez.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "198416": {
+    "quality": 2,
+    "rarity": "uncommon",
+    "name": "Flourishing Pigment",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_inscription3_pigments_green.jpg"
+  },
+  "198422": {
+    "name": "Shimmering Pigment",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_inscription3_pigments_black.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "198487": {
+    "name": "Iridescent Water",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/shaman_pvp_ripplingwaters.jpg",
+    "quality": 1,
+    "rarity": "common"
+  },
+  "198912": {
+    "name": "Technique: Illusion Parchment: Whirling Breeze",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_inscription2_scroll2_color2.jpg"
+  },
+  "199044": {
+    "name": "Isle Trapper's Axe",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_1h_dragonquest_b_02.jpg"
+  },
+  "199400": {
+    "name": "Squallbreaker Greatsword",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_sword_2h_dragonquest_b_01.jpg"
+  },
+  "199700": {
+    "name": "Valdrakken Bladewing Decapitator",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_2h_drakonoid_c_01.jpg"
+  },
+  "199701": {
+    "name": "Cobalt Dragonwing Decapitator",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_2h_drakonoid_c_01.jpg"
+  },
+  "200113": {
+    "quality": 4,
+    "rarity": "epic",
+    "name": "Resonant Crystal",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_enchanting_crystal_color2.jpg"
+  },
+  "200307": {
+    "name": "Viciously Hooked Cleaver",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_1h_dragondungeon_c_01.jpg"
+  },
+  "201302": {
+    "name": "Scarab Blaster",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_firearm_2h_dragonquest_b_01.jpg"
+  },
+  "201399": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Primal Bear Spine",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_skeletonspinepet_green.jpg"
+  },
+  "201406": {
+    "name": "Glowing Titan Orb",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/item_enchantedpearl.jpg",
+    "quality": 1,
+    "rarity": "common"
+  },
+  "202287": {
+    "name": "Paw-Made Winterpelt Reagent Bag",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_coinbag13.jpg"
+  },
+  "202301": {
+    "quality": 4,
+    "rarity": "epic",
+    "name": "Focalized Mana Accelerator",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_weapon_rifle_26.jpg"
+  },
+  "204015": {
+    "name": "Swirling Mojo Stone",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_gem_ebondraenite_02.jpg"
+  },
+  "204406": {
+    "name": "Ancient Design: Square Holders",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_scrollrolled02c.jpg"
+  },
+  "204456": {
+    "name": "Proto-Drake Slicer",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_1h_blackdragonoutdoor_d_01.jpg"
+  },
+  "204460": {
+    "name": "Zaralek Glowspores",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_gathering_bioluminescentspores_medium.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "204979": {
+    "name": "Neltharic Wingaxe",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_1h_blackdragonoutdoor_d_01.jpg"
+  },
+  "204980": {
+    "name": "Neltharic Wingsplitter",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_1h_blackdragonoutdoor_d_01.jpg"
+  },
+  "206806": {
+    "name": "Part Dislocator",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_1h_gnome_c_01.jpg"
+  },
+  "207014": {
+    "name": "Jingoist's Slicer",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_1h_hordeflame_c_01.jpg"
+  },
+  "207561": {
+    "name": "Ichor Slicer",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_weapon_halberd_05.jpg"
+  },
+  "207702": {
+    "quality": 3,
+    "rarity": "rare",
+    "name": "Wartorn Scrap",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_blacksmithing_craftedoptional_reinforcedmetalplating_color01.jpg"
+  },
+  "207786": {
+    "name": "Gholak, the Final Conflagration",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_1h_emeralddreamraid_d_01.jpg"
+  },
+  "208031": {
+    "name": "Convenient Crate",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_crate_01.jpg"
+  },
+  "210221": {
+    "name": "Forged Combatant's Heraldry",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_competition_placement_ribbon_green.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "210396": {
+    "name": "Winter Forager's Longbow",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_bow_1h_emeralddreamoutdoor_d_01.jpg"
+  },
+  "210397": {
+    "name": "Winter Forager's Chopper",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_1h_emeralddreamoutdoor_d_01.jpg"
+  },
+  "210398": {
+    "name": "Winter Forager's Handaxe",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_1h_emeralddreamoutdoor_d_01.jpg"
+  },
+  "210404": {
+    "name": "Winter Forager's Curve",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_bow_1h_emeralddreamoutdoor_d_01.jpg"
+  },
+  "210796": {
+    "name": "Mycobloom",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_herb_mycobloom.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "210797": {
+    "name": "Mycobloom",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_herb_mycobloom.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "210798": {
+    "name": "Mycobloom",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_herb_mycobloom.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "210799": {
+    "name": "Luredrop",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_herb_luredrop.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "210800": {
+    "name": "Luredrop",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_herb_luredrop.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "210801": {
+    "name": "Luredrop",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_herb_luredrop.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "210802": {
+    "name": "Orbinid",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_herb_orbinid.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "210803": {
+    "name": "Orbinid",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_herb_orbinid.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "210804": {
+    "name": "Orbinid",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_herb_orbinid.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "210805": {
+    "name": "Blessing Blossom",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_herb_blessingblossom.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "210806": {
+    "name": "Blessing Blossom",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_herb_blessingblossom.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "210807": {
+    "name": "Blessing Blossom",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_herb_blessingblossom.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "210808": {
+    "name": "Arathor's Spear",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_herb_arathorsspear.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "210809": {
+    "name": "Arathor's Spear",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_herb_arathorsspear.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "210810": {
+    "name": "Arathor's Spear",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_herb_arathorsspear.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "210930": {
+    "name": "Bismuth",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_ore_bismuth.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "210931": {
+    "name": "Bismuth",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_ore_bismuth.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "210932": {
+    "name": "Bismuth",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_ore_bismuth.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "210933": {
+    "name": "Aqirite",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_ore_nerubian_red.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "210934": {
+    "name": "Aqirite",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_ore_nerubian_red.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "210935": {
+    "name": "Aqirite",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_ore_nerubian_red.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "210936": {
+    "name": "Ironclaw Ore",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_ore_ironclaw_normal.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "210937": {
+    "name": "Ironclaw Ore",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_ore_ironclaw_normal.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "210938": {
+    "name": "Ironclaw Ore",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_ore_ironclaw_normal.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "210939": {
+    "name": "Null Stone",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_nullstone_shadow.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "211806": {
+    "name": "Gilded Vial",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_blackfollowing.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "211807": {
+    "name": "Gilded Vial",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_blackfollowing.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "211808": {
+    "name": "Gilded Vial",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_blackfollowing.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "212495": {
+    "name": "Radiant Ruby",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_jewelcrafting_uncutstandartgem_color5.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "212498": {
+    "name": "Ambivalent Amber",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_jewelcrafting_uncutstandartgem_color4.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "212505": {
+    "name": "Extravagant Emerald",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_jewelcrafting_uncutstandartgem_color2.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "212508": {
+    "name": "Stunning Sapphire",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_jewelcrafting_uncutstandartgem_color3.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "212511": {
+    "name": "Ostentatious Onyx",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_jewelcrafting_uncutstandartgem_color1.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "212514": {
+    "name": "Blasphemite",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_jewelcrafting_uncutepicgem_color2.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "212564": {
+    "name": "Harmonious Horticulture",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/spell_shaman_giftearthmother.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "212565": {
+    "quality": 2,
+    "rarity": "uncommon",
+    "name": "Harmonious Horticulture",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/spell_shaman_giftearthmother.jpg"
+  },
+  "212664": {
+    "name": "Stormcharged Leather",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_12_skinning_stormchargedleather2.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "212665": {
+    "name": "Stormcharged Leather",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_12_skinning_stormchargedleather2.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "212666": {
+    "name": "Stormcharged Leather",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_12_skinning_stormchargedleather2.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "212667": {
+    "name": "Gloom Chitin",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_12_skinning_gloomchitin.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "212668": {
+    "name": "Gloom Chitin",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_12_skinning_gloomchitin.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "212669": {
+    "name": "Gloom Chitin",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_12_skinning_gloomchitin.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "212670": {
+    "name": "Thunderous Hide",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_12_skinning_thunderoushide1.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "212672": {
+    "name": "Thunderous Hide",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_12_skinning_thunderoushide1.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "212673": {
+    "name": "Thunderous Hide",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_12_skinning_thunderoushide1.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "212674": {
+    "name": "Sunless Carapace",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_12_skinning_sunlesscarapace1.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "212675": {
+    "name": "Sunless Carapace",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_12_skinning_sunlesscarapace1.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "212676": {
+    "name": "Sunless Carapace",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_12_skinning_sunlesscarapace1.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "213162": {
+    "name": "Blessed Bow of the Windseeker",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_bow_1h_thunderbow_d_01.jpg"
+  },
+  "213197": {
+    "name": "Null Lotus",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_nulllotus_shadow.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "213219": {
+    "name": "Crushed Gemstones",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_powder_mithril.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "213220": {
+    "name": "Crushed Gemstones",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_powder_mithril.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "213221": {
+    "name": "Crushed Gemstones",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_powder_mithril.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "213398": {
+    "name": "Handful of Pebbles",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_jewelcrafting_stones_color2.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "213399": {
+    "name": "Glittering Glass",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/trade_archaeology_arakkoa_crystalshard.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "213610": {
+    "name": "Crystalline Powder",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_crystalline_powder_orange.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "213611": {
+    "name": "Writhing Sample",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_writhing_samples_violet.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "213612": {
+    "name": "Viridescent Spores",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_viridescent_spores_violet.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "213613": {
+    "name": "Leyline Residue",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_leyline_residue_violet.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "213743": {
+    "quality": 4,
+    "rarity": "epic",
+    "name": "Culminating Blasphemite",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/item_cutmetagemb.jpg"
+  },
+  "213751": {
+    "name": "Engraved Gemcutter",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_nightelfknife.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "213752": {
+    "name": "Engraved Gemcutter",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_nightelfknife.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "213756": {
+    "name": "Marbled Stone",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/trade_archaeology_nerubian_obelisk.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "213757": {
+    "name": "Marbled Stone",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/trade_archaeology_nerubian_obelisk.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "213758": {
+    "name": "Marbled Stone",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/trade_archaeology_nerubian_obelisk.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "213777": {
+    "name": "Magnificent Jeweler's Setting",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_jewelcrafting_90_elethiumsetting.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "215236": {
+    "name": "Vicious Bloodstone",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_gem_ruby_01.jpg",
+    "quality": 4,
+    "rarity": "epic"
+  },
+  "217707": {
+    "name": "Imperfect Null Stone",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_alchemy_80_alchemiststone01.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "217813": {
+    "name": "Dreadsquall Hunter's Serrator",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_polearm_2h_hunter_c_01.jpg"
+  },
+  "217814": {
+    "name": "Dreadsquall Hunter's Pride",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_bow_1h_hunter_c_01.jpg"
+  },
+  "217815": {
+    "name": "Dreadsquall Hunter's Harpooner",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_firearm_2h_hunter_c_01.jpg"
+  },
+  "218336": {
+    "name": "Kaheti Swarm Chitin",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_12_skinning_gloomchitin1.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "218337": {
+    "name": "Honed Bone Shards",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_bone_07.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "218338": {
+    "name": "Bottled Storm",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/spell_nature_unrelentingstorm.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "218339": {
+    "name": "Burning Cinderbee Setae",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_pelt_12.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "219013": {
+    "name": "Superb Beast Fang",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_redsaberonfang.jpg",
+    "quality": 4,
+    "rarity": "epic"
+  },
+  "219506": {
+    "name": "Writhing Armor Banding",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_skinning_craftedoptionalreagent_studdedleatherswatch_color2.jpg"
+  },
+  "219882": {
+    "name": "Carapace-Backed Hide",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_craftedhides_base.jpg"
+  },
+  "219884": {
+    "quality": 3,
+    "rarity": "rare",
+    "name": "Crystalfused Hide",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_craftedhides_crystallinepowder.jpg"
+  },
+  "219885": {
+    "name": "Crystalfused Hide",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_craftedhides_crystallinepowder.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "219900": {
+    "name": "Chitin Armor Banding",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_12_skinning_gloomchitin2.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "219911": {
+    "quality": 1,
+    "rarity": "common",
+    "name": "Stormbound Armor Kit",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_armorkit_lightning_imbued.jpg"
+  },
+  "219946": {
+    "name": "Storm Dust",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_enchanting_dust_color3.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "219947": {
+    "name": "Storm Dust",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_enchanting_dust_color3.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "219948": {
+    "name": "Storm Dust",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_enchanting_dust_color3.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "219949": {
+    "name": "Gleaming Shard",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_enchanting_shard_color3.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "219950": {
+    "name": "Gleaming Shard",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_enchanting_shard_color3.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "219951": {
+    "name": "Gleaming Shard",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_enchanting_shard_color3.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "219952": {
+    "name": "Refulgent Crystal",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_enchanting_crystal_color2.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "219954": {
+    "name": "Refulgent Crystal",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_enchanting_crystal_color2.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "219955": {
+    "name": "Refulgent Crystal",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_enchanting_crystal_color2.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "220134": {
+    "name": "Dilly-Dally Dace",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_fishpterois_blue.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "220135": {
+    "name": "Bloody Perch",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_fish_22.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "220136": {
+    "name": "Crystalline Sturgeon",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_fishing_f_sturgeon3.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "220137": {
+    "name": "Bismuth Bitterling",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_fish_cursedqueenfishgreen.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "220138": {
+    "name": "Nibbling Minnow",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_fish_92.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "220139": {
+    "quality": 2,
+    "rarity": "uncommon",
+    "name": "Whispering Stargazer",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_nzothfish_green.jpg"
+  },
+  "220141": {
+    "quality": 2,
+    "rarity": "uncommon",
+    "name": "Specular Rainbowfish",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_fish_73.jpg"
+  },
+  "220143": {
+    "name": "Dornish Pike",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_fish_93.jpg",
+    "quality": 1,
+    "rarity": "common"
+  },
+  "220144": {
+    "quality": 0,
+    "rarity": "poor",
+    "name": "Roaring Anglerseeker",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_fish_79.jpg"
+  },
+  "220145": {
+    "quality": 2,
+    "rarity": "uncommon",
+    "name": "Arathor Hammerfish",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_fish_87.jpg"
+  },
+  "220146": {
+    "name": "Regal Dottyback",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_fish_99.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "220147": {
+    "name": "Kaheti Slum Shark",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_fishmount.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "220148": {
+    "quality": 2,
+    "rarity": "uncommon",
+    "name": "Pale Huskfish",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_fishing_f_whiptail1.jpg"
+  },
+  "220149": {
+    "name": "Sanguine Dogfish",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_fishing_fishdragon_red.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "220150": {
+    "name": "Spiked Sea Raven",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_fishpterois_orange.jpg"
+  },
+  "221754": {
+    "name": "Ringing Deeps Ingot",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_blacksmithing_craftedoptional_reinforcedmetalplating_color02.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "221756": {
+    "name": "Vial of Kaheti Oils",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/trade_alchemy_dpotion_c15.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "221757": {
+    "name": "Gloomfathom Hide",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_skinning_80_snakescales.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "221758": {
+    "name": "Profaned Tinderbox",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_tinderboxclosed01.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "221763": {
+    "name": "Viridian Charmcap",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_starspecklemushroom.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "221853": {
+    "name": "Handful of Bismuth Bolts",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_engineering_manufacturedparts_gizmo_fireironbolts_black.jpg",
+    "quality": 1,
+    "rarity": "common"
+  },
+  "221854": {
+    "name": "Handful of Bismuth Bolts",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_engineering_manufacturedparts_gizmo_fireironbolts_black.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "221855": {
+    "name": "Handful of Bismuth Bolts",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_engineering_manufacturedparts_gizmo_fireironbolts_black.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "221857": {
+    "name": "Whimsical Wiring",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/spell_mekkatorque_bot_greenspring.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "221860": {
+    "name": "Gyrating Gear",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_manufacturedpart1_orange.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "222418": {
+    "name": "Core Alloy",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_blacksmithingalloys_green.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "222421": {
+    "name": "Charged Alloy",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_blacksmithingalloys_purlple.jpg"
+  },
+  "222422": {
+    "name": "Charged Alloy",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_blacksmithingalloys_purlple.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "222424": {
+    "name": "Sanctified Alloy",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_blacksmithingalloys_red.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "222425": {
+    "name": "Sanctified Alloy",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_blacksmithingalloys_red.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "222427": {
+    "quality": 3,
+    "rarity": "rare",
+    "name": "Ironclaw Alloy",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_blacksmithingalloys_blue.jpg"
+  },
+  "222428": {
+    "name": "Ironclaw Alloy",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_blacksmithingalloys_blue.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "222500": {
+    "name": "Forged Framework",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_gizmo_adamantiteframe.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "222533": {
+    "name": "Goldengill Trout",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_fish_43.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "222557": {
+    "name": "Codified Greenwood",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_herb_arathorsspear_crystalized.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "222559": {
+    "name": "Boundless Cipher",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_specialreagentfoozles_coolegg_red.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "222560": {
+    "name": "Boundless Cipher",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_specialreagentfoozles_coolegg_red.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "222590": {
+    "quality": 2,
+    "rarity": "uncommon",
+    "name": "Algari Missive of the Harmonious",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_inscription2_repcontracts_scroll_02_uprez_color4.jpg"
+  },
+  "222593": {
+    "quality": 2,
+    "rarity": "uncommon",
+    "name": "Algari Missive of the Peerless",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_inscription2_repcontracts_scroll_02_uprez_color2.jpg"
+  },
+  "222610": {
+    "name": "Shadow Ink",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_inscriptions_ink_purple.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "222611": {
+    "name": "Shadow Ink",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_inscriptions_ink_purple.jpg",
+    "quality": 3,
+    "rarity": "rare"
+  },
+  "222612": {
+    "name": "Luredrop Pigment",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_inscription3_pigments_bronze.jpg",
+    "quality": 2,
+    "rarity": "uncommon"
+  },
+  "222613": {
+    "name": "Luredrop Pigment",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_inscription3_pigments_bronze.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "222614": {
+    "name": "Luredrop Pigment",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_inscription3_pigments_bronze.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "222615": {
+    "quality": 3,
+    "rarity": "rare",
+    "name": "Apricate Ink",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_inscriptions_ink_yellow.jpg"
+  },
+  "222616": {
+    "name": "Apricate Ink",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_inscriptions_ink_yellow.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "222617": {
+    "name": "Apricate Ink",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_inscriptions_ink_yellow.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "222618": {
+    "name": "Nacreous Pigment",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_inscription_pigment_tranquil01.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "222619": {
+    "name": "Nacreous Pigment",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_inscription_pigment_tranquil01.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "222620": {
+    "name": "Nacreous Pigment",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_inscription_pigment_tranquil01.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "222672": {
+    "name": "Ace of Vivacity",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_inscriptions_darkmoondeckvivacity_1.jpg"
+  },
+  "222673": {
+    "name": "Two of Vivacity",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_inscriptions_darkmoondeckvivacity_2.jpg",
+    "quality": 3,
+    "rarity": "rare"
+  },
+  "222674": {
+    "name": "Three of Vivacity",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_inscriptions_darkmoondeckvivacity_3.jpg"
+  },
+  "222675": {
+    "name": "Four of Vivacity",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_inscriptions_darkmoondeckvivacity_4.jpg"
+  },
+  "222676": {
+    "name": "Five of Vivacity",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_inscriptions_darkmoondeckvivacity_5.jpg"
+  },
+  "222677": {
+    "name": "Six of Vivacity",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_inscriptions_darkmoondeckvivacity_6.jpg",
+    "quality": 3,
+    "rarity": "rare"
+  },
+  "222678": {
+    "name": "Seven of Vivacity",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_inscriptions_darkmoondeckvivacity_7.jpg",
+    "quality": 3,
+    "rarity": "rare"
+  },
+  "222679": {
+    "name": "Eight of Vivacity",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_inscriptions_darkmoondeckvivacity_8.jpg",
+    "quality": 3,
+    "rarity": "rare"
+  },
+  "222695": {
+    "name": "Twined Herbs",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_food_vendor_scallions.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "222696": {
+    "name": "Crunchy Peppers",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_food_vendor_jadesquash.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "222697": {
+    "name": "Coreway Dust",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_food_vendor_blackpepper.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "222699": {
+    "name": "Khaz Algar Tomato",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_food_43.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "222700": {
+    "name": "Granulated Spices",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_enchant_dustspirit.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "222701": {
+    "name": "Clumped Flour",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_food_legion_flakedseasalt.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "222737": {
+    "name": "Chopped Mycobloom",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_driedneedlemushrooms.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "222739": {
+    "name": "Spiced Meat Stock",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_food_117_heartysoup.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "222741": {
+    "name": "Fresh Fillet",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_fishing_innards_meat_sleeper.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "222790": {
+    "name": "Spool of Duskthread",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_tailoring_modifiedcraftingreagent_indigo.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "222791": {
+    "name": "Spool of Duskthread",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_tailoring_modifiedcraftingreagent_indigo.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "222792": {
+    "name": "Spool of Dawnthread",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_tailoring_modifiedcraftingreagent_orange.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "222793": {
+    "name": "Spool of Dawnthread",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_tailoring_modifiedcraftingreagent_orange.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "222794": {
+    "name": "Spool of Dawnthread",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_tailoring_modifiedcraftingreagent_orange.jpg",
+    "quality": 3,
+    "rarity": "rare"
+  },
+  "222795": {
+    "name": "Spool of Weaverthread",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_tailoring_modifiedcraftingreagent_magenta.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "222796": {
+    "name": "Spool of Weaverthread",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_tailoring_modifiedcraftingreagent_magenta.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "222797": {
+    "name": "Spool of Weaverthread",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_tailoring_modifiedcraftingreagent_magenta.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "222798": {
+    "quality": 4,
+    "rarity": "epic",
+    "name": "Duskweave Bolt",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_12_tailoring_rare_cloth_violet_rarecloth.jpg"
+  },
+  "222799": {
+    "name": "Duskweave Bolt",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_12_tailoring_rare_cloth_violet_rarecloth.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "222800": {
+    "name": "Duskweave Bolt",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_12_tailoring_rare_cloth_violet_rarecloth.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "222802": {
+    "name": "Dawnweave Bolt",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_12_tailoring_rare_cloth_orange_rarecloth.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "222803": {
+    "quality": 4,
+    "rarity": "epic",
+    "name": "Dawnweave Bolt",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_12_tailoring_rare_cloth_orange_rarecloth.jpg"
+  },
+  "222804": {
+    "name": "Weavercloth Bolt",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_tailoring_clothrare_color2.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "222805": {
+    "name": "Weavercloth Bolt",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_tailoring_clothrare_color2.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "222806": {
+    "name": "Weavercloth Bolt",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_tailoring_clothrare_color2.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "223189": {
+    "name": "Riptide Slicer",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_2h_grimbatolraid_d_01.jpg"
+  },
+  "223512": {
+    "name": "Basically Beef",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_food_98_talbuk.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "223656": {
+    "name": "Enchant Boots - Defender's March",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_enchantedscroll.jpg",
+    "quality": 3,
+    "rarity": "rare"
+  },
+  "223674": {
+    "quality": 3,
+    "rarity": "rare",
+    "name": "Enchant Ring - Radiant Haste",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_enchantedscroll.jpg"
+  },
+  "223692": {
+    "name": "Enchant Chest - Crystalline Radiance",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_enchantedscroll.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "223731": {
+    "name": "Enchant Cloak - Chant of Winged Grace",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_enchantedscroll.jpg"
+  },
+  "223781": {
+    "name": "Enchant Weapon - Authority of Radiant Power",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_enchantedscroll.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "223784": {
+    "quality": 3,
+    "rarity": "rare",
+    "name": "Enchant Weapon - Authority of the Depths",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_enchantedscroll.jpg"
+  },
+  "223969": {
+    "quality": 3,
+    "rarity": "rare",
+    "name": "Secret Sauce",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_food_vendor_soysauce.jpg"
+  },
+  "223977": {
+    "name": "Coagulated Yolk",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/spell_mage_flameorb.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "224174": {
+    "name": "Concentration Concentrate",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_enchant_dustspirit.jpg",
+    "quality": 2,
+    "rarity": "uncommon"
+  },
+  "224177": {
+    "name": "Mirror Powder",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_powder_thorium.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "224578": {
+    "name": "Arathor Courier's Satchel",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_bag_horadricsatchel.jpg"
+  },
+  "224627": {
+    "quality": 2,
+    "rarity": "uncommon",
+    "name": "Arathi Arquebus",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_firearm_2h_undergroundquest_b_01.jpg"
+  },
+  "224633": {
+    "name": "Arathi Greataxe",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_axe_2h_undergroundquest_b_01.jpg"
+  },
+  "224764": {
+    "name": "Mosswool Thread",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_tailoring_purchasedthread_color3.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "224800": {
+    "name": "Orbinid Pigment",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_inscription3_pigments_blue.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "224801": {
+    "name": "Orbinid Pigment",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_inscription3_pigments_blue.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "224803": {
+    "name": "Blossom Pigment",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_inscription3_pigments_red.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "224804": {
+    "name": "Blossom Pigment",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_inscription3_pigments_red.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "224805": {
+    "name": "Blossom Pigment",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_inscription3_pigments_red.jpg",
+    "quality": 2,
+    "rarity": "uncommon"
+  },
+  "224824": {
+    "name": "Duskweave",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_tailoring_silkrare_color1.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "224826": {
+    "name": "Dawnweave",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_tailoring_silkrare_color2.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "224828": {
+    "name": "Weavercloth",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_tailoring_silkrare_color3.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "224832": {
+    "quality": 3,
+    "rarity": "rare",
+    "name": "Exquisite Weavercloth Bolt",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_tailoring_wovenbolt_air.jpg"
+  },
+  "224833": {
+    "name": "Exquisite Weavercloth Bolt",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_tailoring_wovenbolt_air.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "224834": {
+    "name": "Exquisite Weavercloth Bolt",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_tailoring_wovenbolt_air.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "225201": {
+    "quality": 3,
+    "rarity": "rare",
+    "name": "Precisely Calibrated Rifle",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_weapon_rifle_06.jpg"
+  },
+  "225565": {
+    "name": "Massive Worm Flank",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_food_120_sharkmeat.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "225566": {
+    "name": "Warped Wing",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_icon_wingbroken02e.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "225567": {
+    "name": "Bug Brisket",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_cooking_90_creepingcrawlermeat.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "225568": {
+    "name": "Slum Shark Scrap",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_food_155_fish_78blue.jpg",
+    "quality": 2,
+    "rarity": "uncommon"
+  },
+  "225569": {
+    "name": "Clipped Bird Wing",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_icon_wing06a.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "225670": {
+    "name": "Apprentice's Crafting License",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_punchcards_prismatic.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "225671": {
+    "name": "Stack of Pentagold Reviews",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_paperbundle03e.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "225876": {
+    "name": "Fine Egg Powder",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_cooking_80_powderedsugar.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "225883": {
+    "quality": 0,
+    "rarity": "poor",
+    "name": "Prepared Ghoulfish",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_fish_97.jpg"
+  },
+  "225911": {
+    "name": "Cinderbee Belly",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_cooking_80_brinyflesh.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "225912": {
+    "name": "Hot Honeycomb",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_cooking_80_choralhoney1.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "226024": {
+    "quality": 3,
+    "rarity": "rare",
+    "name": "Darkmoon Sigil: Ascension",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_inscriptions_darkmoonsigil_purple.jpg"
+  },
+  "226114": {
+    "name": "Windslicer's Lance",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_polearm_2h_arakkoa_c_01.jpg"
+  },
+  "226202": {
+    "name": "Echoing Flux",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_blacksmithing_craftedoptional_blacksmithdye_fire.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "226204": {
+    "name": "Fresh Parchment",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_inscription_parchmentvar06.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "226205": {
+    "name": "Distilled Algari Freshwater",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/shaman_pvp_ripplingwaters.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "227769": {
+    "name": "Bountiful Bolts",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/spell_mekkatorque_bot_yellowbolt.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "227770": {
+    "quality": 2,
+    "rarity": "uncommon",
+    "name": "Assorted Whirligigs",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_eng_superchargedengine.jpg"
+  },
+  "228231": {
+    "name": "Weavercloth",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_tailoring_silkrare_color3.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "228232": {
+    "name": "Weavercloth",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_tailoring_silkrare_color3.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "228233": {
+    "name": "Duskweave",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_tailoring_silkrare_color1.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "228234": {
+    "name": "Duskweave",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_tailoring_silkrare_color1.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "228235": {
+    "name": "Dawnweave",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_tailoring_silkrare_color2.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "228236": {
+    "name": "Dawnweave",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_10_tailoring_silkrare_color2.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "228362": {
+    "quality": 2,
+    "rarity": "uncommon",
+    "name": "Polished Arathi Rifle",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_firearm_2h_undergroundquest_b_01.jpg"
+  },
+  "228635": {
+    "name": "Squall Sailor's Citrine",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_siren_isle_stormcharged_citrine_turquoise.jpg"
+  },
+  "228921": {
+    "name": "Griftah's Heavy-Duty Embellishing Powder",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_enchanting_dust_color5.jpg",
+    "quality": 1,
+    "rarity": "common"
+  },
+  "228930": {
+    "name": "Adorning Ribbon",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_bandages_tailoring.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "228956": {
+    "name": "Junk Bucket",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_misc_1h_bucket_b_01.jpg",
+    "quality": 1,
+    "rarity": "common"
+  },
+  "229388": {
+    "name": "Prized Combatant's Heraldry",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_competition_placement_ribbon_green.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "237802": {
+    "quality": 4,
+    "rarity": "epic",
+    "name": "Arathi Cleric's Blunderbuss",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_firearm_2h_arathoroutdoor_d_01.jpg"
+  },
+  "238201": {
+    "name": "Desolate Talus",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_ore_karesh.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "238212": {
+    "name": "Desolate Talus",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_ore_karesh.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "238213": {
+    "name": "Desolate Talus",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_ore_karesh.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "239690": {
+    "name": "Phantom Bloom",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_herb_karesh.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "239691": {
+    "name": "Phantom Bloom",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_herb_karesh.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "239692": {
+    "name": "Phantom Bloom",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_herb_karesh.jpg",
+    "quality": 0,
+    "rarity": "poor"
+  },
+  "240194": {
+    "quality": 3,
+    "rarity": "rare",
+    "name": "K'areshi Lotus",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_nulllotus_void.jpg"
+  },
+  "240216": {
+    "name": "K'areshi Resonating Stone",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_nullstone_void.jpg"
+  },
+  "242541": {
+    "name": "Grandmaster's Royal Mace",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_mace_2h_chess_d_01.jpg"
+  },
+  "242542": {
+    "name": "Grandmaster's White Mace",
+    "icon": "https://render.worldofwarcraft.com/eu/icons/56/inv_mace_2h_chess_d_01.jpg"
+  }
+}

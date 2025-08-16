@@ -1,0 +1,16 @@
+=== Watcher start ===
+BASE http://localhost:4317 SLUG twilights-hammer TIMEOUT 5 INTERVAL 2 ITEMS 221754,152512,190394,190312 ITERS 1
+=== Watch Iteration #1 ===
+[refresh-until-change] {"changed":false,"before":1755159657,"after":1755159956}
+[fingerprint] {"lastFetched":1755159956,"items":16793,"commodities":323529,"total":340322,"qtyItems":16793,"qtyCommodities":73138375,"qtyTotal":73155168,"itemsHash":3133075840,"commoditiesHash":1785401856,"totalHash":3503678336}
+[delta/preview-raw] {"prevCount":340322,"nowCount":340322,"endedCount":0,"priceBucketDrops":0,"itemTotalDrops":0}
+[preview-diff-raw itemId=221754] {"itemId":221754,"prevQty":123514,"nowQty":123514,"totalDelta":0,"priceBuckets":[]}
+[preview-diff normalized itemId=221754] {"itemId":221754,"partialCount":0,"priceBucketDrops":0,"totalDelta":0,"partial":[],"priceBuckets":[]}
+[preview-diff-raw itemId=152512] {"itemId":152512,"prevQty":307499,"nowQty":307499,"totalDelta":0,"priceBuckets":[]}
+[preview-diff normalized itemId=152512] {"itemId":152512,"partialCount":0,"priceBucketDrops":0,"totalDelta":0,"partial":[],"priceBuckets":[]}
+[preview-diff-raw itemId=190394] {"itemId":190394,"prevQty":33732,"nowQty":33732,"totalDelta":0,"priceBuckets":[]}
+[preview-diff normalized itemId=190394] {"itemId":190394,"partialCount":0,"priceBucketDrops":0,"totalDelta":0,"partial":[],"priceBuckets":[]}
+[preview-diff-raw itemId=190312] {"itemId":190312,"prevQty":7423,"nowQty":7423,"totalDelta":0,"priceBuckets":[]}
+[preview-diff normalized itemId=190312] {"itemId":190312,"partialCount":0,"priceBucketDrops":0,"totalDelta":0,"partial":[],"priceBuckets":[]}
+=== Watcher complete ===
+Log file: D:\Plugins\WoW\economy-guardian\companion\logs\watcher-1755159951888.log
