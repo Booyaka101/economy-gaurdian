@@ -1811,7 +1811,9 @@ function attachHandlers() {
 
     const p95 = (arr) => {
       try {
-        if (!arr || !arr.length) return 0;
+        if (!arr || !arr.length) {
+          return 0;
+        }
         const s = arr.slice().sort((a, b) => a - b);
         const idx = Math.floor(0.95 * (s.length - 1));
         return s[idx] || 0;
@@ -1825,11 +1827,21 @@ function attachHandlers() {
         const ft = P.frameTimes;
         const avg = ft.length ? ft.reduce((a, b) => a + b, 0) / ft.length : 0;
         const fps = avg ? 1000 / avg : 0;
-        if (elFps) elFps.textContent = fps.toFixed(1);
-        if (elP95) elP95.textContent = p95(ft).toFixed(1);
-        if (elRps) elRps.textContent = String(P.rps);
-        if (elLtCount) elLtCount.textContent = String(P.ltCount);
-        if (elLtMax) elLtMax.textContent = P.ltMax.toFixed(1);
+        if (elFps) {
+          elFps.textContent = fps.toFixed(1);
+        }
+        if (elP95) {
+          elP95.textContent = p95(ft).toFixed(1);
+        }
+        if (elRps) {
+          elRps.textContent = String(P.rps);
+        }
+        if (elLtCount) {
+          elLtCount.textContent = String(P.ltCount);
+        }
+        if (elLtMax) {
+          elLtMax.textContent = P.ltMax.toFixed(1);
+        }
       } catch {}
     };
 
@@ -1837,20 +1849,28 @@ function attachHandlers() {
       try {
         if (P.lastTs != null) {
           let dt = ts - P.lastTs;
-          if (dt > 1000) dt = 1000; // clamp outliers
+          if (dt > 1000) {
+            dt = 1000; // clamp outliers
+          }
           P.frameTimes.push(dt);
-          if (P.frameTimes.length > 300) P.frameTimes.shift();
+          if (P.frameTimes.length > 300) {
+            P.frameTimes.shift();
+          }
           renderPerf();
         }
         P.lastTs = ts;
-        if (P.running) P.rafId = requestAnimationFrame(rafLoop);
+        if (P.running) {
+          P.rafId = requestAnimationFrame(rafLoop);
+        }
       } catch {}
     };
 
     const startRowsObserver = () => {
       try {
         const rows = ControllerState.els.rowsEl;
-        if (!rows) return;
+        if (!rows) {
+          return;
+        }
         P.rowsObs = new MutationObserver((muts) => {
           try {
             for (const m of muts) {
@@ -1893,9 +1913,13 @@ function attachHandlers() {
 
     const startMeasure = () => {
       try {
-        if (P.running) return;
+        if (P.running) {
+          return;
+        }
         P.running = true;
-        if (perfStatus) perfStatus.textContent = 'Measuring…';
+        if (perfStatus) {
+          perfStatus.textContent = 'Measuring…';
+        }
         startRowsObserver();
         startLongTaskObserver();
         startRpsTimer();
@@ -1907,7 +1931,9 @@ function attachHandlers() {
       try {
         P.running = false;
         try {
-          if (P.rafId) cancelAnimationFrame(P.rafId);
+          if (P.rafId) {
+            cancelAnimationFrame(P.rafId);
+          }
         } catch {}
         try {
           P.rowsObs && P.rowsObs.disconnect && P.rowsObs.disconnect();
@@ -1916,9 +1942,13 @@ function attachHandlers() {
           P.ltObs && P.ltObs.disconnect && P.ltObs.disconnect();
         } catch {}
         try {
-          if (P.rpsTimer) clearInterval(P.rpsTimer);
+          if (P.rpsTimer) {
+            clearInterval(P.rpsTimer);
+          }
         } catch {}
-        if (perfStatus) perfStatus.textContent = 'Stopped';
+        if (perfStatus) {
+          perfStatus.textContent = 'Stopped';
+        }
       } catch {}
     };
 
