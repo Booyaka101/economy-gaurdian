@@ -17,7 +17,9 @@ function el(tag, attrs = {}, html = '') {
       try { e.setAttribute(k, String(v)); } catch {}
     }
   });
-  if (html) e.innerHTML = html;
+  if (html) {
+    e.innerHTML = html;
+  }
   return e;
 }
 

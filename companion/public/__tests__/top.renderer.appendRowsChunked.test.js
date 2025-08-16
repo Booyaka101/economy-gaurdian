@@ -7,9 +7,13 @@ function waitFor(cond, { timeout = 500, interval = 5 } = {}) {
     const start = Date.now();
     const tick = () => {
       try {
-        if (cond()) return resolve();
-        if (Date.now() - start >= timeout) return reject(new Error('timeout'));
-        setTimeout(tick, interval);
+        if (cond()) {
+          resolve();
+        } else if (Date.now() - start >= timeout) {
+          reject(new Error('timeout'));
+        } else {
+          setTimeout(tick, interval);
+        }
       } catch (e) {
         reject(e);
       }
