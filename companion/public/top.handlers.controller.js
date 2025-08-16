@@ -1,5 +1,5 @@
-// Top handlers controller: moved DOM bindings from top.handlers.js to satisfy guardrail
-// Exports a dependency-injected attachHandlers implementation; intended to be imported by top.controller.js via top.handlers.js re-export.
+// Top handlers controller: owns all DOM bindings for the Top tab (guardrail-compliant)
+// Exports a dependency-injected attachHandlers; imported directly by top.controller.js
 
 export function attachHandlers(deps = {}) {
   const {

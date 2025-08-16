@@ -15,16 +15,17 @@ A concise guide to keep the codebase predictable, maintainable, and compliant.
   - Services: `*.services.js` (caching, persistence, helpers, API calls)
   - Renderer: `*.renderer.js` (DOM building, UI fragments)
   - Controller: `*.controller.js` (UI bindings, orchestration, hotkeys)
-- Event bindings:
-  - All DOM and keyboard handlers live in the Controller only.
-  - Do not bind events in Services/Renderer or standalone scripts.
-  - No inline event attributes in HTML (e.g., `onclick`, `oninput`, `onchange`).
-  - No inline `<script>` blocks that attach listeners; load `*.controller.js` files instead.
-  - Pages must include controllers after their core modules, e.g.:
-    - `index.html`: load `app.js` then `app.controller.js`, and `index.controller.js`.
-    - `top.html`: load `top.entry.js` which imports `top.controller.js`.
-    - `player.html`: load `player.js` then `player.controller.js`.
-    - `ai.html`: load `ai.js` then `ai.controller.js`.
+    - Event bindings:
+      - All DOM and keyboard handlers live in the Controller only.
+      - Do not bind events in Services/Renderer or standalone scripts.
+      - No inline event attributes in HTML (e.g., `onclick`, `oninput`, `onchange`).
+      - No inline `<script>` blocks that attach listeners; load `*.controller.js` files instead.
+      - Top Tab handlers live in `companion/public/top.handlers.controller.js` and are imported directly by `top.controller.js`. Do not add or reintroduce a `top.handlers.js` shim.
+      - Pages must include controllers after their core modules, e.g.:
+        - `index.html`: load `app.js` then `app.controller.js`, and `index.controller.js`.
+        - `top.html`: load `top.entry.js` which imports `top.controller.js`.
+        - `player.html`: load `player.js` then `player.controller.js`.
+        - `ai.html`: load `ai.js` then `ai.controller.js`.
   - Service Worker registration is centralized in `sw.controller.js`; include this on pages that need offline/cache support (top, index, player, ai).
   - Wowhead tooltips are centralized in `wowhead.controller.js`; include this in page `<head>`.
     - Do NOT inline `window.whTooltips` in HTML.
@@ -58,7 +59,7 @@ A concise guide to keep the codebase predictable, maintainable, and compliant.
 
 ## Commit & PR Guidelines
 
-- Keep PRs small and scoped; link to the feature or bug.
+- Only make PRs for completed features or bug fixes; link to the feature or bug.
 - Update README/CONTRIBUTING when changing patterns or guardrails.
 - Add minimal tests or logging when fixing bugs that were hard to diagnose.
 
