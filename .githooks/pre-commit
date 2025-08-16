@@ -1,0 +1,22 @@
+#!/usr/bin/env sh
+# Guardrail pre-commit hook
+# Blocks commits if legacy fallback patterns are detected in companion/public
+
+echo "[guardrail] Checking for legacy patterns..."
+node companion/scripts/check-legacy.js
+status=$?
+if [ $status -ne 0 ]; then
+  echo "[guardrail] Commit blocked. Fix issues above."
+  exit $status
+fi
+
+echo "[lint] Running ESLint (companion/**/*.js)..."
+# Use Node to run eslint.js directly to avoid platform-specific shims
+node companion/node_modules/eslint/bin/eslint.js --format stylish "companion/**/*.js"
+status=$?
+if [ $status -ne 0 ]; then
+  echo "[lint] Commit blocked due to ESLint errors."
+  exit $status
+fi
+
+exit 0

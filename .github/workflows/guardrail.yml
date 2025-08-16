@@ -1,0 +1,50 @@
+name: Guardrail
+on:
+  push:
+  pull_request:
+
+jobs:
+  legacy-guardrail:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - name: Run guardrail
+        working-directory: companion
+        run: node scripts/check-legacy.js
+
+  lint-companion:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - name: Install deps
+        working-directory: companion
+        run: |
+          if [ -f package-lock.json ] || [ -f npm-shrinkwrap.json ]; then
+            npm ci
+          else
+            npm install --no-audit --no-fund
+          fi
+      - name: Get changed files
+        id: changed
+        uses: tj-actions/changed-files@v44
+        with:
+          files: |
+            companion/src/**/*.js
+            companion/scripts/**/*.js
+      - name: Run ESLint (changed files)
+        if: steps.changed.outputs.any_changed == 'true'
+        run: node companion/node_modules/eslint/bin/eslint.js --format stylish ${{ steps.changed.outputs.all_changed_files }}
+      - name: Run Prettier check (changed files)
+        if: steps.changed.outputs.any_changed == 'true'
+        run: node companion/node_modules/prettier/bin/prettier.cjs --check ${{ steps.changed.outputs.all_changed_files }}
+      - name: No relevant changes
+        if: steps.changed.outputs.any_changed != 'true'
+        run: echo "No JS changes in companion to lint/format"
