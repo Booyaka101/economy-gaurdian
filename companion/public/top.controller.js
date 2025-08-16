@@ -28,6 +28,7 @@ const ControllerState = {
     offset: 0,
     total: null,
   },
+  perf: null,
 };
 
 // Persisted settings keys (kept compatible with legacy top.js)
@@ -1777,6 +1778,179 @@ function attachHandlers() {
       setInterval(() => {
         tick().catch(() => {});
       }, 15000);
+    }
+  } catch {}
+  // Performance panel (Start/Stop + Reset, metrics render)
+  try {
+    const perfToggle = document.getElementById('perfToggle');
+    const perfReset = document.getElementById('perfReset');
+    const perfStatus = document.getElementById('perfStatus');
+    const elFps = document.getElementById('mFps');
+    const elP95 = document.getElementById('mP95');
+    const elRps = document.getElementById('mRps');
+    const elLtCount = document.getElementById('mLtCount');
+    const elLtMax = document.getElementById('mLtMax');
+
+    // Lazily initialize runtime state
+    if (!ControllerState.perf) {
+      ControllerState.perf = {
+        running: false,
+        rafId: 0,
+        lastTs: undefined,
+        frameTimes: [],
+        addCount: 0,
+        rps: 0,
+        rpsTimer: 0,
+        rowsObs: null,
+        ltObs: null,
+        ltCount: 0,
+        ltMax: 0,
+      };
+    }
+    const P = ControllerState.perf;
+
+    const p95 = (arr) => {
+      try {
+        if (!arr || !arr.length) return 0;
+        const s = arr.slice().sort((a, b) => a - b);
+        const idx = Math.floor(0.95 * (s.length - 1));
+        return s[idx] || 0;
+      } catch {
+        return 0;
+      }
+    };
+
+    const renderPerf = () => {
+      try {
+        const ft = P.frameTimes;
+        const avg = ft.length ? ft.reduce((a, b) => a + b, 0) / ft.length : 0;
+        const fps = avg ? 1000 / avg : 0;
+        if (elFps) elFps.textContent = fps.toFixed(1);
+        if (elP95) elP95.textContent = p95(ft).toFixed(1);
+        if (elRps) elRps.textContent = String(P.rps);
+        if (elLtCount) elLtCount.textContent = String(P.ltCount);
+        if (elLtMax) elLtMax.textContent = P.ltMax.toFixed(1);
+      } catch {}
+    };
+
+    const rafLoop = (ts) => {
+      try {
+        if (P.lastTs != null) {
+          let dt = ts - P.lastTs;
+          if (dt > 1000) dt = 1000; // clamp outliers
+          P.frameTimes.push(dt);
+          if (P.frameTimes.length > 300) P.frameTimes.shift();
+          renderPerf();
+        }
+        P.lastTs = ts;
+        if (P.running) P.rafId = requestAnimationFrame(rafLoop);
+      } catch {}
+    };
+
+    const startRowsObserver = () => {
+      try {
+        const rows = ControllerState.els.rowsEl;
+        if (!rows) return;
+        P.rowsObs = new MutationObserver((muts) => {
+          try {
+            for (const m of muts) {
+              P.addCount += (m.addedNodes && m.addedNodes.length) || 0;
+            }
+          } catch {}
+        });
+        P.rowsObs.observe(rows, { childList: true });
+      } catch {}
+    };
+
+    const startLongTaskObserver = () => {
+      try {
+        P.ltObs = new PerformanceObserver((list) => {
+          try {
+            for (const e of list.getEntries()) {
+              P.ltCount++;
+              P.ltMax = Math.max(P.ltMax, e.duration || 0);
+            }
+            renderPerf();
+          } catch {}
+        });
+        P.ltObs.observe({ entryTypes: ['longtask'] });
+      } catch {
+        /* Long Task API may be unavailable */
+      }
+    };
+
+    const startRpsTimer = () => {
+      try {
+        P.rpsTimer = setInterval(() => {
+          try {
+            P.rps = P.addCount;
+            P.addCount = 0;
+            renderPerf();
+          } catch {}
+        }, 1000);
+      } catch {}
+    };
+
+    const startMeasure = () => {
+      try {
+        if (P.running) return;
+        P.running = true;
+        if (perfStatus) perfStatus.textContent = 'Measuring…';
+        startRowsObserver();
+        startLongTaskObserver();
+        startRpsTimer();
+        rafLoop(typeof performance !== 'undefined' && performance.now ? performance.now() : Date.now());
+      } catch {}
+    };
+
+    const stopMeasure = () => {
+      try {
+        P.running = false;
+        try {
+          if (P.rafId) cancelAnimationFrame(P.rafId);
+        } catch {}
+        try {
+          P.rowsObs && P.rowsObs.disconnect && P.rowsObs.disconnect();
+        } catch {}
+        try {
+          P.ltObs && P.ltObs.disconnect && P.ltObs.disconnect();
+        } catch {}
+        try {
+          if (P.rpsTimer) clearInterval(P.rpsTimer);
+        } catch {}
+        if (perfStatus) perfStatus.textContent = 'Stopped';
+      } catch {}
+    };
+
+    const resetMeasure = () => {
+      try {
+        P.frameTimes.length = 0;
+        P.lastTs = undefined;
+        P.addCount = 0;
+        P.rps = 0;
+        P.ltCount = 0;
+        P.ltMax = 0;
+        renderPerf();
+      } catch {}
+    };
+
+    if (perfToggle && !perfToggle.__egBound) {
+      perfToggle.__egBound = true;
+      perfToggle.addEventListener('click', () => {
+        try {
+          if (!P.running) {
+            startMeasure();
+            try { perfToggle.textContent = 'Stop'; } catch {}
+          } else {
+            stopMeasure();
+            try { perfToggle.textContent = 'Start'; } catch {}
+          }
+        } catch {}
+      });
+    }
+    if (perfReset && !perfReset.__egBound) {
+      perfReset.__egBound = true;
+      perfReset.addEventListener('click', () => resetMeasure());
     }
   } catch {}
   try {
