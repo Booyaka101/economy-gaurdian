@@ -14,9 +14,9 @@ const __dirname = path.dirname(__filename);
 
 const ROOT = path.resolve(__dirname, '..');
 const PUBLIC_DIR = path.join(ROOT, 'public');
-// Temporary exclusion list for known legacy files that are no longer imported
-// These should be removed once the files are fully deleted or converted.
-const EXCLUDE = [/top\.handlers\.js$/i];
+// Exclude any explicitly legacy-suffixed files from guardrail scanning.
+// These files are retained only for historical reference and are not imported.
+const EXCLUDE = [/\.legacy\.js$/i];
 
 const FORBIDDEN = [
   /\bcopyVisibleIdsQuick\b/,
