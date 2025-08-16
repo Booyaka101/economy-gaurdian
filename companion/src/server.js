@@ -130,46 +130,43 @@ if (fs.existsSync(publicDir)) {
   app.use(express.static(publicDir))
 }
 
-// Optional: rate limiting via 'express-rate-limit' if available (after static)
-(async () => {
-  try {
-    const mod = await import('express-rate-limit').catch(() => null)
-    const rateLimit = mod && (mod.default || mod)
-    if (rateLimit) {
-      // General API limiter (skip health/metrics)
-      const apiLimiter = rateLimit({
-        windowMs: 60 * 1000,
-        max: Number(process.env.RATE_LIMIT_MAX || 120),
-        standardHeaders: true,
-        legacyHeaders: false,
-        skip: (req) => req.path === '/health' || req.path === '/metrics',
-      })
-      app.use(apiLimiter)
+try {
+  const mod = await import('express-rate-limit').catch(() => null)
+  const rateLimit = mod && (mod.default || mod)
+  if (rateLimit) {
+    // General API limiter (skip health/metrics)
+    const apiLimiter = rateLimit({
+      windowMs: 60 * 1000,
+      max: Number(process.env.RATE_LIMIT_MAX || 120),
+      standardHeaders: true,
+      legacyHeaders: false,
+      skip: (req) => req.path === '/health' || req.path === '/metrics',
+    })
+    app.use(apiLimiter)
 
-      // Stricter limiter for heavy actions (catalog rebuilds, exports)
-      const strictLimiter = rateLimit({
-        windowMs: 60 * 1000,
-        max: Number(process.env.RATE_LIMIT_STRICT_MAX || 10),
-        standardHeaders: true,
-        legacyHeaders: false,
-      })
-      app.use(['/catalog/rebuild', '/blizzard/items/catalog/rebuild', '/prices/export'], strictLimiter)
+    // Stricter limiter for heavy actions (catalog rebuilds, exports)
+    const strictLimiter = rateLimit({
+      windowMs: 60 * 1000,
+      max: Number(process.env.RATE_LIMIT_STRICT_MAX || 10),
+      standardHeaders: true,
+      legacyHeaders: false,
+    })
+    app.use(['/catalog/rebuild', '/blizzard/items/catalog/rebuild', '/prices/export'], strictLimiter)
 
-      // Moderate limiter for region-wide top sold (remote integrations)
-      const moderateLimiter = rateLimit({
-        windowMs: 60 * 1000,
-        max: Number(process.env.RATE_LIMIT_MODERATE_MAX || 30),
-        standardHeaders: true,
-        legacyHeaders: false,
-      })
-      app.use(['/stats/top-sold-region'], moderateLimiter)
+    // Moderate limiter for region-wide top sold (remote integrations)
+    const moderateLimiter = rateLimit({
+      windowMs: 60 * 1000,
+      max: Number(process.env.RATE_LIMIT_MODERATE_MAX || 30),
+      standardHeaders: true,
+      legacyHeaders: false,
+    })
+    app.use(['/stats/top-sold-region'], moderateLimiter)
 
-      console.info('[EG] Rate limiting enabled')
-    } else {
-      console.info('[EG] express-rate-limit not installed; skipping')
-    }
-  } catch {}
-})()
+    console.info('[EG] Rate limiting enabled')
+  } else {
+    console.info('[EG] express-rate-limit not installed; skipping')
+  }
+} catch {}
 
 // Catalog endpoints moved to routes/catalog.js
 app.get('/stats/top-sold-local/all', async (req, res) => {
