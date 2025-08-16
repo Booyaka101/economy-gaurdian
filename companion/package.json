@@ -17,13 +17,16 @@
     "format:check": "prettier --config ..\\.prettierrc.json --ignore-unknown --check \"public/**/*.{js,css,html,json,md}\" ..\\README.md ..\\CONTRIBUTING.md"
   },
   "dependencies": {
+    "@slack/webhook": "^7.0.3",
     "axios": "^1.7.2",
+    "compression": "^1.8.1",
+    "discord.js": "^14.15.3",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
+    "express-rate-limit": "^8.0.1",
     "googleapis": "^128.0.0",
-    "telegraf": "^4.16.3",
-    "@slack/webhook": "^7.0.3",
-    "discord.js": "^14.15.3"
+    "helmet": "^7.2.0",
+    "telegraf": "^4.16.3"
   },
   "devDependencies": {
     "eslint": "^8.57.0",

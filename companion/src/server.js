@@ -35,7 +35,9 @@ dotenv.config({ path: path.join(__dirname, '..', '.env') })
 const cfg = loadConfig()
 
 const app = express()
+app.set('trust proxy', 1)
 app.use(express.json())
+app.disable('x-powered-by')
 // Upstream HTTP keep-alive for axios
 try {
   axios.defaults.httpAgent = new http.Agent({ keepAlive: true, maxSockets: 50 })
@@ -84,6 +86,21 @@ app.use((req, res, next) => {
     }
   } catch {}
 })()
+// Optional: security headers via 'helmet' if available
+;(async () => {
+  try {
+    const mod = await import('helmet').catch(() => null)
+    const helmet = mod && (mod.default || mod)
+    if (helmet) {
+      const isProd = String(process.env.NODE_ENV || '').toLowerCase() === 'production'
+      // Keep CSP/COEP off to avoid breaking inline scripts and local assets
+      app.use(helmet({ contentSecurityPolicy: false, crossOriginEmbedderPolicy: false, hsts: isProd ? undefined : false }))
+      console.info('[EG] Helmet security headers enabled')
+    } else {
+      console.info('[EG] Helmet not installed; skipping')
+    }
+  } catch {}
+})()
 // Serve static dashboard
 const publicDir = path.join(__dirname, '..', 'public')
 if (fs.existsSync(publicDir)) {
@@ -112,6 +129,47 @@ if (fs.existsSync(publicDir)) {
   })
   app.use(express.static(publicDir))
 }
+
+// Optional: rate limiting via 'express-rate-limit' if available (after static)
+(async () => {
+  try {
+    const mod = await import('express-rate-limit').catch(() => null)
+    const rateLimit = mod && (mod.default || mod)
+    if (rateLimit) {
+      // General API limiter (skip health/metrics)
+      const apiLimiter = rateLimit({
+        windowMs: 60 * 1000,
+        max: Number(process.env.RATE_LIMIT_MAX || 120),
+        standardHeaders: true,
+        legacyHeaders: false,
+        skip: (req) => req.path === '/health' || req.path === '/metrics',
+      })
+      app.use(apiLimiter)
+
+      // Stricter limiter for heavy actions (catalog rebuilds, exports)
+      const strictLimiter = rateLimit({
+        windowMs: 60 * 1000,
+        max: Number(process.env.RATE_LIMIT_STRICT_MAX || 10),
+        standardHeaders: true,
+        legacyHeaders: false,
+      })
+      app.use(['/catalog/rebuild', '/blizzard/items/catalog/rebuild', '/prices/export'], strictLimiter)
+
+      // Moderate limiter for region-wide top sold (remote integrations)
+      const moderateLimiter = rateLimit({
+        windowMs: 60 * 1000,
+        max: Number(process.env.RATE_LIMIT_MODERATE_MAX || 30),
+        standardHeaders: true,
+        legacyHeaders: false,
+      })
+      app.use(['/stats/top-sold-region'], moderateLimiter)
+
+      console.info('[EG] Rate limiting enabled')
+    } else {
+      console.info('[EG] express-rate-limit not installed; skipping')
+    }
+  } catch {}
+})()
 
 // Catalog endpoints moved to routes/catalog.js
 app.get('/stats/top-sold-local/all', async (req, res) => {
@@ -195,6 +253,9 @@ const PEAK_END_HOUR = Number(process.env.PEAK_END_HOUR ?? 23)
 const ITEMS_POLL_SECONDS_PEAK = Number(process.env.ITEMS_POLL_SECONDS_PEAK || 45)
 const COMMODITIES_POLL_SECONDS_PEAK = Number(process.env.COMMODITIES_POLL_SECONDS_PEAK || 30)
 
+let autoRefreshTimer = null
+let isShuttingDown = false
+
 // Lightweight polling status for diagnostics
 const pollingStatus = {
   items: { intervalSec: ITEMS_POLL_SECONDS_BASE, lastPoll: 0, lastChange: 0, polls: 0, changes: 0, nextAt: 0 },
@@ -228,13 +289,14 @@ async function refreshAuctionsNow(slug) {
 if (AUTO_REFRESH_MINUTES > 0) {
   const slug = (cfg.REALM_SLUGS && cfg.REALM_SLUGS[0]) || ''
   const intervalMs = Math.max(1, AUTO_REFRESH_MINUTES) * 60 * 1000
-  setInterval(() => refreshAuctionsNow(slug), intervalMs)
+  autoRefreshTimer = setInterval(() => { if (!isShuttingDown) refreshAuctionsNow(slug) }, intervalMs)
   console.info(`[EG] Auto-refresh enabled every ${AUTO_REFRESH_MINUTES} min for slug ${slug}`)
 }
 
 // Jittered scheduler helper
 function schedule(nextMs, fn) {
-  setTimeout(fn, Math.max(0, nextMs) + Math.floor(Math.random() * POLL_JITTER_MS))
+  if (isShuttingDown) return
+  setTimeout(() => { if (!isShuttingDown) fn() }, Math.max(0, nextMs) + Math.floor(Math.random() * POLL_JITTER_MS))
 }
 
 // Start rapid polling loops (items + commodities) with conditional GETs
@@ -358,7 +420,7 @@ if (!fs.existsSync(cacheDir)) {
 
 // Catalog auto-rebuild controls
 const AUTO_CATALOG_REBUILD = String(process.env.AUTO_CATALOG_REBUILD || '1') === '1'
-const CATALOG_MIN_COUNT = Number(process.env.CATALOG_MIN_COUNT || 50000)
+const CATALOG_MIN_COUNT = Number(process.env.CATALOG_MIN_COUNT || 300000)
 const CATALOG_REFRESH_HOURS = Number(process.env.CATALOG_REFRESH_HOURS || (7*24)) // weekly
 const catalogRebuildState = { running: false, lastStart: 0, lastEnd: 0, lastError: null }
 
@@ -649,12 +711,13 @@ registerAIRoutes(app, {
 // Player stats routes (accounting ingestion, stats, awaiting payouts)
 registerPlayerRoutes(app, {})
 
+let savedVarsWatcher = null
 // Optional: watch WoW SavedVariables to auto-ingest EG_AccountingDB
 try {
   const savedVarsPath = process.env.SAVEDVARS_PATH
   if (savedVarsPath) {
-    const watcher = startSavedVarsWatcher({ path: savedVarsPath, intervalMs: process.env.SAVEDVARS_WATCH_MS || 30000 })
-    console.info('[player] SavedVariables watcher', watcher.running ? 'started' : 'not started', 'path=', savedVarsPath)
+    savedVarsWatcher = startSavedVarsWatcher({ path: savedVarsPath, intervalMs: process.env.SAVEDVARS_WATCH_MS || 30000 })
+    console.info('[player] SavedVariables watcher', savedVarsWatcher.running ? 'started' : 'not started', 'path=', savedVarsPath)
   } else {
     console.info('[player] SAVEDVARS_PATH not set; skipping SavedVariables watcher')
   }
@@ -1158,6 +1221,34 @@ app.post('/blizzard/items/catalog/rebuild', async (req, res) => {
 // /prices/export handled by routes/prices.js
 
 const port = cfg.PORT
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.info(`[EG] Companion listening on :${port}`)
+})
+
+// Graceful shutdown and error handling
+function shutdown() {
+  if (isShuttingDown) return
+  isShuttingDown = true
+  console.info('[EG] Shutting down...')
+  try { if (autoRefreshTimer) clearInterval(autoRefreshTimer) } catch {}
+  try { if (savedVarsWatcher && typeof savedVarsWatcher.stop === 'function') savedVarsWatcher.stop() } catch {}
+  try {
+    server.close(() => {
+      console.info('[EG] Server closed')
+      process.exit(0)
+    })
+    // Fallback hard-exit after timeout
+    setTimeout(() => process.exit(0), 5000)
+  } catch {
+    process.exit(0)
+  }
+}
+
+process.on('SIGINT', shutdown)
+process.on('SIGTERM', shutdown)
+process.on('uncaughtException', (e) => { try { console.error('[EG] Uncaught exception:', e?.stack || e) } catch {}
+  shutdown()
+})
+process.on('unhandledRejection', (r) => { try { console.error('[EG] Unhandled rejection:', r) } catch {}
+  shutdown()
 })

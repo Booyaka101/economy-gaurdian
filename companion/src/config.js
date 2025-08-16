@@ -20,6 +20,8 @@ export function loadConfig() {
     NEXUSHUB_REGION_SALES_URL: process.env.NEXUSHUB_REGION_SALES_URL || '',
     // TTLs (seconds)
     INTEGRATIONS_TTL: parseInt(process.env.INTEGRATIONS_TTL || '900', 10),
+    // Catalog thresholds
+    CATALOG_MIN_COUNT: parseInt(process.env.CATALOG_MIN_COUNT || '300000', 10),
     DISCORD_WEBHOOK_URL: process.env.DISCORD_WEBHOOK_URL || '',
     TELEGRAM_BOT_TOKEN: process.env.TELEGRAM_BOT_TOKEN || '',
     TELEGRAM_CHAT_ID: process.env.TELEGRAM_CHAT_ID || '',

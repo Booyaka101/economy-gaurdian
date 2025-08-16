@@ -149,21 +149,38 @@ export function appendRowsChunked(rowsEl, items, { buildRow: makeRow, loadSpark 
     const warm = typeof loadSpark === 'function' ? loadSpark : () => {};
     rowsEl.innerHTML = '';
     let i = 0;
-    let curChunk = 80;
+    let curChunk = 40;
     const processChunk = (deadline) => {
       const start =
         typeof performance !== 'undefined' && performance.now ? performance.now() : Date.now();
+      const hasTR = !!(deadline && typeof deadline.timeRemaining === 'function');
+      const budgetMs = 12; // hard cap per idle slice to avoid long tasks
       const frag = document.createDocumentFragment();
       let n = 0;
       while (i < items.length && n < curChunk) {
+        // Yield if there's pending user input to keep UI responsive
+        try {
+          if (
+            typeof navigator !== 'undefined' &&
+            navigator.scheduling &&
+            typeof navigator.scheduling.isInputPending === 'function' &&
+            navigator.scheduling.isInputPending()
+          ) {
+            break;
+          }
+        } catch {}
         frag.appendChild(builder(items[i++]));
         n++;
-        if (
-          deadline &&
-          typeof deadline.timeRemaining === 'function' &&
-          deadline.timeRemaining() <= 1
-        ) {
-          break;
+        if (hasTR) {
+          if (deadline.timeRemaining() <= 5) {
+            break;
+          }
+        } else {
+          const nowT =
+            (typeof performance !== 'undefined' && performance.now ? performance.now() : Date.now());
+          if (nowT - start >= budgetMs) {
+            break;
+          }
         }
       }
       if (frag.childNodes.length) {
@@ -173,10 +190,10 @@ export function appendRowsChunked(rowsEl, items, { buildRow: makeRow, loadSpark 
         const took =
           (typeof performance !== 'undefined' && performance.now ? performance.now() : Date.now()) -
           start;
-        if (took > 20) {
+        if (took > 12) {
           curChunk = Math.max(20, Math.floor(curChunk * 0.8));
-        } else if (took < 8) {
-          curChunk = Math.min(250, Math.ceil(curChunk * 1.2));
+        } else if (took < 6) {
+          curChunk = Math.min(200, Math.ceil(curChunk * 1.15));
         }
       } catch {}
       if (i < items.length) {
