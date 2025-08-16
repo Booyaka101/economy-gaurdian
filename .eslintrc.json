@@ -32,8 +32,10 @@
     {
       "files": ["companion/src/**/*.js"],
       "env": { "node": true },
+      "parserOptions": { "ecmaVersion": 2022, "sourceType": "module" },
       "rules": {
-        "no-console": ["error", { "allow": ["error", "warn", "info", "debug"] }]
+        "no-console": ["error", { "allow": ["error", "warn", "info", "debug"] }],
+        "curly": ["error", "multi-line"]
       }
     }
   ]
