@@ -1,5 +1,5 @@
 /* Economy Guardian Service Worker - improved offline + performance */
-const VERSION = 'eg-sw-v2-20250816d';
+const VERSION = 'eg-sw-v2-20250816e';
 const STATIC_CACHE = `${VERSION}-static`;
 const RUNTIME_CACHE = `${VERSION}-runtime`;
 
