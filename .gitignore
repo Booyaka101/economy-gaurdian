@@ -14,6 +14,7 @@ companion/logs/
 
 # Caches and generated data
 companion/.cache/
+companion/src/.cache/
 
 # Build outputs
 /dist/
