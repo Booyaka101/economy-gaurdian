@@ -71,9 +71,13 @@ function filterAndSortItems(items) {
     const nameCache = EGTopServices && EGTopServices.nameCache;
     const qualityCache = EGTopServices && EGTopServices.qualityCache;
     const matchQuery = (it) => {
-      if (!q) {return true;}
+      if (!q) {
+        return true;
+      }
       const id = Number(it?.itemId);
-      if (isDigits) {return String(id).includes(q);}
+      if (isDigits) {
+        return String(id).includes(q);
+      }
       // name tokens: require all tokens to be present
       let nm = '';
       try {
@@ -82,9 +86,13 @@ function filterAndSortItems(items) {
           String(it?.name || it?.itemName || '');
       } catch {}
       const s = String(nm || '').toLowerCase();
-      if (!s) {return false;}
+      if (!s) {
+        return false;
+      }
       for (const t of toks) {
-        if (!s.includes(t)) {return false;}
+        if (!s.includes(t)) {
+          return false;
+        }
       }
       return true;
     };
@@ -93,7 +101,9 @@ function filterAndSortItems(items) {
       return v >= Math.max(0, Number(minSold || 0));
     };
     const matchQuality = (it) => {
-      if (quality == null) {return true;}
+      if (quality == null) {
+        return true;
+      }
       const id = Number(it?.itemId);
       try {
         const ql = qualityCache && qualityCache.get && qualityCache.get(id);
@@ -167,10 +177,13 @@ async function fetchSalesSeries(itemId, hours) {
     try {
       const resp = await svcGetJSON(url);
       let ev = [];
-      if (Array.isArray(resp)) {ev = resp;}
-      else if (Array.isArray(resp?.events)) {ev = resp.events;}
-      else if (Array.isArray(resp?.series))
-        {ev = resp.series.map((x) => ({ ts: x.t ?? x.ts, qty: x.v ?? x.qty }));}
+      if (Array.isArray(resp)) {
+        ev = resp;
+      } else if (Array.isArray(resp?.events)) {
+        ev = resp.events;
+      } else if (Array.isArray(resp?.series)) {
+        ev = resp.series.map((x) => ({ ts: x.t ?? x.ts, qty: x.v ?? x.qty }));
+      }
       const norm = ev
         .map((x) => ({
           t: Number(x.ts ?? x.t ?? x.time ?? 0),
@@ -178,7 +191,9 @@ async function fetchSalesSeries(itemId, hours) {
         }))
         .filter((x) => Number.isFinite(x.t) && Number.isFinite(x.v))
         .sort((a, b) => a.t - b.t);
-      if (norm.length >= 2) {return norm.map((x) => [x.t, x.v]);}
+      if (norm.length >= 2) {
+        return norm.map((x) => [x.t, x.v]);
+      }
     } catch {}
   }
   return null;
@@ -187,9 +202,13 @@ async function fetchSalesSeries(itemId, hours) {
 async function refresh(_opts = {}) {
   try {
     const e = ControllerState.els;
-    if (!e.rowsEl) {return;}
+    if (!e.rowsEl) {
+      return;
+    }
     const { src, hours, limit, useAll, minSold, quality, query } = readControls();
-    if (e.statusEl) {e.statusEl.textContent = src === 'local' ? 'Loading local…' : 'Loading region…';}
+    if (e.statusEl) {
+      e.statusEl.textContent = src === 'local' ? 'Loading local…' : 'Loading region…';
+    }
     const url = buildUrlWithHours(hours, limit);
     const data = await svcGetJSON(url);
     const rawItems = Array.isArray(data?.items) ? data.items : [];
@@ -206,8 +225,9 @@ async function refresh(_opts = {}) {
     const R = window.EGTopRenderer;
     const loadSpark = (el) => {
       try {
-        if (R && typeof R.loadSparkIfNeeded === 'function')
-          {R.loadSparkIfNeeded(el, hours, fetchSalesSeries);}
+        if (R && typeof R.loadSparkIfNeeded === 'function') {
+          R.loadSparkIfNeeded(el, hours, fetchSalesSeries);
+        }
       } catch {}
     };
     const buildRow = (it) => {
@@ -225,7 +245,9 @@ async function refresh(_opts = {}) {
       // Fallback: simple sync render (rare)
       e.rowsEl.innerHTML = '';
       const frag = document.createDocumentFragment();
-      for (const it of items) {frag.appendChild(buildRow(it));}
+      for (const it of items) {
+        frag.appendChild(buildRow(it));
+      }
       e.rowsEl.appendChild(frag);
     }
     // HUDs
@@ -253,17 +275,23 @@ async function refresh(_opts = {}) {
         }
       } catch {}
     }
-    if (e.statusEl) {e.statusEl.textContent = '';}
+    if (e.statusEl) {
+      e.statusEl.textContent = '';
+    }
   } catch (e) {
     try {
       const el = ControllerState.els.statusEl;
-      if (el) {el.textContent = `Failed to load: ${e?.message || e}`;}
+      if (el) {
+        el.textContent = `Failed to load: ${e?.message || e}`;
+      }
     } catch {}
   }
 }
 
 function init(opts = {}) {
-  if (ControllerState.inited) {return;}
+  if (ControllerState.inited) {
+    return;
+  }
   ControllerState.inited = true;
   ControllerState.els = {
     rowsEl: opts.rowsEl || document.getElementById('rowsTop') || document.getElementById('rows'),
@@ -298,18 +326,34 @@ function init(opts = {}) {
     const z = typeof localStorage !== 'undefined' ? localStorage.getItem(LS.inc0) : null;
     const m = typeof localStorage !== 'undefined' ? localStorage.getItem(LS.minSold) : null;
     const qv = typeof localStorage !== 'undefined' ? localStorage.getItem(LS.quality) : null;
-    if (e.sourceEl && s) {e.sourceEl.value = s;}
-    if (e.hoursEl) {e.hoursEl.value = String(Math.max(1, Math.min(336, Number(h || 48))));}
+    if (e.sourceEl && s) {
+      e.sourceEl.value = s;
+    }
+    if (e.hoursEl) {
+      e.hoursEl.value = String(Math.max(1, Math.min(336, Number(h || 48))));
+    }
     const lim = Math.max(100, Math.min(5000, Number(l || 400)));
-    if (e.limitEl) {e.limitEl.value = String(lim);}
-    if (e.allCatalogEl) {e.allCatalogEl.checked = a == null ? true : a === '1';}
-    if (e.includeZeroEl) {e.includeZeroEl.checked = z == null ? true : z === '1';}
-    if (e.minSoldEl) {e.minSoldEl.value = String(Math.max(0, Number(m || 0)));}
-    if (e.qualityEl) {e.qualityEl.value = qv == null ? '' : String(qv);}
+    if (e.limitEl) {
+      e.limitEl.value = String(lim);
+    }
+    if (e.allCatalogEl) {
+      e.allCatalogEl.checked = a == null ? true : a === '1';
+    }
+    if (e.includeZeroEl) {
+      e.includeZeroEl.checked = z == null ? true : z === '1';
+    }
+    if (e.minSoldEl) {
+      e.minSoldEl.value = String(Math.max(0, Number(m || 0)));
+    }
+    if (e.qualityEl) {
+      e.qualityEl.value = qv == null ? '' : String(qv);
+    }
     // Toggle hours visibility based on source
     try {
       const v = e.sourceEl ? String(e.sourceEl.value || 'region') : 'region';
-      if (e.hoursWrapEl) {e.hoursWrapEl.style.display = v === 'local' ? '' : 'none';}
+      if (e.hoursWrapEl) {
+        e.hoursWrapEl.style.display = v === 'local' ? '' : 'none';
+      }
     } catch {}
     // Sync ControllerState.filters with hydrated DOM controls
     const { src, hours, limit, useAll, includeZero, minSold, quality, query } = readControls();
@@ -319,12 +363,13 @@ function init(opts = {}) {
   try {
     const e = ControllerState.els;
     const hasRows = !!(e.rowsEl && e.rowsEl.children && e.rowsEl.children.length);
-    if (!hasRows)
-      {setTimeout(() => {
+    if (!hasRows) {
+      setTimeout(() => {
         try {
           refresh({ userTriggered: false });
         } catch {}
-      }, 0);}
+      }, 0);
+    }
   } catch {}
 }
 
@@ -358,7 +403,9 @@ function bindGlobalShortcuts() {
 
           if (!ctrl || !shift) {
             if (typing) {
-              if (k !== 'Escape') {return;}
+              if (k !== 'Escape') {
+                return;
+              }
             }
           }
 
@@ -376,11 +423,15 @@ function bindGlobalShortcuts() {
           }
           if (k === '?' && !ctrl && shift) {
             const btn = document.getElementById('helpTop') || document.getElementById('help');
-            if (btn) {btn.click();}
-            else
-              {try {
-                if (window.showToast) {window.showToast('Help not available');}
-              } catch {}}
+            if (btn) {
+              btn.click();
+            } else {
+              try {
+                if (window.showToast) {
+                  window.showToast('Help not available');
+                }
+              } catch {}
+            }
             ev.preventDefault();
             ev.stopPropagation();
             return;
@@ -388,8 +439,9 @@ function bindGlobalShortcuts() {
           if (k === 'Escape' && !ctrl && !shift) {
             try {
               const helpModal = document.getElementById('helpModal');
-              if (helpModal && !helpModal.hasAttribute('hidden'))
-                {helpModal.setAttribute('hidden', '');}
+              if (helpModal && !helpModal.hasAttribute('hidden')) {
+                helpModal.setAttribute('hidden', '');
+              }
             } catch {}
             try {
               const searchEl =
@@ -430,8 +482,9 @@ function bindGlobalShortcuts() {
           }
           if (ctrl && shift && (k === 'R' || k === 'r')) {
             try {
-              if (window.EGTopRenderer && typeof window.EGTopRenderer.toggleDebug === 'function')
-                {window.EGTopRenderer.toggleDebug();}
+              if (window.EGTopRenderer && typeof window.EGTopRenderer.toggleDebug === 'function') {
+                window.EGTopRenderer.toggleDebug();
+              }
             } catch {}
             ev.preventDefault();
             ev.stopPropagation();
@@ -440,8 +493,9 @@ function bindGlobalShortcuts() {
           if (ctrl && shift && (k === 'D' || k === 'd')) {
             try {
               window.__EG_TOP_DEBUG__ = !window.__EG_TOP_DEBUG__;
-              if (window.showToast)
-                {window.showToast(window.__EG_TOP_DEBUG__ ? 'Top debug ON' : 'Top debug OFF');}
+              if (window.showToast) {
+                window.showToast(window.__EG_TOP_DEBUG__ ? 'Top debug ON' : 'Top debug OFF');
+              }
             } catch {}
             ev.preventDefault();
             ev.stopPropagation();
@@ -456,7 +510,9 @@ function bindGlobalShortcuts() {
 function attachHandlers() {
   bindGlobalShortcuts();
   const e = ControllerState.els;
-  if (!e || !e.rowsEl) {init({});}
+  if (!e || !e.rowsEl) {
+    init({});
+  }
   // Persist subset of settings to localStorage for UX continuity (mirrors top.js keys)
   const persist = (k, v) => {
     try {
@@ -482,10 +538,11 @@ function attachHandlers() {
           const ok = await EGTopServices.bootstrapItemMetaStatic();
           if (ok) {
             const visible = tabTop && !tabTop.classList.contains('hidden');
-            if (visible)
-              {try {
+            if (visible) {
+              try {
                 await refresh(false);
-              } catch {}}
+              } catch {}
+            }
           }
         } catch {}
       })();
@@ -525,8 +582,11 @@ function attachHandlers() {
         const v = qualityEl.value;
         const q = v === '' ? null : Number(v);
         setFilters({ quality: q, offset: 0 });
-        if (v === '') {persist(LS.quality, '');}
-        else {persist(LS.quality, Number(q || 0));}
+        if (v === '') {
+          persist(LS.quality, '');
+        } else {
+          persist(LS.quality, Number(q || 0));
+        }
         refresh({ userTriggered: true });
       });
     }
@@ -593,7 +653,9 @@ function attachHandlers() {
     // Source toggle + hours visibility
     const toggleHours = () => {
       const v = sourceEl ? String(sourceEl.value || 'region') : 'region';
-      if (hoursWrapEl) {hoursWrapEl.style.display = v === 'local' ? '' : 'none';}
+      if (hoursWrapEl) {
+        hoursWrapEl.style.display = v === 'local' ? '' : 'none';
+      }
     };
     if (sourceEl && !sourceEl.__egBound) {
       sourceEl.__egBound = true;
@@ -652,7 +714,9 @@ function attachHandlers() {
       setInterval(() => {
         try {
           const visible = tabTop && !tabTop.classList.contains('hidden');
-          if (visible) {refresh(false);}
+          if (visible) {
+            refresh(false);
+          }
         } catch {}
       }, AUTO_REFRESH_MS);
     }
@@ -671,10 +735,14 @@ function attachHandlers() {
       es.addEventListener('message', (ev) => {
         try {
           const data = ev && ev.data ? JSON.parse(ev.data) : null;
-          if (!data) {return;}
+          if (!data) {
+            return;
+          }
           if (data.type === 'change') {
             const visible = tabTop && !tabTop.classList.contains('hidden');
-            if (visible) {sseRefresh();}
+            if (visible) {
+              sseRefresh();
+            }
           }
         } catch {}
       });
@@ -754,9 +822,13 @@ function attachHandlers() {
       thead.__egBound = true;
       thead.addEventListener('click', (e) => {
         const th = e.target.closest && e.target.closest('th[data-sort]');
-        if (!th) {return;}
+        if (!th) {
+          return;
+        }
         const key = th.getAttribute('data-sort');
-        if (!key) {return;}
+        if (!key) {
+          return;
+        }
         const cur = ControllerState.sort;
         const dir = cur.key === key && cur.dir === 'desc' ? 'asc' : 'desc';
         setSort({ key, dir });
@@ -776,14 +848,21 @@ function attachHandlers() {
       densityBtn.addEventListener('click', () => {
         try {
           const root = document.body;
-          if (!root) {return;}
+          if (!root) {
+            return;
+          }
           const cur = root.classList.contains('density-compact');
           const next = !cur;
-          if (next) {root.classList.add('density-compact');}
-          else {root.classList.remove('density-compact');}
+          if (next) {
+            root.classList.add('density-compact');
+          } else {
+            root.classList.remove('density-compact');
+          }
           try {
             const btn = document.getElementById('densityToggle');
-            if (btn) {btn.textContent = next ? 'Comfortable' : 'Compact';}
+            if (btn) {
+              btn.textContent = next ? 'Comfortable' : 'Compact';
+            }
           } catch {}
           try {
             localStorage.setItem('eg_top_density_compact', next ? '1' : '0');
@@ -800,7 +879,9 @@ function attachHandlers() {
     const helpModalClose = document.getElementById('helpModalClose');
     const openHelp = () => {
       try {
-        if (!helpModal || !helpModalBody) {return;}
+        if (!helpModal || !helpModalBody) {
+          return;
+        }
         helpModalBody.innerHTML = `
         <div class="status">Keyboard shortcuts</div>
         <ul>
@@ -824,7 +905,9 @@ function attachHandlers() {
     };
     const closeHelp = () => {
       try {
-        if (helpModal) {helpModal.setAttribute('hidden', '');}
+        if (helpModal) {
+          helpModal.setAttribute('hidden', '');
+        }
       } catch {}
     };
     if (helpBtn && !helpBtn.__egBound) {
@@ -838,7 +921,9 @@ function attachHandlers() {
     if (helpModal && !helpModal.__egBackdrop) {
       helpModal.__egBackdrop = true;
       helpModal.addEventListener('click', (ev) => {
-        if (ev.target === helpModal) {closeHelp();}
+        if (ev.target === helpModal) {
+          closeHelp();
+        }
       });
     }
   } catch {}
@@ -870,8 +955,9 @@ function attachHandlers() {
           if (lastOnline !== online) {
             lastOnline = online;
             try {
-              if (typeof window.showToast === 'function')
-                {window.showToast(online ? 'Online' : 'Offline');}
+              if (typeof window.showToast === 'function') {
+                window.showToast(online ? 'Online' : 'Offline');
+              }
             } catch {}
           }
         } catch {}
@@ -956,7 +1042,9 @@ function attachHandlers() {
     };
     const refreshAlerts = async () => {
       try {
-        if (!alertsStatusEl || !alertsListEl) {return;}
+        if (!alertsStatusEl || !alertsListEl) {
+          return;
+        }
         alertsStatusEl.textContent = 'Loading surge alerts…';
         alertsListEl.innerHTML = '';
         const data = await svcGetJSON('/ml/detect/change-points?source=commodities&threshold=0.2');
@@ -998,18 +1086,23 @@ function attachHandlers() {
           .join('');
         alertsListEl.innerHTML = rows;
         try {
-          if (window.$WowheadPower && typeof window.$WowheadPower.refreshLinks === 'function')
-            {window.$WowheadPower.refreshLinks();}
+          if (window.$WowheadPower && typeof window.$WowheadPower.refreshLinks === 'function') {
+            window.$WowheadPower.refreshLinks();
+          }
         } catch {}
         try {
           const ids = events
             .slice(0, 100)
             .map((ev) => Number(ev.itemId))
             .filter(Boolean);
-          if (ids.length) {EGTopServices.fetchNamesIcons(ids).catch(() => {});}
+          if (ids.length) {
+            EGTopServices.fetchNamesIcons(ids).catch(() => {});
+          }
         } catch {}
       } catch (e) {
-        if (alertsStatusEl) {alertsStatusEl.textContent = 'Failed to load alerts';}
+        if (alertsStatusEl) {
+          alertsStatusEl.textContent = 'Failed to load alerts';
+        }
       }
     };
     if (refreshAlertsBtn && !refreshAlertsBtn.__egBound) {
@@ -1021,18 +1114,26 @@ function attachHandlers() {
     // Alerts list actions: Copy/ETA/Policy
     alertsListEl?.addEventListener('click', async (e) => {
       const tgt = e.target;
-      if (!(tgt instanceof HTMLElement)) {return;}
+      if (!(tgt instanceof HTMLElement)) {
+        return;
+      }
       const id = tgt.getAttribute && tgt.getAttribute('data-id');
       // Copy ID
       if (tgt.matches('.tool-btn[data-act="copy"]')) {
-        if (!id) {return;}
+        if (!id) {
+          return;
+        }
         const ok = await svcCopyText(id);
-        if (ok && svcShowToast) {svcShowToast(`Copied item ID ${id}`);}
+        if (ok && svcShowToast) {
+          svcShowToast(`Copied item ID ${id}`);
+        }
         return;
       }
       // ETA modal
       if (tgt.matches('.tool-btn[data-act="eta"]')) {
-        if (!id) {return;}
+        if (!id) {
+          return;
+        }
         try {
           const hoursEl = document.getElementById('hoursTop');
           const hours = Number(hoursEl?.value || 48);
@@ -1059,22 +1160,27 @@ function attachHandlers() {
               </div>
             </div>`;
           try {
-            if (window.openAIModal) {window.openAIModal(`ETA — Item ${id}`, html);}
+            if (window.openAIModal) {
+              window.openAIModal(`ETA — Item ${id}`, html);
+            }
           } catch {}
         } catch (err) {
           try {
-            if (window.openAIModal)
-              {window.openAIModal(
+            if (window.openAIModal) {
+              window.openAIModal(
                 'ETA Error',
                 `<pre class="mono" style="white-space:pre-wrap">${String(err)}</pre>`,
-              );}
+              );
+            }
           } catch {}
         }
         return;
       }
       // Policy modal
       if (tgt.matches('.tool-btn[data-act="policy"]')) {
-        if (!id) {return;}
+        if (!id) {
+          return;
+        }
         try {
           const hoursEl = document.getElementById('hoursTop');
           const hours = Number(hoursEl?.value || 48);
@@ -1089,15 +1195,18 @@ function attachHandlers() {
           `
             : '<div>No viable policy recommendation at this time.</div>';
           try {
-            if (window.openAIModal) {window.openAIModal(`Policy — Item ${id}`, html);}
+            if (window.openAIModal) {
+              window.openAIModal(`Policy — Item ${id}`, html);
+            }
           } catch {}
         } catch (err) {
           try {
-            if (window.openAIModal)
-              {window.openAIModal(
+            if (window.openAIModal) {
+              window.openAIModal(
                 'Policy Error',
                 `<pre class="mono" style="white-space:pre-wrap">${String(err)}</pre>`,
-              );}
+              );
+            }
           } catch {}
         }
         return;
@@ -1111,17 +1220,25 @@ function attachHandlers() {
       rows.__egRowBound = true;
       rows.addEventListener('click', async (e) => {
         const tgt = e.target;
-        if (!(tgt instanceof HTMLElement)) {return;}
+        if (!(tgt instanceof HTMLElement)) {
+          return;
+        }
         const id = tgt.getAttribute && tgt.getAttribute('data-id');
         // Copy ID
         if (tgt.matches('.tool-btn[data-act="copy"]')) {
-          if (!id) {return;}
+          if (!id) {
+            return;
+          }
           const ok = await svcCopyText(id);
-          if (ok) {svcShowToast && svcShowToast(`Copied item ID ${id}`);}
+          if (ok) {
+            svcShowToast && svcShowToast(`Copied item ID ${id}`);
+          }
         }
         // Sell-through ETA
         if (tgt.matches('.tool-btn[data-act="eta"]')) {
-          if (!id) {return;}
+          if (!id) {
+            return;
+          }
           try {
             const hours = Number(ControllerState.els.hoursEl?.value || 48);
             const data = await svcGetJSON(
@@ -1161,7 +1278,9 @@ function attachHandlers() {
         }
         // Pricing policy recommendation
         if (tgt.matches('.tool-btn[data-act="policy"]')) {
-          if (!id) {return;}
+          if (!id) {
+            return;
+          }
           try {
             const hours = Number(ControllerState.els.hoursEl?.value || 48);
             const body = { itemId: Number(id), targetHours: 12, maxStack: 200, hoursWindow: hours };
@@ -1194,13 +1313,17 @@ function attachHandlers() {
           document.activeElement && document.activeElement.tagName === 'TR'
             ? document.activeElement
             : null;
-        if (!tr) {return;}
+        if (!tr) {
+          return;
+        }
         if (e.key && e.key.toLowerCase() === 'c') {
           const btn = tr.querySelector('.tool-btn[data-act="copy"]');
           const id = btn && btn.getAttribute('data-id');
           if (id) {
             const ok = await svcCopyText(id);
-            if (ok) {svcShowToast && svcShowToast(`Copied item ID ${id}`);}
+            if (ok) {
+              svcShowToast && svcShowToast(`Copied item ID ${id}`);
+            }
           }
         }
       });
@@ -1222,17 +1345,23 @@ function attachHandlers() {
           if (e.key === 'Escape') {
             try {
               const hm = document.getElementById('helpModal');
-              if (hm && !hm.hasAttribute('hidden')) {hm.setAttribute('hidden', '');}
+              if (hm && !hm.hasAttribute('hidden')) {
+                hm.setAttribute('hidden', '');
+              }
             } catch {}
             try {
-              if (window.closeAIModal) {window.closeAIModal();}
+              if (window.closeAIModal) {
+                window.closeAIModal();
+              }
             } catch {}
             return;
           }
           // '/' focuses search
           if (!typing && e.key === '/') {
             try {
-              if (ControllerState.els.searchEl) {ControllerState.els.searchEl.focus();}
+              if (ControllerState.els.searchEl) {
+                ControllerState.els.searchEl.focus();
+              }
             } catch {}
             e.preventDefault();
             return;
@@ -1242,7 +1371,9 @@ function attachHandlers() {
           if (isHelp) {
             try {
               const btn = document.getElementById('helpTop');
-              if (btn) {btn.click();}
+              if (btn) {
+                btn.click();
+              }
             } catch {}
             e.preventDefault();
             return;
@@ -1288,7 +1419,9 @@ function attachHandlers() {
           if (!typing && isExportJson) {
             try {
               const btn = document.getElementById('exportJsonTop');
-              if (btn) {btn.click();}
+              if (btn) {
+                btn.click();
+              }
             } catch {}
             e.preventDefault();
             return;
@@ -1299,7 +1432,9 @@ function attachHandlers() {
           if (!typing && isExportCsv) {
             try {
               const btn = document.getElementById('exportTop');
-              if (btn) {btn.click();}
+              if (btn) {
+                btn.click();
+              }
             } catch {}
             e.preventDefault();
             return;
@@ -1310,7 +1445,9 @@ function attachHandlers() {
           if (!typing && isCopyIds) {
             try {
               const btn = document.getElementById('copyIdsTop');
-              if (btn) {btn.click();}
+              if (btn) {
+                btn.click();
+              }
             } catch {}
             e.preventDefault();
             return;
@@ -1321,7 +1458,9 @@ function attachHandlers() {
           if (!typing && isCopyTsm) {
             try {
               const btn = document.getElementById('copyTsmTop');
-              if (btn) {btn.click();}
+              if (btn) {
+                btn.click();
+              }
             } catch {}
             e.preventDefault();
             return;
@@ -1336,7 +1475,9 @@ function attachHandlers() {
           ) {
             try {
               const btn = document.getElementById('copyIdsTop');
-              if (btn) {btn.click();}
+              if (btn) {
+                btn.click();
+              }
             } catch {}
             e.preventDefault();
             return;
@@ -1351,7 +1492,9 @@ function attachHandlers() {
           ) {
             try {
               const btn = document.getElementById('exportTop');
-              if (btn) {btn.click();}
+              if (btn) {
+                btn.click();
+              }
             } catch {}
             e.preventDefault();
             return;
@@ -1367,7 +1510,9 @@ function attachHandlers() {
                 ' • Ctrl+Shift+E export CSV',
                 ' • Ctrl+Shift+G copy TSM group',
               ];
-              if (svcShowToast) {svcShowToast(lines.join('\n'));}
+              if (svcShowToast) {
+                svcShowToast(lines.join('\n'));
+              }
             } catch {}
             e.preventDefault();
             return;
@@ -1394,7 +1539,9 @@ function attachHandlers() {
       };
       const renderCatalogResults = (items) => {
         try {
-          if (!catalogResultsEl) {return;}
+          if (!catalogResultsEl) {
+            return;
+          }
           if (!items || !items.length) {
             catalogResultsEl.innerHTML = '';
             return;
@@ -1424,18 +1571,23 @@ function attachHandlers() {
             .join('');
           catalogResultsEl.innerHTML = rows;
           try {
-            if (window.$WowheadPower && typeof window.$WowheadPower.refreshLinks === 'function')
-              {window.$WowheadPower.refreshLinks();}
+            if (window.$WowheadPower && typeof window.$WowheadPower.refreshLinks === 'function') {
+              window.$WowheadPower.refreshLinks();
+            }
           } catch {}
         } catch {}
       };
       const runCatalogSearch = async (q) => {
         try {
           if (!q || q.length < 1) {
-            if (catalogResultsEl) {catalogResultsEl.innerHTML = '';}
+            if (catalogResultsEl) {
+              catalogResultsEl.innerHTML = '';
+            }
             return;
           }
-          if (catalogResultsEl) {catalogResultsEl.textContent = 'Searching…';}
+          if (catalogResultsEl) {
+            catalogResultsEl.textContent = 'Searching…';
+          }
           let arr = [];
           try {
             arr = await EGTopServices.tryCatalogQueries(q);
@@ -1450,11 +1602,15 @@ function attachHandlers() {
           // Warm caches for icons/names if available
           try {
             const ids = arr.map((x) => Number(x.id)).filter(Boolean);
-            if (ids.length) {EGTopServices.fetchNamesIcons(ids).catch(() => {});}
+            if (ids.length) {
+              EGTopServices.fetchNamesIcons(ids).catch(() => {});
+            }
           } catch {}
           renderCatalogResults(arr);
         } catch {
-          if (catalogResultsEl) {catalogResultsEl.textContent = 'Search failed';}
+          if (catalogResultsEl) {
+            catalogResultsEl.textContent = 'Search failed';
+          }
         }
       };
       const doSearch = debounce(
@@ -1477,7 +1633,9 @@ function attachHandlers() {
             const id = btn.getAttribute('data-id');
             if (id) {
               const ok = await svcCopyText(id);
-              if (ok && svcShowToast) {svcShowToast(`Copied item ID ${id}`);}
+              if (ok && svcShowToast) {
+                svcShowToast(`Copied item ID ${id}`);
+              }
             }
             e.preventDefault();
             e.stopPropagation();
@@ -1505,12 +1663,16 @@ function attachHandlers() {
       const fmtRel = (ts) => {
         try {
           const t = Number(ts);
-          if (!Number.isFinite(t)) {return '';}
+          if (!Number.isFinite(t)) {
+            return '';
+          }
           const d = t > 1e12 ? new Date(t) : new Date(t * 1000);
           const diff = Date.now() - d.getTime();
           const abs = Math.abs(diff);
           const min = Math.round(abs / 60000);
-          if (min < 1) {return diff >= 0 ? 'just now' : 'soon';}
+          if (min < 1) {
+            return diff >= 0 ? 'just now' : 'soon';
+          }
           return diff >= 0 ? `${min}m ago` : `in ${min}m`;
         } catch {
           return '';
@@ -1535,14 +1697,22 @@ function attachHandlers() {
           const co = sec('commodities');
           const mk = (label, o) => {
             try {
-              if (!o || typeof o !== 'object') {return null;}
+              if (!o || typeof o !== 'object') {
+                return null;
+              }
               const ls = o.lastSuccessAt ?? o.lastOkAt ?? o.lastSuccess ?? o.lastOk ?? o.last;
               const nx = o.nextRunAt ?? o.nextAt ?? o.next ?? o.nextPollAt;
               const st = o.status || o.state;
               const p = [label];
-              if (st) {p.push(String(st));}
-              if (ls != null) {p.push(`ok ${fmtRel(ls)}`);}
-              if (nx != null) {p.push(`next ${fmtRel(nx)}`);}
+              if (st) {
+                p.push(String(st));
+              }
+              if (ls != null) {
+                p.push(`ok ${fmtRel(ls)}`);
+              }
+              if (nx != null) {
+                p.push(`next ${fmtRel(nx)}`);
+              }
               return p.join(' • ');
             } catch {
               return null;
@@ -1550,8 +1720,12 @@ function attachHandlers() {
           };
           const p1 = mk('Items', it);
           const p2 = mk('Commodities', co);
-          if (p1) {parts.push(p1);}
-          if (p2) {parts.push(p2);}
+          if (p1) {
+            parts.push(p1);
+          }
+          if (p2) {
+            parts.push(p2);
+          }
           el.textContent = parts.length ? parts.join('  |  ') : 'Polling status ready';
         } catch {
           el.textContent = 'Polling status unavailable';
@@ -1578,7 +1752,9 @@ export const EGTopController = {
   attachHandlers,
 };
 try {
-  if (!window.EGTopController) {window.EGTopController = EGTopController;}
+  if (!window.EGTopController) {
+    window.EGTopController = EGTopController;
+  }
 } catch {}
 
 // Bootstrap: ensure handlers are attached after DOM is ready (guarded)
@@ -1591,9 +1767,11 @@ try {
         EGTopController.attachHandlers();
       } catch {}
     };
-    if (document.readyState === 'loading')
-      {document.addEventListener('DOMContentLoaded', boot, { once: true });}
-    else {setTimeout(boot, 0);}
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', boot, { once: true });
+    } else {
+      setTimeout(boot, 0);
+    }
   }
 } catch {}
 
@@ -1604,7 +1782,9 @@ export class TopController {
 
   async init() {
     // Avoid double-load
-    if (window.__EG_TOP_MODULE_INIT__) {return;}
+    if (window.__EG_TOP_MODULE_INIT__) {
+      return;
+    }
     window.__EG_TOP_MODULE_INIT__ = true;
 
     // If classic top.js already present (from previous loader), do nothing
@@ -1626,13 +1806,25 @@ export class TopController {
       const w = window;
       if (w && EGTopServices) {
         // Do not overwrite if already defined by page
-        if (!w.getJSON) {w.getJSON = svcGetJSON;}
-        if (!w.postJSON) {w.postJSON = svcPostJSON;}
-        if (!w.copyText) {w.copyText = svcCopyText;}
-        if (!w.showToast) {w.showToast = svcShowToast;}
-        if (!w.fmtInt) {w.fmtInt = svcFmtInt;}
+        if (!w.getJSON) {
+          w.getJSON = svcGetJSON;
+        }
+        if (!w.postJSON) {
+          w.postJSON = svcPostJSON;
+        }
+        if (!w.copyText) {
+          w.copyText = svcCopyText;
+        }
+        if (!w.showToast) {
+          w.showToast = svcShowToast;
+        }
+        if (!w.fmtInt) {
+          w.fmtInt = svcFmtInt;
+        }
         // Attach services namespace (read-only usage encouraged)
-        if (!w.EGTopServices) {w.EGTopServices = EGTopServices;}
+        if (!w.EGTopServices) {
+          w.EGTopServices = EGTopServices;
+        }
       }
     } catch {}
   }
@@ -1647,8 +1839,11 @@ export class TopController {
         s.onload = () => resolve();
         s.onerror = (e) => reject(e);
         const cur = document.currentScript;
-        if (cur && cur.parentNode) {cur.parentNode.insertBefore(s, cur);}
-        else {document.head.appendChild(s);}
+        if (cur && cur.parentNode) {
+          cur.parentNode.insertBefore(s, cur);
+        } else {
+          document.head.appendChild(s);
+        }
       } catch (e) {
         reject(e);
       }

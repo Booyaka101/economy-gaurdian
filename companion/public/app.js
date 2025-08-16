@@ -16,7 +16,9 @@
     } catch {}
   }
   const fmtGold = (c) => {
-    if (c == null) {return '-';}
+    if (c == null) {
+      return '-';
+    }
     const g = Math.floor(c / 10000);
     const s = Math.floor((c % 10000) / 100);
     const ccp = Math.floor(c % 100);
@@ -43,7 +45,9 @@
   function groupByItem(deals) {
     const map = new Map();
     for (const d of deals) {
-      if (!d.itemId) {continue;}
+      if (!d.itemId) {
+        continue;
+      }
       let g = map.get(d.itemId);
       if (!g) {
         g = { itemId: d.itemId, listings: 0, quantity: 0, best: null };
@@ -51,7 +55,9 @@
       }
       g.listings += 1;
       g.quantity += d.quantity || 0;
-      if (!g.best || d.unitPrice < g.best.unitPrice) {g.best = d;}
+      if (!g.best || d.unitPrice < g.best.unitPrice) {
+        g.best = d;
+      }
     }
     const arr = [];
     for (const g of map.values()) {
@@ -72,7 +78,9 @@
 
   async function getJSON(url) {
     const res = await fetch(url);
-    if (!res.ok) {throw new Error(`HTTP ${res.status}`);}
+    if (!res.ok) {
+      throw new Error(`HTTP ${res.status}`);
+    }
     return res.json();
   }
 
@@ -98,10 +106,18 @@
     try {
       const st = await getJSON('/integrations/status');
       const parts = [];
-      if (st && st.blizzard) {parts.push(`Blizzard: ${st.blizzard.ok ? 'OK' : 'Err'}`);}
-      if (st && st.tsm) {parts.push(`TSM: ${st.tsm.configured ? 'Configured' : 'Off'}`);}
-      if (st && st.tuj) {parts.push(`TUJ: ${st.tuj.configured ? 'Configured' : 'Off'}`);}
-      if (st && st.nexus) {parts.push(`NexusHub: ${st.nexus.configured ? 'Configured' : 'Off'}`);}
+      if (st && st.blizzard) {
+        parts.push(`Blizzard: ${st.blizzard.ok ? 'OK' : 'Err'}`);
+      }
+      if (st && st.tsm) {
+        parts.push(`TSM: ${st.tsm.configured ? 'Configured' : 'Off'}`);
+      }
+      if (st && st.tuj) {
+        parts.push(`TUJ: ${st.tuj.configured ? 'Configured' : 'Off'}`);
+      }
+      if (st && st.nexus) {
+        parts.push(`NexusHub: ${st.nexus.configured ? 'Configured' : 'Off'}`);
+      }
       statusEl.textContent = parts.join(' · ');
     } catch {
       statusEl.textContent = 'Status unavailable';
@@ -116,10 +132,18 @@
       const k = sortKey;
       let va = a[k],
         vb = b[k];
-      if (typeof va === 'string') {va = va.toLowerCase();}
-      if (typeof vb === 'string') {vb = vb.toLowerCase();}
-      if (va < vb) {return sortDir === 'asc' ? -1 : 1;}
-      if (va > vb) {return sortDir === 'asc' ? 1 : -1;}
+      if (typeof va === 'string') {
+        va = va.toLowerCase();
+      }
+      if (typeof vb === 'string') {
+        vb = vb.toLowerCase();
+      }
+      if (va < vb) {
+        return sortDir === 'asc' ? -1 : 1;
+      }
+      if (va > vb) {
+        return sortDir === 'asc' ? 1 : -1;
+      }
       return 0;
     });
     const total = grouped.length;
@@ -161,24 +185,32 @@
         <td>${d.quantity}</td>
       `;
       rowsEl.appendChild(tr);
-      if (!nameCache.has(d.itemId) || !iconCache.has(d.itemId)) {missing.push(d.itemId);}
+      if (!nameCache.has(d.itemId) || !iconCache.has(d.itemId)) {
+        missing.push(d.itemId);
+      }
     }
 
     // Lazy fetch names/icons only for the rows we actually showed (or filtered)
     (async () => {
       try {
-        if (!missing.length) {return;}
+        if (!missing.length) {
+          return;
+        }
         const resp = await getJSON(`/blizzard/item-names?ids=${missing.join(',')}`);
         if (resp && resp.names) {
           for (const [k, v] of Object.entries(resp.names)) {
             const id = Number(k);
-            if (!Number.isNaN(id) && v) {nameCache.set(id, String(v));}
+            if (!Number.isNaN(id) && v) {
+              nameCache.set(id, String(v));
+            }
           }
         }
         if (resp && resp.icons) {
           for (const [k, v] of Object.entries(resp.icons)) {
             const id = Number(k);
-            if (!Number.isNaN(id) && v) {iconCache.set(id, String(v));}
+            if (!Number.isNaN(id) && v) {
+              iconCache.set(id, String(v));
+            }
           }
         }
         // Re-render the currently visible set to show names/icons
@@ -197,9 +229,15 @@
     params.set('minQuantity', qsNum('minQuantity'));
     params.set('metric', qsVal('metric'));
     params.set('p', qsNum('p'));
-    if ($('#includeItemIds').value.trim()) {params.set('includeItemIds', qsVal('includeItemIds'));}
-    if ($('#excludeItemIds').value.trim()) {params.set('excludeItemIds', qsVal('excludeItemIds'));}
-    if ($('#minTimeLeft').value) {params.set('minTimeLeft', qsVal('minTimeLeft'));}
+    if ($('#includeItemIds').value.trim()) {
+      params.set('includeItemIds', qsVal('includeItemIds'));
+    }
+    if ($('#excludeItemIds').value.trim()) {
+      params.set('excludeItemIds', qsVal('excludeItemIds'));
+    }
+    if ($('#minTimeLeft').value) {
+      params.set('minTimeLeft', qsVal('minTimeLeft'));
+    }
 
     const url = `/deals/snipe?${params.toString()}`;
     statusEl.textContent = 'Loading deals...';
@@ -279,18 +317,22 @@
     try {
       const m = await getJSON('/metrics');
       const parts = [];
-      if (m.auctions)
-        {parts.push(
+      if (m.auctions) {
+        parts.push(
           `Auctions: refreshes ${m.auctions.refreshCount}, last ${m.auctions.lastDurationMs}ms${m.auctions.lastError ? ', err: ' + m.auctions.lastError : ''}`,
-        );}
-      if (m.prices)
-        {parts.push(`Prices: builds ${m.prices.buildCount}, last ${m.prices.lastDurationMs}ms`);}
-      if (m.requests)
-        {parts.push(`Requests: snipe ${m.requests.snipeCount}, fair ${m.requests.fairValuesCount}`);}
-      if (m.items)
-        {parts.push(
+        );
+      }
+      if (m.prices) {
+        parts.push(`Prices: builds ${m.prices.buildCount}, last ${m.prices.lastDurationMs}ms`);
+      }
+      if (m.requests) {
+        parts.push(`Requests: snipe ${m.requests.snipeCount}, fair ${m.requests.fairValuesCount}`);
+      }
+      if (m.items) {
+        parts.push(
           `Items: cache ${m.items.cacheSize || 0}, hits ${m.items.cacheHits || 0}, fetched ${m.items.fetchedCount || 0}`,
-        );}
+        );
+      }
       metricsEl.textContent = parts.join(' · ');
     } catch {
       metricsEl.textContent = '';
@@ -305,7 +347,9 @@
     return { key: sortKey, dir: sortDir };
   }
   function setSort(key) {
-    if (!key) {return getSort();}
+    if (!key) {
+      return getSort();
+    }
     if (sortKey === key) {
       sortDir = sortDir === 'asc' ? 'desc' : 'asc';
     } else {
@@ -318,7 +362,9 @@
         .querySelectorAll('th[data-sort]')
         .forEach((el) => el.classList.remove('sort-asc', 'sort-desc'));
       const th = document.querySelector(`th[data-sort="${key}"]`);
-      if (th) {th.classList.add(sortDir === 'asc' ? 'sort-asc' : 'sort-desc');}
+      if (th) {
+        th.classList.add(sortDir === 'asc' ? 'sort-asc' : 'sort-desc');
+      }
     } catch {}
     renderDeals();
     return getSort();

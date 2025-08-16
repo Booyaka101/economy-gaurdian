@@ -2,19 +2,25 @@
 /* eslint-disable no-inner-declarations */
 (() => {
   try {
-    if (window.__EG_SW_INIT__) {return;}
+    if (window.__EG_SW_INIT__) {
+      return;
+    }
     window.__EG_SW_INIT__ = true;
 
     // Ensure Night Owl + Command Palette are available regardless of SW support
     (function initCommon() {
       try {
         // Night Owl minimal utilities (global)
-        if (!window.EGTheme) {window.EGTheme = {};}
-        if (!window.EGTheme.applyNightOwl)
-          {window.EGTheme.applyNightOwl = function (enabled) {
+        if (!window.EGTheme) {
+          window.EGTheme = {};
+        }
+        if (!window.EGTheme.applyNightOwl) {
+          window.EGTheme.applyNightOwl = function (enabled) {
             try {
               const b = document.body;
-              if (!b) {return;}
+              if (!b) {
+                return;
+              }
               b.classList.toggle('night-owl', !!enabled);
               let badge = document.getElementById('eg-owl-badge');
               if (enabled) {
@@ -31,94 +37,108 @@
                 } catch {}
               }
             } catch {}
-          };}
-        if (!window.EGTheme.getNightOwl)
-          {window.EGTheme.getNightOwl = function () {
+          };
+        }
+        if (!window.EGTheme.getNightOwl) {
+          window.EGTheme.getNightOwl = function () {
             try {
               return localStorage.getItem('eg_night_owl') === '1';
             } catch {
               return false;
             }
-          };}
-        if (!window.EGTheme.setNightOwl)
-          {window.EGTheme.setNightOwl = function (v) {
+          };
+        }
+        if (!window.EGTheme.setNightOwl) {
+          window.EGTheme.setNightOwl = function (v) {
             try {
               localStorage.setItem('eg_night_owl', v ? '1' : '0');
             } catch {}
-          };}
+          };
+        }
         // High Contrast utilities (global)
-        if (!window.EGTheme.applyHighContrast)
-          {window.EGTheme.applyHighContrast = function (enabled) {
+        if (!window.EGTheme.applyHighContrast) {
+          window.EGTheme.applyHighContrast = function (enabled) {
             try {
               const b = document.body;
-              if (!b) {return;}
+              if (!b) {
+                return;
+              }
               b.classList.toggle('high-contrast', !!enabled);
             } catch {}
-          };}
-        if (!window.EGTheme.getHighContrast)
-          {window.EGTheme.getHighContrast = function () {
+          };
+        }
+        if (!window.EGTheme.getHighContrast) {
+          window.EGTheme.getHighContrast = function () {
             try {
               return localStorage.getItem('eg_high_contrast') === '1';
             } catch {
               return false;
             }
-          };}
-        if (!window.EGTheme.setHighContrast)
-          {window.EGTheme.setHighContrast = function (v) {
+          };
+        }
+        if (!window.EGTheme.setHighContrast) {
+          window.EGTheme.setHighContrast = function (v) {
             try {
               localStorage.setItem('eg_high_contrast', v ? '1' : '0');
             } catch {}
-          };}
+          };
+        }
         // Expose convenience APIs
         try {
           window.EG = window.EG || {};
-          if (!window.EG.toggleHighContrast)
-            {window.EG.toggleHighContrast = () => {
+          if (!window.EG.toggleHighContrast) {
+            window.EG.toggleHighContrast = () => {
               try {
                 const next = !window.EGTheme.getHighContrast();
                 window.EGTheme.setHighContrast(next);
                 window.EGTheme.applyHighContrast(next);
               } catch {}
-            };}
-          if (!window.EG.isHighContrast)
-            {window.EG.isHighContrast = () => {
+            };
+          }
+          if (!window.EG.isHighContrast) {
+            window.EG.isHighContrast = () => {
               try {
                 return !!window.EGTheme.getHighContrast();
               } catch {
                 return false;
               }
-            };}
-          if (!window.EG.setHighContrast)
-            {window.EG.setHighContrast = (v) => {
+            };
+          }
+          if (!window.EG.setHighContrast) {
+            window.EG.setHighContrast = (v) => {
               try {
                 window.EGTheme.setHighContrast(!!v);
                 window.EGTheme.applyHighContrast(!!v);
               } catch {}
-            };}
+            };
+          }
           // Night Owl convenience APIs for parity
-          if (!window.EG.toggleNightOwl)
-            {window.EG.toggleNightOwl = () => {
+          if (!window.EG.toggleNightOwl) {
+            window.EG.toggleNightOwl = () => {
               try {
                 const next = !window.EGTheme.getNightOwl();
                 window.EGTheme.setNightOwl(next);
                 window.EGTheme.applyNightOwl(next);
               } catch {}
-            };}
-          if (!window.EG.isNightOwl)
-            {window.EG.isNightOwl = () => {
+            };
+          }
+          if (!window.EG.isNightOwl) {
+            window.EG.isNightOwl = () => {
               try {
                 return !!window.EGTheme.getNightOwl();
               } catch {
                 return false;
               }
-            };}
-          if (!window.EG.setNightOwl)
-            {window.EG.setNightOwl = (v) => {
+            };
+          }
+          if (!window.EG.setNightOwl) {
+            window.EG.setNightOwl = (v) => {
               try {
                 window.EGTheme.setNightOwl(!!v);
                 window.EGTheme.applyNightOwl(!!v);
               } catch {}
-            };}
+            };
+          }
         } catch {}
 
         // Apply themes on ready
@@ -189,9 +209,13 @@
           function h(tag, props = {}, children = []) {
             const el = document.createElement(tag);
             for (const k in props) {
-              if (k === 'class') {el.className = props[k];}
-              else if (k === 'text') {el.textContent = props[k];}
-              else {el.setAttribute(k, props[k]);}
+              if (k === 'class') {
+                el.className = props[k];
+              } else if (k === 'text') {
+                el.textContent = props[k];
+              } else {
+                el.setAttribute(k, props[k]);
+              }
             }
             children.forEach((c) => el.appendChild(c));
             return el;
@@ -220,9 +244,10 @@
           panel.appendChild(header);
           panel.appendChild(list);
           overlay.appendChild(panel);
-          if (document.body) {document.body.appendChild(overlay);}
-          else
-            {document.addEventListener(
+          if (document.body) {
+            document.body.appendChild(overlay);
+          } else {
+            document.addEventListener(
               'DOMContentLoaded',
               () => {
                 try {
@@ -230,11 +255,14 @@
                 } catch {}
               },
               { once: true },
-            );}
+            );
+          }
 
           function isTextFieldActive() {
             const a = document.activeElement;
-            if (!a) {return false;}
+            if (!a) {
+              return false;
+            }
             const t = (a.tagName || '').toLowerCase();
             return t === 'input' || t === 'textarea' || a.isContentEditable;
           }
@@ -254,7 +282,9 @@
             } catch {}
           }
           overlay.addEventListener('click', (e) => {
-            if (e.target === overlay) {close();}
+            if (e.target === overlay) {
+              close();
+            }
           });
           try {
             window.EG = window.EG || {};
@@ -331,8 +361,11 @@
             return () => {
               try {
                 const u = new URL(location.href);
-                if (v) {u.searchParams.set('whsrc', v);}
-                else {u.searchParams.delete('whsrc');}
+                if (v) {
+                  u.searchParams.set('whsrc', v);
+                } else {
+                  u.searchParams.delete('whsrc');
+                }
                 location.href = u.toString();
               } catch {}
             };
@@ -446,7 +479,9 @@
                 !isTextFieldActive() &&
                 now - lastShiftAt < 350;
               if (!overlay || isTextFieldActive()) {
-                if (k === 'Shift') {lastShiftAt = now;}
+                if (k === 'Shift') {
+                  lastShiftAt = now;
+                }
               }
               if ((isCmd || isDoubleShift) && !isTextFieldActive()) {
                 ev.preventDefault();
@@ -456,7 +491,9 @@
               if (k === 'Shift') {
                 lastShiftAt = now;
               }
-              if (overlay.hasAttribute('hidden')) {return;}
+              if (overlay.hasAttribute('hidden')) {
+                return;
+              }
               if (k === 'Escape') {
                 ev.preventDefault();
                 close();
@@ -538,23 +575,31 @@
         const apply = () => {
           try {
             const waiting = reg.waiting;
-            if (waiting) {waiting.postMessage('SKIP_WAITING');}
+            if (waiting) {
+              waiting.postMessage('SKIP_WAITING');
+            }
           } catch {}
         };
         createUpdateBanner(apply);
       }
 
       function watchForUpdates(reg) {
-        if (!reg) {return;}
+        if (!reg) {
+          return;
+        }
         // If a waiting worker already exists, prompt immediately
         try {
-          if (reg.waiting) {promptUpdate(reg);}
+          if (reg.waiting) {
+            promptUpdate(reg);
+          }
         } catch {}
         // Update found listener
         try {
           reg.addEventListener('updatefound', () => {
             const installing = reg.installing;
-            if (!installing) {return;}
+            if (!installing) {
+              return;
+            }
             installing.addEventListener('statechange', () => {
               if (installing.state === 'installed' && navigator.serviceWorker.controller) {
                 promptUpdate(reg);
@@ -568,7 +613,9 @@
       let reloaded = false;
       try {
         navigator.serviceWorker.addEventListener('controllerchange', () => {
-          if (reloaded) {return;}
+          if (reloaded) {
+            return;
+          }
           reloaded = true;
           try {
             location.reload();
