@@ -6,7 +6,9 @@
 
   function fmtGold(v) {
     const n = Number(v || 0);
-    if (!Number.isFinite(n)) return '';
+    if (!Number.isFinite(n)) {
+      return '';
+    }
     const g = Math.floor(n / 10000);
     const s = Math.floor((n % 10000) / 100);
     const c = n % 100;
@@ -38,9 +40,13 @@
 
   function parseRetryAfterSeconds(res) {
     const ra = res.headers && res.headers.get && res.headers.get('Retry-After');
-    if (!ra) return null;
+    if (!ra) {
+      return null;
+    }
     const n = Number(ra);
-    if (Number.isFinite(n)) return Math.max(0, Math.floor(n));
+    if (Number.isFinite(n)) {
+      return Math.max(0, Math.floor(n));
+    }
     const dt = Date.parse(ra);
     if (Number.isFinite(dt)) {
       const secs = Math.ceil((dt - Date.now()) / 1000);
@@ -65,7 +71,9 @@
         const jitter = Math.floor(Math.random() * 400);
         const delay = base + jitter;
         const left = maxAttempts - attempt;
-        if (left <= 0) break;
+        if (left <= 0) {
+          break;
+        }
         if (typeof onStatus === 'function') {
           onStatus(`Rate limited – retrying in ${(delay / 1000).toFixed(1)}s (attempt ${
             attempt + 1
@@ -84,7 +92,9 @@
     const limit = Math.max(1, Math.min(2000, Number(params.limit || 200)));
     const slug = String(params.slug || '').trim();
     const qs = new URLSearchParams({ discount: String(discount), limit: String(limit) });
-    if (slug) qs.set('slug', slug);
+    if (slug) {
+      qs.set('slug', slug);
+    }
     const { json: data } = await fetchJSONWithRetry(
       `/deals/snipe?${qs.toString()}`,
       { headers: { Accept: 'application/json' } },
@@ -113,7 +123,9 @@
 
   async function refreshAuctions(slug) {
     const qs = new URLSearchParams();
-    if (slug) qs.set('slug', slug);
+    if (slug) {
+      qs.set('slug', slug);
+    }
     const res = await fetch(`/blizzard/auctions/refresh?${qs.toString()}`, {
       headers: { Accept: 'application/json' },
     });

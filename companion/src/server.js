@@ -17,7 +17,7 @@ import { rebuildItemCatalog, getCatalogStatus, loadCatalogFromDisk } from './cat
 import registerDebugRoutes from './routes/debug.js'
 import registerBlizzardRoutes from './routes/blizzard.js'
 import registerStatsRoutes from './routes/stats.js'
-// Deals routes removed (sniper will live in addon)
+import registerDealsRoutes from './routes/deals.js'
 import registerCatalogRoutes from './routes/catalog.js'
 import registerSystemRoutes from './routes/system.js'
 import registerItemsRoutes from './routes/items.js'
@@ -694,6 +694,14 @@ registerPricesRoutes(app, {
   getConnectedRealm,
   getConnectedRealmAuctions,
   buildFairMap,
+})
+
+// Deals (sniper) routes
+registerDealsRoutes(app, {
+  normalizeAuctions,
+  buildFairMap,
+  getDefaultSlug,
+  getAuctionsCache,
 })
 
 // AI/ML routes (ETA, policy recommend, change-points)

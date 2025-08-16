@@ -6,7 +6,9 @@
     return document.querySelector(s);
   }
   function on(el, ev, fn) {
-    if (el) el.addEventListener(ev, fn);
+    if (el) {
+      el.addEventListener(ev, fn);
+    }
   }
 
   const elDiscount = $('#discount');
@@ -22,12 +24,18 @@
 
   function setBusy(b) {
     inFlight = !!b;
-    if (elRefresh) elRefresh.disabled = b;
-    if (elRefreshAuctions) elRefreshAuctions.disabled = b;
+    if (elRefresh) {
+      elRefresh.disabled = b;
+    }
+    if (elRefreshAuctions) {
+      elRefreshAuctions.disabled = b;
+    }
   }
 
   function updateStatus(text) {
-    if (elStatus) elStatus.textContent = text;
+    if (elStatus) {
+      elStatus.textContent = text;
+    }
   }
 
   function renderRows(items, meta) {
@@ -37,7 +45,9 @@
     function step() {
       const end = Math.min(i + chunk, items.length);
       let html = '';
-      for (; i < end; i++) html += window.EGDeals.rowHTML(items[i], meta);
+      for (; i < end; i++) {
+        html += window.EGDeals.rowHTML(items[i], meta);
+      }
       elRows.insertAdjacentHTML('beforeend', html);
       if (i < items.length) {
         (window.requestIdleCallback || window.requestAnimationFrame)(step);
@@ -47,7 +57,9 @@
   }
 
   async function refreshDeals() {
-    if (inFlight) return;
+    if (inFlight) {
+      return;
+    }
     setBusy(true);
     try {
       updateStatus('Loading…');
@@ -57,7 +69,7 @@
         limit: Number(elLimit?.value || 200),
         slug: String(elSlug?.value || '').trim(),
       };
-      const { items, meta, discount } = await window.EGDeals.fetchDeals(params, (t) =>
+      const { items, meta } = await window.EGDeals.fetchDeals(params, (t) =>
         updateStatus(t),
       );
       if (items.length === 0) {
@@ -79,7 +91,9 @@
   }
 
   async function refreshAuctionsThenDeals() {
-    if (inFlight) return;
+    if (inFlight) {
+      return;
+    }
     setBusy(true);
     try {
       updateStatus('Refreshing auctions…');
