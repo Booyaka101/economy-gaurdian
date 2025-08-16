@@ -1,0 +1,33 @@
+name: Guardrail
+on:
+  push:
+  pull_request:
+
+jobs:
+  legacy-guardrail:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - name: Run guardrail
+        working-directory: companion
+        run: node scripts/check-legacy.js
+
+  lint-companion:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - name: Install deps
+        working-directory: companion
+        run: npm ci
+      - name: Run ESLint
+        working-directory: companion
+        run: npx eslint --format stylish "src/**/*.js" "scripts/**/*.js"
+      - name: Run Prettier check
+        working-directory: companion
+        run: npx prettier --check "src/**/*.js" "scripts/**/*.js"
