@@ -1,4 +1,3 @@
-/** @vitest-environment jsdom */
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 
 // Helper to create and attach an element
