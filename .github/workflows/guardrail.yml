@@ -11,6 +11,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: companion/package-lock.json
       - name: Run guardrail
         working-directory: companion
         run: node scripts/check-legacy.js
@@ -24,6 +26,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: companion/package-lock.json
       - name: Install deps
         working-directory: companion
         run: |
@@ -56,6 +60,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: companion/package-lock.json
       - name: Install deps
         working-directory: companion
         run: |
@@ -66,6 +72,8 @@ jobs:
           fi
       - name: Run tests with coverage
         working-directory: companion
+        env:
+          VITEST_COVERAGE: 'true'
         run: npm test
       - name: Upload coverage
         if: always()
