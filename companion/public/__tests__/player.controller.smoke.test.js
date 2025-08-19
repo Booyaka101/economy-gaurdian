@@ -3,8 +3,9 @@ import { describe, it, expect, beforeEach, vi } from 'vitest';
 function el(tag, attrs = {}, html = '') {
   const e = document.createElement(tag);
   Object.entries(attrs).forEach(([k, v]) => {
-    if (k === 'class') {e.className = String(v || '');}
-    else if (k in e) {
+    if (k === 'class') {
+      e.className = String(v || '');
+    } else if (k in e) {
       try {
         e[k] = v;
       } catch {}
@@ -14,7 +15,9 @@ function el(tag, attrs = {}, html = '') {
       } catch {}
     }
   });
-  if (html) {e.innerHTML = html;}
+  if (html) {
+    e.innerHTML = html;
+  }
   return e;
 }
 
@@ -91,7 +94,6 @@ describe('player.controller.js smoke', () => {
   });
 
   it('initializes, binds, and reacts to user actions', async () => {
-
     // Import side-effect module (ensure fresh evaluation per test)
     vi.resetModules();
     await import('../player.controller.js');

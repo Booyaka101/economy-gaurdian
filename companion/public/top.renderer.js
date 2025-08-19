@@ -98,9 +98,10 @@ export function renderSparkline(points) {
     </svg>`;
   } catch {
     return '';
-  }
-  finally {
-    try { Perf.end('renderer.sparkline'); } catch {}
+  } finally {
+    try {
+      Perf.end('renderer.sparkline');
+    } catch {}
   }
 }
 
@@ -186,7 +187,7 @@ export function appendRowsChunked(rowsEl, items, { buildRow: makeRow, loadSpark 
           }
         } else {
           const nowT =
-            (typeof performance !== 'undefined' && performance.now ? performance.now() : Date.now());
+            typeof performance !== 'undefined' && performance.now ? performance.now() : Date.now();
           if (nowT - start >= budgetMs) {
             break;
           }
@@ -204,7 +205,9 @@ export function appendRowsChunked(rowsEl, items, { buildRow: makeRow, loadSpark 
         } else if (took < 6) {
           curChunk = Math.min(200, Math.ceil(curChunk * 1.15));
         }
-        try { Perf.end('renderer.appendRows.chunk', { added: n, took }); } catch {}
+        try {
+          Perf.end('renderer.appendRows.chunk', { added: n, took });
+        } catch {}
       } catch {}
       if (i < items.length) {
         if ('requestIdleCallback' in window) {
@@ -224,7 +227,9 @@ export function appendRowsChunked(rowsEl, items, { buildRow: makeRow, loadSpark 
           let j = 0;
           const step = () => {
             if (j >= sparks.length) {
-              try { Perf.end('renderer.appendRows.total', { count: items.length }); } catch {}
+              try {
+                Perf.end('renderer.appendRows.total', { count: items.length });
+              } catch {}
               return;
             }
             const el = sparks[j++];

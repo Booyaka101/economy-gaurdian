@@ -3,14 +3,21 @@ import { describe, it, expect, beforeEach } from 'vitest';
 function el(tag, attrs = {}, html = '') {
   const e = document.createElement(tag);
   Object.entries(attrs).forEach(([k, v]) => {
-    if (k === 'class') {e.className = String(v || '');}
-    else if (k in e) {
-      try { e[k] = v; } catch {}
+    if (k === 'class') {
+      e.className = String(v || '');
+    } else if (k in e) {
+      try {
+        e[k] = v;
+      } catch {}
     } else {
-      try { e.setAttribute(k, String(v)); } catch {}
+      try {
+        e.setAttribute(k, String(v));
+      } catch {}
     }
   });
-  if (html) {e.innerHTML = html;}
+  if (html) {
+    e.innerHTML = html;
+  }
   return e;
 }
 
@@ -33,7 +40,9 @@ describe('index.controller.js smoke', () => {
 
     // Refresh button used when activating top tab
     const refreshTop = el('button', { id: 'refreshTop' });
-    refreshTop.addEventListener('click', () => { refreshCount += 1; });
+    refreshTop.addEventListener('click', () => {
+      refreshCount += 1;
+    });
 
     // Net status element
     const net = el('div', { id: 'netStatus' });

@@ -594,7 +594,9 @@
         tbody.innerHTML = '';
       }
       // Resolve names
-      const ids = Array.from(new Set(items.map((r) => Number(r.itemId || 0)).filter((n) => Number.isFinite(n) && n > 0)));
+      const ids = Array.from(
+        new Set(items.map((r) => Number(r.itemId || 0)).filter((n) => Number.isFinite(n) && n > 0)),
+      );
       let nameMap = {};
       if (ids.length) {
         try {
@@ -612,9 +614,10 @@
         typeCell.textContent = String(r.type || '');
         const itemCell = document.createElement('td');
         const id = Number(r.itemId || 0);
-        const nm = id && (nameMap[String(id)] || nameMap[id])
-          ? `${nameMap[String(id)] || nameMap[id]} (#${id})`
-          : (r.itemName || (id ? `#${id}` : ''));
+        const nm =
+          id && (nameMap[String(id)] || nameMap[id])
+            ? `${nameMap[String(id)] || nameMap[id]} (#${id})`
+            : r.itemName || (id ? `#${id}` : '');
         itemCell.textContent = nm;
         const qtyCell = document.createElement('td');
         qtyCell.textContent = String(r.qty || 0);
@@ -637,7 +640,9 @@
       if ($('#ledgerStatus')) {
         const start = Math.min(total, offset + (items.length ? 1 : 0));
         const end = Math.min(total, offset + items.length);
-        $('#ledgerStatus').textContent = total ? `Showing ${start}–${end} of ${total}` : 'No results';
+        $('#ledgerStatus').textContent = total
+          ? `Showing ${start}–${end} of ${total}`
+          : 'No results';
       }
       const prevBtn = $('#ledgerPrev');
       const nextBtn = $('#ledgerNext');
@@ -721,7 +726,9 @@
       const resp = await fetch(`/player/payouts/unmatched?${qs.toString()}`);
       const data = await resp.json();
       const items = data?.items || [];
-      const ids = Array.from(new Set(items.map((r) => Number(r.itemId || 0)).filter((n) => Number.isFinite(n) && n > 0)));
+      const ids = Array.from(
+        new Set(items.map((r) => Number(r.itemId || 0)).filter((n) => Number.isFinite(n) && n > 0)),
+      );
       let nameMap = {};
       if (ids.length) {
         try {
@@ -738,9 +745,12 @@
         const tr = document.createElement('tr');
         const itemCell = document.createElement('td');
         const id = Number(r.itemId || 0);
-        const nm = id && (nameMap[String(id)] || nameMap[id])
-          ? `${nameMap[String(id)] || nameMap[id]} (#${id})`
-          : id ? `#${id}` : '';
+        const nm =
+          id && (nameMap[String(id)] || nameMap[id])
+            ? `${nameMap[String(id)] || nameMap[id]} (#${id})`
+            : id
+              ? `#${id}`
+              : '';
         itemCell.textContent = nm;
         const qtyCell = document.createElement('td');
         qtyCell.textContent = String(r.qty || 0);

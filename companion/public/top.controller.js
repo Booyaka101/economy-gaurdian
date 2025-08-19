@@ -39,18 +39,21 @@ function filterAndSortItems(items) {
       // name tokens: require all tokens to be present
       let nm = '';
       try {
-        nm =
-          (nameCache && nameCache.get && nameCache.get(id)) ||
-          (it?.name ?? it?.itemName ?? '');
+        nm = (nameCache && nameCache.get && nameCache.get(id)) || (it?.name ?? it?.itemName ?? '');
       } catch {}
       let s = '';
       try {
-        const nn = EGTopServices && EGTopServices.normalizeName
-          ? EGTopServices.normalizeName(nm)
-          : String(nm || '');
-        s = String(nn || '').toLowerCase().trim();
+        const nn =
+          EGTopServices && EGTopServices.normalizeName
+            ? EGTopServices.normalizeName(nm)
+            : String(nm || '');
+        s = String(nn || '')
+          .toLowerCase()
+          .trim();
       } catch {
-        s = String(nm || '').toLowerCase().trim();
+        s = String(nm || '')
+          .toLowerCase()
+          .trim();
       }
       if (!s) {
         return false;
@@ -192,9 +195,7 @@ async function refresh(_opts = {}) {
         EGTopServices &&
         typeof EGTopServices.fetchNamesIcons === 'function'
       ) {
-        const allIds = rawItems
-          .map((it) => Number(it?.itemId))
-          .filter((v) => Number.isFinite(v));
+        const allIds = rawItems.map((it) => Number(it?.itemId)).filter((v) => Number.isFinite(v));
         if (allIds.length) {
           await EGTopServices.fetchNamesIcons(allIds);
         }
@@ -219,9 +220,7 @@ async function refresh(_opts = {}) {
     // Ensure names/icons/qualities are populated before rendering
     try {
       Perf.start('top.refresh.ensureMetaVisible');
-      const ids = items
-        .map((it) => Number(it?.itemId))
-        .filter((v) => Number.isFinite(v));
+      const ids = items.map((it) => Number(it?.itemId)).filter((v) => Number.isFinite(v));
       if (ids.length && EGTopServices && typeof EGTopServices.fetchNamesIcons === 'function') {
         await EGTopServices.fetchNamesIcons(ids);
       }

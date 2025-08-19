@@ -69,9 +69,7 @@
         limit: Number(elLimit?.value || 200),
         slug: String(elSlug?.value || '').trim(),
       };
-      const { items, meta } = await window.EGDeals.fetchDeals(params, (t) =>
-        updateStatus(t),
-      );
+      const { items, meta } = await window.EGDeals.fetchDeals(params, (t) => updateStatus(t));
       if (items.length === 0) {
         elRows.innerHTML =
           '<tr><td colspan="6" class="muted">No results. If auctions are not loaded yet, use Blizzard → Refresh, then retry.</td></tr>';
@@ -82,9 +80,9 @@
     } catch (e) {
       console.warn(e);
       updateStatus('Error');
-      elRows.innerHTML = `<tr><td colspan="6" class="muted">${(e && e.message) || String(
-        e,
-      )}</td></tr>`;
+      elRows.innerHTML = `<tr><td colspan="6" class="muted">${
+        (e && e.message) || String(e)
+      }</td></tr>`;
     } finally {
       setBusy(false);
     }

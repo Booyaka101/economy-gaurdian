@@ -37,9 +37,7 @@ describe('EGTopServices utilities', () => {
     nameCache.set(202, ' Iron Nail ');
     qualityCache.set(202, 1);
     const arr = itemsToJSON([{ itemId: '202', soldPerDay: '5.9' }]);
-    expect(arr).toEqual([
-      { itemId: 202, itemName: ' Iron Nail ', soldPerDay: 5.9, quality: 1 },
-    ]);
+    expect(arr).toEqual([{ itemId: 202, itemName: ' Iron Nail ', soldPerDay: 5.9, quality: 1 }]);
   });
 
   it('getRealmLabel prefers DOM content but falls back to localStorage', () => {

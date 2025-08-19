@@ -22,7 +22,9 @@ import {
 
 function mockFetchSequence(...responses) {
   const fn = vi.fn();
-  for (const r of responses) {fn.mockResolvedValueOnce(r);}
+  for (const r of responses) {
+    fn.mockResolvedValueOnce(r);
+  }
   globalThis.fetch = fn;
   return fn;
 }
@@ -36,7 +38,9 @@ describe('EGTopServices meta + catalog + exports', () => {
   beforeEach(() => {
     vi.restoreAllMocks();
     document.body.innerHTML = '';
-    try { localStorage.clear(); } catch {}
+    try {
+      localStorage.clear();
+    } catch {}
     nameCache.clear();
     iconCache.clear();
     qualityCache.clear();
@@ -45,9 +49,9 @@ describe('EGTopServices meta + catalog + exports', () => {
   it('tryFetchJSON returns first successful JSON across URL list', async () => {
     mockFetchSequence(
       makeRes({ ok: false, status: 500 }),
-      makeRes({ ok: true, status: 200, json: { ok: 1 } })
+      makeRes({ ok: true, status: 200, json: { ok: 1 } }),
     );
-    const data = await tryFetchJSON(['/a','/b']);
+    const data = await tryFetchJSON(['/a', '/b']);
     expect(data).toEqual({ ok: 1 });
   });
 
@@ -66,7 +70,7 @@ describe('EGTopServices meta + catalog + exports', () => {
       names: { 3: 'Baz' },
       icons: { 3: 'http://x/3.png' },
       qualities: { 3: 1 },
-      map: [ { id: 4, name: 'Qux', icon: 'i4', quality: 2 } ],
+      map: [{ id: 4, name: 'Qux', icon: 'i4', quality: 2 }],
     });
     expect(nameCache.get(3)).toBe('Baz');
     expect(iconCache.get(3)).toBe('http://x/3.png');
@@ -96,14 +100,14 @@ describe('EGTopServices meta + catalog + exports', () => {
   it('fetchNamesIcons populates caches and returns number of inserts; returns 0 when nothing missing', async () => {
     // Populate via blizzard helper response
     const resp = {
-      names: { '10': 'Ten' },
-      icons: { '10': 'i10' },
-      qualities: { '10': 4 },
-      map: { '11': { icon: 'i11', quality: 2 } },
+      names: { 10: 'Ten' },
+      icons: { 10: 'i10' },
+      qualities: { 10: 4 },
+      map: { 11: { icon: 'i11', quality: 2 } },
     };
     mockFetchSequence(
       makeRes({ ok: true, json: resp }), // item-names
-      makeRes({ ok: true, json: { items: [ { id: 10, name: 'Ten' } ] } }) // catalog/bulk
+      makeRes({ ok: true, json: { items: [{ id: 10, name: 'Ten' }] } }), // catalog/bulk
     );
     const inserts = await fetchNamesIcons([10, 11]);
     expect(inserts).toBeGreaterThan(0);
@@ -120,17 +124,17 @@ describe('EGTopServices meta + catalog + exports', () => {
 
   it('fetchCatalogExtras uses network results or local fallback filtering and excludes base items', async () => {
     // 1) Network returns results array shape
-    mockFetchSequence(makeRes({ ok: true, json: { items: [ { id: 100, name: 'Alpha' } ] } }));
-    let extras = await fetchCatalogExtras('alpha', [ { itemId: 200 } ]);
+    mockFetchSequence(makeRes({ ok: true, json: { items: [{ id: 100, name: 'Alpha' }] } }));
+    let extras = await fetchCatalogExtras('alpha', [{ itemId: 200 }]);
     expect(extras).toEqual([{ itemId: 100, itemName: 'Alpha', soldPerDay: 0, fromCatalog: true }]);
 
     // 2) Empty from network -> fallback using nameCache tokens
     nameCache.set(300, 'Iron Bar');
     nameCache.set(301, 'Iron Bar II');
     mockFetchSequence(makeRes({ ok: true, json: [] }));
-    extras = await fetchCatalogExtras('iron bar', [ { itemId: 300 } ]);
-    expect(extras.find(e => e.itemId === 300)).toBeUndefined();
-    expect(extras.find(e => e.itemId === 301)).toBeDefined();
+    extras = await fetchCatalogExtras('iron bar', [{ itemId: 300 }]);
+    expect(extras.find((e) => e.itemId === 300)).toBeUndefined();
+    expect(extras.find((e) => e.itemId === 301)).toBeDefined();
   });
 
   it('buildTop filenames include realm when available and time-stamp', () => {
@@ -159,14 +163,16 @@ describe('EGTopServices meta + catalog + exports', () => {
   });
 
   it('copyIds and copyTsmGroup return false on empty, true on success, and toasts', async () => {
-    const toast = document.createElement('div'); toast.id = 'toast'; document.body.appendChild(toast);
+    const toast = document.createElement('div');
+    toast.id = 'toast';
+    document.body.appendChild(toast);
     // Empty
     expect(await copyIds([])).toBe(false);
     expect(await copyTsmGroup([])).toBe(false);
     // Success
     globalThis.navigator = globalThis.navigator || {};
     globalThis.navigator.clipboard = { writeText: vi.fn().mockResolvedValue(undefined) };
-    const items = [ { itemId: 5 }, { itemId: 6 } ];
+    const items = [{ itemId: 5 }, { itemId: 6 }];
     const ok1 = await copyIds(items);
     const ok2 = await copyTsmGroup(items);
     expect(ok1).toBe(true);
@@ -175,7 +181,9 @@ describe('EGTopServices meta + catalog + exports', () => {
   });
 
   it('exportCsv and exportJson create object URLs and set download names', () => {
-    const toast = document.createElement('div'); toast.id = 'toast'; document.body.appendChild(toast);
+    const toast = document.createElement('div');
+    toast.id = 'toast';
+    document.body.appendChild(toast);
     const createUrl = vi.spyOn(URL, 'createObjectURL').mockReturnValue('blob:test');
     const revokeUrl = vi.spyOn(URL, 'revokeObjectURL').mockReturnValue();
 
@@ -184,7 +192,9 @@ describe('EGTopServices meta + catalog + exports', () => {
     let lastA = null;
     document.createElement = (tag) => {
       const el = realCreate(tag);
-      if (tag === 'a') {lastA = el;}
+      if (tag === 'a') {
+        lastA = el;
+      }
       return el;
     };
 

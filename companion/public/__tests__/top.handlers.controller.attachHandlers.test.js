@@ -11,12 +11,18 @@ function el(tag, attrs = {}, html = '') {
     } else if (k === 'style' && v && typeof v === 'object') {
       Object.assign(e.style, v);
     } else if (k in e) {
-      try { e[k] = v; } catch {}
+      try {
+        e[k] = v;
+      } catch {}
     } else {
-      try { e.setAttribute(k, String(v)); } catch {}
+      try {
+        e.setAttribute(k, String(v));
+      } catch {}
     }
   });
-  if (html) {e.innerHTML = html;}
+  if (html) {
+    e.innerHTML = html;
+  }
   return e;
 }
 
@@ -26,7 +32,9 @@ describe('top.handlers.controller.attachHandlers(deps)', () => {
   beforeEach(() => {
     vi.useFakeTimers();
     document.body.innerHTML = '';
-    try { localStorage.clear(); } catch {}
+    try {
+      localStorage.clear();
+    } catch {}
 
     // Reset module-level one-time flags
     delete window.__egTopShortcuts__;
@@ -92,9 +100,19 @@ describe('top.handlers.controller.attachHandlers(deps)', () => {
       filters: { offset: 0 },
       sort: { key: 'soldPerDay', dir: 'desc' },
     };
-    const LS = { source: 'eg_source', all: 'eg_all', inc0: 'eg_inc0', hours: 'eg_hours', limit: 'eg_limit', minSold: 'eg_min', quality: 'eg_quality' };
+    const LS = {
+      source: 'eg_source',
+      all: 'eg_all',
+      inc0: 'eg_inc0',
+      hours: 'eg_hours',
+      limit: 'eg_limit',
+      minSold: 'eg_min',
+      quality: 'eg_quality',
+    };
     const setFilters = vi.fn((o) => Object.assign(ControllerState.filters, o));
-    const setSort = vi.fn((o) => { ControllerState.sort = { ...ControllerState.sort, ...o }; });
+    const setSort = vi.fn((o) => {
+      ControllerState.sort = { ...ControllerState.sort, ...o };
+    });
     const refresh = vi.fn();
     const EGTopServices = {
       exportCsv: vi.fn(),
@@ -113,7 +131,20 @@ describe('top.handlers.controller.attachHandlers(deps)', () => {
     const svcPostJSON = vi.fn();
     const init = vi.fn();
 
-    deps = { ControllerState, LS, setFilters, setSort, refresh, svcGetJSON, svcPostJSON, svcCopyText, svcShowToast, svcFmtInt, EGTopServices, init };
+    deps = {
+      ControllerState,
+      LS,
+      setFilters,
+      setSort,
+      refresh,
+      svcGetJSON,
+      svcPostJSON,
+      svcCopyText,
+      svcShowToast,
+      svcFmtInt,
+      EGTopServices,
+      init,
+    };
   });
 
   it('binds global keyboard: "/" focuses search, "?" opens help, and Escape clears search & hides help', () => {
@@ -124,11 +155,15 @@ describe('top.handlers.controller.attachHandlers(deps)', () => {
     const _helpBtn = document.getElementById('helpTop');
 
     // "/" focuses search
-    document.dispatchEvent(new KeyboardEvent('keydown', { key: '/', ctrlKey: false, shiftKey: false, bubbles: true }));
+    document.dispatchEvent(
+      new KeyboardEvent('keydown', { key: '/', ctrlKey: false, shiftKey: false, bubbles: true }),
+    );
     expect(document.activeElement).toBe(searchEl);
 
     // "?" opens help (Shift + "?")
-    document.dispatchEvent(new KeyboardEvent('keydown', { key: '?', ctrlKey: false, shiftKey: true, bubbles: true }));
+    document.dispatchEvent(
+      new KeyboardEvent('keydown', { key: '?', ctrlKey: false, shiftKey: true, bubbles: true }),
+    );
     expect(helpModal.hasAttribute('hidden')).toBe(false);
 
     // Escape clears search and hides help
@@ -142,9 +177,15 @@ describe('top.handlers.controller.attachHandlers(deps)', () => {
     attachHandlers(deps);
     const vis = window.lastVisible;
 
-    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'E', ctrlKey: true, shiftKey: true, bubbles: true }));
-    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'C', ctrlKey: true, shiftKey: true, bubbles: true }));
-    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'G', ctrlKey: true, shiftKey: true, bubbles: true }));
+    document.dispatchEvent(
+      new KeyboardEvent('keydown', { key: 'E', ctrlKey: true, shiftKey: true, bubbles: true }),
+    );
+    document.dispatchEvent(
+      new KeyboardEvent('keydown', { key: 'C', ctrlKey: true, shiftKey: true, bubbles: true }),
+    );
+    document.dispatchEvent(
+      new KeyboardEvent('keydown', { key: 'G', ctrlKey: true, shiftKey: true, bubbles: true }),
+    );
 
     expect(deps.EGTopServices.exportCsv).toHaveBeenCalledWith(vis);
     expect(deps.EGTopServices.copyIds).toHaveBeenCalledWith(vis);

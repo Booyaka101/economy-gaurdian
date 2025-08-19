@@ -407,177 +407,203 @@
         </div>
       </section>
       <div class="tabs" role="tablist" aria-label="Player Views">
-        <button id="tabBtnOverview" class="tab active" role="tab" aria-selected="true" aria-controls="tab-overview">Overview</button>
-        <button id="tabBtnLedger" class="tab" role="tab" aria-selected="false" aria-controls="tab-ledger">Ledger</button>
-        <button id="tabBtnSummary" class="tab" role="tab" aria-selected="false" aria-controls="tab-summary">Summary</button>
+        <button
+          id="tabBtnOverview"
+          class="tab active"
+          role="tab"
+          aria-selected="true"
+          aria-controls="tab-overview"
+        >
+          Overview
+        </button>
+        <button
+          id="tabBtnLedger"
+          class="tab"
+          role="tab"
+          aria-selected="false"
+          aria-controls="tab-ledger"
+        >
+          Ledger
+        </button>
+        <button
+          id="tabBtnSummary"
+          class="tab"
+          role="tab"
+          aria-selected="false"
+          aria-controls="tab-summary"
+        >
+          Summary
+        </button>
       </div>
       <div id="tab-overview" role="tabpanel" aria-labelledby="tabBtnOverview">
-      <h1>Player Stats</h1>
-      <div class="controls">
-        <label>Realm <input id="realm" placeholder="all" /></label>
-        <label>Character <input id="character" placeholder="all" /></label>
-        <label
-          >Since (hours) <input id="sinceHours" type="number" min="1" max="8760" value="168"
-        /></label>
-        <button id="refresh" class="tool-btn" title="Reload totals" type="button">↻ Refresh</button>
-        <span id="status" class="status" aria-live="polite"></span>
+        <h1>Player Stats</h1>
+        <div class="controls">
+          <label>Realm <input id="realm" placeholder="all" /></label>
+          <label>Character <input id="character" placeholder="all" /></label>
+          <label
+            >Since (hours) <input id="sinceHours" type="number" min="1" max="8760" value="168"
+          /></label>
+          <button id="refresh" class="tool-btn" title="Reload totals" type="button">
+            ↻ Refresh
+          </button>
+          <span id="status" class="status" aria-live="polite"></span>
+        </div>
+
+        <div class="grid">
+          <section class="card">
+            <h2>Awaiting Payouts</h2>
+            <div class="controls">
+              <label
+                >Window (minutes)
+                <input id="windowMin" type="number" min="10" max="1440" value="60"
+              /></label>
+              <button id="refreshPending" class="tool-btn" title="Reload pending" type="button">
+                ↻ Reload
+              </button>
+              <span id="pendingStatus" class="status"></span>
+            </div>
+            <div class="section-scroll">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Item</th>
+                    <th>Qty</th>
+                    <th class="mono">Unit</th>
+                    <th class="mono">Gross</th>
+                    <th>ETA</th>
+                  </tr>
+                </thead>
+                <tbody id="pendingRows">
+                  <tr class="skeleton-row">
+                    <td><span class="skeleton" style="width: 60%"></span></td>
+                    <td><span class="skeleton" style="width: 40%"></span></td>
+                    <td><span class="skeleton" style="width: 50%"></span></td>
+                    <td><span class="skeleton" style="width: 50%"></span></td>
+                    <td><span class="skeleton" style="width: 40%"></span></td>
+                  </tr>
+                  <tr class="skeleton-row">
+                    <td><span class="skeleton" style="width: 55%"></span></td>
+                    <td><span class="skeleton" style="width: 35%"></span></td>
+                    <td><span class="skeleton" style="width: 45%"></span></td>
+                    <td><span class="skeleton" style="width: 48%"></span></td>
+                    <td><span class="skeleton" style="width: 38%"></span></td>
+                  </tr>
+                  <tr class="skeleton-row">
+                    <td><span class="skeleton" style="width: 58%"></span></td>
+                    <td><span class="skeleton" style="width: 42%"></span></td>
+                    <td><span class="skeleton" style="width: 52%"></span></td>
+                    <td><span class="skeleton" style="width: 49%"></span></td>
+                    <td><span class="skeleton" style="width: 36%"></span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="card">
+            <h2>Totals</h2>
+            <div id="totals" class="mono">
+              <div>🧾 Sales: <span id="salesCount">0</span></div>
+              <div>💰 Gross: <span id="gross">0</span>g</div>
+              <div>🪙 AH Cut (5%): <span id="ahCut">0</span>g</div>
+              <div>📈 Net Profit: <span id="net">0</span>g</div>
+            </div>
+            <hr />
+            <h3>Smart Pricing</h3>
+            <div class="controls">
+              <label>Item ID <input id="recItemId" type="number" placeholder="e.g. 19019" /></label>
+              <label
+                >Target ETA (h) <input id="recTarget" type="number" min="1" max="72" value="12"
+              /></label>
+              <label
+                >Max Stack <input id="recMaxStack" type="number" min="1" max="10000" value="200"
+              /></label>
+              <button id="recBtn" class="tool-btn" title="Get price recommendation" type="button">
+                ✨ Recommend
+              </button>
+            </div>
+            <div id="recOut" class="mono"></div>
+          </section>
+
+          <section class="card">
+            <h2>Insights</h2>
+            <div class="controls">
+              <label
+                >Window (days) <input id="insDays" type="number" min="1" max="90" value="7"
+              /></label>
+              <button id="insRefresh" class="tool-btn" title="Refresh insights" type="button">
+                📊 Refresh
+              </button>
+              <span id="insStatus" class="status"></span>
+            </div>
+            <div id="insOut" class="mono"></div>
+          </section>
+        </div>
+        <div class="grid" style="margin-top: 16px">
+          <section class="card">
+            <h2>Posting-Time Advisor</h2>
+            <div class="controls">
+              <label
+                >Target Window (hours)
+                <input id="advTarget" type="number" min="1" max="8" value="2"
+              /></label>
+              <button id="advRefresh" class="tool-btn" title="Suggest posting window" type="button">
+                🕒 Suggest
+              </button>
+              <span id="advStatus" class="status"></span>
+            </div>
+            <div id="advOut" class="mono"></div>
+          </section>
+
+          <section class="card">
+            <h2>My Top Items</h2>
+            <div class="controls">
+              <label
+                >Window (days) <input id="topDays" type="number" min="1" max="365" value="7"
+              /></label>
+              <label
+                >Limit <input id="topLimit" type="number" min="5" max="200" value="25"
+              /></label>
+              <button id="topRefresh" class="tool-btn" title="Load top items" type="button">
+                🏆 Load
+              </button>
+              <span id="topStatus" class="status"></span>
+            </div>
+            <div class="section-scroll">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Item</th>
+                    <th>Sales</th>
+                    <th>Qty</th>
+                    <th class="mono">Net</th>
+                  </tr>
+                </thead>
+                <tbody id="topRows">
+                  <tr class="skeleton-row">
+                    <td><span class="skeleton" style="width: 60%"></span></td>
+                    <td><span class="skeleton" style="width: 30%"></span></td>
+                    <td><span class="skeleton" style="width: 30%"></span></td>
+                    <td><span class="skeleton" style="width: 40%"></span></td>
+                  </tr>
+                  <tr class="skeleton-row">
+                    <td><span class="skeleton" style="width: 55%"></span></td>
+                    <td><span class="skeleton" style="width: 28%"></span></td>
+                    <td><span class="skeleton" style="width: 32%"></span></td>
+                    <td><span class="skeleton" style="width: 42%"></span></td>
+                  </tr>
+                  <tr class="skeleton-row">
+                    <td><span class="skeleton" style="width: 58%"></span></td>
+                    <td><span class="skeleton" style="width: 35%"></span></td>
+                    <td><span class="skeleton" style="width: 29%"></span></td>
+                    <td><span class="skeleton" style="width: 38%"></span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </div>
       </div>
-
-      <div class="grid">
-        <section class="card">
-          <h2>Awaiting Payouts</h2>
-          <div class="controls">
-            <label
-              >Window (minutes) <input id="windowMin" type="number" min="10" max="1440" value="60"
-            /></label>
-            <button id="refreshPending" class="tool-btn" title="Reload pending" type="button">
-              ↻ Reload
-            </button>
-            <span id="pendingStatus" class="status"></span>
-          </div>
-          <div class="section-scroll">
-            <table>
-              <thead>
-                <tr>
-                  <th>Item</th>
-                  <th>Qty</th>
-                  <th class="mono">Unit</th>
-                  <th class="mono">Gross</th>
-                  <th>ETA</th>
-                </tr>
-              </thead>
-              <tbody id="pendingRows">
-                <tr class="skeleton-row">
-                  <td><span class="skeleton" style="width: 60%"></span></td>
-                  <td><span class="skeleton" style="width: 40%"></span></td>
-                  <td><span class="skeleton" style="width: 50%"></span></td>
-                  <td><span class="skeleton" style="width: 50%"></span></td>
-                  <td><span class="skeleton" style="width: 40%"></span></td>
-                </tr>
-                <tr class="skeleton-row">
-                  <td><span class="skeleton" style="width: 55%"></span></td>
-                  <td><span class="skeleton" style="width: 35%"></span></td>
-                  <td><span class="skeleton" style="width: 45%"></span></td>
-                  <td><span class="skeleton" style="width: 48%"></span></td>
-                  <td><span class="skeleton" style="width: 38%"></span></td>
-                </tr>
-                <tr class="skeleton-row">
-                  <td><span class="skeleton" style="width: 58%"></span></td>
-                  <td><span class="skeleton" style="width: 42%"></span></td>
-                  <td><span class="skeleton" style="width: 52%"></span></td>
-                  <td><span class="skeleton" style="width: 49%"></span></td>
-                  <td><span class="skeleton" style="width: 36%"></span></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
-
-        <section class="card">
-          <h2>Totals</h2>
-          <div id="totals" class="mono">
-            <div>🧾 Sales: <span id="salesCount">0</span></div>
-            <div>💰 Gross: <span id="gross">0</span>g</div>
-            <div>🪙 AH Cut (5%): <span id="ahCut">0</span>g</div>
-            <div>📈 Net Profit: <span id="net">0</span>g</div>
-          </div>
-          <hr />
-          <h3>Smart Pricing</h3>
-          <div class="controls">
-            <label>Item ID <input id="recItemId" type="number" placeholder="e.g. 19019" /></label>
-            <label
-              >Target ETA (h) <input id="recTarget" type="number" min="1" max="72" value="12"
-            /></label>
-            <label
-              >Max Stack <input id="recMaxStack" type="number" min="1" max="10000" value="200"
-            /></label>
-            <button id="recBtn" class="tool-btn" title="Get price recommendation" type="button">
-              ✨ Recommend
-            </button>
-          </div>
-          <div id="recOut" class="mono"></div>
-        </section>
-
-        <section class="card">
-          <h2>Insights</h2>
-          <div class="controls">
-            <label
-              >Window (days) <input id="insDays" type="number" min="1" max="90" value="7"
-            /></label>
-            <button id="insRefresh" class="tool-btn" title="Refresh insights" type="button">
-              📊 Refresh
-            </button>
-            <span id="insStatus" class="status"></span>
-          </div>
-          <div id="insOut" class="mono"></div>
-        </section>
-      </div>
-      <div class="grid" style="margin-top: 16px">
-        <section class="card">
-          <h2>Posting-Time Advisor</h2>
-          <div class="controls">
-            <label
-              >Target Window (hours) <input id="advTarget" type="number" min="1" max="8" value="2"
-            /></label>
-            <button id="advRefresh" class="tool-btn" title="Suggest posting window" type="button">
-              🕒 Suggest
-            </button>
-            <span id="advStatus" class="status"></span>
-          </div>
-          <div id="advOut" class="mono"></div>
-        </section>
-
-        <section class="card">
-          <h2>My Top Items</h2>
-          <div class="controls">
-            <label
-              >Window (days) <input id="topDays" type="number" min="1" max="365" value="7"
-            /></label>
-            <label>Limit <input id="topLimit" type="number" min="5" max="200" value="25" /></label>
-            <button id="topRefresh" class="tool-btn" title="Load top items" type="button">
-              🏆 Load
-            </button>
-            <span id="topStatus" class="status"></span>
-          </div>
-          <div class="section-scroll">
-            <table>
-              <thead>
-                <tr>
-                  <th>Item</th>
-                  <th>Sales</th>
-                  <th>Qty</th>
-                  <th class="mono">Net</th>
-                </tr>
-              </thead>
-              <tbody id="topRows">
-                <tr class="skeleton-row">
-                  <td><span class="skeleton" style="width: 60%"></span></td>
-                  <td><span class="skeleton" style="width: 30%"></span></td>
-                  <td><span class="skeleton" style="width: 30%"></span></td>
-                  <td><span class="skeleton" style="width: 40%"></span></td>
-                </tr>
-                <tr class="skeleton-row">
-                  <td><span class="skeleton" style="width: 55%"></span></td>
-                  <td><span class="skeleton" style="width: 28%"></span></td>
-                  <td><span class="skeleton" style="width: 32%"></span></td>
-                  <td><span class="skeleton" style="width: 42%"></span></td>
-                </tr>
-                <tr class="skeleton-row">
-                  <td><span class="skeleton" style="width: 58%"></span></td>
-                  <td><span class="skeleton" style="width: 35%"></span></td>
-                  <td><span class="skeleton" style="width: 29%"></span></td>
-                  <td><span class="skeleton" style="width: 38%"></span></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
-      </div>
-      </div>
-      
-
-      
-      
 
       <div id="tab-ledger" role="tabpanel" aria-labelledby="tabBtnLedger" hidden>
         <h1>Ledger</h1>
@@ -594,8 +620,12 @@
               <option value="expires">Expires</option>
             </select>
           </label>
-          <label>Since (hours) <input id="ledgerSince" type="number" min="1" max="8760" value="168" /></label>
-          <label>Limit <input id="ledgerLimit" type="number" min="10" max="200" value="25" /></label>
+          <label
+            >Since (hours) <input id="ledgerSince" type="number" min="1" max="8760" value="168"
+          /></label>
+          <label
+            >Limit <input id="ledgerLimit" type="number" min="10" max="200" value="25"
+          /></label>
           <button id="ledgerRefresh" class="tool-btn" type="button">↻ Refresh</button>
           <span id="ledgerStatus" class="status" aria-live="polite"></span>
           <span class="spacer"></span>
@@ -624,7 +654,9 @@
       <div id="tab-summary" role="tabpanel" aria-labelledby="tabBtnSummary" hidden>
         <h1>Daily Summary</h1>
         <div class="controls">
-          <label>Window (days) <input id="sumDays" type="number" min="1" max="90" value="14" /></label>
+          <label
+            >Window (days) <input id="sumDays" type="number" min="1" max="90" value="14"
+          /></label>
           <button id="summaryRefresh" class="tool-btn" type="button">📊 Refresh</button>
           <span id="summaryStatus" class="status"></span>
         </div>
@@ -648,8 +680,12 @@
 
         <h2>Overdue Payouts</h2>
         <div class="controls">
-          <label>Older Than (min) <input id="unmOlder" type="number" min="10" max="10080" value="120" /></label>
-          <label>Grace (min) <input id="unmGrace" type="number" min="0" max="720" value="10" /></label>
+          <label
+            >Older Than (min) <input id="unmOlder" type="number" min="10" max="10080" value="120"
+          /></label>
+          <label
+            >Grace (min) <input id="unmGrace" type="number" min="0" max="720" value="10"
+          /></label>
           <button id="unmatchedRefresh" class="tool-btn" type="button">🔎 Check</button>
           <span id="unmatchedStatus" class="status"></span>
         </div>

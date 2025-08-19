@@ -11,9 +11,13 @@ function el(tag, attrs = {}, html = '') {
     } else if (k === 'style' && v && typeof v === 'object') {
       Object.assign(e.style, v);
     } else if (k in e) {
-      try { e[k] = v; } catch {}
+      try {
+        e[k] = v;
+      } catch {}
     } else {
-      try { e.setAttribute(k, String(v)); } catch {}
+      try {
+        e.setAttribute(k, String(v));
+      } catch {}
     }
   });
   if (html) {
@@ -85,7 +89,10 @@ describe('EGTopController.attachHandlers()', () => {
     // Basic stubs
     globalThis.showToast = () => {};
     // Avoid EventSource ReferenceError
-    globalThis.EventSource = class { addEventListener() {} close() {} };
+    globalThis.EventSource = class {
+      addEventListener() {}
+      close() {}
+    };
   });
 
   it('toggles hours visibility when source changes', async () => {
@@ -115,7 +122,9 @@ describe('EGTopController.attachHandlers()', () => {
     const searchEl = document.getElementById('searchTop');
 
     // Press "/" to focus search
-    document.dispatchEvent(new KeyboardEvent('keydown', { key: '/', ctrlKey: false, shiftKey: false, bubbles: true }));
+    document.dispatchEvent(
+      new KeyboardEvent('keydown', { key: '/', ctrlKey: false, shiftKey: false, bubbles: true }),
+    );
     expect(document.activeElement).toBe(searchEl);
 
     // Type text and press Escape to clear

@@ -119,7 +119,10 @@ export function attachHandlers(deps = {}) {
             }
             if (ctrl && shift && (k === 'R' || k === 'r')) {
               try {
-                if (window.EGTopRenderer && typeof window.EGTopRenderer.toggleDebug === 'function') {
+                if (
+                  window.EGTopRenderer &&
+                  typeof window.EGTopRenderer.toggleDebug === 'function'
+                ) {
                   window.EGTopRenderer.toggleDebug();
                 }
               } catch {}
@@ -147,7 +150,11 @@ export function attachHandlers(deps = {}) {
   function attachHandlersInternal() {
     // Initialize delegating refresh to avoid TDZ; assign gated version later
     let refresh = (...args) => {
-      try { return rawRefresh(...args); } catch { return undefined; }
+      try {
+        return rawRefresh(...args);
+      } catch {
+        return undefined;
+      }
     };
     bindGlobalShortcuts(refresh);
     const e = ControllerState.els;
@@ -188,20 +195,30 @@ export function attachHandlers(deps = {}) {
             }
             const d = Date.parse(ra);
             return Number.isFinite(d) ? Math.max(0, d - Date.now()) : 0;
-          } catch { return 0; }
+          } catch {
+            return 0;
+          }
         };
         window.fetch = async (input, init = {}) => {
           try {
             const url = typeof input === 'string' ? input : String(input && input.url);
-            const isTop = /\/stats\/top-sold-(local|region)/.test(String(url || '')) && String((init && init.method) || 'GET').toUpperCase() === 'GET';
+            const isTop =
+              /\/stats\/top-sold-(local|region)/.test(String(url || '')) &&
+              String((init && init.method) || 'GET').toUpperCase() === 'GET';
             if (!isTop) {
               return await __origFetch(input, init);
             }
-            const base = 500, factor = 2, maxDelay = 30000, maxRetries = 5;
+            const base = 500,
+              factor = 2,
+              maxDelay = 30000,
+              maxRetries = 5;
             let attempt = 0;
             let lastErr = null;
             for (;;) {
-              const res = await __origFetch(input, init).catch((e) => { lastErr = e; return null; });
+              const res = await __origFetch(input, init).catch((e) => {
+                lastErr = e;
+                return null;
+              });
               if (res && res.ok) {
                 return res;
               }
@@ -212,7 +229,9 @@ export function attachHandlers(deps = {}) {
               // Honor Retry-After/RateLimit-Reset if present
               let waitMs = parseRetryAfter(res && res.headers ? res.headers : new Headers());
               if (!waitMs) {
-                const reset = (res && res.headers && res.headers.get && res.headers.get('RateLimit-Reset')) || '';
+                const reset =
+                  (res && res.headers && res.headers.get && res.headers.get('RateLimit-Reset')) ||
+                  '';
                 const rn = Number(reset);
                 if (Number.isFinite(rn) && rn > 0) {
                   const nowSec = Math.floor(Date.now() / 1000);
@@ -256,7 +275,9 @@ export function attachHandlers(deps = {}) {
           sort: String((s && s.key) || '') + ':' + String((s && s.dir) || ''),
         };
         return JSON.stringify(norm);
-      } catch { return 'hash_err'; }
+      } catch {
+        return 'hash_err';
+      }
     };
     const makeGatedRefresh = (raw) => {
       const MIN_INTERVAL_MS = 2500;
@@ -267,33 +288,40 @@ export function attachHandlers(deps = {}) {
       let queuedParams = null;
       let hasQueued = false;
       const stats = { issued: 0, deduped: 0, queued: 0 };
-      const debug = () => { 
-        if (window.__EG_TOP_DEBUG__) { 
+      const debug = () => {
+        if (window.__EG_TOP_DEBUG__) {
           console.debug('[TopGate]', { stats, lastCallAt, lastDoneHash }); // eslint-disable-line no-console
-        } 
+        }
       };
       const flush = async () => {
-        if (inFlight) { 
-          return; 
+        if (inFlight) {
+          return;
         }
         const now = Date.now();
         const remain = Math.max(0, MIN_INTERVAL_MS - (now - lastCallAt));
         if (remain > 0) {
-          try { 
-            clearTimeout(timer); 
+          try {
+            clearTimeout(timer);
           } catch {}
           timer = setTimeout(flush, remain + 5);
           return;
         }
-        if (!hasQueued) { return; }
+        if (!hasQueued) {
+          return;
+        }
         const params = queuedParams;
         queuedParams = null;
         hasQueued = false;
         const h = makeTopParamsHash();
-        if (h && h === lastDoneHash) { stats.deduped++; debug(); return; }
+        if (h && h === lastDoneHash) {
+          stats.deduped++;
+          debug();
+          return;
+        }
         inFlight = true;
         lastCallAt = Date.now();
-        stats.issued++; debug();
+        stats.issued++;
+        debug();
         try {
           await raw(params);
           lastDoneHash = makeTopParamsHash();
@@ -302,7 +330,9 @@ export function attachHandlers(deps = {}) {
         } finally {
           inFlight = false;
           if (hasQueued) {
-            try { clearTimeout(timer); } catch {}
+            try {
+              clearTimeout(timer);
+            } catch {}
             timer = setTimeout(flush, 0);
           }
         }
@@ -321,7 +351,9 @@ export function attachHandlers(deps = {}) {
         queuedParams = params;
         hasQueued = true;
         stats.queued++;
-        try { clearTimeout(timer); } catch {}
+        try {
+          clearTimeout(timer);
+        } catch {}
         timer = setTimeout(flush, 0);
       };
     };
@@ -494,7 +526,8 @@ export function attachHandlers(deps = {}) {
     } catch {}
     // Refresh button
     try {
-      const refreshBtn = document.getElementById('refreshTop') || document.getElementById('refresh');
+      const refreshBtn =
+        document.getElementById('refreshTop') || document.getElementById('refresh');
       if (refreshBtn && !refreshBtn.__egBound) {
         refreshBtn.__egBound = true;
         refreshBtn.addEventListener('click', () => {
@@ -846,7 +879,9 @@ export function attachHandlers(deps = {}) {
           }
           alertsStatusEl.textContent = 'Loading surge alerts…';
           alertsListEl.innerHTML = '';
-          const data = await svcGetJSON('/ml/detect/change-points?source=commodities&threshold=0.2');
+          const data = await svcGetJSON(
+            '/ml/detect/change-points?source=commodities&threshold=0.2',
+          );
           const events = Array.isArray(data?.events) ? data.events : [];
           if (!events.length) {
             alertsStatusEl.textContent = 'No notable changes right now';
@@ -1082,7 +1117,12 @@ export function attachHandlers(deps = {}) {
             }
             try {
               const hours = Number(ControllerState.els.hoursEl?.value || 48);
-              const body = { itemId: Number(id), targetHours: 12, maxStack: 200, hoursWindow: hours };
+              const body = {
+                itemId: Number(id),
+                targetHours: 12,
+                maxStack: 200,
+                hoursWindow: hours,
+              };
               const data = await svcPostJSON('/ml/policy/recommend', body);
               const rec = data?.recommend;
               const html = rec
@@ -1184,7 +1224,8 @@ export function attachHandlers(deps = {}) {
               let next = '1';
               try {
                 const cur =
-                  typeof localStorage !== 'undefined' && localStorage.getItem('eg_debug_top') === '1';
+                  typeof localStorage !== 'undefined' &&
+                  localStorage.getItem('eg_debug_top') === '1';
                 next = cur ? '0' : '1';
                 localStorage.setItem('eg_debug_top', next);
               } catch {}
@@ -1327,7 +1368,8 @@ export function attachHandlers(deps = {}) {
                 const rawId = it.id != null ? it.id : it.itemId != null ? it.itemId : it.item?.id;
                 const id = Number(rawId);
                 const name = (it.name ?? it.itemName ?? it.item?.name ?? '').toString();
-                const icon = (EGTopServices.iconCache?.get && EGTopServices.iconCache.get(id)) || '';
+                const icon =
+                  (EGTopServices.iconCache?.get && EGTopServices.iconCache.get(id)) || '';
                 const ql =
                   EGTopServices.qualityCache?.has && EGTopServices.qualityCache.has(id)
                     ? Number(EGTopServices.qualityCache.get(id))

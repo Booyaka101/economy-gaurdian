@@ -1,10 +1,5 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
-import {
-  getJSON,
-  postJSON,
-  etagCache,
-  jsonCache,
-} from '../top.services.js';
+import { getJSON, postJSON, etagCache, jsonCache } from '../top.services.js';
 
 function makeRes({ ok = true, status = 200, json = {}, headers = {} } = {}) {
   const hdrs = {
@@ -25,14 +20,19 @@ describe('EGTopServices network helpers (getJSON/postJSON)', () => {
     jsonCache.clear();
     // Ensure clean DOM and storage
     document.body.innerHTML = '';
-    try { localStorage.clear(); } catch {}
+    try {
+      localStorage.clear();
+    } catch {}
   });
 
   it('getJSON caches ETag and JSON, uses 304 with cache, and sends If-None-Match', async () => {
     const url = '/api/test';
-    const fetchSpy = vi.fn()
+    const fetchSpy = vi
+      .fn()
       // First call: 200 with ETag and body
-      .mockResolvedValueOnce(makeRes({ ok: true, status: 200, json: { a: 1 }, headers: { ETag: 'W/"123"' } }))
+      .mockResolvedValueOnce(
+        makeRes({ ok: true, status: 200, json: { a: 1 }, headers: { ETag: 'W/"123"' } }),
+      )
       // Second call: 304 (ok=false) should return cached JSON
       .mockResolvedValueOnce(makeRes({ ok: false, status: 304, json: {}, headers: {} }));
     globalThis.fetch = fetchSpy;

@@ -153,28 +153,41 @@
           </section>
         </div>
       </section>
-    <section class="card" id="perfPanel" aria-labelledby="perfTitle" style="margin-top: 12px">
-      <h2 id="perfTitle" style="display: flex; align-items: center; justify-content: space-between">
-        <span>Performance</span>
-        <span style="display: inline-flex; gap: 8px">
-          <button id="perfToggle" class="tool-btn" type="button">Start</button>
-          <button id="perfReset" class="tool-btn" type="button">Reset</button>
-        </span>
-      </h2>
-      <div class="body">
-        <div class="status" id="perfStatus"></div>
-        <ul
-          class="mono"
-          id="perfMetrics"
-          style="list-style: none; padding-left: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 8px"
+      <section class="card" id="perfPanel" aria-labelledby="perfTitle" style="margin-top: 12px">
+        <h2
+          id="perfTitle"
+          style="display: flex; align-items: center; justify-content: space-between"
         >
-          <li><strong>FPS:</strong> <span id="mFps">-</span></li>
-          <li><strong>p95 frame (ms):</strong> <span id="mP95">-</span></li>
-          <li><strong>Rows/sec:</strong> <span id="mRps">-</span></li>
-          <li><strong>Long tasks:</strong> <span id="mLtCount">0</span> (max <span id="mLtMax">0</span> ms)</li>
-        </ul>
-      </div>
-    </section>
+          <span>Performance</span>
+          <span style="display: inline-flex; gap: 8px">
+            <button id="perfToggle" class="tool-btn" type="button">Start</button>
+            <button id="perfReset" class="tool-btn" type="button">Reset</button>
+          </span>
+        </h2>
+        <div class="body">
+          <div class="status" id="perfStatus"></div>
+          <ul
+            class="mono"
+            id="perfMetrics"
+            style="
+              list-style: none;
+              padding-left: 0;
+              margin: 0;
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+              gap: 8px;
+            "
+          >
+            <li><strong>FPS:</strong> <span id="mFps">-</span></li>
+            <li><strong>p95 frame (ms):</strong> <span id="mP95">-</span></li>
+            <li><strong>Rows/sec:</strong> <span id="mRps">-</span></li>
+            <li>
+              <strong>Long tasks:</strong> <span id="mLtCount">0</span> (max
+              <span id="mLtMax">0</span> ms)
+            </li>
+          </ul>
+        </div>
+      </section>
     </main>
     <div id="toast" role="status" aria-live="polite"></div>
     <!-- Lightweight modal for AI results -->
@@ -306,6 +319,5 @@
       })();
     </script>
     <script type="module" src="./top.entry.js"></script>
-    
   </body>
 </html>

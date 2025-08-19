@@ -3,14 +3,21 @@ import { describe, it, expect, beforeEach, vi } from 'vitest';
 function el(tag, attrs = {}, html = '') {
   const e = document.createElement(tag);
   Object.entries(attrs).forEach(([k, v]) => {
-    if (k === 'class') {e.className = String(v || '');}
-    else if (k in e) {
-      try { e[k] = v; } catch {}
+    if (k === 'class') {
+      e.className = String(v || '');
+    } else if (k in e) {
+      try {
+        e[k] = v;
+      } catch {}
     } else {
-      try { e.setAttribute(k, String(v)); } catch {}
+      try {
+        e.setAttribute(k, String(v));
+      } catch {}
     }
   });
-  if (html) {e.innerHTML = html;}
+  if (html) {
+    e.innerHTML = html;
+  }
   return e;
 }
 
@@ -44,8 +51,10 @@ describe('deals.controller.js smoke', () => {
     // Stub EGDeals API used by controller
     globalThis.EGDeals = {
       rowHTML: (x) => `<tr data-id="${x.itemId}"><td>${x.itemId}</td></tr>`,
-      fetchDeals: vi.fn().mockResolvedValue({ items: [ { itemId: 101 }, { itemId: 102 } ], meta: {}, discount: 0.3 }),
-      refreshAuctions: vi.fn().mockResolvedValue({ refreshedAt: Math.floor(Date.now()/1000) }),
+      fetchDeals: vi
+        .fn()
+        .mockResolvedValue({ items: [{ itemId: 101 }, { itemId: 102 }], meta: {}, discount: 0.3 }),
+      refreshAuctions: vi.fn().mockResolvedValue({ refreshedAt: Math.floor(Date.now() / 1000) }),
     };
   });
 

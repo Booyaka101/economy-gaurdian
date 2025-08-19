@@ -1,17 +1,12 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
-import {
-  normalizeName,
-  isBadName,
-  idNum,
-  fmtInt,
-  copyText,
-  showToast,
-} from '../top.services.js';
+import { normalizeName, isBadName, idNum, fmtInt, copyText, showToast } from '../top.services.js';
 
 describe('EGTopServices basic utils and UI helpers', () => {
   beforeEach(() => {
     document.body.innerHTML = '';
-    try { localStorage.clear(); } catch {}
+    try {
+      localStorage.clear();
+    } catch {}
   });
 
   it('normalizeName returns a normalized string', () => {
@@ -78,7 +73,9 @@ describe('EGTopServices basic utils and UI helpers', () => {
     expect(execSpy).toHaveBeenCalledWith('copy');
 
     // Failure path
-    document.execCommand = vi.fn().mockImplementation(() => { throw new Error('fail'); });
+    document.execCommand = vi.fn().mockImplementation(() => {
+      throw new Error('fail');
+    });
     const ok3 = await copyText('zzz');
     expect(ok3).toBe(false);
   });

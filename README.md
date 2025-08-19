@@ -91,7 +91,6 @@ The Top Sold tab in the dashboard has been fully centralized for maintainability
     - The controller sets guards (e.g., `__egTop*` flags) to avoid double-binding.
     - If you add new UI actions in Top tab, bind them in `attachHandlers()` and delegate to `EGTopServices`.
     - See also: [CONTRIBUTING.md](./CONTRIBUTING.md) for centralization policies.
-  
   - **Handlers module and imports**
     - Handlers live in `companion/public/top.handlers.controller.js` and are imported directly by `top.controller.js`.
     - The legacy/shim file `top.handlers.js` was removed to avoid confusion and ensure guardrail compliance.

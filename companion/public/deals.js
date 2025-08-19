@@ -31,7 +31,7 @@
         </td>
         <td class="r">${fmtGold(x.unitPrice)}</td>
         <td class="r">${fmtGold(x.fair)}</td>
-        <td class="r ${x.discountPct >= 50 ? 'danger' : (x.discountPct >= 30 ? 'g' : 'y')}">${x.discountPct.toFixed(2)}</td>
+        <td class="r ${x.discountPct >= 50 ? 'danger' : x.discountPct >= 30 ? 'g' : 'y'}">${x.discountPct.toFixed(2)}</td>
         <td class="r">${Number(x.quantity || 0).toLocaleString()}</td>
         <td class="muted">${auc}</td>
       </tr>
@@ -75,16 +75,20 @@
           break;
         }
         if (typeof onStatus === 'function') {
-          onStatus(`Rate limited – retrying in ${(delay / 1000).toFixed(1)}s (attempt ${
-            attempt + 1
-          }/${maxAttempts})`);
+          onStatus(
+            `Rate limited – retrying in ${(delay / 1000).toFixed(1)}s (attempt ${
+              attempt + 1
+            }/${maxAttempts})`,
+          );
         }
         await sleep(delay);
         continue;
       }
       throw new Error(`${res.status} ${res.statusText} - ${lastText}`);
     }
-    throw new Error(`429 Too Many Requests - ${lastText || 'Too many requests, please try again later.'}`);
+    throw new Error(
+      `429 Too Many Requests - ${lastText || 'Too many requests, please try again later.'}`,
+    );
   }
 
   async function fetchDeals(params, onStatus) {

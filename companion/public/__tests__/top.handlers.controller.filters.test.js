@@ -5,12 +5,18 @@ function el(tag, attrs = {}, html = '') {
   const e = document.createElement(tag);
   Object.entries(attrs).forEach(([k, v]) => {
     if (k in e) {
-      try { e[k] = v; } catch {}
+      try {
+        e[k] = v;
+      } catch {}
     } else {
-      try { e.setAttribute(k, String(v)); } catch {}
+      try {
+        e.setAttribute(k, String(v));
+      } catch {}
     }
   });
-  if (html) {e.innerHTML = html;}
+  if (html) {
+    e.innerHTML = html;
+  }
   return e;
 }
 
@@ -24,7 +30,9 @@ describe('top.handlers.controller filters and refresh', () => {
   beforeEach(() => {
     vi.useFakeTimers();
     document.body.innerHTML = '';
-    try { localStorage.clear(); } catch {}
+    try {
+      localStorage.clear();
+    } catch {}
 
     // Container
     const app = el('div', { id: 'app' });
@@ -74,13 +82,33 @@ describe('top.handlers.controller filters and refresh', () => {
     document.body.appendChild(app);
 
     ControllerState = {
-      els: { minSoldEl, qualityEl, searchEl, limitEl, hoursEl, hoursWrapEl, sourceEl, allCatalogEl, includeZeroEl },
+      els: {
+        minSoldEl,
+        qualityEl,
+        searchEl,
+        limitEl,
+        hoursEl,
+        hoursWrapEl,
+        sourceEl,
+        allCatalogEl,
+        includeZeroEl,
+      },
       filters: { offset: 0 },
       sort: { key: 'soldPerDay', dir: 'desc' },
     };
-    const LS = { source: 'eg_source', all: 'eg_all', inc0: 'eg_inc0', hours: 'eg_hours', limit: 'eg_limit', minSold: 'eg_min', quality: 'eg_quality' };
+    const LS = {
+      source: 'eg_source',
+      all: 'eg_all',
+      inc0: 'eg_inc0',
+      hours: 'eg_hours',
+      limit: 'eg_limit',
+      minSold: 'eg_min',
+      quality: 'eg_quality',
+    };
     setFilters = vi.fn((o) => Object.assign(ControllerState.filters, o));
-    setSort = vi.fn((o) => { ControllerState.sort = { ...ControllerState.sort, ...o }; });
+    setSort = vi.fn((o) => {
+      ControllerState.sort = { ...ControllerState.sort, ...o };
+    });
     refresh = vi.fn();
 
     const EGTopServices = {

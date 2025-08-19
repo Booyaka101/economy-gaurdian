@@ -56,7 +56,8 @@ const Perf = {
     try {
       if (
         Perf.options.autoLog &&
-        (dur >= Perf.options.logThresholdMs || (typeof window !== 'undefined' && window.__EG_TOP_DEBUG__))
+        (dur >= Perf.options.logThresholdMs ||
+          (typeof window !== 'undefined' && window.__EG_TOP_DEBUG__))
       ) {
         // eslint-disable-next-line no-console
         const log = (console.debug || console.log).bind(console);
@@ -77,7 +78,12 @@ const Perf = {
   report({ reset = false, group = 'EG Top Perf' } = {}) {
     const out = measures.slice();
     try {
-      const tbl = out.map((m) => ({ name: m.name, ms: Number(m.duration.toFixed(2)), start: m.start, end: m.end }));
+      const tbl = out.map((m) => ({
+        name: m.name,
+        ms: Number(m.duration.toFixed(2)),
+        start: m.start,
+        end: m.end,
+      }));
       // eslint-disable-next-line no-console
       if (typeof console !== 'undefined' && console.table) {
         // eslint-disable-next-line no-console
@@ -86,7 +92,7 @@ const Perf = {
         console.table(tbl);
         // eslint-disable-next-line no-console
         console.groupEnd();
-      // eslint-disable-next-line no-console
+        // eslint-disable-next-line no-console
       } else if (console && console.log) {
         // eslint-disable-next-line no-console
         console.log(`[Perf] ${group}:`, tbl);
