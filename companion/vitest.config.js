@@ -4,6 +4,11 @@ import { defineConfig } from 'vitest/config';
 export default defineConfig({
   test: {
     environment: 'jsdom',
+    environmentMatchGlobs: [
+      ['src/__tests__/**/*.{test,spec}.js', 'node'],
+    ],
+    testTimeout: 15000,
+    hookTimeout: 15000,
     setupFiles: ['./vitest.setup.js'],
     coverage: {
       provider: 'v8',
