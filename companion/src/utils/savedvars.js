@@ -90,18 +90,18 @@ function luaTableToJson(luaStr) {
           const ch = str[i]
           if (!inQ) {
             if (ch === '"' || ch === '\'') { inQ = ch }
-            else if (ch === '{') depth++
+            else if (ch === '{') {depth++}
             else if (ch === '}') { depth--; if (depth === 0) { i++; break } }
           } else {
-            if (ch === inQ && prev !== '\\') inQ = null
+            if (ch === inQ && prev !== '\\') {inQ = null}
           }
           prev = ch
         }
-        if (depth !== 0) break
+        if (depth !== 0) {break}
         const inner = str.slice(braceStart + 1, i - 1)
         // Heuristic: if the first non-space char inside is '{', it's an array of tables => use []
         let j = 0
-        while (j < inner.length && /\s/.test(inner[j])) j++
+        while (j < inner.length && /\s/.test(inner[j])) {j++}
         const startsWithTable = inner[j] === '{'
         out += str.slice(last, braceStart)
         if (startsWithTable) {
@@ -128,7 +128,7 @@ function luaTableToJson(luaStr) {
     // Recursively convert numeric-keyed objects to arrays
     const toArrayIfNumericKeys = (v) => {
       if (Array.isArray(v)) {
-        for (let i = 0; i < v.length; i++) v[i] = toArrayIfNumericKeys(v[i])
+        for (let i = 0; i < v.length; i++) {v[i] = toArrayIfNumericKeys(v[i])}
         return v
       }
       if (v && typeof v === 'object') {
@@ -136,10 +136,10 @@ function luaTableToJson(luaStr) {
         if (keys.length > 0 && keys.every(k => /^\d+$/.test(k))) {
           const arr = []
           keys.sort((a,b) => Number(a) - Number(b))
-          for (const k of keys) arr.push(toArrayIfNumericKeys(v[k]))
+          for (const k of keys) {arr.push(toArrayIfNumericKeys(v[k]))}
           return arr
         }
-        for (const k of keys) v[k] = toArrayIfNumericKeys(v[k])
+        for (const k of keys) {v[k] = toArrayIfNumericKeys(v[k])}
         return v
       }
       return v

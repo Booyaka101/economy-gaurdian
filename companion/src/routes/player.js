@@ -43,10 +43,10 @@ export default function registerPlayerRoutes(app, _deps = {}) {
 
   // Allow dependency injection for tests
   if (_deps && typeof _deps === 'object') {
-    if (typeof _deps.loadStore === 'function') loadStore = _deps.loadStore
-    if (typeof _deps.saveStore === 'function') saveStore = _deps.saveStore
-    if (typeof _deps.loadModels === 'function') loadModels = _deps.loadModels
-    if (typeof _deps.saveModels === 'function') saveModels = _deps.saveModels
+    if (typeof _deps.loadStore === 'function') {loadStore = _deps.loadStore}
+    if (typeof _deps.saveStore === 'function') {saveStore = _deps.saveStore}
+    if (typeof _deps.loadModels === 'function') {loadModels = _deps.loadModels}
+    if (typeof _deps.saveModels === 'function') {saveModels = _deps.saveModels}
   }
 
   // Helpers: deduplication by composite key preserving first occurrence
@@ -64,15 +64,15 @@ export default function registerPlayerRoutes(app, _deps = {}) {
   }
   function normalizeNum(v, d = 0) { const n = Number(v); return Number.isFinite(n) ? n : d }
   function payoutKey(p) {
-    if (!p || typeof p !== 'object') return ''
-    if (p.saleId) return String(p.saleId)
+    if (!p || typeof p !== 'object') {return ''}
+    if (p.saleId) {return String(p.saleId)}
     const t = normalizeNum(p.t || p.time, 0)
     const nm = String(p.itemName || p.item || '')
     const g = normalizeNum(p.gross, 0), n = normalizeNum(p.net, 0), c = normalizeNum(p.cut, 0), q = normalizeNum(p.qty, 0)
     return `${t}|${nm}|${g}|${n}|${c}|${q}`
   }
   function saleKey(s) {
-    if (!s || typeof s !== 'object') return ''
+    if (!s || typeof s !== 'object') {return ''}
     const t = normalizeNum(s.t || s.time, 0)
     const nm = String(s.itemName || s.item || s.itemId || '')
     const q = normalizeNum(s.qty || s.quantity, 0)
@@ -80,7 +80,7 @@ export default function registerPlayerRoutes(app, _deps = {}) {
     return `${t}|${nm}|${q}|${u}`
   }
   function buyKey(b) {
-    if (!b || typeof b !== 'object') return ''
+    if (!b || typeof b !== 'object') {return ''}
     const t = normalizeNum(b.t || b.time, 0)
     const nm = String(b.itemName || b.item || b.itemId || '')
     const q = normalizeNum(b.qty || b.quantity, 0)
@@ -88,7 +88,7 @@ export default function registerPlayerRoutes(app, _deps = {}) {
     return `${t}|${nm}|${q}|${u}`
   }
   function postingKey(p) {
-    if (!p || typeof p !== 'object') return ''
+    if (!p || typeof p !== 'object') {return ''}
     const t = normalizeNum(p.t || p.time, 0)
     const nm = String(p.itemName || p.item || p.itemId || '')
     const q = normalizeNum(p.qty || p.quantity, 0)
@@ -96,7 +96,7 @@ export default function registerPlayerRoutes(app, _deps = {}) {
     return `${t}|${nm}|${q}|${u}`
   }
   function simpleKey(x) {
-    if (!x || typeof x !== 'object') return ''
+    if (!x || typeof x !== 'object') {return ''}
     const t = normalizeNum(x.t || x.time, 0)
     const nm = String(x.itemName || x.item || x.itemId || '')
     const q = normalizeNum(x.qty || x.quantity, 0)
@@ -162,7 +162,7 @@ export default function registerPlayerRoutes(app, _deps = {}) {
       }
       pending.sort((a,b)=> (a.t||0) - (b.t||0))
       return res.json({ count: pending.length, items: pending })
-    } catch (e) { try { console.error('[player] unmatched_failed', e) } catch {}; return res.status(500).json({ error: 'unmatched_failed', message: e?.message || String(e) }) }
+    } catch (e) { try { console.error('[player] unmatched_failed', e) } catch {} return res.status(500).json({ error: 'unmatched_failed', message: e?.message || String(e) }) }
   })
 
   // GET /player/ledger?realm=&char=&sinceHours=168&type=all&limit=200&offset=0
@@ -178,12 +178,12 @@ export default function registerPlayerRoutes(app, _deps = {}) {
       const db = loadStore()
       const scope = filterScope(db, realm, character)
       const rows = []
-      const pushRow = (row) => { if (row && Number.isFinite(row.t)) rows.push(row) }
+      const pushRow = (row) => { if (row && Number.isFinite(row.t)) {rows.push(row)} }
       // postings
       if (type === 'all' || type === 'postings') {
         for (const p of scope.postings) {
           const t = Number(p.t || p.time || 0)
-          if (!Number.isFinite(t) || t * 1000 < sinceTs) continue
+          if (!Number.isFinite(t) || t * 1000 < sinceTs) { continue }
           pushRow({ type: 'posting', t, itemId: Number(p.itemId), itemName: p.itemName || p.item || '', qty: Number(p.qty || p.quantity || 0), unit: Number(p.unit || p.unitPrice || p.buyout || p.price || 0) })
         }
       }
@@ -191,7 +191,7 @@ export default function registerPlayerRoutes(app, _deps = {}) {
       if (type === 'all' || type === 'sales' || type === 'sale') {
         for (const s of scope.sales) {
           const t = Number(s.t || s.time || 0)
-          if (!Number.isFinite(t) || t * 1000 < sinceTs) continue
+          if (!Number.isFinite(t) || t * 1000 < sinceTs) { continue }
           const qty = Number(s.qty || 0)
           const unit = Number(s.unit || s.unitPrice || s.price || 0)
           const gross = unit * qty
@@ -204,7 +204,7 @@ export default function registerPlayerRoutes(app, _deps = {}) {
       if (type === 'all' || type === 'buys' || type === 'buy') {
         for (const b of scope.buys) {
           const t = Number(b.t || b.time || 0)
-          if (!Number.isFinite(t) || t * 1000 < sinceTs) continue
+          if (!Number.isFinite(t) || t * 1000 < sinceTs) { continue }
           const qty = Number(b.qty || b.quantity || 0)
           const unit = Number(b.unit || b.unitPrice || b.price || 0)
           const gross = unit * qty
@@ -217,7 +217,7 @@ export default function registerPlayerRoutes(app, _deps = {}) {
       if (type === 'all' || type === 'payouts' || type === 'payout') {
         for (const p of scope.payouts) {
           const t = Number(p.t || p.time || 0)
-          if (!Number.isFinite(t) || t * 1000 < sinceTs) continue
+          if (!Number.isFinite(t) || t * 1000 < sinceTs) { continue }
           const qty = Number(p.qty || 0)
           const unit = Number(p.unit || p.unitPrice || p.price || 0)
           const gross = Number.isFinite(p.gross) ? Number(p.gross) : (unit * qty)
@@ -230,7 +230,7 @@ export default function registerPlayerRoutes(app, _deps = {}) {
       if (type === 'all' || type === 'cancels' || type === 'cancel') {
         for (const c of scope.cancels) {
           const t = Number(c.t || c.time || 0)
-          if (!Number.isFinite(t) || t * 1000 < sinceTs) continue
+          if (!Number.isFinite(t) || t * 1000 < sinceTs) { continue }
           pushRow({ type: 'cancel', t, itemId: Number(c.itemId), itemName: c.itemName || c.item || '', qty: Number(c.qty || c.quantity || 0) })
         }
       }
@@ -238,7 +238,7 @@ export default function registerPlayerRoutes(app, _deps = {}) {
       if (type === 'all' || type === 'expires' || type === 'expire') {
         for (const x of scope.expires) {
           const t = Number(x.t || x.time || 0)
-          if (!Number.isFinite(t) || t * 1000 < sinceTs) continue
+          if (!Number.isFinite(t) || t * 1000 < sinceTs) { continue }
           pushRow({ type: 'expire', t, itemId: Number(x.itemId), itemName: x.itemName || x.item || '', qty: Number(x.qty || x.quantity || 0) })
         }
       }
@@ -246,7 +246,7 @@ export default function registerPlayerRoutes(app, _deps = {}) {
       const total = rows.length
       const items = rows.slice(offset, offset + limit)
       return res.json({ realm: realm || 'all', character: character || 'all', sinceHours, type, total, offset, limit, count: items.length, items })
-    } catch (e) { try { console.error('[player] ledger_failed', e) } catch {}; return res.status(500).json({ error: 'ledger_failed', message: e?.message || String(e) }) }
+    } catch (e) { try { console.error('[player] ledger_failed', e) } catch {} return res.status(500).json({ error: 'ledger_failed', message: e?.message || String(e) }) }
   })
 
   // GET /player/summary?realm=&char=&windowDays=30
@@ -264,7 +264,7 @@ export default function registerPlayerRoutes(app, _deps = {}) {
       const incDay = (key, field) => { const o = byDay.get(key) || { gross:0, ahCut:0, netSales:0, netPayouts:0, salesCount:0, payoutsCount:0 }; o[field] += 1; byDay.set(key, o) }
       for (const s of sales) {
         const ms = Number(s.t || s.time || 0) * 1000
-        if (!Number.isFinite(ms) || ms < since) continue
+        if (!Number.isFinite(ms) || ms < since) {continue}
         const qty = Number(s.qty || 0)
         const unit = Number(s.unit || s.unitPrice || s.price || 0)
         const gross = unit * qty
@@ -275,14 +275,14 @@ export default function registerPlayerRoutes(app, _deps = {}) {
       }
       for (const p of payouts) {
         const ms = Number(p.t || p.time || 0) * 1000
-        if (!Number.isFinite(ms) || ms < since) continue
+        if (!Number.isFinite(ms) || ms < since) {continue}
         const net = Number(p.net || 0)
         if (Number.isFinite(net)) { const k = dayKey(ms); addDay(k,'netPayouts',net); incDay(k,'payoutsCount') }
       }
       const days = [...byDay.entries()].map(([day, v])=>({ day, gross: v.gross, ahCut: v.ahCut, netSales: v.netSales, netPayouts: v.netPayouts, salesCount: v.salesCount, payoutsCount: v.payoutsCount }))
       days.sort((a,b)=> a.day.localeCompare(b.day))
       return res.json({ windowDays, realm: realm || 'all', character: character || 'all', days, totalDays: days.length })
-    } catch (e) { try { console.error('[player] summary_failed', e) } catch {}; return res.status(500).json({ error: 'summary_failed', message: e?.message || String(e) }) }
+    } catch (e) { try { console.error('[player] summary_failed', e) } catch {} return res.status(500).json({ error: 'summary_failed', message: e?.message || String(e) }) }
   })
 
   // GET /player/current — infer most recently active character
@@ -397,7 +397,7 @@ export default function registerPlayerRoutes(app, _deps = {}) {
         realm: realm || 'all', character: character || 'all', sinceHours,
         totals: { salesCount: countOut, gross: grossOut, ahCut: ahCutOut, net: (hasPayoutNets ? netFromPayouts : netFromSales) }
       })
-    } catch (e) { try { console.error('[player] stats_failed', e) } catch {}; return res.status(500).json({ error: 'stats_failed', message: e?.message || String(e) }) }
+    } catch (e) { try { console.error('[player] stats_failed', e) } catch {} return res.status(500).json({ error: 'stats_failed', message: e?.message || String(e) }) }
   })
 
   // GET /player/payouts/awaiting?realm=&char=&windowMin=60&limit=500&offset=0
@@ -443,7 +443,7 @@ export default function registerPlayerRoutes(app, _deps = {}) {
       pending.sort((a,b)=> (a.t||0) - (b.t||0))
       const items = pending.slice(offset, offset + limit)
       return res.json({ limit, offset, count: items.length, items })
-    } catch (e) { try { console.error('[player] awaiting_failed', e) } catch {}; return res.status(500).json({ error: 'awaiting_failed', message: e?.message || String(e) }) }
+    } catch (e) { try { console.error('[player] awaiting_failed', e) } catch {} return res.status(500).json({ error: 'awaiting_failed', message: e?.message || String(e) }) }
   })
 
   // --- Learning & Recommendations ---
