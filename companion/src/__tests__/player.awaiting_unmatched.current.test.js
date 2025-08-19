@@ -47,9 +47,21 @@ describe('player awaiting/unmatched/current/characters', () => {
   });
   afterAll(() => {
     const { EG_SQLITE, EG_SQLITE_DEBUG, EG_SQLITE_RESET } = __ENV__ || {};
-    if (EG_SQLITE == null) {delete process.env.EG_SQLITE;} else {process.env.EG_SQLITE = EG_SQLITE;}
-    if (EG_SQLITE_DEBUG == null) {delete process.env.EG_SQLITE_DEBUG;} else {process.env.EG_SQLITE_DEBUG = EG_SQLITE_DEBUG;}
-    if (EG_SQLITE_RESET == null) {delete process.env.EG_SQLITE_RESET;} else {process.env.EG_SQLITE_RESET = EG_SQLITE_RESET;}
+    if (EG_SQLITE == null) {
+      delete process.env.EG_SQLITE;
+    } else {
+      process.env.EG_SQLITE = EG_SQLITE;
+    }
+    if (EG_SQLITE_DEBUG == null) {
+      delete process.env.EG_SQLITE_DEBUG;
+    } else {
+      process.env.EG_SQLITE_DEBUG = EG_SQLITE_DEBUG;
+    }
+    if (EG_SQLITE_RESET == null) {
+      delete process.env.EG_SQLITE_RESET;
+    } else {
+      process.env.EG_SQLITE_RESET = EG_SQLITE_RESET;
+    }
   });
   it('returns awaiting payouts from recent sales not yet paid (SQLite disabled path)', async () => {
     const now = Math.floor(Date.now() / 1000);
