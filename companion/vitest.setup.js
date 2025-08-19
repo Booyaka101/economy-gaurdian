@@ -69,13 +69,16 @@ try {
   const origError = console.error ? console.error.bind(console) : null;
   if (origError) {
     console.error = (...args) => {
+      let ignore = false;
       try {
         const msg = (args && args[0] && args[0].toString) ? args[0].toString() : '';
         if (typeof msg === 'string' && msg.includes('Not implemented: navigation')) {
-          return; // ignore noisy jsdom navigation warnings
+          ignore = true; // ignore noisy jsdom navigation warnings
         }
       } catch {}
-      return origError(...args);
+      if (!ignore) {
+        origError(...args);
+      }
     };
   }
 } catch {}
