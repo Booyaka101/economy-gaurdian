@@ -291,8 +291,33 @@ async function refresh(_opts = {}) {
   } catch (e) {
     try {
       const el = ControllerState.els.statusEl;
+      const msg = `Failed to load: ${e?.message || e}`;
       if (el) {
-        el.textContent = `Failed to load: ${e?.message || e}`;
+        el.textContent = msg;
+      }
+      // Fallback: also update common status element IDs directly
+      try {
+        const direct =
+          (typeof document !== 'undefined' && document &&
+            (document.getElementById('statusTop') || document.getElementById('status'))) || null;
+        if (direct && direct !== el) {
+          direct.textContent = msg;
+        }
+      } catch {}
+    } catch {}
+    // Signal to observers/tests that an error occurred and HUD was updated
+    try {
+      // Record latest status and error details for deterministic testing/diagnostics
+      try {
+        const el = ControllerState.els.statusEl;
+        if (typeof window !== 'undefined') {
+          window.__eg_last_status__ = el ? String(el.textContent || '') : '';
+          window.__eg_last_error_message__ = e?.message || String(e);
+        }
+      } catch {}
+      if (typeof document !== 'undefined' && document && document.dispatchEvent) {
+        // Use a basic Event for broad compatibility
+        document.dispatchEvent(new Event('egtop:refresh:error'));
       }
     } catch {}
     try {

@@ -31,8 +31,18 @@
     } catch {}
 
     // Source selection via global or URL param
-    const url = new URL(window.location.href);
-    const whParam = (url.searchParams.get('whsrc') || '').toLowerCase();
+    // Prefer location.search (more reliable in jsdom), fallback to href
+    let whParam = '';
+    try {
+      whParam = new URLSearchParams(window.location.search || '').get('whsrc') || '';
+    } catch {}
+    if (!whParam) {
+      try {
+        const url = new URL(window.location.href);
+        whParam = url.searchParams.get('whsrc') || '';
+      } catch {}
+    }
+    whParam = String(whParam).toLowerCase();
     if (whParam === 'off') {
       try {
         window.EGTooltips = window.EGTooltips || {};
