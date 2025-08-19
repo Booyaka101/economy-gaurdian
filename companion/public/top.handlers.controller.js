@@ -145,6 +145,10 @@ export function attachHandlers(deps = {}) {
   }
 
   function attachHandlersInternal() {
+    // Initialize delegating refresh to avoid TDZ; assign gated version later
+    let refresh = (...args) => {
+      try { return rawRefresh(...args); } catch { return undefined; }
+    };
     bindGlobalShortcuts(refresh);
     const e = ControllerState.els;
     if (!e || !e.rowsEl) {
@@ -322,7 +326,7 @@ export function attachHandlers(deps = {}) {
       };
     };
     // Expose gated wrapper under the same name used by handlers
-    const refresh = makeGatedRefresh(rawRefresh);
+    refresh = makeGatedRefresh(rawRefresh);
     // One-time static item-meta bootstrap via services, then refresh if Top tab visible
     try {
       if (!window.__egTopMetaBoot__) {
