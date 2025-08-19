@@ -17,6 +17,17 @@ export function attachHandlers(deps = {}) {
     init,
   } = deps;
 
+  // Persist subset of settings to localStorage for UX continuity (mirrors top.js keys)
+  // Hoisted so that global shortcut handlers can also use it (e.g., ESC to clear search)
+  const persist = (k, v) => {
+    try {
+      if (typeof k !== 'string' || !k.length) {
+        return;
+      }
+      localStorage.setItem(k, String(v));
+    } catch {}
+  };
+
   function bindGlobalShortcuts(refresh) {
     try {
       if (!window.__egTopShortcuts__) {
@@ -86,6 +97,7 @@ export function attachHandlers(deps = {}) {
                 if (searchEl && searchEl.value) {
                   searchEl.value = '';
                   setFilters({ query: '', offset: 0 });
+                  try { persist(LS.query, ''); } catch {}
                   refresh({ userTriggered: true });
                 }
               } catch {}
@@ -161,12 +173,6 @@ export function attachHandlers(deps = {}) {
     if (!e || !e.rowsEl) {
       init({});
     }
-    // Persist subset of settings to localStorage for UX continuity (mirrors top.js keys)
-    const persist = (k, v) => {
-      try {
-        localStorage.setItem(k, String(v));
-      } catch {}
-    };
     const debounce = (fn, ms = 200) => {
       let t;
       return (...a) => {
@@ -430,6 +436,9 @@ export function attachHandlers(deps = {}) {
             searchEl.value = '';
           } catch {}
           setFilters({ query: '', offset: 0 });
+          try {
+            persist(LS.query, '');
+          } catch {}
           refresh({ userTriggered: true });
         });
       }
@@ -633,7 +642,11 @@ export function attachHandlers(deps = {}) {
         };
         const doRefresh = debounce(() => {
           try {
-            setFilters({ query: String(searchEl.value || '').trim(), offset: 0 });
+            const q = String(searchEl.value || '').trim();
+            setFilters({ query: q, offset: 0 });
+            try {
+              persist(LS.query, q);
+            } catch {}
             refresh({ userTriggered: true });
           } catch {}
         }, 200);
@@ -665,6 +678,12 @@ export function attachHandlers(deps = {}) {
           const dir = cur.key === key && cur.dir === 'desc' ? 'asc' : 'desc';
           setSort({ key, dir });
           setFilters({ offset: 0 });
+          try {
+            persist(LS.sortKey, key);
+          } catch {}
+          try {
+            persist(LS.sortDir, dir);
+          } catch {}
           refresh({ userTriggered: true });
         });
       }

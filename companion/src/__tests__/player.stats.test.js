@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, beforeAll, afterAll } from 'vitest'
 import express from 'express'
 import registerPlayerRoutes from '../routes/player.js'
 
@@ -30,7 +30,23 @@ async function withServer(app, fn) {
   })
 }
 
+// Force JSON-backed path: explicitly disable SQLite for this suite
+const OLD_SQLITE = process.env.EG_SQLITE
+const OLD_SQLITE_DEBUG = process.env.EG_SQLITE_DEBUG
+const OLD_SQLITE_RESET = process.env.EG_SQLITE_RESET
+
 describe('player stats', () => {
+  beforeAll(() => {
+    process.env.EG_SQLITE = '0'
+    if (process.env.EG_SQLITE_DEBUG !== undefined) {delete process.env.EG_SQLITE_DEBUG}
+    if (process.env.EG_SQLITE_RESET !== undefined) {delete process.env.EG_SQLITE_RESET}
+  })
+
+  afterAll(() => {
+    if (OLD_SQLITE === undefined) { delete process.env.EG_SQLITE } else { process.env.EG_SQLITE = OLD_SQLITE }
+    if (OLD_SQLITE_DEBUG === undefined) { delete process.env.EG_SQLITE_DEBUG } else { process.env.EG_SQLITE_DEBUG = OLD_SQLITE_DEBUG }
+    if (OLD_SQLITE_RESET === undefined) { delete process.env.EG_SQLITE_RESET } else { process.env.EG_SQLITE_RESET = OLD_SQLITE_RESET }
+  })
   it('computes totals from sales (net = gross - ahCut, 5% fee)', async () => {
     const now = Math.floor(Date.now() / 1000)
     const db = {

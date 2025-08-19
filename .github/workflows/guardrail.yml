@@ -98,3 +98,28 @@ jobs:
         with:
           name: companion-coverage-node-${{ matrix.node }}
           path: companion/coverage
+
+  test-companion-sqlite:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: companion/package-lock.json
+      - name: Install deps
+        working-directory: companion
+        run: |
+          if [ -f package-lock.json ] || [ -f npm-shrinkwrap.json ]; then
+            npm ci
+          else
+            npm install --no-audit --no-fund
+          fi
+      - name: Run SQLite tests (isolated)
+        working-directory: companion
+        env:
+          EG_SQLITE: '1'
+          EG_SQLITE_TESTS: '1'
+          EG_SQLITE_RESET: '1'
+        run: npm run test:sqlite

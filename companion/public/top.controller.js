@@ -364,6 +364,9 @@ function init(opts = {}) {
     const z = typeof localStorage !== 'undefined' ? localStorage.getItem(LS.inc0) : null;
     const m = typeof localStorage !== 'undefined' ? localStorage.getItem(LS.minSold) : null;
     const qv = typeof localStorage !== 'undefined' ? localStorage.getItem(LS.quality) : null;
+    const qStr = typeof localStorage !== 'undefined' ? localStorage.getItem(LS.query) : null;
+    const sk = typeof localStorage !== 'undefined' ? localStorage.getItem(LS.sortKey) : null;
+    const sd = typeof localStorage !== 'undefined' ? localStorage.getItem(LS.sortDir) : null;
     if (e.sourceEl && s) {
       e.sourceEl.value = s;
     }
@@ -386,6 +389,22 @@ function init(opts = {}) {
     if (e.qualityEl) {
       e.qualityEl.value = qv == null ? '' : String(qv);
     }
+    if (e.searchEl && qStr != null) {
+      try {
+        e.searchEl.value = String(qStr);
+      } catch {}
+    }
+    // Hydrate sort state if present
+    try {
+      const next = { ...ControllerState.sort };
+      if (sk) {
+        next.key = String(sk);
+      }
+      if (sd && (sd === 'asc' || sd === 'desc')) {
+        next.dir = sd;
+      }
+      ControllerState.sort = next;
+    } catch {}
     // Toggle hours visibility based on source
     try {
       const v = e.sourceEl ? String(e.sourceEl.value || 'region') : 'region';

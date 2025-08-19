@@ -30,6 +30,10 @@ export const LS = {
   inc0: 'eg_top_include_zero',
   minSold: 'eg_top_min_sold',
   quality: 'eg_top_quality',
+  // New persisted keys for Phase 4 modular controller
+  query: 'eg_top_query',
+  sortKey: 'eg_top_sort_key',
+  sortDir: 'eg_top_sort_dir',
 };
 
 // Read current control values from bound DOM elements
@@ -42,11 +46,38 @@ export function readControls() {
   const src = e.sourceEl ? String(e.sourceEl.value || 'local') : 'local';
   const hours = pickNum(e.hoursEl?.value, 48);
   const limit = Math.max(100, Math.min(5000, pickNum(e.limitEl?.value, 400)));
-  const useAll = !!(e.allCatalogEl && e.allCatalogEl.checked);
-  const includeZero = !!(e.includeZeroEl && e.includeZeroEl.checked);
+  const useAll = e.allCatalogEl
+    ? !!e.allCatalogEl.checked
+    : (() => {
+        try {
+          const a = typeof localStorage !== 'undefined' ? localStorage.getItem(LS.all) : null;
+          return a == null ? true : a === '1';
+        } catch {
+          return true;
+        }
+      })();
+  const includeZero = e.includeZeroEl
+    ? !!e.includeZeroEl.checked
+    : (() => {
+        try {
+          const z = typeof localStorage !== 'undefined' ? localStorage.getItem(LS.inc0) : null;
+          return z == null ? true : z === '1';
+        } catch {
+          return true;
+        }
+      })();
   const minSold = Math.max(0, pickNum(e.minSoldEl?.value, 0));
   const quality = e.qualityEl && e.qualityEl.value !== '' ? pickNum(e.qualityEl.value, null) : null;
-  const query = e.searchEl ? String(e.searchEl.value || '').trim() : '';
+  const query = e.searchEl
+    ? String(e.searchEl.value || '').trim()
+    : (() => {
+        try {
+          const q = typeof localStorage !== 'undefined' ? localStorage.getItem(LS.query) : '';
+          return String(q || '').trim();
+        } catch {
+          return '';
+        }
+      })();
   return { src, hours, limit, useAll, includeZero, minSold, quality, query };
 }
 

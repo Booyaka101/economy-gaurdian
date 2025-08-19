@@ -31,12 +31,37 @@ export function init() {
   }
   if (db) { return true }
   fs.mkdirSync(dataDir, { recursive: true })
-  db = new Database(dbPath)
-  db.pragma('journal_mode = WAL')
-  db.pragma('synchronous = NORMAL')
-  ensureSchema()
-  try { console.info('[sqlite] initialized at', dbPath) } catch {}
-  return true
+  try {
+    // If the main DB file is missing but WAL sidecar files exist from a previous run,
+    // remove them to avoid resurrecting old data upon opening the database.
+    try {
+      if (!fs.existsSync(dbPath)) {
+        try { fs.rmSync(dbPath + '-wal', { force: true }) } catch {}
+        try { fs.rmSync(dbPath + '-shm', { force: true }) } catch {}
+      }
+    } catch {}
+    db = new Database(dbPath)
+    db.pragma('journal_mode = WAL')
+    db.pragma('synchronous = NORMAL')
+    ensureSchema()
+    try {
+      let total = db.prepare("SELECT COUNT(*) AS c FROM events").get()?.c || 0
+      // Optional hard reset for tests: EG_SQLITE_RESET=1
+      if (String(process.env.EG_SQLITE_RESET || '0') === '1') {
+        try {
+          console.info('[sqlite] reset requested via EG_SQLITE_RESET=1; deleting', total, 'events')
+          db.exec('DELETE FROM events')
+          total = db.prepare("SELECT COUNT(*) AS c FROM events").get()?.c || 0
+        } catch {}
+      }
+      console.info('[sqlite] initialized at', dbPath, 'events=', total)
+    } catch {}
+    return true
+  } catch (e) {
+    try { console.warn('[sqlite] init failed:', e?.message || e) } catch {}
+    db = null
+    return false
+  }
 }
 
 function ensureSchema() {
@@ -64,6 +89,9 @@ function ensureSchema() {
 
 // --- Key helpers (mirroring routes/player.js) ---
 function normalizeNum(v, d = 0) { const n = Number(v); return Number.isFinite(n) ? n : d }
+function canonRealm(s) {
+  try { return String(s || '').replace(/[\s']/g, '').toLowerCase() } catch { return String(s || '') }
+}
 function payoutKey(p) {
   if (!p || typeof p !== 'object') { return '' }
   if (p.saleId) { return String(p.saleId) }
@@ -152,6 +180,12 @@ export function upsertBuckets(realm, character, buckets = {}) {
   }
 
   tx(rows)
+  try {
+    const sCount = (buckets.sales||[]).length
+    const pCount = (buckets.payouts||[]).length
+    const oCount = rows.length - sCount - pCount
+    console.info(`[sqlite] upsertBuckets realm=${realm} char=${character} inserted rows=${rows.length} sales=${sCount} payouts=${pCount} other=${oCount}`)
+  } catch {}
 }
 
 export function queryAwaiting({ realm, character, windowMin, limit, offset }) {
@@ -184,6 +218,87 @@ export function queryAwaiting({ realm, character, windowMin, limit, offset }) {
   const rows = db.prepare(sql).all(payoutSinceSec, ...params, cutoffSec, lim, off)
   try { if (DEBUG) { console.info(`[sqlite] queryAwaiting realm=${realm||'all'} char=${character||'all'} windowMin=${windowMin||60} limit=${lim} offset=${off} rows=${rows.length}`) } } catch {}
   return { items: rows.map(r => ({ t: r.t, itemId: r.itemId, qty: r.qty, unit: r.unit, gross: r.gross })) }
+}
+
+// Aggregate totals for /player/stats over a given sinceHours window
+export function queryStats({ realm, character, sinceHours }) {
+  if (!init()) { try { if (DEBUG) { console.warn('[sqlite] queryStats: init failed (disabled or missing module)') } } catch {} return { totals: { salesCount: 0, gross: 0, ahCut: 0, net: 0 } } }
+  const cutoffSec = Math.floor(Date.now() / 1000) - Math.max(1, Math.min(365*24, Number(sinceHours || 168))) * 3600
+
+  const whereBase = ['t >= ?']
+  const paramsBase = [cutoffSec]
+  if (realm) {
+    // canonicalize realm: LOWER(REPLACE(REPLACE(realm,' ',''),'''',''))
+    whereBase.push("LOWER(REPLACE(REPLACE(realm, ' ', ''), '''', '')) = ?")
+    paramsBase.push(canonRealm(realm))
+  }
+  if (character) { whereBase.push('character = ?'); paramsBase.push(character) }
+
+  // Sales aggregates — group by sale_key to avoid double counting duplicates
+  const salesSql = `
+    SELECT COUNT(*) AS salesCount,
+           COALESCE(SUM(gross), 0) AS gross,
+           COALESCE(SUM(ahCut), 0) AS ahCut
+    FROM (
+      SELECT sale_key, MAX(gross) AS gross, MAX(cut) AS ahCut
+      FROM events
+      WHERE type = 'sale' AND ${whereBase.join(' AND ')}
+      GROUP BY sale_key
+    ) AS s
+  `
+  const salesRow = db.prepare(salesSql).get(...paramsBase)
+  const salesCount = Number(salesRow?.salesCount || 0)
+  const gross = Number(salesRow?.gross || 0)
+  const ahCut = Number(salesRow?.ahCut || 0)
+
+  // Payouts aggregates — group by sale_key to avoid double counting duplicates
+  const payoutSql = `
+    SELECT COUNT(*) AS payoutCount,
+           COALESCE(SUM(net), 0) AS netFromPayouts,
+           SUM(CASE WHEN net IS NULL THEN 0 ELSE 1 END) AS netRows,
+           COALESCE(SUM(gross), 0) AS grossFromPayouts,
+           COALESCE(SUM(ahCut), 0) AS ahCutFromPayouts
+    FROM (
+      SELECT sale_key, MAX(net) AS net, MAX(gross) AS gross, MAX(cut) AS ahCut
+      FROM events
+      WHERE type = 'payout' AND ${whereBase.join(' AND ')}
+      GROUP BY sale_key
+    ) AS p
+  `
+  const payoutRow = db.prepare(payoutSql).get(...paramsBase)
+  const payoutCount = Number(payoutRow?.payoutCount || 0)
+  const netFromPayouts = Number(payoutRow?.netFromPayouts || 0)
+  const hasPayoutNets = Number(payoutRow?.netRows || 0) > 0
+  const grossFromPayouts = Number(payoutRow?.grossFromPayouts || 0)
+  const ahCutFromPayouts = Number(payoutRow?.ahCutFromPayouts || 0)
+
+  const usePayoutFallback = (salesCount === 0) && (payoutCount > 0)
+  const grossOut = usePayoutFallback ? grossFromPayouts : gross
+  const ahCutOut = usePayoutFallback ? ahCutFromPayouts : ahCut
+  const countOut = usePayoutFallback ? payoutCount : salesCount
+  const netFromSales = gross - ahCut
+  const netOut = hasPayoutNets ? netFromPayouts : netFromSales
+
+  try {
+    const where = whereBase.join(' AND ')
+    const rawSales = db.prepare(`SELECT COUNT(*) AS c FROM events WHERE type='sale' AND ${where}`).get(...paramsBase)?.c || 0
+    const distinctSales = db.prepare(`SELECT COUNT(DISTINCT sale_key) AS c FROM events WHERE type='sale' AND ${where}`).get(...paramsBase)?.c || 0
+    console.info(`[sqlite] queryStats realm=${realm||'all'} char=${character||'all'} sinceHours=${sinceHours||168} sales=${salesCount} gross=${grossOut} ahCut=${ahCutOut} net=${netOut} payouts=${payoutCount} usePayoutFallback=${usePayoutFallback} hasPayoutNets=${hasPayoutNets} rawSales=${rawSales} distinctSaleKeys=${distinctSales}`)
+  } catch {}
+  return { totals: { salesCount: countOut, gross: grossOut, ahCut: ahCutOut, net: netOut } }
+}
+
+// Test-only helper to hard reset the events table on demand
+export function resetForTests() {
+  if (!isEnabled()) { return 0 }
+  if (!init()) { return 0 }
+  try {
+    const before = db.prepare("SELECT COUNT(*) AS c FROM events").get()?.c || 0
+    db.exec('DELETE FROM events')
+    const after = db.prepare("SELECT COUNT(*) AS c FROM events").get()?.c || 0
+    try { if (DEBUG) { console.info('[sqlite] resetForTests deleted', before, 'events; remaining', after) } } catch {}
+    return Math.max(0, before - after)
+  } catch { return 0 }
 }
 
 // Lightweight status for diagnostics

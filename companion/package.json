@@ -19,6 +19,8 @@
     "format": "prettier --config ..\\.prettierrc.json --ignore-unknown --write \"public/**/*.{js,css,html,json,md}\" ..\\README.md ..\\CONTRIBUTING.md",
     "format:check": "prettier --config ..\\.prettierrc.json --ignore-unknown --check \"public/**/*.{js,css,html,json,md}\" ..\\README.md ..\\CONTRIBUTING.md",
     "test": "vitest run",
+    "test:unit": "vitest run --coverage.enabled=false",
+    "test:sqlite": "vitest run src/__tests__/player.stats.sqlite.test.js src/__tests__/sqlite.reset.test.js --coverage.enabled=false",
     "test:watch": "vitest",
     "migrate:sqlite": "node scripts/migrate-to-sqlite.js"
   },

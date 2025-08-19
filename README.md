@@ -141,6 +141,28 @@ To prevent reintroduction of legacy fallbacks and duplicate bindings, the compan
 - `companion/vitest.setup.js` stubs `window.location.assign/replace` and filters jsdom's "Not implemented: navigation" warnings to keep logs clean.
 - Added system smoke tests for `GET /health` and `GET /metrics` in `companion/src/__tests__/system.routes.test.js`.
 
+## SQLite backend and testing
+
+- **Enable**: Set `EG_SQLITE=1` to use the SQLite-backed accounting path in server and tests.
+- **Debug logs**: Set `EG_SQLITE_DEBUG=1` for verbose SQLite diagnostics (inserts, queries, counts).
+- **Clean reset (env)**: Set `EG_SQLITE_RESET=1` to purge the `events` table on DB init for clean test runs.
+- **Clean reset (API)**: Use `resetForTests()` from `companion/src/db/sqlite.js` to clear the `events` table in-process between tests. This avoids file deletion and is reliable on Windows even with WAL files.
+- **Recommendation**: Prefer `resetForTests()` over deleting the `.sqlite` file to avoid WAL sidecar and lock issues.
+- **Test gating**: Some SQLite tests are gated behind `EG_SQLITE_TESTS=1` to avoid leaking env state into unrelated tests by default.
+- **Scripts**:
+  - `npm run test:sqlite` runs the SQLite-focused tests (`player.stats.sqlite.test.js` and `sqlite.reset.test.js`) with coverage disabled.
+  - `npm run test:unit` runs the whole suite without coverage.
+- **Local run examples**:
+  - Windows PowerShell:
+    ```powershell
+    # From companion/ directory
+    $env:EG_SQLITE='1'; $env:EG_SQLITE_TESTS='1'; $env:EG_SQLITE_RESET='1'; npm run test:sqlite
+    ```
+  - macOS/Linux:
+    ```bash
+    EG_SQLITE=1 EG_SQLITE_TESTS=1 EG_SQLITE_RESET=1 npm run test:sqlite
+    ```
+
 ## Disclaimer
 
 This project is community-built and provided as-is. Respect Blizzard ToS and third-party API terms. No automation of disallowed actions.

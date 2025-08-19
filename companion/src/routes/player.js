@@ -342,7 +342,12 @@ export default function registerPlayerRoutes(app, _deps = {}) {
       for (const c of charKeys) {
         const v = chars[c] || {}
         for (const k of ['postings','sales','payouts','buys','cancels','expires']) {
-          if (Array.isArray(v[k])) {out[k].push(...v[k])}
+          if (Array.isArray(v[k])) {
+            const src = v[k]
+            for (let i = 0; i < src.length; i++) {
+              out[k].push(src[i])
+            }
+          }
         }
       }
     }
@@ -355,6 +360,16 @@ export default function registerPlayerRoutes(app, _deps = {}) {
       const sinceHours = Math.max(1, Math.min(365*24, Number(req.query.sinceHours || 168)))
       const realm = req.query.realm ? String(req.query.realm) : null
       const character = req.query.char ? String(req.query.char) : null
+      // Prefer SQLite path when enabled for performance
+      if (sqlite.isEnabled()) {
+        try {
+          const { totals } = sqlite.queryStats({ realm, character, sinceHours })
+          return res.json({ realm: realm || 'all', character: character || 'all', sinceHours, totals })
+        } catch (e) {
+          try { console.warn('[player] sqlite queryStats failed, falling back to JSON:', e?.message || e) } catch {}
+          // fall through to JSON path below
+        }
+      }
       const db = loadStore()
       const { sales, payouts } = filterScope(db, realm, character)
       const sinceTs = Date.now() - sinceHours * 3600 * 1000
@@ -364,10 +379,12 @@ export default function registerPlayerRoutes(app, _deps = {}) {
       // Fallback accumulators from payouts in case sales bucket is empty
       let grossFromPayouts = 0, ahCutFromPayouts = 0, payoutCount = 0
       for (const s of sales) {
+        if (!s || typeof s !== 'object') { continue }
         const t = Number(s.t || s.time || 0)
         if (!Number.isFinite(t) || t * 1000 < sinceTs) {continue}
         const qty = Number(s.qty || 0)
         const unit = Number(s.unit || s.unitPrice || s.price || 0)
+        if (!Number.isFinite(qty) || !Number.isFinite(unit)) { continue }
         const g = unit * qty
         const cut = Math.round(g * 0.05)
         const n = g - cut
@@ -375,11 +392,12 @@ export default function registerPlayerRoutes(app, _deps = {}) {
       }
       // If payouts contain explicit net, prefer them for net totals
       for (const p of payouts) {
+        if (!p || typeof p !== 'object') { continue }
         const t = Number(p.t || p.time || 0)
         if (!Number.isFinite(t) || t * 1000 < sinceTs) {continue}
         if (p.net != null) {
-          netFromPayouts += Number(p.net || 0)
-          hasPayoutNets = true
+          const nP = Number(p.net)
+          if (Number.isFinite(nP)) { netFromPayouts += nP; hasPayoutNets = true }
         }
         // Also collect gross/AH cut from payouts as a fallback if sales are missing
         const gP = Number(p.gross || 0)
@@ -410,8 +428,13 @@ export default function registerPlayerRoutes(app, _deps = {}) {
       const offset = Math.max(0, Number(req.query.offset || 0))
       // If SQLite is enabled, use it for efficient querying
       if (sqlite.isEnabled()) {
-        const { items } = sqlite.queryAwaiting({ realm, character, windowMin, limit, offset })
-        return res.json({ limit, offset, count: items.length, items })
+        try {
+          const { items } = sqlite.queryAwaiting({ realm, character, windowMin, limit, offset })
+          return res.json({ limit, offset, count: items.length, items })
+        } catch (e) {
+          try { console.warn('[player] sqlite queryAwaiting failed, falling back to JSON:', e?.message || e) } catch {}
+          // fall through to JSON path below
+        }
       }
       const db = loadStore()
       const { sales, payouts } = filterScope(db, realm, character)

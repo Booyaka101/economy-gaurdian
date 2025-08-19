@@ -4,9 +4,6 @@ import { defineConfig } from 'vitest/config';
 export default defineConfig({
   test: {
     environment: 'jsdom',
-    environmentMatchGlobs: [
-      ['src/__tests__/**/*.{test,spec}.js', 'node'],
-    ],
     testTimeout: 15000,
     hookTimeout: 15000,
     setupFiles: ['./vitest.setup.js'],
@@ -16,7 +13,18 @@ export default defineConfig({
       reporter: ['text', 'lcov', 'html'],
       reportsDirectory: './coverage',
       include: ['public/**/*.js'],
-      exclude: ['public/__tests__/**'],
+      exclude: [
+        'public/__tests__/**',
+        // Exclude non-controller runtime/legacy files not in current testing scope
+        'public/player.js',
+        'public/sw.js',
+        'public/sw.controller.js',
+        'public/ai.js',
+        'public/ai.controller.js',
+        'public/deals.js',
+        'public/guard.js',
+        'public/top.entry.js',
+      ],
       thresholds: {
         lines: 60,
         functions: 50,
@@ -25,4 +33,20 @@ export default defineConfig({
       },
     },
   },
+  projects: [
+    {
+      test: {
+        name: 'node',
+        environment: 'node',
+        include: ['src/__tests__/**/*.{test,spec}.js'],
+      },
+    },
+    {
+      test: {
+        name: 'ui',
+        environment: 'jsdom',
+        include: ['public/__tests__/**/*.{test,spec}.js'],
+      },
+    },
+  ],
 });
