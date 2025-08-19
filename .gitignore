@@ -6,11 +6,19 @@ companion/node_modules/
 *.env
 companion/.env
 companion/.env.local
+.env.*
+!*.env.example
+companion/.env.*
+!companion/.env.example
 
 # Logs
 logs/
 companion/logs/
 *.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 
 # Caches and generated data
 companion/.cache/
@@ -27,3 +35,19 @@ companion/coverage/
 # OS/editor noise
 .DS_Store
 Thumbs.db
+*~
+*.swp
+*.swo
+*.tmp
+
+# IDE settings
+.vscode/
+.idea/
+*.code-workspace
+
+# Companion runtime data (generated at runtime / large)
+companion/data/*
+!companion/data/.gitkeep
+
+# Backup files
+*.bak

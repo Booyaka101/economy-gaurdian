@@ -1,5 +1,16 @@
 // Player Page Controller: owns all DOM event bindings
 (function () {
+  // Guard against duplicate bindings across hot reloads/navigations
+  if (
+    typeof window !== 'undefined' &&
+    window.__EGGUARD__ &&
+    window.__EGGUARD__.isMarked('player.controller.init')
+  ) {
+    return;
+  }
+  try {
+    window.__EGGUARD__ && window.__EGGUARD__.mark('player.controller.init');
+  } catch {}
   const $ = (s) => document.querySelector(s);
   const on = (el, evt, fn, opts) => {
     if (el) {
@@ -91,6 +102,58 @@
     on($('#insRefresh'), 'click', () => P.loadInsights());
     on($('#advRefresh'), 'click', () => P.loadAdvisor());
     on($('#topRefresh'), 'click', () => P.loadTopItems());
+
+    // Tabs: Overview, Ledger, Summary
+    function showTab(panelId) {
+      const tabs = [
+        { btn: $('#tabBtnOverview'), panel: $('#tab-overview'), id: 'tab-overview' },
+        { btn: $('#tabBtnLedger'), panel: $('#tab-ledger'), id: 'tab-ledger' },
+        { btn: $('#tabBtnSummary'), panel: $('#tab-summary'), id: 'tab-summary' },
+      ];
+      for (const t of tabs) {
+        const active = t.id === panelId;
+        if (t.btn) {
+          t.btn.classList.toggle('active', active);
+          t.btn.setAttribute('aria-selected', active ? 'true' : 'false');
+        }
+        if (t.panel) {
+          if (active) {
+            t.panel.removeAttribute('hidden');
+          } else {
+            t.panel.setAttribute('hidden', '');
+          }
+        }
+      }
+      // Lazy load content when switching
+      if (panelId === 'tab-ledger') {
+        P.setLedgerOffset(0);
+        P.loadLedger({ resetOffset: true });
+      } else if (panelId === 'tab-summary') {
+        P.loadSummary();
+        P.loadUnmatched();
+      }
+    }
+
+    on($('#tabBtnOverview'), 'click', () => showTab('tab-overview'));
+    on($('#tabBtnLedger'), 'click', () => showTab('tab-ledger'));
+    on($('#tabBtnSummary'), 'click', () => showTab('tab-summary'));
+
+    // Ledger controls
+    on($('#ledgerRefresh'), 'click', () => P.loadLedger({ resetOffset: true }));
+    on($('#ledgerPrev'), 'click', () => {
+      const limit = Math.max(10, Math.min(200, Number($('#ledgerLimit')?.value || 25)));
+      P.setLedgerOffset(Math.max(0, P.getLedgerOffset() - limit));
+      P.loadLedger();
+    });
+    on($('#ledgerNext'), 'click', () => {
+      const limit = Math.max(10, Math.min(200, Number($('#ledgerLimit')?.value || 25)));
+      P.setLedgerOffset(P.getLedgerOffset() + limit);
+      P.loadLedger();
+    });
+
+    // Summary & Overdue controls
+    on($('#summaryRefresh'), 'click', () => P.loadSummary());
+    on($('#unmatchedRefresh'), 'click', () => P.loadUnmatched());
 
     // Initialize: rebuild models, load profiles, URL params, then refresh
     await P.rebuildModels();

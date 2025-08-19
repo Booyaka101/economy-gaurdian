@@ -106,10 +106,14 @@ Get-ChildItem -Path $AddonSrc -Recurse | ForEach-Object {
   }
 }
 
-# Read companion/.env for dashboard port
-$EnvPath = Join-Path $RepoRoot ".env"
-$Port = 3000
-if (Test-Path $EnvPath) {
+# Read .env for dashboard port (prefer repo root, then companion/.env). Default to 4317
+$Port = 4317
+$EnvCandidates = @(
+  (Join-Path $RepoRoot ".env"),
+  (Join-Path $RepoRoot "companion\.env")
+)
+foreach ($EnvPath in $EnvCandidates) {
+  if (-not (Test-Path $EnvPath)) { continue }
   try {
     $pairs = @{}
     $lines = Get-Content -Path $EnvPath -ErrorAction SilentlyContinue
@@ -130,11 +134,10 @@ if (Test-Path $EnvPath) {
     if ($pairs.ContainsKey('SERVER_PORT') -and ($pairs['SERVER_PORT'] -match '^[0-9]+$')) { $Port = [int]$pairs['SERVER_PORT'] }
     elseif ($pairs.ContainsKey('PORT') -and ($pairs['PORT'] -match '^[0-9]+$')) { $Port = [int]$pairs['PORT'] }
     Info "Detected dashboard port $Port from $EnvPath"
+    break
   } catch {
-    Warn ("Failed to parse $EnvPath; using default port $Port. " + $_.Exception.Message)
+    Warn ("Failed to parse $EnvPath; continuing. " + $_.Exception.Message)
   }
-} else {
-  Warn "No .env at $EnvPath; using default port $Port"
 }
 
 # Template Link.lua from Link.lua.in, or patch Link.lua as fallback

@@ -5,7 +5,6 @@ import fs from 'fs'
 import path from 'path'
 import axios from 'axios'
 
-/* eslint-disable no-console */
 
 export default function registerItemsRoutes(app, deps) {
   const { getItem, getItemMedia, getCachedItemName, getCachedItemIcon, setCachedItemName, setCachedItemIcon } = deps
@@ -154,6 +153,9 @@ export default function registerItemsRoutes(app, deps) {
   }
   const getItemCoalesced = (id) => coalesce(pendingItem, id, () => withLimiter(() => getItem(id)))
   const getItemMediaCoalesced = (id) => coalesce(pendingMedia, id, () => withLimiter(() => getItemMedia(id)))
+  // Coalesce icon download operations as well
+  const pendingIcon = new Map()
+  const downloadAndStoreIconCoalesced = (id, url) => coalesce(pendingIcon, id, () => withLimiter(() => downloadAndStoreIcon(id, url)))
 
   // Local icon helpers
   const ICON_EXTS = ['png','jpg','jpeg','webp','gif']
@@ -224,7 +226,7 @@ export default function registerItemsRoutes(app, deps) {
       // Try known URLs from caches
       const url = getCachedItemIcon(id) || getDiskIcon(id)
       if (url) {
-        const loc = await downloadAndStoreIcon(id, url)
+        const loc = await downloadAndStoreIconCoalesced(id, url)
         if (loc) {return loc}
       }
       // Fallback: fetch media to acquire URL
@@ -234,7 +236,7 @@ export default function registerItemsRoutes(app, deps) {
         if (remote) {
           setCachedItemIcon(id, remote)
           setDiskIcon(id, remote)
-          const loc = await downloadAndStoreIcon(id, remote)
+          const loc = await downloadAndStoreIconCoalesced(id, remote)
           if (loc) {return loc}
         }
       } catch {}
@@ -338,7 +340,7 @@ export default function registerItemsRoutes(app, deps) {
       if (ids.length) {
         const batch = ids.slice(0, 2000)
         const { warmed } = await warmItemNames(batch)
-        if (warmed) {console.log(`[items] warmed ${warmed} item(s) from disk cache`)}
+        if (warmed) {console.info(`[items] warmed ${warmed} item(s) from disk cache`)}
       }
     } catch {}
   })()
@@ -453,7 +455,7 @@ export default function registerItemsRoutes(app, deps) {
           // If serving a remote URL, kick off background local cache download
           if (!localIconUrl) {
             const remote = cachedIcon || diskIcon
-            if (remote) { downloadAndStoreIcon(id, remote).catch(()=>{}) }
+            if (remote) { downloadAndStoreIconCoalesced(id, remote).catch(()=>{}) }
           }
         }
         if ((normCached && !isBadName(normCached)) || localIconUrl || cachedIcon || diskIcon) {
@@ -508,7 +510,7 @@ export default function registerItemsRoutes(app, deps) {
           if (icon) {
             setCachedItemIcon(id, icon)
             setDiskIcon(id, icon)
-            const localUrl = await downloadAndStoreIcon(id, icon)
+            const localUrl = await downloadAndStoreIconCoalesced(id, icon)
             icons[id] = localUrl || icon
           }
           if (Number.isFinite(qualityNum)) {
@@ -521,7 +523,7 @@ export default function registerItemsRoutes(app, deps) {
             // No valid name: block further lookups for a while, but still return icon if any
             noNameUntil.set(id, Date.now() + NO_NAME_TTL_MS)
             if (icon && !name) {
-              console.debug(`[items] icon present but name missing for id=${id}; temporarily blocking re-fetch`)
+              console.info(`[items] icon present but name missing for id=${id}; temporarily blocking re-fetch`)
             }
           }
           // If we already have a disk name, prefer it as fallback for UI
@@ -681,6 +683,16 @@ export default function registerItemsRoutes(app, deps) {
         fp = findIconFile(id)
         if (!fp && !loc) {return res.status(404).end()}
       }
+      // Strong caching: long-lived immutable cache with ETag/304 support
+      try {
+        const st = fs.statSync(fp)
+        const etag = 'W/"' + st.size + '-' + Number(st.mtimeMs) + '"'
+        const inm = req.headers['if-none-match']
+        res.set('Cache-Control', 'public, max-age=31536000, immutable')
+        res.set('ETag', etag)
+        res.set('Last-Modified', new Date(st.mtimeMs).toUTCString())
+        if (inm && inm === etag) { return res.status(304).end() }
+      } catch {}
       return res.sendFile(fp)
     } catch (e) {
       return res.status(500).end()

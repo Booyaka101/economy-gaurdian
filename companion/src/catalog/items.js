@@ -5,8 +5,6 @@ import { loadConfig } from '../config.js'
 import { getAccessToken } from '../integrations/blizzard.js'
 import axios from 'axios'
 
-/* eslint-disable no-console */
-
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 const cacheDir = path.join(__dirname, '..', '..', '.cache')
@@ -159,7 +157,7 @@ export async function rebuildItemCatalog({ resume = true, pageLimit = 0 } = {}) 
   }
   const buildParams = (lastId, page) => (variants.find(v => v.name === variantName) || variants[variants.length-1]).build(lastId, page)
 
-  console.log('[EG] Item catalog rebuild starting with variant', variantName, 'resume lastId', lastId, 'existing', items.length)
+  console.info('[EG] Item catalog rebuild starting with variant', variantName, 'resume lastId', lastId, 'existing', items.length)
 
   // Try class/subclass sharding first to avoid the 1000-cap, falling back to id-batching
   const shardCp = cp && cp.mode === 'classShard' ? { index: Number(cp.shardIndex||0), page: Number(cp.page||1), variant: cp.classVariant||null } : { index: 0, page: 1, variant: null }
@@ -168,7 +166,7 @@ export async function rebuildItemCatalog({ resume = true, pageLimit = 0 } = {}) 
     const baseCount = items.length
     let shardAdds = 0
     let shardMisses = 0
-    console.log('[EG] Catalog class sharding with', shards.length, 'shards; resume at', shardCp.index)
+    console.info('[EG] Catalog class sharding with', shards.length, 'shards; resume at', shardCp.index)
     for (let i = shardCp.index; i < shards.length; i++) {
       const { classId, subId } = shards[i]
       let cVar = (i === shardCp.index && shardCp.variant) ? shardCp.variant : await findWorkingClassVariant(classId, subId)
@@ -178,7 +176,7 @@ export async function rebuildItemCatalog({ resume = true, pageLimit = 0 } = {}) 
         cVar = await findWorkingClassVariant(classId, null)
         usedClassOnly = !!cVar
       }
-      if (!cVar) { console.log('[EG] No class filter works for class', classId, 'sub', subId, '- skipping shard'); shardMisses++; continue }
+      if (!cVar) { console.info('[EG] No class filter works for class', classId, 'sub', subId, '- skipping shard'); shardMisses++; continue }
       let page = (i === shardCp.index) ? Math.max(1, shardCp.page) : 1
       // eslint-disable-next-line no-constant-condition
       while (true) {
@@ -203,7 +201,7 @@ export async function rebuildItemCatalog({ resume = true, pageLimit = 0 } = {}) 
           }
           saveCatalogToDisk({ items, lastBuilt: Math.floor(Date.now()/1000), totalPages })
           saveCheckpoint({ mode: 'classShard', shardIndex: i, page: page + 1, classVariant: cVar })
-          console.log(`[EG] Item catalog classShard c=${classId}${subId!=null?`/s=${subId}`:''} page ${page} fetched ${results.length} (total ${items.length})`)
+          console.info(`[EG] Item catalog classShard c=${classId}${subId!=null?`/s=${subId}`:''} page ${page} fetched ${results.length} (total ${items.length})`)
           page += 1
           await new Promise(r => setTimeout(r, 200))
         } catch (e) {
@@ -218,15 +216,15 @@ export async function rebuildItemCatalog({ resume = true, pageLimit = 0 } = {}) 
     }
     // Completed all shards; decide whether to finalize or fall back to id-batching
     saveCheckpoint({ mode: 'classShard', shardIndex: shards.length, page: 1 })
-    console.log('[EG] Class sharding summary:', { baseCount, shardAdds, shardMisses, total: items.length })
+    console.info('[EG] Class sharding summary:', { baseCount, shardAdds, shardMisses, total: items.length })
     // Heuristic: if sharding added a decent amount of items, finalize; else continue to id-batching
     if (shardAdds >= 300) {
       const final = { items, lastBuilt: Math.floor(Date.now()/1000), totalPages }
       saveCatalogToDisk(final)
-      console.log('[EG] Item catalog rebuild complete via class sharding with', items.length, 'items')
+      console.info('[EG] Item catalog rebuild complete via class sharding with', items.length, 'items')
       return final
     }
-    console.log('[EG] Class sharding yielded few results; falling back to id-window batching to fill remaining items...')
+    console.info('[EG] Class sharding yielded few results; falling back to id-window batching to fill remaining items...')
   }
 
   let _globalFetched = 0
@@ -262,7 +260,7 @@ export async function rebuildItemCatalog({ resume = true, pageLimit = 0 } = {}) 
         _globalFetched += results.length
         saveCatalogToDisk({ items, lastBuilt: Math.floor(Date.now()/1000), totalPages })
         saveCheckpoint({ lastId, variant: variantName, batches, page: page + 1 })
-        console.log(`[EG] Item catalog ${variantName} lastId=${lastId} page ${page} fetched ${results.length} (total ${items.length})`)
+        console.info(`[EG] Item catalog ${variantName} lastId=${lastId} page ${page} fetched ${results.length} (total ${items.length})`)
         page += 1
         await new Promise(r => setTimeout(r, 200))
       } catch (e) {
@@ -279,7 +277,7 @@ export async function rebuildItemCatalog({ resume = true, pageLimit = 0 } = {}) 
         // Try to find a different working variant
         const alt = await findWorkingVariant(lastId)
         if (alt && alt !== variantName) {
-          console.log('[EG] Switching catalog search variant', variantName, '=>', alt)
+          console.info('[EG] Switching catalog search variant', variantName, '=>', alt)
           variantName = alt
           continue
         }
@@ -289,7 +287,7 @@ export async function rebuildItemCatalog({ resume = true, pageLimit = 0 } = {}) 
     }
     // Advance window. If no growth in max id, stop to avoid looping.
     if (batchMaxId <= lastId) {
-      console.log('[EG] Catalog batch produced no id growth; stopping. lastId=', lastId, 'batchMaxId=', batchMaxId)
+      console.info('[EG] Catalog batch produced no id growth; stopping. lastId=', lastId, 'batchMaxId=', batchMaxId)
       break
     }
     lastId = batchMaxId
@@ -302,7 +300,7 @@ export async function rebuildItemCatalog({ resume = true, pageLimit = 0 } = {}) 
 
     // If variant provides no filtering ('none'), only one batch makes sense; stop after first.
     if (variantName === 'none') {
-      console.log('[EG] Catalog search has no supported id filter; completed single pass.')
+      console.info('[EG] Catalog search has no supported id filter; completed single pass.')
       break
     }
   }
@@ -311,7 +309,7 @@ export async function rebuildItemCatalog({ resume = true, pageLimit = 0 } = {}) 
   saveCheckpoint({ lastId, variant: variantName, batches, page: 1 })
   const final = { items, lastBuilt: Math.floor(Date.now()/1000), totalPages }
   saveCatalogToDisk(final)
-  console.log('[EG] Item catalog rebuild complete with', items.length, 'items; variant', variantName, 'batches', batches)
+  console.info('[EG] Item catalog rebuild complete with', items.length, 'items; variant', variantName, 'batches', batches)
   return final
 }
 

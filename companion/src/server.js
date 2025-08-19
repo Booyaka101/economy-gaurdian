@@ -26,6 +26,7 @@ import registerIntegrationsRoutes from './routes/integrations.js'
 import registerAIRoutes from './routes/ai.js'
 import registerPlayerRoutes from './routes/player.js'
 import { startSavedVarsWatcher } from './utils/savedvars.js'
+import * as sqlite from './db/sqlite.js'
 
 // Load .env from project root regardless of current working directory
 const __filename = fileURLToPath(import.meta.url)
@@ -133,14 +134,58 @@ if (fs.existsSync(publicDir)) {
 try {
   const mod = await import('express-rate-limit').catch(() => null)
   const rateLimit = mod && (mod.default || mod)
+  const ipKeyGenerator = mod && mod.ipKeyGenerator
+  // Fallback IPv6-normalizing key generator (approx /64) for older express-rate-limit versions
+  const normalizeIp64 = (ip) => {
+    try {
+      if (!ip) return 'ip'
+      let s = String(ip).trim()
+      // Strip IPv6 brackets if any (rare)
+      if (s.startsWith('[') && s.endsWith(']')) s = s.slice(1, -1)
+      // IPv4-mapped IPv6 -> extract IPv4
+      if (s.includes('.')) {
+        const m = s.match(/(\d{1,3}\.){3}\d{1,3}$/)
+        if (m) return m[0]
+      }
+      // If not IPv6, return as-is
+      if (!s.includes(':')) return s
+      // Collapse to first 4 hextets (roughly /64). Handle '::' compression.
+      const hasDbl = s.includes('::')
+      const left = (hasDbl ? s.split('::')[0] : s)
+      const leftParts = left.split(':').filter(Boolean)
+      const first4 = leftParts.concat(Array(Math.max(0, 4 - leftParts.length)).fill('0')).slice(0, 4)
+      return first4.join(':') + '::'
+    } catch { return 'ip' }
+  }
+  const ipKeyGen = (req) => {
+    try {
+      const ip = req?.ip || ''
+      return ipKeyGenerator ? ipKeyGenerator(ip) : normalizeIp64(ip)
+    } catch { return normalizeIp64(req?.ip || '') }
+  }
   if (rateLimit) {
+    // Custom 429 handler to attach Retry-After while preserving standard RateLimit-* headers
+    const makeRLHandler = (windowMs) => (req, res, _next, _options) => {
+      try {
+        const secs = Math.max(1, Math.ceil(Number(windowMs || 60000) / 1000))
+        res.set('Retry-After', String(secs))
+      } catch {}
+      return res.status(429).json({ error: 'rate_limited', message: 'Too many requests. Please retry later.' })
+    }
     // General API limiter (skip health/metrics)
     const apiLimiter = rateLimit({
       windowMs: 60 * 1000,
       max: Number(process.env.RATE_LIMIT_MAX || 120),
       standardHeaders: true,
       legacyHeaders: false,
-      skip: (req) => req.path === '/health' || req.path === '/metrics',
+      skip: (req) => {
+        try {
+          const p = String(req.path || '')
+          return p === '/health' || p === '/metrics' || p === '/system/sqlite' || p === '/integrations/status' || p.startsWith('/static/icons/')
+        } catch { return false }
+      },
+      keyGenerator: (req) => ipKeyGen(req),
+      handler: makeRLHandler(60 * 1000),
     })
     app.use(apiLimiter)
 
@@ -150,6 +195,8 @@ try {
       max: Number(process.env.RATE_LIMIT_STRICT_MAX || 10),
       standardHeaders: true,
       legacyHeaders: false,
+      keyGenerator: (req) => ipKeyGen(req),
+      handler: makeRLHandler(60 * 1000),
     })
     app.use(['/catalog/rebuild', '/blizzard/items/catalog/rebuild', '/prices/export'], strictLimiter)
 
@@ -159,8 +206,27 @@ try {
       max: Number(process.env.RATE_LIMIT_MODERATE_MAX || 30),
       standardHeaders: true,
       legacyHeaders: false,
+      keyGenerator: (req) => {
+        try {
+          const ua = String(req.get('user-agent') || '')
+          const mode = String(req.query?.mode || '')
+          const limit = String(req.query?.limit || '')
+          return [ipKeyGen(req) || '', req.path || '', ua, mode, limit].join('|')
+        } catch { return ipKeyGen(req) }
+      },
+      handler: makeRLHandler(60 * 1000),
     })
     app.use(['/stats/top-sold-region'], moderateLimiter)
+    // Debug route: echo computed rate-limit key to verify IPv6 normalization
+    app.get('/debug/rate-limit-key', (req, res) => {
+      try {
+        const ua = String(req.get('user-agent') || '')
+        const key = ipKeyGen(req)
+        return res.json({ ip: req.ip || '', key, ua, path: req.path || '' })
+      } catch (e) {
+        return res.status(500).json({ error: 'rl_key_debug_failed', message: e?.message || String(e) })
+      }
+    })
 
     console.info('[EG] Rate limiting enabled')
   } else {
@@ -595,6 +661,15 @@ function _saveFairToDisk() {
 loadAuctionsFromDisk()
 loadFairFromDisk()
 
+// Optional: initialize SQLite at startup for early readiness
+try {
+  if (sqlite.isEnabled && sqlite.isEnabled()) {
+    sqlite.init?.()
+  }
+} catch (e) {
+  try { console.warn('[sqlite] init at startup failed:', e?.message || e) } catch {}
+}
+
 // Sales tracking (approx by ended auctions between snapshots)
 let salesEvents = [] // [{ t: secs, itemId, quantity }]
 let lastTrackSummary = null // { ts, prevCount, nowCount, endedCount, partialAdds }
@@ -644,6 +719,7 @@ const getMetricsPayload = () => ({
   metrics,
   localTop: { versions: { current: localTopVersion }, cachedWindows: [...localTopCache.byHours.keys()] },
   catalog: { status: getCatalogStatus(), rebuild: catalogRebuildState, config: { AUTO_CATALOG_REBUILD, CATALOG_MIN_COUNT, CATALOG_REFRESH_HOURS } },
+  sqlite: (typeof sqlite?.status === 'function' ? sqlite.status() : { enabled: false, initialized: false, path: null }),
 })
 const getLocalTopCache = () => localTopCache
 

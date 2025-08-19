@@ -3,7 +3,6 @@
 // Fails if forbidden patterns are present (legacy quick helpers or window fallbacks)
 
 /* eslint-env node */
-/* eslint-disable no-console */
 
 import fs from 'fs';
 import path from 'path';
@@ -110,7 +109,7 @@ function main() {
     );
     process.exit(1);
   } else {
-    console.log('OK: no legacy patterns found in companion/public');
+    console.info('OK: no legacy patterns found in companion/public');
     return;
   }
 }

@@ -7,7 +7,7 @@ export function attachHandlers(deps = {}) {
     LS,
     setFilters,
     setSort,
-    refresh,
+    refresh: rawRefresh,
     svcGetJSON,
     svcPostJSON,
     svcCopyText,
@@ -17,7 +17,7 @@ export function attachHandlers(deps = {}) {
     init,
   } = deps;
 
-  function bindGlobalShortcuts() {
+  function bindGlobalShortcuts(refresh) {
     try {
       if (!window.__egTopShortcuts__) {
         window.__egTopShortcuts__ = true;
@@ -145,7 +145,7 @@ export function attachHandlers(deps = {}) {
   }
 
   function attachHandlersInternal() {
-    bindGlobalShortcuts();
+    bindGlobalShortcuts(refresh);
     const e = ControllerState.els;
     if (!e || !e.rowsEl) {
       init({});
@@ -165,6 +165,164 @@ export function attachHandlers(deps = {}) {
         t = setTimeout(() => fn(...a), ms);
       };
     };
+    // Pacing gate + fetch backoff for Top refreshes
+    try {
+      // Patch fetch with retries/backoff for Top endpoints (429/503)
+      if (!window.__egFetchBackoffPatched__ && typeof window.fetch === 'function') {
+        window.__egFetchBackoffPatched__ = true;
+        const __origFetch = window.fetch.bind(window);
+        const sleep = (ms) => new Promise((r) => setTimeout(r, Math.max(0, ms)));
+        const parseRetryAfter = (h) => {
+          try {
+            const ra = h.get && h.get('Retry-After');
+            if (!ra) {
+              return 0;
+            }
+            const n = Number(ra);
+            if (Number.isFinite(n)) {
+              return Math.max(0, n * 1000);
+            }
+            const d = Date.parse(ra);
+            return Number.isFinite(d) ? Math.max(0, d - Date.now()) : 0;
+          } catch { return 0; }
+        };
+        window.fetch = async (input, init = {}) => {
+          try {
+            const url = typeof input === 'string' ? input : String(input && input.url);
+            const isTop = /\/stats\/top-sold-(local|region)/.test(String(url || '')) && String((init && init.method) || 'GET').toUpperCase() === 'GET';
+            if (!isTop) {
+              return await __origFetch(input, init);
+            }
+            const base = 500, factor = 2, maxDelay = 30000, maxRetries = 5;
+            let attempt = 0;
+            let lastErr = null;
+            for (;;) {
+              const res = await __origFetch(input, init).catch((e) => { lastErr = e; return null; });
+              if (res && res.ok) {
+                return res;
+              }
+              const status = res && res.status;
+              if (!(status === 429 || status === 503)) {
+                return res || Promise.reject(lastErr || new Error('fetch_failed'));
+              }
+              // Honor Retry-After/RateLimit-Reset if present
+              let waitMs = parseRetryAfter(res && res.headers ? res.headers : new Headers());
+              if (!waitMs) {
+                const reset = (res && res.headers && res.headers.get && res.headers.get('RateLimit-Reset')) || '';
+                const rn = Number(reset);
+                if (Number.isFinite(rn) && rn > 0) {
+                  const nowSec = Math.floor(Date.now() / 1000);
+                  waitMs = Math.max(0, (rn - nowSec) * 1000);
+                }
+              }
+              if (!waitMs) {
+                const exp = Math.min(maxDelay, base * Math.pow(factor, attempt));
+                waitMs = Math.floor(Math.random() * exp);
+              }
+              attempt++;
+              if (attempt > maxRetries) {
+                return res || Promise.reject(lastErr || new Error('rate_limited'));
+              }
+              if (window.__EG_TOP_DEBUG__) {
+                console.debug('[TopFetch] backoff', { attempt, waitMs, status, url }); // eslint-disable-line no-console
+              }
+              await sleep(waitMs);
+            }
+          } catch (e) {
+            return __origFetch(input, init);
+          }
+        };
+      }
+    } catch {}
+    // Central gated refresh: enforces min interval + trailing edge + param-hash dedupe
+    const makeTopParamsHash = () => {
+      try {
+        const f = ControllerState && ControllerState.filters ? ControllerState.filters : {};
+        const s = ControllerState && ControllerState.sort ? ControllerState.sort : {};
+        const norm = {
+          query: String(f.query || ''),
+          minSold: Number(f.minSold || 0),
+          quality: f.quality == null ? null : Number(f.quality),
+          hours: Number(f.hours || 48),
+          source: String(f.source || 'local'),
+          limit: Number(f.limit || 400),
+          useAll: !!f.useAll,
+          includeZero: !!f.includeZero,
+          offset: Number(f.offset || 0),
+          sort: String((s && s.key) || '') + ':' + String((s && s.dir) || ''),
+        };
+        return JSON.stringify(norm);
+      } catch { return 'hash_err'; }
+    };
+    const makeGatedRefresh = (raw) => {
+      const MIN_INTERVAL_MS = 2500;
+      let lastCallAt = 0;
+      let lastDoneHash = null;
+      let inFlight = false;
+      let timer = null;
+      let queuedParams = null;
+      let hasQueued = false;
+      const stats = { issued: 0, deduped: 0, queued: 0 };
+      const debug = () => { 
+        if (window.__EG_TOP_DEBUG__) { 
+          console.debug('[TopGate]', { stats, lastCallAt, lastDoneHash }); // eslint-disable-line no-console
+        } 
+      };
+      const flush = async () => {
+        if (inFlight) { 
+          return; 
+        }
+        const now = Date.now();
+        const remain = Math.max(0, MIN_INTERVAL_MS - (now - lastCallAt));
+        if (remain > 0) {
+          try { 
+            clearTimeout(timer); 
+          } catch {}
+          timer = setTimeout(flush, remain + 5);
+          return;
+        }
+        if (!hasQueued) { return; }
+        const params = queuedParams;
+        queuedParams = null;
+        hasQueued = false;
+        const h = makeTopParamsHash();
+        if (h && h === lastDoneHash) { stats.deduped++; debug(); return; }
+        inFlight = true;
+        lastCallAt = Date.now();
+        stats.issued++; debug();
+        try {
+          await raw(params);
+          lastDoneHash = makeTopParamsHash();
+        } catch (e) {
+          // Allow next queued call to try again
+        } finally {
+          inFlight = false;
+          if (hasQueued) {
+            try { clearTimeout(timer); } catch {}
+            timer = setTimeout(flush, 0);
+          }
+        }
+      };
+      return (params = false) => {
+        // Immediate path for direct user interactions
+        if (params && params.userTriggered === true) {
+          try {
+            stats.issued++;
+            lastCallAt = Date.now();
+            raw(params);
+            lastDoneHash = makeTopParamsHash();
+          } catch {}
+          return;
+        }
+        queuedParams = params;
+        hasQueued = true;
+        stats.queued++;
+        try { clearTimeout(timer); } catch {}
+        timer = setTimeout(flush, 0);
+      };
+    };
+    // Expose gated wrapper under the same name used by handlers
+    const refresh = makeGatedRefresh(rawRefresh);
     // One-time static item-meta bootstrap via services, then refresh if Top tab visible
     try {
       if (!window.__egTopMetaBoot__) {

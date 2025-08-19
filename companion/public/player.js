@@ -8,6 +8,37 @@
     return g.toLocaleString();
   };
 
+  // Time helpers
+  const fmtTime = (tSec) => {
+    const ms = Number(tSec || 0) * 1000;
+    if (!Number.isFinite(ms) || ms <= 0) {
+      return '';
+    }
+    try {
+      const d = new Date(ms);
+      return d.toLocaleString();
+    } catch {
+      return '';
+    }
+  };
+  const fmtAge = (tSec) => {
+    const ms = Number(tSec || 0) * 1000;
+    if (!Number.isFinite(ms) || ms <= 0) {
+      return '';
+    }
+    const delta = Date.now() - ms;
+    const m = Math.max(0, Math.floor(delta / 60000));
+    if (m < 60) {
+      return `${m}m`;
+    }
+    const h = Math.floor(m / 60);
+    if (h < 48) {
+      return `${h}h`;
+    }
+    const d = Math.floor(h / 24);
+    return `${d}d`;
+  };
+
   // Simple monogram avatar renderer (data URL)
   function monogramAvatar(name) {
     const txt = (name || '').trim();
@@ -522,11 +553,222 @@
     refreshAll();
   }
 
+  // --- Ledger / Summary / Overdue loaders ---
+  let _ledgerOffset = 0;
+  function setLedgerOffset(v) {
+    _ledgerOffset = Math.max(0, Number(v) || 0);
+  }
+  function getLedgerOffset() {
+    return _ledgerOffset;
+  }
+
+  async function loadLedger({ resetOffset } = {}) {
+    if (resetOffset) {
+      setLedgerOffset(0);
+    }
+    const realm = getSelectedRealm();
+    const char = getSelectedChar();
+    const since = Math.max(1, Math.min(24 * 365, Number($('#ledgerSince')?.value || 168)));
+    const type = String($('#ledgerType')?.value || 'all').toLowerCase();
+    const limit = Math.max(10, Math.min(200, Number($('#ledgerLimit')?.value || 25)));
+    const offset = getLedgerOffset();
+    const qs = new URLSearchParams();
+    if (realm) {
+      qs.set('realm', realm);
+    }
+    if (char) {
+      qs.set('char', char);
+    }
+    qs.set('sinceHours', String(since));
+    qs.set('type', type);
+    qs.set('limit', String(limit));
+    qs.set('offset', String(offset));
+    $('#ledgerStatus') && ($('#ledgerStatus').textContent = 'Loading…');
+    try {
+      const resp = await fetch(`/player/ledger?${qs.toString()}`);
+      const data = await resp.json();
+      const items = data?.items || [];
+      const total = Number(data?.total || items.length || 0);
+      const tbody = $('#ledgerRows');
+      if (tbody) {
+        tbody.innerHTML = '';
+      }
+      // Resolve names
+      const ids = Array.from(new Set(items.map((r) => Number(r.itemId || 0)).filter((n) => Number.isFinite(n) && n > 0)));
+      let nameMap = {};
+      if (ids.length) {
+        try {
+          const r = await fetch(`/blizzard/item-names?ids=${ids.join(',')}`);
+          const j = await r.json();
+          nameMap = j?.names || j?.map || {};
+        } catch {}
+      }
+      for (const r of items) {
+        const tr = document.createElement('tr');
+        const timeCell = document.createElement('td');
+        timeCell.className = 'mono';
+        timeCell.textContent = fmtTime(r.t);
+        const typeCell = document.createElement('td');
+        typeCell.textContent = String(r.type || '');
+        const itemCell = document.createElement('td');
+        const id = Number(r.itemId || 0);
+        const nm = id && (nameMap[String(id)] || nameMap[id])
+          ? `${nameMap[String(id)] || nameMap[id]} (#${id})`
+          : (r.itemName || (id ? `#${id}` : ''));
+        itemCell.textContent = nm;
+        const qtyCell = document.createElement('td');
+        qtyCell.textContent = String(r.qty || 0);
+        const unitCell = document.createElement('td');
+        unitCell.className = 'mono';
+        unitCell.textContent = r.unit != null ? fmtGold(Number(r.unit) / 10000) : '';
+        const grossCell = document.createElement('td');
+        grossCell.className = 'mono';
+        grossCell.textContent = r.gross != null ? fmtGold(Number(r.gross) / 10000) : '';
+        const cutCell = document.createElement('td');
+        cutCell.className = 'mono';
+        cutCell.textContent = r.cut != null ? fmtGold(Number(r.cut) / 10000) : '';
+        const netCell = document.createElement('td');
+        netCell.className = 'mono';
+        netCell.textContent = r.net != null ? fmtGold(Number(r.net) / 10000) : '';
+        tr.append(timeCell, typeCell, itemCell, qtyCell, unitCell, grossCell, cutCell, netCell);
+        tbody && tbody.appendChild(tr);
+      }
+      // Status and pager button states
+      if ($('#ledgerStatus')) {
+        const start = Math.min(total, offset + (items.length ? 1 : 0));
+        const end = Math.min(total, offset + items.length);
+        $('#ledgerStatus').textContent = total ? `Showing ${start}–${end} of ${total}` : 'No results';
+      }
+      const prevBtn = $('#ledgerPrev');
+      const nextBtn = $('#ledgerNext');
+      if (prevBtn) {
+        prevBtn.disabled = offset <= 0;
+      }
+      if (nextBtn) {
+        nextBtn.disabled = offset + items.length >= total;
+      }
+    } catch (e) {
+      console.error(e);
+      $('#ledgerStatus') && ($('#ledgerStatus').textContent = 'Failed to load');
+    }
+  }
+
+  async function loadSummary() {
+    const days = Math.max(1, Math.min(90, Number($('#sumDays')?.value || 14)));
+    $('#summaryStatus') && ($('#summaryStatus').textContent = 'Loading…');
+    try {
+      const realm = getSelectedRealm();
+      const char = getSelectedChar();
+      const qs = new URLSearchParams();
+      qs.set('windowDays', String(days));
+      if (realm) {
+        qs.set('realm', realm);
+      }
+      if (char) {
+        qs.set('char', char);
+      }
+      const resp = await fetch(`/player/summary?${qs.toString()}`);
+      const data = await resp.json();
+      const rows = data?.days || [];
+      const tbody = $('#sumRows');
+      if (tbody) {
+        tbody.innerHTML = '';
+      }
+      for (const d of rows) {
+        const tr = document.createElement('tr');
+        const dayCell = document.createElement('td');
+        dayCell.textContent = d.day || '';
+        const salesCell = document.createElement('td');
+        salesCell.textContent = String(d.salesCount || 0);
+        const grossCell = document.createElement('td');
+        grossCell.className = 'mono';
+        grossCell.textContent = fmtGold(Number(d.gross || 0) / 10000);
+        const cutCell = document.createElement('td');
+        cutCell.className = 'mono';
+        cutCell.textContent = fmtGold(Number(d.ahCut || 0) / 10000);
+        const netSalesCell = document.createElement('td');
+        netSalesCell.className = 'mono';
+        netSalesCell.textContent = fmtGold(Number(d.netSales || 0) / 10000);
+        const netPayoutsCell = document.createElement('td');
+        netPayoutsCell.className = 'mono';
+        netPayoutsCell.textContent = fmtGold(Number(d.netPayouts || 0) / 10000);
+        tr.append(dayCell, salesCell, grossCell, cutCell, netSalesCell, netPayoutsCell);
+        tbody && tbody.appendChild(tr);
+      }
+      $('#summaryStatus') && ($('#summaryStatus').textContent = `${rows.length} days`);
+    } catch (e) {
+      console.error(e);
+      $('#summaryStatus') && ($('#summaryStatus').textContent = 'Failed to load');
+    }
+  }
+
+  async function loadUnmatched() {
+    const older = Math.max(10, Math.min(10080, Number($('#unmOlder')?.value || 120)));
+    const grace = Math.max(0, Math.min(720, Number($('#unmGrace')?.value || 10)));
+    $('#unmatchedStatus') && ($('#unmatchedStatus').textContent = 'Loading…');
+    try {
+      const realm = getSelectedRealm();
+      const char = getSelectedChar();
+      const qs = new URLSearchParams();
+      if (realm) {
+        qs.set('realm', realm);
+      }
+      if (char) {
+        qs.set('char', char);
+      }
+      qs.set('olderThanMin', String(older));
+      qs.set('graceMin', String(grace));
+      const resp = await fetch(`/player/payouts/unmatched?${qs.toString()}`);
+      const data = await resp.json();
+      const items = data?.items || [];
+      const ids = Array.from(new Set(items.map((r) => Number(r.itemId || 0)).filter((n) => Number.isFinite(n) && n > 0)));
+      let nameMap = {};
+      if (ids.length) {
+        try {
+          const r = await fetch(`/blizzard/item-names?ids=${ids.join(',')}`);
+          const j = await r.json();
+          nameMap = j?.names || j?.map || {};
+        } catch {}
+      }
+      const tbody = $('#unmRows');
+      if (tbody) {
+        tbody.innerHTML = '';
+      }
+      for (const r of items) {
+        const tr = document.createElement('tr');
+        const itemCell = document.createElement('td');
+        const id = Number(r.itemId || 0);
+        const nm = id && (nameMap[String(id)] || nameMap[id])
+          ? `${nameMap[String(id)] || nameMap[id]} (#${id})`
+          : id ? `#${id}` : '';
+        itemCell.textContent = nm;
+        const qtyCell = document.createElement('td');
+        qtyCell.textContent = String(r.qty || 0);
+        const unitCell = document.createElement('td');
+        unitCell.className = 'mono';
+        unitCell.textContent = fmtGold(Number(r.unit || 0) / 10000);
+        const grossCell = document.createElement('td');
+        grossCell.className = 'mono';
+        grossCell.textContent = fmtGold(Number(r.gross || 0) / 10000);
+        const ageCell = document.createElement('td');
+        ageCell.textContent = fmtAge(r.t);
+        tr.append(itemCell, qtyCell, unitCell, grossCell, ageCell);
+        tbody && tbody.appendChild(tr);
+      }
+      $('#unmatchedStatus') && ($('#unmatchedStatus').textContent = `${items.length} overdue`);
+    } catch (e) {
+      console.error(e);
+      $('#unmatchedStatus') && ($('#unmatchedStatus').textContent = 'Failed to load');
+    }
+  }
+
   // Expose controller API
   try {
     window.EGPlayer = Object.freeze({
       fmtGold,
       monogramAvatar,
+      fmtTime,
+      fmtAge,
       updateHero,
       getSelectedRealm,
       getSelectedChar,
@@ -544,6 +786,12 @@
       refreshAll,
       rebuildModels,
       initFromURLAndRefresh,
+      // new loaders & pager state
+      loadLedger,
+      loadSummary,
+      loadUnmatched,
+      setLedgerOffset,
+      getLedgerOffset,
     });
   } catch {}
 })();

@@ -16,8 +16,8 @@ local function urlEncode(s)
 end
 
 local function getBaseUrl()
-  local b = (type(EG_ConfigDB) == "table" and EG_ConfigDB.baseUrl) or "http://localhost:3000"
-  if type(b) ~= "string" or b == "" then b = "http://localhost:3000" end
+  local b = (type(EG_ConfigDB) == "table" and EG_ConfigDB.baseUrl) or "http://localhost:4317"
+  if type(b) ~= "string" or b == "" then b = "http://localhost:4317" end
   b = b:gsub("/+$", "")
   return b
 end

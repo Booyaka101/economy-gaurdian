@@ -3,6 +3,7 @@
 import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
+import * as sqlite from '../db/sqlite.js'
 
 export default function registerSystemRoutes(app, deps) {
   const { getMetricsPayload, getAuctionsCache, getLocalTopCache, aggregateLocalSales, getCatalogMap } = deps
@@ -16,6 +17,16 @@ export default function registerSystemRoutes(app, deps) {
       res.json(getMetricsPayload())
     } catch (e) {
       res.status(500).json({ error: 'metrics_failed', message: e?.message || String(e) })
+    }
+  })
+
+  // SQLite status endpoint for diagnostics
+  app.get('/system/sqlite', (_req, res) => {
+    try {
+      const st = typeof sqlite.status === 'function' ? sqlite.status() : { enabled: false, initialized: false, path: null }
+      res.json(st)
+    } catch (e) {
+      res.status(500).json({ error: 'sqlite_status_failed', message: e?.message || String(e) })
     }
   })
 

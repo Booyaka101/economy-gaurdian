@@ -4,7 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Economy Guardian — Player Stats</title>
-    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./guard.js"></script>
     <style>
       :root {
         --bg: #0b1020;
@@ -306,6 +307,27 @@
         border-radius: 8px;
         cursor: pointer;
       }
+      /* Tabs */
+      .tabs {
+        display: flex;
+        gap: 8px;
+        margin: 8px 0 12px;
+      }
+      .tab {
+        background: #0b142c;
+        color: #eaf0ff;
+        border: 1px solid var(--muted);
+        border-radius: 8px;
+        padding: 8px 10px;
+        cursor: pointer;
+      }
+      .tab.active {
+        border-color: var(--accent);
+        box-shadow: 0 0 0 2px rgba(90, 162, 255, 0.15);
+      }
+      [hidden] {
+        display: none !important;
+      }
     </style>
     <!-- Wowhead tooltips centralized -->
     <script src="/wowhead.controller.js"></script>
@@ -384,6 +406,12 @@
           <span id="profStatus" class="status" aria-live="polite"></span>
         </div>
       </section>
+      <div class="tabs" role="tablist" aria-label="Player Views">
+        <button id="tabBtnOverview" class="tab active" role="tab" aria-selected="true" aria-controls="tab-overview">Overview</button>
+        <button id="tabBtnLedger" class="tab" role="tab" aria-selected="false" aria-controls="tab-ledger">Ledger</button>
+        <button id="tabBtnSummary" class="tab" role="tab" aria-selected="false" aria-controls="tab-summary">Summary</button>
+      </div>
+      <div id="tab-overview" role="tabpanel" aria-labelledby="tabBtnOverview">
       <h1>Player Stats</h1>
       <div class="controls">
         <label>Realm <input id="realm" placeholder="all" /></label>
@@ -484,7 +512,6 @@
           <div id="insOut" class="mono"></div>
         </section>
       </div>
-
       <div class="grid" style="margin-top: 16px">
         <section class="card">
           <h2>Posting-Time Advisor</h2>
@@ -546,8 +573,103 @@
           </div>
         </section>
       </div>
+      </div>
+      
+
+      
+      
+
+      <div id="tab-ledger" role="tabpanel" aria-labelledby="tabBtnLedger" hidden>
+        <h1>Ledger</h1>
+        <div class="controls">
+          <label
+            >Type
+            <select id="ledgerType">
+              <option value="all">All</option>
+              <option value="postings">Postings</option>
+              <option value="sales">Sales</option>
+              <option value="buys">Buys</option>
+              <option value="payouts">Payouts</option>
+              <option value="cancels">Cancels</option>
+              <option value="expires">Expires</option>
+            </select>
+          </label>
+          <label>Since (hours) <input id="ledgerSince" type="number" min="1" max="8760" value="168" /></label>
+          <label>Limit <input id="ledgerLimit" type="number" min="10" max="200" value="25" /></label>
+          <button id="ledgerRefresh" class="tool-btn" type="button">↻ Refresh</button>
+          <span id="ledgerStatus" class="status" aria-live="polite"></span>
+          <span class="spacer"></span>
+          <button id="ledgerPrev" class="tool-btn" type="button">⟨ Prev</button>
+          <button id="ledgerNext" class="tool-btn" type="button">Next ⟩</button>
+        </div>
+        <div class="section-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th class="mono">Time</th>
+                <th>Type</th>
+                <th>Item</th>
+                <th>Qty</th>
+                <th class="mono">Unit</th>
+                <th class="mono">Gross</th>
+                <th class="mono">Cut</th>
+                <th class="mono">Net</th>
+              </tr>
+            </thead>
+            <tbody id="ledgerRows"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div id="tab-summary" role="tabpanel" aria-labelledby="tabBtnSummary" hidden>
+        <h1>Daily Summary</h1>
+        <div class="controls">
+          <label>Window (days) <input id="sumDays" type="number" min="1" max="90" value="14" /></label>
+          <button id="summaryRefresh" class="tool-btn" type="button">📊 Refresh</button>
+          <span id="summaryStatus" class="status"></span>
+        </div>
+        <div class="section-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>Day</th>
+                <th>Sales</th>
+                <th class="mono">Gross</th>
+                <th class="mono">AH Cut</th>
+                <th class="mono">Net Sales</th>
+                <th class="mono">Net Payouts</th>
+              </tr>
+            </thead>
+            <tbody id="sumRows"></tbody>
+          </table>
+        </div>
+
+        <div class="divider" style="margin: 16px 0"></div>
+
+        <h2>Overdue Payouts</h2>
+        <div class="controls">
+          <label>Older Than (min) <input id="unmOlder" type="number" min="10" max="10080" value="120" /></label>
+          <label>Grace (min) <input id="unmGrace" type="number" min="0" max="720" value="10" /></label>
+          <button id="unmatchedRefresh" class="tool-btn" type="button">🔎 Check</button>
+          <span id="unmatchedStatus" class="status"></span>
+        </div>
+        <div class="section-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>Qty</th>
+                <th class="mono">Unit</th>
+                <th class="mono">Gross</th>
+                <th>Age</th>
+              </tr>
+            </thead>
+            <tbody id="unmRows"></tbody>
+          </table>
+        </div>
+      </div>
     </div>
-    <script src="/sw.controller.js"></script>
+    <script src="./sw.controller.js"></script>
     <script>
       // Settings modal wiring for tooltips and diagnostics (player page)
       (function () {
@@ -663,7 +785,7 @@
         });
       })();
     </script>
-    <script src="/player.js"></script>
-    <script src="/player.controller.js"></script>
+    <script src="./player.js"></script>
+    <script src="./player.controller.js"></script>
   </body>
 </html>
