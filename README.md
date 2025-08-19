@@ -118,14 +118,28 @@ To prevent reintroduction of legacy fallbacks and duplicate bindings, the compan
 - **Workflow**: `.github/workflows/guardrail.yml` runs guardrail, lint, and tests.
 - **Node matrix**: Tests run on Node 18 and 20 for coverage and compatibility.
 - **Coverage**: Vitest v8 provider outputs `text`, `html`, and `lcov` to `companion/coverage/` when `VITEST_COVERAGE=true` (also on CI).
-- **Codecov (optional)**:
-  - Add repository in Codecov and set a `CODECOV_TOKEN` secret in GitHub.
-  - CI uploads `companion/coverage/lcov.info` via `codecov/codecov-action@v4`.
-  - Badge snippet (replace OWNER/REPO):
+  - **Codecov (optional)**:
+    - Add repository in Codecov and set a `CODECOV_TOKEN` secret in GitHub.
+    - CI uploads `companion/coverage/lcov.info` via `codecov/codecov-action@v4`.
+    - Badge snippet (replace OWNER/REPO):
 
-```md
-[![Coverage](https://codecov.io/gh/OWNER/REPO/branch/main/graph/badge.svg)](https://codecov.io/gh/OWNER/REPO)
-```
+    ```md
+    [![Coverage](https://codecov.io/gh/OWNER/REPO/branch/main/graph/badge.svg)](https://codecov.io/gh/OWNER/REPO)
+    ```
+
+  - **Coverage thresholds**: Enforced in `companion/vitest.config.js` for frontend code (`public/**/*.js`):
+    - lines: 60, functions: 50, branches: 40, statements: 60
+    - Adjust as the suite evolves. Thresholds only apply when coverage is enabled.
+  - **CI concurrency**: Redundant runs for the same ref are auto-cancelled via `concurrency` in `.github/workflows/guardrail.yml`.
+  - **Node engines**: `companion/package.json` pins engines to `>=18 <21` for consistency with CI matrix.
+  - **Dependabot**: Automated npm updates configured in `.github/dependabot.yml` (weekly, limited PRs).
+
+## Testing notes (Vitest)
+
+- Server-side tests in `companion/src/__tests__/` run under Node via `vitest.config.js` `environmentMatchGlobs`. Frontend tests use `jsdom`.
+- Increased `testTimeout` and `hookTimeout` to 15000ms to reduce flakiness when spinning up ephemeral Express servers in tests.
+- `companion/vitest.setup.js` stubs `window.location.assign/replace` and filters jsdom's "Not implemented: navigation" warnings to keep logs clean.
+- Added system smoke tests for `GET /health` and `GET /metrics` in `companion/src/__tests__/system.routes.test.js`.
 
 ## Disclaimer
 

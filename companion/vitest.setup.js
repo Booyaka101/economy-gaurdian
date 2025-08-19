@@ -53,3 +53,29 @@ if (typeof globalThis.URL.createObjectURL !== 'function') {
 if (typeof globalThis.URL.revokeObjectURL !== 'function') {
   globalThis.URL.revokeObjectURL = vi.fn();
 }
+
+// Silence jsdom navigation warnings (e.g., "Not implemented: navigation (except hash changes)")
+// and provide stable no-op navigation methods used by some UI flows.
+try {
+  if (globalThis.window && globalThis.window.location) {
+    const noop = vi.fn ? vi.fn() : () => {};
+    try { globalThis.window.location.assign = noop } catch {}
+    try { globalThis.window.location.replace = noop } catch {}
+  }
+} catch {}
+
+// Filter out jsdom navigation noise from console.error without hiding real failures
+try {
+  const origError = console.error ? console.error.bind(console) : null;
+  if (origError) {
+    console.error = (...args) => {
+      try {
+        const msg = (args && args[0] && args[0].toString) ? args[0].toString() : '';
+        if (typeof msg === 'string' && msg.includes('Not implemented: navigation')) {
+          return; // ignore noisy jsdom navigation warnings
+        }
+      } catch {}
+      return origError(...args);
+    };
+  }
+} catch {}
