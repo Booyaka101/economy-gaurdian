@@ -3,8 +3,8 @@ import { describe, it, beforeEach, afterEach, expect, vi } from 'vitest';
 function el(tag, attrs = {}, children = []) {
   const node = document.createElement(tag);
   Object.entries(attrs).forEach(([k, v]) => {
-    if (k === 'text') node.textContent = v;
-    else node.setAttribute(k, v);
+    if (k === 'text') { node.textContent = v; }
+    else { node.setAttribute(k, v); }
   });
   children.forEach((c) => node.appendChild(c));
   return node;
