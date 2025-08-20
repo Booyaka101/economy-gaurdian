@@ -714,6 +714,27 @@ registerBlizzardRoutes(app, {
 
 // Lightweight accessors for route modules
 const getItemIcon = (id) => getCachedItemIcon(Number(id))
+
+// Metrics
+const metrics = {
+  auctions: { refreshCount: 0, lastDurationMs: 0, lastError: null },
+  prices: { buildCount: 0, lastDurationMs: 0 },
+  requests: { snipeCount: 0, fairValuesCount: 0 },
+  items: { cacheHits: 0, cacheMisses: 0, fetchedCount: 0 },
+  // Player-focused counters (ingestion + query usage)
+  players: {
+    uploads: { count: 0, bytes: 0 },
+    stats: { requests: 0, sqliteQueries: 0, jsonQueries: 0, cacheHits: 0, cacheMisses: 0 },
+    awaiting: { requests: 0, sqliteQueries: 0, jsonQueries: 0, cacheHits: 0, cacheMisses: 0 },
+    ledger: { requests: 0 },
+    summary: { requests: 0 },
+    unmatched: { requests: 0 },
+    current: { requests: 0 },
+    recommend: { requests: 0 },
+    learn: { rebuilds: 0 },
+  },
+}
+
 const getMetricsPayload = () => ({
   auctions: auctionsCache ? { connectedRealmId: auctionsCache.connectedRealmId, lastFetched: auctionsCache.lastFetched, hasData: !!auctionsCache.data } : {},
   metrics,
@@ -790,7 +811,7 @@ registerAIRoutes(app, {
 })
 
 // Player stats routes (accounting ingestion, stats, awaiting payouts)
-registerPlayerRoutes(app, {})
+registerPlayerRoutes(app, { metrics })
 
 let savedVarsWatcher = null
 // Optional: watch WoW SavedVariables to auto-ingest EG_AccountingDB
@@ -943,13 +964,7 @@ function aggregateLocalSales(hours = 48) {
   return agg // itemId -> { qty, cnt }
 }
 
-// Metrics
-const metrics = {
-  auctions: { refreshCount: 0, lastDurationMs: 0, lastError: null },
-  prices: { buildCount: 0, lastDurationMs: 0 },
-  requests: { snipeCount: 0, fairValuesCount: 0 },
-  items: { cacheHits: 0, cacheMisses: 0, fetchedCount: 0 },
-}
+// Metrics moved above (definition near accessors)
 
 // Item metadata caches (in-memory with TTL)
 const ITEM_TTL_SEC = 24 * 3600

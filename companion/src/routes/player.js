@@ -105,6 +105,9 @@ export default function registerPlayerRoutes(app, _deps = {}) {
     }
   }
 
+  // Optional injected metrics from server.js for observability
+  const metrics = _deps?.metrics;
+
   // Helpers: deduplication by composite key preserving first occurrence
   function dedupeByKey(arr = [], keyFn) {
     try {
@@ -189,6 +192,15 @@ export default function registerPlayerRoutes(app, _deps = {}) {
       if (!body || typeof body !== 'object') {
         return res.status(400).json({ error: 'bad_body' });
       }
+      // Metrics: count uploads and bytes (use content-length header or computed size)
+      try {
+        if (metrics?.players?.uploads) {
+          metrics.players.uploads.count++;
+          const clen = Number(req.headers['content-length'] || 0);
+          const bytes = Number.isFinite(clen) && clen > 0 ? clen : Buffer.byteLength(JSON.stringify(body || {}));
+          metrics.players.uploads.bytes += bytes;
+        }
+      } catch {}
       const db = loadStore();
       // Merge realms/characters shallowly by concatenating arrays
       for (const [realm, chars] of Object.entries(body.realms || {})) {
@@ -237,6 +249,8 @@ export default function registerPlayerRoutes(app, _deps = {}) {
   // GET /player/payouts/unmatched?realm=&char=&olderThanMin=120&graceMin=10
   router.get('/player/payouts/unmatched', (req, res) => {
     try {
+      // Metrics
+      try { if (metrics?.players?.unmatched) metrics.players.unmatched.requests++; } catch {}
       const realm = req.query.realm ? String(req.query.realm) : null;
       const character = req.query.char ? String(req.query.char) : null;
       const olderThanMin = Math.max(
@@ -283,6 +297,8 @@ export default function registerPlayerRoutes(app, _deps = {}) {
   // GET /player/ledger?realm=&char=&sinceHours=168&type=all&limit=200&offset=0
   router.get('/player/ledger', (req, res) => {
     try {
+      // Metrics
+      try { if (metrics?.players?.ledger) metrics.players.ledger.requests++; } catch {}
       const realm = req.query.realm ? String(req.query.realm) : null;
       const character = req.query.char ? String(req.query.char) : null;
       const sinceHours = Math.max(1, Math.min(365 * 24, Number(req.query.sinceHours || 168)));
@@ -447,6 +463,8 @@ export default function registerPlayerRoutes(app, _deps = {}) {
   // GET /player/summary?realm=&char=&windowDays=30
   router.get('/player/summary', (req, res) => {
     try {
+      // Metrics
+      try { if (metrics?.players?.summary) metrics.players.summary.requests++; } catch {}
       const realm = req.query.realm ? String(req.query.realm) : null;
       const character = req.query.char ? String(req.query.char) : null;
       const windowDays = Math.max(1, Math.min(365, Number(req.query.windowDays || 30)));
@@ -538,6 +556,8 @@ export default function registerPlayerRoutes(app, _deps = {}) {
   // GET /player/current — infer most recently active character
   router.get('/player/current', (req, res) => {
     try {
+      // Metrics
+      try { if (metrics?.players?.current) metrics.players.current.requests++; } catch {}
       const db = loadStore();
       const realms = db.realms || {};
       let best = { realm: '', character: '', lastTs: 0 };
@@ -617,6 +637,8 @@ export default function registerPlayerRoutes(app, _deps = {}) {
   // GET /player/stats?realm=&char=&sinceHours=168
   router.get('/player/stats', (req, res) => {
     try {
+      // Metrics: request count
+      try { if (metrics?.players?.stats) metrics.players.stats.requests++; } catch {}
       const sinceHours = Math.max(1, Math.min(365 * 24, Number(req.query.sinceHours || 168)));
       const realm = req.query.realm ? String(req.query.realm) : null;
       const character = req.query.char ? String(req.query.char) : null;
@@ -624,14 +646,17 @@ export default function registerPlayerRoutes(app, _deps = {}) {
       const cacheKey = JSON.stringify({ realm: realm || 'all', character: character || 'all', sinceHours });
       const cached = cacheGet(_statsCache, cacheKey, _STATS_TTL);
       if (cached) {
+        try { if (metrics?.players?.stats) metrics.players.stats.cacheHits++; } catch {}
         if (_STATS_TTL > 0) {
           res.set('Cache-Control', `public, max-age=${_STATS_TTL}`);
         }
         return res.json(cached);
       }
+      try { if (metrics?.players?.stats) metrics.players.stats.cacheMisses++; } catch {}
       // Prefer SQLite path when enabled for performance
       if (sqlite.isEnabled()) {
         try {
+          try { if (metrics?.players?.stats) metrics.players.stats.sqliteQueries++; } catch {}
           const { totals } = sqlite.queryStats({ realm, character, sinceHours });
           const payload = { realm: realm || 'all', character: character || 'all', sinceHours, totals };
           if (_STATS_TTL > 0) {
@@ -649,6 +674,8 @@ export default function registerPlayerRoutes(app, _deps = {}) {
           // fall through to JSON path below
         }
       }
+      // Metrics: JSON path used
+      try { if (metrics?.players?.stats) metrics.players.stats.jsonQueries++; } catch {}
       const db = loadStore();
       const { sales, payouts } = filterScope(db, realm, character);
       const sinceTs = Date.now() - sinceHours * 3600 * 1000;
@@ -742,6 +769,8 @@ export default function registerPlayerRoutes(app, _deps = {}) {
   // GET /player/payouts/awaiting?realm=&char=&windowMin=60&limit=500&offset=0
   router.get('/player/payouts/awaiting', (req, res) => {
     try {
+      // Metrics: request count
+      try { if (metrics?.players?.awaiting) metrics.players.awaiting.requests++; } catch {}
       const realm = req.query.realm ? String(req.query.realm) : null;
       const character = req.query.char ? String(req.query.char) : null;
       const windowMin = Math.max(10, Math.min(24 * 60, Number(req.query.windowMin || 60)));
@@ -751,14 +780,17 @@ export default function registerPlayerRoutes(app, _deps = {}) {
       const cacheKey = JSON.stringify({ realm: realm || 'all', character: character || 'all', windowMin, limit, offset });
       const cached = cacheGet(_awaitCache, cacheKey, _AWAIT_TTL);
       if (cached) {
+        try { if (metrics?.players?.awaiting) metrics.players.awaiting.cacheHits++; } catch {}
         if (_AWAIT_TTL > 0) {
           res.set('Cache-Control', `public, max-age=${_AWAIT_TTL}`);
         }
         return res.json(cached);
       }
+      try { if (metrics?.players?.awaiting) metrics.players.awaiting.cacheMisses++; } catch {}
       // If SQLite is enabled, use it for efficient querying
       if (sqlite.isEnabled()) {
         try {
+          try { if (metrics?.players?.awaiting) metrics.players.awaiting.sqliteQueries++; } catch {}
           const { items } = sqlite.queryAwaiting({ realm, character, windowMin, limit, offset });
           const payload = { limit, offset, count: items.length, items };
           if (_AWAIT_TTL > 0) {
@@ -776,6 +808,8 @@ export default function registerPlayerRoutes(app, _deps = {}) {
           // fall through to JSON path below
         }
       }
+      // Metrics: JSON path used
+      try { if (metrics?.players?.awaiting) metrics.players.awaiting.jsonQueries++; } catch {}
       const db = loadStore();
       const { sales, payouts } = filterScope(db, realm, character);
       const cutoff = Date.now() - windowMin * 60 * 1000;
@@ -905,6 +939,8 @@ export default function registerPlayerRoutes(app, _deps = {}) {
       const db = loadStore();
       const models = rebuildModels(db, sinceDays);
       const itemCount = Object.keys(models.items || {}).length;
+      // Metrics: count successful rebuilds
+      try { if (metrics?.players?.learn) metrics.players.learn.rebuilds++; } catch {}
       return res.json({ ok: true, updatedAt: models.updatedAt, itemCount });
     } catch (e) {
       return res.status(500).json({ error: 'learn_failed', message: e?.message || String(e) });
@@ -914,6 +950,8 @@ export default function registerPlayerRoutes(app, _deps = {}) {
   // GET /player/recommend/price?itemId=&targetHours=12&maxStack=200
   router.get('/player/recommend/price', (req, res) => {
     try {
+      // Metrics
+      try { if (metrics?.players?.recommend) metrics.players.recommend.requests++; } catch {}
       const itemId = Number(req.query.itemId);
       if (!Number.isFinite(itemId)) {
         return res.status(400).json({ error: 'bad_itemId' });
@@ -1087,6 +1125,8 @@ export default function registerPlayerRoutes(app, _deps = {}) {
   // GET /player/recommend/window?targetHours=2
   router.get('/player/recommend/window', (req, res) => {
     try {
+      // Metrics
+      try { if (metrics?.players?.recommend) metrics.players.recommend.requests++; } catch {}
       const targetHours = Math.max(1, Math.min(8, Number(req.query.targetHours || 2)));
       const models = loadModels();
       const hourScore = new Array(24).fill(0);
