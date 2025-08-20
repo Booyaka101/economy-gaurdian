@@ -11,12 +11,35 @@ try {
   Database = (await import('better-sqlite3')).default;
 } catch {}
 
+function explainPlan(sql, params = []) {
+  if (!EXPLAIN || !db) return;
+  try {
+    const rows = db.prepare(`EXPLAIN QUERY PLAN ${sql}`).all(...params);
+    const pretty = rows
+      .map((r) => {
+        // better-sqlite3 returns columns like: selectid, order, from, detail
+        const sel = r.selectid ?? r.selectId ?? r.sel ?? '';
+        const ord = r.order ?? r.ord ?? '';
+        const frm = r.from ?? r.frm ?? '';
+        const det = r.detail ?? JSON.stringify(r);
+        return `  [${sel}/${ord}/${frm}] ${det}`;
+      })
+      .join('\n');
+    console.info('[sqlite][EXPLAIN]\n' + pretty);
+  } catch (e) {
+    try {
+      console.warn('[sqlite] EXPLAIN failed:', e?.message || e);
+    } catch {}
+  }
+}
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const dataDir = path.join(__dirname, '..', '..', 'data');
 const dbPath = path.join(dataDir, 'accounting.sqlite');
 const DEBUG = String(process.env.EG_SQLITE_DEBUG || '0') === '1';
+const EXPLAIN = String(process.env.EG_SQLITE_EXPLAIN || '0') === '1';
 
 let db = null;
 
@@ -96,6 +119,13 @@ function ensureSchema() {
     );
     CREATE INDEX IF NOT EXISTS idx_events_rt ON events(realm, character, type, t);
     CREATE INDEX IF NOT EXISTS idx_events_salekey ON events(realm, character, sale_key);
+    -- Additional indexes to speed up common queries
+    -- Filter by type and time (used by stats and awaiting)
+    CREATE INDEX IF NOT EXISTS idx_events_type_t ON events(type, t);
+    -- Grouping/joining by sale_key scoped by type
+    CREATE INDEX IF NOT EXISTS idx_events_type_salekey ON events(type, sale_key);
+    -- Join optimization for awaiting payouts: realm+char+type+sale_key
+    CREATE INDEX IF NOT EXISTS idx_events_rct_salekey ON events(realm, character, type, sale_key);
   `);
 }
 
@@ -387,7 +417,9 @@ export function queryAwaiting({ realm, character, windowMin, limit, offset }) {
     LIMIT ? OFFSET ?
   `;
   // Bind params in SQL order: JOIN cutoff (payoutSinceSec), WHERE (...) params, s.t cutoff (cutoffSec), then LIMIT/OFFSET
-  const rows = db.prepare(sql).all(payoutSinceSec, ...params, cutoffSec, lim, off);
+  const explainParams = [payoutSinceSec, ...params, cutoffSec, lim, off];
+  explainPlan(sql, explainParams);
+  const rows = db.prepare(sql).all(...explainParams);
   try {
     if (DEBUG) {
       console.info(
@@ -444,6 +476,7 @@ export function queryStats({ realm, character, sinceHours }) {
       GROUP BY sale_key
     ) AS s
   `;
+  explainPlan(salesSql, paramsBase);
   const salesRow = db.prepare(salesSql).get(...paramsBase);
   const salesCount = Number(salesRow?.salesCount || 0);
   const gross = Number(salesRow?.gross || 0);
@@ -463,6 +496,7 @@ export function queryStats({ realm, character, sinceHours }) {
       GROUP BY sale_key
     ) AS p
   `;
+  explainPlan(payoutSql, paramsBase);
   const payoutRow = db.prepare(payoutSql).get(...paramsBase);
   const payoutCount = Number(payoutRow?.payoutCount || 0);
   const netFromPayouts = Number(payoutRow?.netFromPayouts || 0);

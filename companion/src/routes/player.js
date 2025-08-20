@@ -22,6 +22,38 @@ export default function registerPlayerRoutes(app, _deps = {}) {
   const modelDir = path.join(dataDir, 'models');
   const modelPath = path.join(modelDir, 'player-models.json');
 
+  // --- Lightweight in-memory caches for hot endpoints ---
+  const _STATS_TTL = Math.max(
+    0,
+    Number(process.env.EG_CACHE_STATS_TTL_SEC || (process.env.NODE_ENV === 'production' ? 30 : 0)),
+  );
+  const _AWAIT_TTL = Math.max(
+    0,
+    Number(process.env.EG_CACHE_AWAITING_TTL_SEC || (process.env.NODE_ENV === 'production' ? 30 : 0)),
+  );
+  const _statsCache = new Map(); // key -> { ts, data }
+  const _awaitCache = new Map(); // key -> { ts, data }
+  const nowSec = () => Math.floor(Date.now() / 1000);
+  const cacheGet = (map, key, ttl) => {
+    try {
+      if (!ttl) return null;
+      const ent = map.get(key);
+      if (!ent) return null;
+      if (nowSec() - (ent.ts || 0) > ttl) {
+        map.delete(key);
+        return null;
+      }
+      return ent.data;
+    } catch {
+      return null;
+    }
+  };
+  const cacheSet = (map, key, data) => {
+    try {
+      map.set(key, { ts: nowSec(), data });
+    } catch {}
+  };
+
   function ensureDir(p) {
     try {
       fs.mkdirSync(p, { recursive: true });
@@ -191,6 +223,11 @@ export default function registerPlayerRoutes(app, _deps = {}) {
         }
       }
       saveStore(db);
+      // Invalidate caches on any upload since data changed
+      try {
+        _statsCache.clear();
+        _awaitCache.clear();
+      } catch {}
       return res.json({ ok: true });
     } catch (e) {
       return res.status(500).json({ error: 'upload_failed', message: e?.message || String(e) });
@@ -583,16 +620,25 @@ export default function registerPlayerRoutes(app, _deps = {}) {
       const sinceHours = Math.max(1, Math.min(365 * 24, Number(req.query.sinceHours || 168)));
       const realm = req.query.realm ? String(req.query.realm) : null;
       const character = req.query.char ? String(req.query.char) : null;
+      // Cache lookup
+      const cacheKey = JSON.stringify({ realm: realm || 'all', character: character || 'all', sinceHours });
+      const cached = cacheGet(_statsCache, cacheKey, _STATS_TTL);
+      if (cached) {
+        if (_STATS_TTL > 0) {
+          res.set('Cache-Control', `public, max-age=${_STATS_TTL}`);
+        }
+        return res.json(cached);
+      }
       // Prefer SQLite path when enabled for performance
       if (sqlite.isEnabled()) {
         try {
           const { totals } = sqlite.queryStats({ realm, character, sinceHours });
-          return res.json({
-            realm: realm || 'all',
-            character: character || 'all',
-            sinceHours,
-            totals,
-          });
+          const payload = { realm: realm || 'all', character: character || 'all', sinceHours, totals };
+          if (_STATS_TTL > 0) {
+            res.set('Cache-Control', `public, max-age=${_STATS_TTL}`);
+            cacheSet(_statsCache, cacheKey, payload);
+          }
+          return res.json(payload);
         } catch (e) {
           try {
             console.warn(
@@ -669,7 +715,7 @@ export default function registerPlayerRoutes(app, _deps = {}) {
       const grossOut = usePayoutFallback ? grossFromPayouts : gross;
       const ahCutOut = usePayoutFallback ? ahCutFromPayouts : ahCut;
       const countOut = usePayoutFallback ? payoutCount : salesCount;
-      return res.json({
+      const payload = {
         realm: realm || 'all',
         character: character || 'all',
         sinceHours,
@@ -679,7 +725,12 @@ export default function registerPlayerRoutes(app, _deps = {}) {
           ahCut: ahCutOut,
           net: hasPayoutNets ? netFromPayouts : netFromSales,
         },
-      });
+      };
+      if (_STATS_TTL > 0) {
+        res.set('Cache-Control', `public, max-age=${_STATS_TTL}`);
+        cacheSet(_statsCache, cacheKey, payload);
+      }
+      return res.json(payload);
     } catch (e) {
       try {
         console.error('[player] stats_failed', e);
@@ -696,11 +747,25 @@ export default function registerPlayerRoutes(app, _deps = {}) {
       const windowMin = Math.max(10, Math.min(24 * 60, Number(req.query.windowMin || 60)));
       const limit = Math.max(1, Math.min(2000, Number(req.query.limit || 500)));
       const offset = Math.max(0, Number(req.query.offset || 0));
+      // Cache lookup
+      const cacheKey = JSON.stringify({ realm: realm || 'all', character: character || 'all', windowMin, limit, offset });
+      const cached = cacheGet(_awaitCache, cacheKey, _AWAIT_TTL);
+      if (cached) {
+        if (_AWAIT_TTL > 0) {
+          res.set('Cache-Control', `public, max-age=${_AWAIT_TTL}`);
+        }
+        return res.json(cached);
+      }
       // If SQLite is enabled, use it for efficient querying
       if (sqlite.isEnabled()) {
         try {
           const { items } = sqlite.queryAwaiting({ realm, character, windowMin, limit, offset });
-          return res.json({ limit, offset, count: items.length, items });
+          const payload = { limit, offset, count: items.length, items };
+          if (_AWAIT_TTL > 0) {
+            res.set('Cache-Control', `public, max-age=${_AWAIT_TTL}`);
+            cacheSet(_awaitCache, cacheKey, payload);
+          }
+          return res.json(payload);
         } catch (e) {
           try {
             console.warn(
@@ -749,7 +814,12 @@ export default function registerPlayerRoutes(app, _deps = {}) {
       }
       pending.sort((a, b) => (a.t || 0) - (b.t || 0));
       const items = pending.slice(offset, offset + limit);
-      return res.json({ limit, offset, count: items.length, items });
+      const payload = { limit, offset, count: items.length, items };
+      if (_AWAIT_TTL > 0) {
+        res.set('Cache-Control', `public, max-age=${_AWAIT_TTL}`);
+        cacheSet(_awaitCache, cacheKey, payload);
+      }
+      return res.json(payload);
     } catch (e) {
       try {
         console.error('[player] awaiting_failed', e);

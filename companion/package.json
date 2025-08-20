@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "engines": {
-    "node": ">=18 <21"
+    "node": ">=18 <23"
   },
   "scripts": {
     "start": "node src/server.js",
@@ -20,7 +20,7 @@
     "format:check": "prettier --config ..\\.prettierrc.json --ignore-unknown --check \"public/**/*.{js,css,html,json,md}\" ..\\README.md ..\\CONTRIBUTING.md",
     "test": "vitest run",
     "test:unit": "vitest run --coverage.enabled=false",
-    "test:sqlite": "vitest run src/__tests__/player.stats.sqlite.test.js src/__tests__/sqlite.reset.test.js --coverage.enabled=false",
+    "test:sqlite": "vitest run src/__tests__/*.sqlite.test.js src/__tests__/sqlite.reset.test.js --coverage.enabled=false",
     "test:watch": "vitest",
     "migrate:sqlite": "node scripts/migrate-to-sqlite.js"
   },
