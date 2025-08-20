@@ -35,15 +35,19 @@ export default defineConfig({
   },
   projects: [
     {
+      name: 'node',
       test: {
-        name: 'node',
         environment: 'node',
-        include: ['src/__tests__/**/*.{test,spec}.js'],
+        include: [
+          'src/__tests__/**/*.{test,spec}.js',
+          'src/__tests__/**/*.sqlite.test.js',
+          'src/__tests__/sqlite.reset.test.js',
+        ],
       },
     },
     {
+      name: 'ui',
       test: {
-        name: 'ui',
         environment: 'jsdom',
         include: ['public/__tests__/**/*.{test,spec}.js'],
       },
