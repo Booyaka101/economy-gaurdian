@@ -25,7 +25,7 @@
     "migrate:sqlite": "node scripts/migrate-to-sqlite.js"
   },
   "dependencies": {
-    "@slack/webhook": "^7.0.3",
+    "@slack/webhook": "^7.0.6",
     "axios": "^1.7.2",
     "better-sqlite3": "^12.2.0",
     "compression": "^1.8.1",
